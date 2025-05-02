@@ -5,53 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Valentín Alducin</title>
   <style>
+    /* Variables de tema */
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --primary: #58a6ff;
+      --card-bg: #161b22;
+      --border: #30363d;
+    }
     /* Reset básico */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: #2c3e50; background: #ecf0f1; }
-    a { color: #2980b9; text-decoration: none; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: var(--fg); background: var(--bg); }
+    a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* Contenedor principal */
     .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
     /* Header */
-    header { text-align: center; padding: 4rem 0; }
-    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    header p { font-size: 1.1rem; color: #7f8c8d; }
+    header { text-align: center; padding: 2rem 0; }
+    header h1 { font-size: 3rem; color: var(--primary); margin-bottom: 0.5rem; }
+    header p { font-size: 1.1rem; color: #8b949e; }
+
+    /* Navegación fija */
+    nav { background: var(--card-bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
+    nav ul { display: flex; justify-content: center; list-style: none; }
+    nav li { margin: 0 1rem; }
+    nav a { display: block; padding: 1rem; font-weight: bold; color: var(--fg); }
+    nav a:hover, nav a.active { background: var(--border); border-radius: 4px; }
 
     /* Secciones */
-    section { margin: 4rem 0; }
-    section h2 { font-size: 1.8rem; border-bottom: 2px solid #bdc3c7; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    section { margin: 3rem 0; }
+    section h2 { font-size: 2rem; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
 
     /* Cards de proyectos */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-    .card { background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 1.5rem; transition: transform 0.2s; }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-bottom: 0.5rem; font-size: 1.2rem; }
-    .card p { font-size: 0.95rem; margin-bottom: 1rem; color: #555; }
-    .tech { font-size: 0.8rem; color: #7f8c8d; margin-bottom: 1rem; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 6px 15px rgba(0,0,0,0.5); }
+    .card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; color: var(--primary); }
+    .card p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--fg); }
+    .tech { font-size: 0.8rem; color: #8b949e; margin-bottom: 1rem; }
     .card a { font-weight: bold; font-size: 0.9rem; }
 
+    /* Listas de habilidades */
+    .skills-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .skills-list ul { list-style: disc inside; color: var(--fg); }
+    .skills-list strong { color: var(--primary); }
+
     /* Botón contacto */
-    .contact-btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: #2980b9; color: #fff; border-radius: 4px; }
-    .contact-btn:hover { background: #1c5980; }
+    .contact-btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: var(--primary); color: var(--bg); border-radius: 4px; }
+    .contact-btn:hover { background: #1f6feb; }
 
     /* Footer */
-    footer { text-align: center; font-size: 0.8rem; color: #95a5a6; padding: 2rem 0; }
+    footer { text-align: center; font-size: 0.8rem; color: #8b949e; padding: 2rem 0; }
   </style>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="#projects">Proyectos</a></li>
+      <li><a href="#hard-skills">Habilidades Duras</a></li>
+      <li><a href="#soft-skills">Habilidades Blandas</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+
   <div class="container">
     <header>
       <h1>Valentín Alducin</h1>
       <p>Software Engineer | Automatización & ETL</p>
-      <p><a href="mailto:Ing.alducinjv@gmail.com">Ing.alducinjv@gmail.com</a> · <a href="https://github.com/jalducin">GitHub</a> · <a href="https://linkedin.com/in/juanvalducinv">LinkedIn</a></p>
+      <p><a href="mailto:Ing.alducinjv@gmail.com">Ing.alducinjv@gmail.com</a> · <a href="https://github.com/jalducin" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/juanvalducinv" target="_blank">LinkedIn</a></p>
     </header>
-
-    <section id="about">
-      <h2>Sobre mí</h2>
-      <p>Ingeniero de Software con más de 10 años de experiencia en automatización de procesos ETL, generación de XML y despliegue de servicios Windows. Especializado en Python, DevOps y optimización de recursos. Apasionado por construir soluciones escalables y eficientes.</p>
-    </section>
 
     <section id="projects">
       <h2>Proyectos Destacados</h2>
@@ -72,9 +97,51 @@
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Habilidades</h2>
-      <p>Python · Java · PHP · JavaScript · Flask · React · Docker · Jenkins · CI/CD · SFTP · SQL</p>
+    <section id="hard-skills">
+      <h2>Habilidades Duras</h2>
+      <div class="skills-list">
+        <div>
+          <strong>Lenguajes de programación:</strong>
+          <ul><li>PHP, JavaScript, TypeScript, Java, Python</li></ul>
+        </div>
+        <div>
+          <strong>Frameworks:</strong>
+          <ul><li>Laravel, Flask, React</li></ul>
+        </div>
+        <div>
+          <strong>Tecnologías:</strong>
+          <ul>
+            <li>Docker, Linux/Unix, Git, GitHub/BitBucket</li>
+            <li>REST, Desarrollo e Integración de API</li>
+            <li>HTML, CSS, ETL, Apache, jQuery, UML</li>
+          </ul>
+        </div>
+        <div>
+          <strong>Servicios en la nube:</strong>
+          <ul><li>AWS (EC2, S3), Azure</li></ul>
+        </div>
+        <div>
+          <strong>Bases de datos:</strong>
+          <ul><li>MySQL, SQL Server, PostgreSQL, Hana, MariaDB, MongoDB</li></ul>
+        </div>
+        <div>
+          <strong>Sistemas operativos:</strong>
+          <ul><li>Windows, GNU/Linux</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="soft-skills">
+      <h2>Habilidades Blandas</h2>
+      <ul>
+        <li>Comunicación efectiva</li>
+        <li>Liderazgo</li>
+        <li>Trabajo en equipo</li>
+        <li>Gestión del tiempo</li>
+        <li>Proactividad</li>
+        <li>Pensamiento crítico</li>
+        <li>Metodicidad</li>
+      </ul>
     </section>
 
     <section id="contact">
