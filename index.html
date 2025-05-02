@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Valentín Alducin</title>
   <style>
-    /* Variables de tema */
+    /* Theme variables */
     :root {
       --bg: #0d1117;
       --fg: #c9d1d9;
@@ -13,14 +13,14 @@
       --card-bg: #161b22;
       --border: #30363d;
     }
-    /* Reset básico */
+    /* Basic reset */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: var(--fg); background: var(--bg); }
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* Contenedor principal */
+    /* Container */
     .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
     /* Header */
@@ -28,18 +28,18 @@
     header h1 { font-size: 3rem; color: var(--primary); margin-bottom: 0.5rem; }
     header p { font-size: 1.1rem; color: #8b949e; }
 
-    /* Navegación fija */
+    /* Fixed nav */
     nav { background: var(--card-bg); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 10; }
     nav ul { display: flex; justify-content: center; list-style: none; }
     nav li { margin: 0 1rem; }
     nav a { display: block; padding: 1rem; font-weight: bold; color: var(--fg); }
     nav a:hover, nav a.active { background: var(--border); border-radius: 4px; }
 
-    /* Secciones */
+    /* Sections */
     section { margin: 3rem 0; }
     section h2 { font-size: 2rem; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
 
-    /* Cards de proyectos */
+    /* Project cards */
     .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
     .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
     .card:hover { transform: translateY(-8px); box-shadow: 0 6px 15px rgba(0,0,0,0.5); }
@@ -48,12 +48,12 @@
     .tech { font-size: 0.8rem; color: #8b949e; margin-bottom: 1rem; }
     .card a { font-weight: bold; font-size: 0.9rem; }
 
-    /* Listas de habilidades */
+    /* Skills lists */
     .skills-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .skills-list ul { list-style: disc inside; color: var(--fg); }
     .skills-list strong { color: var(--primary); }
 
-    /* Botón contacto */
+    /* Contact button */
     .contact-btn { display: inline-block; margin-top: 1rem; padding: 0.75rem 1.5rem; background: var(--primary); color: var(--bg); border-radius: 4px; }
     .contact-btn:hover { background: #1f6feb; }
 
@@ -64,44 +64,43 @@
 <body>
   <nav>
     <ul>
-      <li><a href="#projects">Proyectos</a></li>
-      <li><a href="#hard-skills">Habilidades Duras</a></li>
-      <li><a href="#soft-skills">Habilidades Blandas</a></li>
-      <li><a href="#contact">Contacto</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#hard-skills">Hard Skills</a></li>
+      <li><a href="#soft-skills">Soft Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <div class="container">
     <header>
-      <h1>Valentín Alducin</h1>
-      <p>Software Engineer | Automatización & ETL</p>
+      <h1>Juan Valentin Alducin Vázquez</h1>
+      <p>Software Engineer | Automation & ETL</p>
       <p><a href="mailto:Ing.alducinjv@gmail.com">Ing.alducinjv@gmail.com</a> · <a href="https://github.com/jalducin" target="_blank">GitHub</a> · <a href="https://linkedin.com/in/juanvalducinv" target="_blank">LinkedIn</a></p>
     </header>
 
     <section id="projects">
-      <h2>Proyectos Destacados</h2>
+      <h2>Featured Projects</h2>
       <div class="projects">
         <div class="card">
           <h3>dataMasterGK</h3>
-          <p>Sistema Python/Flask para procesar Excel → XML → SFTP con panel web de administración y logging.</p>
+          <p>Python/Flask system to process Excel → XML → SFTP with admin web panel and logging.</p>
           <div class="tech">Python · Flask · SQLite · Paramiko · Docker</div>
-          <a href="https://github.com/jalducin/dataMasterGK" target="_blank">Ver código</a>
+          <a href="https://github.com/jalducin/dataMasterGK" target="_blank">View Code</a>
         </div>
         <div class="card">
-          <h3>Installer MSI QAS/PROD</h3>
-          <p>Generador de instalador MSI para dos servicios Windows, configurado con entornos QAS y PRD.</p>
-          <div class="tech">Inno Setup · WiX · PowerShell</div>
-          <a href="#" target="_blank">Próximamente</a>
+          <h3>socket-chat</h3>
+          <p>Real-time chat using WebSocket and Node.js, with a JavaScript client and Express server.</p>
+          <div class="tech">Node.js · Express · WebSocket · JavaScript · HTML/CSS</div>
+          <a href="https://github.com/jalducin/socket-chat" target="_blank">View Code</a>
         </div>
-        <!-- Agrega más tarjetas aquí -->
       </div>
     </section>
 
     <section id="hard-skills">
-      <h2>Habilidades Duras</h2>
+      <h2>Hard Skills</h2>
       <div class="skills-list">
         <div>
-          <strong>Lenguajes de programación:</strong>
+          <strong>Programming Languages:</strong>
           <ul><li>PHP, JavaScript, TypeScript, Java, Python</li></ul>
         </div>
         <div>
@@ -109,49 +108,49 @@
           <ul><li>Laravel, Flask, React</li></ul>
         </div>
         <div>
-          <strong>Tecnologías:</strong>
+          <strong>Technologies:</strong>
           <ul>
             <li>Docker, Linux/Unix, Git, GitHub/BitBucket</li>
-            <li>REST, Desarrollo e Integración de API</li>
+            <li>REST API Development & Integration</li>
             <li>HTML, CSS, ETL, Apache, jQuery, UML</li>
           </ul>
         </div>
         <div>
-          <strong>Servicios en la nube:</strong>
+          <strong>Cloud Services:</strong>
           <ul><li>AWS (EC2, S3), Azure</li></ul>
         </div>
         <div>
-          <strong>Bases de datos:</strong>
+          <strong>Databases:</strong>
           <ul><li>MySQL, SQL Server, PostgreSQL, Hana, MariaDB, MongoDB</li></ul>
         </div>
         <div>
-          <strong>Sistemas operativos:</strong>
+          <strong>Operating Systems:</strong>
           <ul><li>Windows, GNU/Linux</li></ul>
         </div>
       </div>
     </section>
 
     <section id="soft-skills">
-      <h2>Habilidades Blandas</h2>
+      <h2>Soft Skills</h2>
       <ul>
-        <li>Comunicación efectiva</li>
-        <li>Liderazgo</li>
-        <li>Trabajo en equipo</li>
-        <li>Gestión del tiempo</li>
-        <li>Proactividad</li>
-        <li>Pensamiento crítico</li>
-        <li>Metodicidad</li>
+        <li>Effective Communication</li>
+        <li>Leadership</li>
+        <li>Teamwork</li>
+        <li>Time Management</li>
+        <li>Proactivity</li>
+        <li>Critical Thinking</li>
+        <li>Methodical Approach</li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2>Contacto</h2>
-      <p>¿Interesado en colaborar o tienes una vacante? ¡Hablemos!</p>
-      <a class="contact-btn" href="mailto:Ing.alducinjv@gmail.com">Enviar correo</a>
+      <h2>Contact</h2>
+      <p>Interested in collaborating or have an opportunity? Let’s talk!</p>
+      <a class="contact-btn" href="mailto:Ing.alducinjv@gmail.com">Send Email</a>
     </section>
 
     <footer>
-      &copy; 2025 Valentín Alducin. Todos los derechos reservados.
+     ISC Juan Valentin Alducin
     </footer>
   </div>
 </body>
