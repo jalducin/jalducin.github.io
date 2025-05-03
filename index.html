@@ -23,7 +23,8 @@
     a:hover { text-decoration: underline; }
 
     /* Container */
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+    .container { max-width: 900px; margin: 0 auto; padding: 2rem; background: #0f131a; border-radius: 8px; }
+    .featured-section { background: linear-gradient(90deg, rgba(21,27,36,0.8), rgba(13,17,23,0.8)); padding: 2rem; border-radius: 8px; }
 
         /* Header */
     header { text-align: center; padding: 2rem 0; position: relative; }
@@ -51,9 +52,9 @@
       background: var(--border);
     }
     .header-links img, .header-links svg {
-      width: 20px;
-      height: 20px;
-      filter: invert(100%);
+      width: 24px;
+      height: 24px;
+      filter: invert(100%) brightness(150%);
     }
     /* Ensure GitHub icon is visible */
     .header-links a[href*="github"] img {
@@ -64,12 +65,7 @@
     .header-links a[title="GitHub"] img {
       filter: invert(100%);
     }
-    .header-links a img {
-      width: 24px;
-      height: 24px;
-      /* override filter for visibility */
-      filter: none;
-    }
+    
 
     /* Fixed nav */
     nav */
@@ -83,13 +79,69 @@
     section { margin: 3rem 0; }
     section h2 { font-size: 2rem; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
 
-    /* Experience */
-    #experience ul { list-style: none; }
-    #experience li { margin-bottom: 1rem; }
+    /* Experience Timeline */
+    #experience { position: relative; }
+    #experience .timeline {
+      position: relative;
+      margin-left: 1rem;
+      padding-left: 1.5rem;
+    }
+    #experience .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    #experience .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 1rem;
+    }
+    #experience .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0.3rem;
+      width: 12px;
+      height: 12px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+    }
 
-    /* Project cards */
+    /* Project cards */ */
     .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: transform 0.3s, box-shadow 0.3s; }
+    .card {
+      background: linear-gradient(135deg, #1f2630, #161b22);
+      border: none;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(88,166,255,0.2), rgba(88,166,255,0.05), rgba(88,166,255,0.2));
+      transform: skewX(-25deg);
+      transition: left 0.5s;
+    }
+    .card:hover::before {
+      left: 0;
+    }
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+    }
     .card:hover { transform: translateY(-8px); box-shadow: 0 6px 15px rgba(0,0,0,0.5); }
     .card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; color: var(--primary); }
     .card p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--fg); }
@@ -119,7 +171,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: auto;
       padding: 0.2rem 0.8rem;
       background: transparent;
       color: var(--primary);
@@ -127,6 +178,31 @@
       border-radius: 6px;
       font-weight: bold;
       transition: background 0.3s, color 0.3s;
+    }
+    .download-btn:hover {
+      background: var(--primary);
+      color: var(--bg);
+    }
+  
+    /* Featured section styling */
+    .featured-section {
+      background: rgba(24, 33, 45, 0.5);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+    }
+    .featured-section h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+      position: relative;
+    }
+    .featured-section h2 span {
+      color: #f39c12;
+      margin-right: 0.5rem;
+    }
+    .featured-section .projects {
+      margin-top: 1rem;
     }
     .download-btn:hover {
       background: var(--primary);
@@ -173,8 +249,10 @@
 
     <section id="experience">
       <h2>Experience</h2>
-      <ul>
-        <li><strong>Redsis</strong> – Software Engineer (Jan 2022 – Present)
+      <div class="timeline">
+        <ul class="timeline-list">
+        <li class="timeline-item"><strong>Redsis</strong> – Software Engineer (Jan 2022 – Present)
+          <p>Software developer specializing in retail applications using PHP, Java, and Python. Expert in identifying improvement opportunities for Latin American clients, collaborating closely to optimize processes. Experience with Azure automation, Linux deployment on Azure, and integrating core GK applications with client ERPs. Worked alongside Java development teams on code versioning and custom interface creation for retail projects.</p>
           <ul>
             <li>GK POS Peru Joma Implementation: Go‑Live of GK application on client Dev and QAS servers; deployed EC GK module and supported customizations.</li>
             <li>GK POS & Master Data Interfaces for Medipiel in Colombia: Go‑Live on Dev, QAS, and Production; deployed Python master data ETL interfaces.</li>
@@ -183,6 +261,8 @@
         </li>
         <li><strong>Softtek</strong> – Software Consultant (Mar 2017 – Jan 2022)
           <ul>
+            <li>Implementation of Tremec Portal & ETL: Deployed shipment tracking portal using .NET web services and ETL processes.</li>
+            <li>Kekén Invoicing System: Delivered PHP web services for in-store and central billing; planned multi-store rollout.</li>
             <li>Built ETL processes and BI dashboards, reducing report times by 40 %.</li>
             <li>Upgraded applications in PHP, .NET, and Python; performed code refactoring and security testing.</li>
           </ul>
@@ -192,12 +272,14 @@
             <li>Implemented HR data solutions in SuccessFactors and delivered custom reporting.</li>
           </ul>
         </li>
-      </ul>
+              </ul>
+      </div>
     </section>
 
-    <section id="featured-projects">
-      <h2>Featured Projects</h2>
+    <section id="featured-projects" class="featured-section">
+      <h2><span>★</span>Featured Projects</h2>
       <div class="projects">
+        <!-- Add subtle background accent -->
         <div class="card">
           <h3>dataMasterGK</h3>
           <p>Python/Flask system to process Excel → XML → SFTP with admin web panel and logging.</p>
