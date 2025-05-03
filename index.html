@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Valentin Alducin Vázquez</title>
+  <title>Juan Valentin Alducin Vázquez</title>
   <style>
-    /* -------------------- THEME & RESET -------------------- */
+    /* ---------- THEME & RESET ---------- */
     :root {
       --bg: #0d1117;
       --fg: #c9d1d9;
@@ -15,90 +15,110 @@
       --badge-bg: #21262d;
       --badge-border: #30363d;
     }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;font-size:100%;}
     body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);}    
     a{color:var(--primary);text-decoration:none;}
     a:hover{text-decoration:underline;}
-    .container{max-width:900px;margin:0 auto;padding:2rem;background:#0f131a;border-radius:8px;}
 
-    /* -------------------- NAVBAR -------------------- */
-    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
-    .nav-list{display:flex;justify-content:center;list-style:none;}
-    .nav-item{margin:0 1rem;}
-    .nav-link{display:block;padding:1rem;font-weight:bold;color:var(--fg);}    
-    .nav-link:hover,.nav-link.active{background:var(--border);border-radius:4px;}
-    .burger{display:none;cursor:pointer;padding:1rem;}
-    .burger div{width:24px;height:3px;background:var(--fg);margin:4px 0;transition:.4s;}
+    /* ---------- LAYOUT ---------- */
+    .container{max-width:900px;margin:0 auto;padding:2rem 1.25rem;background:#0f131a;border-radius:8px;}
 
-    /* -------------------- HEADER -------------------- */
+    /* ---------- NAVBAR ---------- */
+    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:center;}
+    .nav-list{display:flex;list-style:none;gap:.5rem;}
+    .nav-item{}
+    .nav-link{display:block;padding:1rem;font-weight:600;color:var(--fg);border-radius:4px;}
+    .nav-link:hover,.nav-link.active{background:var(--border);}
+    /* burger */
+    .burger{display:none;flex-direction:column;gap:4px;padding:1rem;cursor:pointer;}
+    .burger div{width:24px;height:3px;background:var(--fg);transition:.4s;}
+
+    /* ---------- HEADER ---------- */
     header{text-align:center;padding:2rem 0;}
-    header h1{font-size:2.6rem;color:var(--primary);margin-bottom:.4rem;}
-    .tl-location{font-size:.95rem;color:#8b949e;margin-bottom:.6rem;}
-    header p{font-size:1.05rem;color:#8b949e;margin:.25rem auto;max-width:800px;text-align:justify;}
-    .header-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;}
-    .header-links a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s,border-color .3s;}
+    header h1{font-size:2.5rem;color:var(--primary);margin-bottom:.35rem;}
+    .tl-location{font-size:.95rem;color:#8b949e;margin-bottom:.55rem;}
+    header p{font-size:1rem;color:#8b949e;margin:.3rem auto;max-width:800px;text-align:justify;}
+    .header-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:1rem;}
+    .header-links a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s;}
     .header-links a:hover{background:var(--border);}    
-    .header-links img,.header-links svg{width:24px;height:24px;filter:invert(100%) brightness(150%);}    
-    .header-links a[title="GitHub"] img{filter:invert(100%);}  
+    .header-links img,.header-links svg{width:22px;height:22px;filter:invert(1) brightness(1.4);}    
 
-    /* -------------------- SECTION TITLE -------------------- */
-    section{margin:3rem 0;}
-    section h2{font-size:2rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:.5rem;margin-bottom:1rem;}
+    /* ---------- SECTION TITLE ---------- */
+    section{margin:3.5rem 0;}
+    section h2{font-size:1.9rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:.45rem;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem;}
+    section h2 span{font-size:1.1em;}
 
-    /* -------------------- EXPERIENCE TIMELINE -------------------- */
+    /* ---------- EXPERIENCE TIMELINE ---------- */
     #experience{position:relative;}
-    .timeline{position:relative;display:flex;flex-direction:column;gap:4rem;padding:2rem 0;}
-    .timeline::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:100%;background:var(--border);}   
-    .timeline-item{position:relative;width:45%;padding:1rem 1.5rem;background:var(--card-bg);border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,.4);}    
+    .timeline{position:relative;display:flex;flex-direction:column;gap:3.5rem;padding:1.5rem 0;}
+    .timeline::before{content:"";position:absolute;left:50%;top:0;height:100%;width:2px;background:var(--border);transform:translateX(-50%);}   
+    .timeline-item{position:relative;width:45%;padding:1rem 1.4rem;background:var(--card-bg);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.4);}    
     .timeline-item.left{align-self:flex-start;margin-right:55%;}
     .timeline-item.right{align-self:flex-end;margin-left:55%;}
     .timeline-item::after{content:"";position:absolute;top:1rem;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg);}    
-    .timeline-item.left::after{right:-32px;}
-    .timeline-item.right::after{left:-32px;}
-    .timeline-item h3{color:var(--primary);margin-bottom:.25rem;font-size:1.2rem;}
-    .timeline-item .tl-company{font-weight:600;margin-bottom:.25rem;}
-    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:.2rem .6rem;border-radius:999px;font-size:.8rem;color:#8b949e;margin-bottom:.5rem;}
+    .timeline-item.left::after{right:-34px;}
+    .timeline-item.right::after{left:-34px;}
+    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:.25rem .65rem;border-radius:999px;font-size:.78rem;color:#8b949e;margin-bottom:.45rem;}
+    .timeline-item h3{color:var(--primary);margin-bottom:.25rem;font-size:1.15rem;line-height:1.3;}
+    .tl-company{font-weight:600;margin-bottom:.25rem;}
     .timeline-item ul{margin-left:1rem;list-style:disc;}
+    .timeline-item p{font-size:.9rem;}
 
-    /* -------------------- PROJECT CARDS -------------------- */
-    .featured-section{background:rgba(24,33,45,.5);padding:1.5rem 2rem;border-radius:12px;}
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;}
-    .card{background:linear-gradient(135deg,#1f2630,#161b22);border-radius:16px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,.5);position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
-    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(88,166,255,.2) 0%,rgba(88,166,255,.05) 50%,rgba(88,166,255,.2) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:-1;}
+    /* ---------- PROJECT CARDS ---------- */
+    .featured-section{background:rgba(24,33,45,.5);padding:1.4rem 1.8rem;border-radius:12px;}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
+    .card{background:linear-gradient(135deg,#1f2630,#161b22);border-radius:16px;padding:1.4rem;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.5);transition:transform .3s;}
+    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(88,166,255,.25) 0%,rgba(88,166,255,.05) 50%,rgba(88,166,255,.25) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:-1;}
     .card:hover::before{left:0;}
-    .card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,.7);}    
-    .card h3{margin-bottom:.5rem;font-size:1.3rem;color:var(--primary);}    
-    .card p{font-size:.95rem;margin-bottom:1rem;color:var(--fg);}    
-    .tech{font-size:.8rem;color:#8b949e;margin-bottom:1rem;}
+    .card:hover{transform:translateY(-8px) scale(1.04);}    
+    .card h3{margin-bottom:.45rem;font-size:1.25rem;color:var(--primary);}    
+    .card p{font-size:.93rem;margin-bottom:.95rem;color:var(--fg);}    
+    .tech{font-size:.78rem;color:#8b949e;margin-bottom:.9rem;}
+    .card .btn{margin-top:auto;}
 
-    /* -------------------- ICON GRID & BADGES -------------------- */
-    .icons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(50px,1fr));gap:1rem;justify-items:center;}
-    .icons-grid img{width:40px;height:40px;background:#fff;padding:4px;border-radius:6px;}
-    .soft-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;}
-    .soft-list li{background:var(--badge-bg);border:1px solid var(--badge-border);padding:.4rem .8rem;border-radius:.5rem;font-size:.9rem;}
+    /* ---------- ICON GRID & BADGES ---------- */
+    .icons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(48px,1fr));gap:1rem;justify-items:center;}
+    .icons-grid img{width:38px;height:38px;background:#fff;padding:3px;border-radius:6px;}
+    .soft-list{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;}
+    .soft-list li{background:var(--badge-bg);border:1px solid var(--badge-border);padding:.35rem .75rem;border-radius:.5rem;font-size:.85rem;}
 
-    /* -------------------- BUTTONS & FOOTER -------------------- */
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.6rem 1.4rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:bold;transition:background .3s,color .3s;}
+    /* ---------- BUTTONS & FOOTER ---------- */
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.25rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;transition:background .3s,color .3s;}
     .btn:hover{background:var(--primary);color:var(--bg);}    
     footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
 
-    /* -------------------- MEDIA QUERIES -------------------- */
+    /* ---------- MEDIA QUERIES ---------- */
+    @media(max-width:992px){
+      header h1{font-size:2.25rem;}
+      .timeline-item{width:48%;}
+    }
     @media(max-width:768px){
-      .burger{display:block;}
-      .nav-list{display:none;flex-direction:column;align-items:center;}
+      /* burger */
+      .burger{display:flex;}
+      .nav-list{display:none;flex-direction:column;width:100%;background:var(--card-bg);}
+      .nav-link{padding:.9rem 1.2rem;width:100%;text-align:center;}
       nav.open .nav-list{display:flex;}
       nav.open .burger div:nth-child(1){transform:translateY(7px) rotate(45deg);} 
       nav.open .burger div:nth-child(2){opacity:0;}
       nav.open .burger div:nth-child(3){transform:translateY(-7px) rotate(-45deg);} 
+      /* timeline single‑column */
       .timeline::before{left:8px;transform:none;}
       .timeline-item{width:100%;margin:0 0 2rem 2rem;}
       .timeline-item.left,.timeline-item.right{margin:0 0 2rem 2rem;}
       .timeline-item.left::after,.timeline-item.right::after{left:-28px;}
     }
+    @media(max-width:480px){
+      html{font-size:93%;}
+      .container{padding:1.5rem 1rem;}
+      header h1{font-size:1.9rem;}
+      section h2{font-size:1.6rem;}
+      .projects{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <nav>
     <div class="burger" id="burger"><div></div><div></div><div></div></div>
     <ul class="nav-list" id="navList">
@@ -109,15 +129,13 @@
       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
     </ul>
   </nav>
-  <!-- Mobile menu toggle -->
   <script>
     const burger=document.getElementById('burger');
     const nav=document.querySelector('nav');
-    burger.addEventListener('click',()=>{
-      nav.classList.toggle('open');
-    });
+    burger.addEventListener('click',()=>nav.classList.toggle('open'));
   </script>
- <div class="container">
+
+  <div class="container">
     <!-- HEADER -->
     <header>
       <h1>Valentin Alducin Vázquez</h1>
