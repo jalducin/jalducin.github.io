@@ -109,12 +109,20 @@
       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
     </ul>
   </nav>
+  <!-- Mobile menu toggle -->
+  <script>
+    const burger=document.getElementById('burger');
+    const nav=document.querySelector('nav');
+    burger.addEventListener('click',()=>{
+      nav.classList.toggle('open');
+    });
+  </script>
  <div class="container">
     <!-- HEADER -->
     <header>
       <h1>Valentin Alducin Vázquez</h1>
       <p class="tl-location">Location: Mexico · English: A2 (Technical)</p>
-      <p>Software Engineer with **10+ years** of expertise in automating ETL pipelines, generating high‑volume XML feeds and deploying Windows services. Proficient in Python, Java, PHP and JavaScript, backed by a solid DevOps foundation focused on resource optimisation.</p>
+      <p>Software engineer with over 10 years of experience in software development, including extensive expertise in ETL process automation. Fluent in Python, Java, PHP, and JavaScript, with a foundation in DevOps focused on resource optimization. I consider myself passionate about technology and always looking for new challenges..</p>
       <div class="header-links">
         <a href="mailto:Ing.alducinjv@gmail.com" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/></svg></a>
         <a href="https://github.com/jalducin" target="_blank" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" /></a>
@@ -127,31 +135,34 @@
     <section id="experience">
       <h2>Experience</h2>
       <div class="timeline">
+        <!-- Redsis -->
         <div class="timeline-item left">
           <span class="tl-date">2022 – Present</span>
           <h3>Software Engineer</h3>
           <div class="tl-company">Redsis</div>
           <ul>
-            <li>Especialista en aplicaciones retail usando PHP, Java y Python.</li>
-            <li>Integración de GK con ERPs, automatización en Azure y despliegue sobre Linux.</li>
-            <li>Implementaciones GK POS para clientes en Perú, Colombia y Bolivia.</li>
+            <li>Specialist in retail applications built with PHP, Java and Python.</li>
+            <li>Integrated GK core with client ERPs, automated pipelines in Azure and deployed services on Linux.</li>
+            <li>GK POS roll‑outs for customers in Peru, Colombia and Bolivia.</li>
           </ul>
         </div>
+        <!-- Softtek -->
         <div class="timeline-item right">
           <span class="tl-date">2017 – 2022</span>
           <h3>Software Consultant</h3>
           <div class="tl-company">Softtek</div>
           <ul>
-            <li>Portal Tremec & ETL de embarques (.NET + SQL Server).</li>
-            <li>Sistema de facturación Kekén (PHP, multi‑sucursal).</li>
-            <li>Diseño de dashboards BI y refactor de aplicaciones PHP, .NET y Python.</li>
+            <li>Tremec portal & shipment ETL (.NET + SQL Server).</li>
+            <li>Kekén invoicing system (PHP, multi‑store deployment).</li>
+            <li>Created BI dashboards and refactored PHP, .NET and Python applications.</li>
           </ul>
         </div>
+        <!-- Intellego -->
         <div class="timeline-item left">
           <span class="tl-date">2015 – 2017</span>
           <h3>Software Developer</h3>
           <div class="tl-company">Intellego</div>
-          <p>Implementé soluciones de datos de RR. HH. en SuccessFactors y entregué reportes personalizados para clientes corporativos.</p>
+          <p>Implemented HR data solutions in SuccessFactors and delivered tailored reporting for enterprise clients.</p>
         </div>
       </div>
     </section>
