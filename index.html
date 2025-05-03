@@ -15,24 +15,28 @@
       --badge-bg: #21262d;
       --badge-border: #30363d;
     }
-    * {margin:0;padding:0;box-sizing:border-box;}
+    *{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;}
     body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);}    
-    a{color:var(--primary);text-decoration:none;}a:hover{text-decoration:underline;}
+    a{color:var(--primary);text-decoration:none;}
+    a:hover{text-decoration:underline;}
     .container{max-width:900px;margin:0 auto;padding:2rem;background:#0f131a;border-radius:8px;}
 
     /* -------------------- NAVBAR -------------------- */
-    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;}
-    nav ul{display:flex;justify-content:center;list-style:none;}
-    nav li{margin:0 1rem;}
-    nav a{display:block;padding:1rem;font-weight:bold;color:var(--fg);}    
-    nav a:hover,nav a.active{background:var(--border);border-radius:4px;}
+    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:20;}
+    .nav-list{display:flex;justify-content:center;list-style:none;}
+    .nav-item{margin:0 1rem;}
+    .nav-link{display:block;padding:1rem;font-weight:bold;color:var(--fg);}    
+    .nav-link:hover,.nav-link.active{background:var(--border);border-radius:4px;}
+    .burger{display:none;cursor:pointer;padding:1rem;}
+    .burger div{width:24px;height:3px;background:var(--fg);margin:4px 0;transition:.4s;}
 
     /* -------------------- HEADER -------------------- */
     header{text-align:center;padding:2rem 0;}
-    header h1{font-size:3rem;color:var(--primary);margin-bottom:0.5rem;}
-    header p{font-size:1.1rem;color:#8b949e;margin:0.25rem auto;max-width:800px;text-align:justify;}
-    .header-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem;}
+    header h1{font-size:2.6rem;color:var(--primary);margin-bottom:.4rem;}
+    .tl-location{font-size:.95rem;color:#8b949e;margin-bottom:.6rem;}
+    header p{font-size:1.05rem;color:#8b949e;margin:.25rem auto;max-width:800px;text-align:justify;}
+    .header-links{display:flex;justify-content:center;gap:1rem;margin-top:1rem;flex-wrap:wrap;}
     .header-links a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s,border-color .3s;}
     .header-links a:hover{background:var(--border);}    
     .header-links img,.header-links svg{width:24px;height:24px;filter:invert(100%) brightness(150%);}    
@@ -40,7 +44,7 @@
 
     /* -------------------- SECTION TITLE -------------------- */
     section{margin:3rem 0;}
-    section h2{font-size:2rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:0.5rem;margin-bottom:1rem;}
+    section h2{font-size:2rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:.5rem;margin-bottom:1rem;}
 
     /* -------------------- EXPERIENCE TIMELINE -------------------- */
     #experience{position:relative;}
@@ -52,9 +56,9 @@
     .timeline-item::after{content:"";position:absolute;top:1rem;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg);}    
     .timeline-item.left::after{right:-32px;}
     .timeline-item.right::after{left:-32px;}
-    .timeline-item h3{color:var(--primary);margin-bottom:0.25rem;font-size:1.2rem;}
-    .timeline-item .tl-company{font-weight:600;margin-bottom:0.25rem;}
-    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:0.2rem 0.6rem;border-radius:999px;font-size:0.8rem;color:#8b949e;margin-bottom:0.5rem;}
+    .timeline-item h3{color:var(--primary);margin-bottom:.25rem;font-size:1.2rem;}
+    .timeline-item .tl-company{font-weight:600;margin-bottom:.25rem;}
+    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:.2rem .6rem;border-radius:999px;font-size:.8rem;color:#8b949e;margin-bottom:.5rem;}
     .timeline-item ul{margin-left:1rem;list-style:disc;}
 
     /* -------------------- PROJECT CARDS -------------------- */
@@ -64,7 +68,7 @@
     .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(88,166,255,.2) 0%,rgba(88,166,255,.05) 50%,rgba(88,166,255,.2) 100%);transform:skewX(-25deg);transition:left .5s;}
     .card:hover::before{left:0;}
     .card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,.7);}    
-    .card h3{margin-bottom:0.5rem;font-size:1.3rem;color:var(--primary);}    
+    .card h3{margin-bottom:.5rem;font-size:1.3rem;color:var(--primary);}    
     .card p{font-size:.95rem;margin-bottom:1rem;color:var(--fg);}    
     .tech{font-size:.8rem;color:#8b949e;margin-bottom:1rem;}
 
@@ -78,7 +82,15 @@
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:.6rem 1.4rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:bold;transition:background .3s,color .3s;}
     .btn:hover{background:var(--primary);color:var(--bg);}    
     footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
+
+    /* -------------------- MEDIA QUERIES -------------------- */
     @media(max-width:768px){
+      .burger{display:block;}
+      .nav-list{display:none;flex-direction:column;align-items:center;}
+      nav.open .nav-list{display:flex;}
+      nav.open .burger div:nth-child(1){transform:translateY(7px) rotate(45deg);} 
+      nav.open .burger div:nth-child(2){opacity:0;}
+      nav.open .burger div:nth-child(3){transform:translateY(-7px) rotate(-45deg);} 
       .timeline::before{left:8px;transform:none;}
       .timeline-item{width:100%;margin:0 0 2rem 2rem;}
       .timeline-item.left,.timeline-item.right{margin:0 0 2rem 2rem;}
@@ -88,15 +100,16 @@
 </head>
 <body>
   <nav>
-    <ul>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#featured-projects">Featured Projects</a></li>
-      <li><a href="#hard-skills">Hard Skills</a></li>
-      <li><a href="#soft-skills">Soft Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+    <div class="burger" id="burger"><div></div><div></div><div></div></div>
+    <ul class="nav-list" id="navList">
+      <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+      <li class="nav-item"><a class="nav-link" href="#featured-projects">Featured Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#hard-skills">Hard Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#soft-skills">Soft Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
     </ul>
   </nav>
-  <div class="container">
+ <div class="container">
     <!-- HEADER -->
     <header>
       <h1>Valentin Alducin Vázquez</h1>
