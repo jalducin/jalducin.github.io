@@ -40,9 +40,9 @@
     .tl-location{font-size:.95rem;color:#8b949e;margin-bottom:.55rem;}
     header p{font-size:1rem;color:#8b949e;margin:.3rem auto;max-width:800px;text-align:justify;}
     .header-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:1rem;}
-    .header-links a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s;}
+    .header-links a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:34px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s;}
     .header-links a:hover{background:var(--border);}    
-    .header-links img,.header-links svg{width:22px;height:22px;filter:invert(1) brightness(1.4);}    
+    .header-links img,.header-links svg{width:40px;height:40px;filter:invert(1) brightness(1.4);}    
 
     /* ---------- SECTION TITLE ---------- */
     section{margin:3.5rem 0;}
@@ -138,14 +138,32 @@
   <div class="container">
     <!-- HEADER -->
     <header>
-      <h1>Juan Valentin Alducin Vázquez</h1>
-      <p class="tl-location">Location: Mexico · English: A2 (Technical)</p>
-     <p><strong>Software engineer</strong> with over 10 years of experience in backend development, DevOps, and system integration. I specialize in building scalable applications using Python, Java, PHP, and JavaScript. Passionate about automation, clean architecture, and delivering business value through robust APIs and CI/CD pipelines.</p>
-     <div class="header-links">
-        <a href="mailto:Ing.alducinjv@gmail.com" title="Email"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/></svg></a>
-        <a href="https://github.com/jalducin" target="_blank" title="GitHub"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" /></a>
-        <a href="https://linkedin.com/in/juanvalducinv" target="_blank" title="LinkedIn"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" /></a>
-        <a class="btn" href="CV_Valentin_Alducin_2025.pdf" download>CV</a>
+      <h1>Juan Valentin Alducin Vázquez <a href="https://wa.me/525522618746" target="_blank" title="WhatsApp">
+			<img src="assets/icons/qr.svg" alt="WhatsApp" style="width:80px; height:80px; vertical-align:middle;" />
+		  </a></h1>
+		<h3>Software Engineer · Backend & DevOps · ETL & API Automation</h3>
+		<p> 
+		  CDMX, Mexico· English A2 (Technical)
+		</p>
+		<p>
+		Engineer with 10+ years of experience in backend systems, DevOps, and ETL integration. Skilled in Python, Java, PHP, and JS. Focused on automation, scalable APIs, and clean architecture to deliver business impact.
+		</p>
+   <div class="header-links">
+       <a href="mailto:Ing.alducinjv@gmail.com" title="Email">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			  <path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/>
+			</svg>
+		  </a>
+
+		  <a href="https://github.com/jalducin" target="_blank" title="GitHub">
+			<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+		  </a>
+
+		  <a href="https://linkedin.com/in/juanvalducinv" target="_blank" title="LinkedIn">
+			<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
+		  </a>
+
+  <a class="btn" href="CV_Valentin_Alducin_2025.pdf" download>CV</a>
       </div>
     </header>
 
@@ -156,29 +174,32 @@
         <!-- Redsis -->
         <div class="timeline-item left">
           <span class="tl-date">2022 – Present</span>
-          <h3>Software Engineer</h3>
-          <div class="tl-company">Redsis</div>
-          <ul>
-            <li>Specialist in retail applications built with PHP, Java and Python.</li>
-            <li>Integrated GK core with client ERPs, automated pipelines in Azure and deployed services on Linux.</li>
-            <li>GK POS roll‑outs for customers in Peru, Colombia and Bolivia.</li>
-          </ul>
+         <h3>Software Engineer</h3>
+			<div class="tl-company">Redsis</div>
+			<ul>
+			  <li>Developed REST APIs and backend apps (Python, Java, PHP) to integrate GK with ERPs and CRMs. Automated XML generation and SFTP delivery.</li>
+			  <li>Deployed GK systems on cloud and POS environments, leading Go-Lives in Peru, Colombia, and Bolivia.</li>
+			  <li>Led Retail Lab demos and pre-sales sessions for potential clients.</li>
+			  <li>Handled technical issues using Scrum and Jira, ensuring timely and effective support.</li>
+			</ul>
         </div>
         <!-- Softtek -->
         <div class="timeline-item right">
           <span class="tl-date">2017 – 2022</span>
-          <h3>Software Consultant</h3>
+          <h3>Software Engineer | Software Developer</h3>
           <div class="tl-company">Softtek</div>
-          <ul>
-            <li>Tremec portal & shipment ETL (.NET + SQL Server).</li>
-            <li>Kekén invoicing system (PHP, multi‑store deployment).</li>
-            <li>Created BI dashboards and refactored PHP, .NET and Python applications.</li>
-          </ul>
+        <ul>
+		  <li>Built invoicing systems and ETL pipelines integrated with SAP (PHP, .NET, SQL Server).</li>
+		  <li>Developed portals and dashboards (SAP BO) for multi-store operations.</li>
+		  <li>Refactored legacy apps in PHP, Python, and .NET.</li>
+		  <li>Provided AMS support for GK Retail and maintained ETL flows.</li>
+		  <li>Worked in Scrum teams with iterative deliveries and task tracking.</li>
+		</ul>
         </div>
         <!-- Intellego -->
         <div class="timeline-item left">
           <span class="tl-date">2015 – 2017</span>
-          <h3>Software Developer</h3>
+          <h3>Software Consultant</h3>
           <div class="tl-company">Intellego</div>
           <p>Implemented HR data solutions in SuccessFactors and delivered tailored reporting for enterprise clients.</p>
         </div>
