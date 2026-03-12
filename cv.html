@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,143 +10,34 @@
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://jalducin.github.io/cv.html" />
   <style>
-    /* ---------- VARIABLES ---------- */
-    :root {
-      --bg:       #0d1117;
-      --fg:       #c9d1d9;
-      --primary:  #58a6ff;
-      --card-bg:  #161b22;
-      --border:   #30363d;
-      --badge-bg: #21262d;
-      --muted:    #8b949e;
-    }
-
-    /* ---------- RESET ---------- */
+    :root{--bg:#0d1117;--fg:#c9d1d9;--primary:#58a6ff;--card-bg:#161b22;--border:#30363d;--badge-bg:#21262d;--muted:#8b949e;}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{font-size:100%;scroll-behavior:smooth;}
-    body{
-      font-family:"Segoe UI",Tahoma,sans-serif;
-      line-height:1.6;
-      color:var(--fg);
-      background:var(--bg);
-      position:relative;
-      min-height:100vh;
-      overflow-x:hidden;
-    }
+    body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);position:relative;min-height:100vh;overflow-x:hidden;}
     a{color:var(--primary);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
-    /* ---------- BINARY CANVAS BACKGROUND ---------- */
-    #binary-canvas{
-      position:fixed;
-      top:0;left:0;
-      width:100%;height:100%;
-      pointer-events:none;
-      z-index:0;
-      opacity:1;
-    }
+    #binary-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 
-    /* ---------- LAYOUT ---------- */
-    .cv-wrap{
-      position:relative;
-      z-index:1;
-      max-width:860px;
-      margin:0 auto;
-      padding:2rem 1.5rem 4rem;
-    }
+    .cv-wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 
-    /* ---------- TOP ACTIONS ---------- */
-    .top-actions{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:1.5rem;
-      flex-wrap:wrap;
-      gap:.5rem;
-    }
-    .btn{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.5rem 1.1rem;
-      background:transparent;
-      color:var(--primary);
-      border:2px solid var(--primary);
-      border-radius:6px;
-      font-weight:600;
-      font-size:.9rem;
-      cursor:pointer;
-      transition:background .3s,color .3s;
-    }
+    .top-actions{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem;}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;font-size:.9rem;cursor:pointer;transition:background .3s,color .3s;}
     .btn:hover{background:var(--primary);color:var(--bg);}
 
-    /* ---------- HEADER ---------- */
-    .cv-header{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:1.8rem 2rem;
-      margin-bottom:1.5rem;
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:1rem;
-      align-items:start;
-    }
-    .cv-header h1{
-      font-size:2rem;
-      color:var(--primary);
-      margin-bottom:.2rem;
-      line-height:1.2;
-    }
-    .cv-header .role{
-      font-size:1rem;
-      color:var(--fg);
-      font-weight:600;
-      margin-bottom:.6rem;
-    }
-    .cv-header .location{
-      font-size:.88rem;
-      color:var(--muted);
-      margin-bottom:.8rem;
-    }
-    .contact-line{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem 1.2rem;
-      font-size:.85rem;
-      color:var(--muted);
-    }
+    .cv-header{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem 2rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;}
+    .cv-header h1{font-size:2rem;color:var(--primary);margin-bottom:.2rem;line-height:1.2;}
+    .cv-header .role{font-size:1rem;color:var(--fg);font-weight:600;margin-bottom:.6rem;}
+    .cv-header .location{font-size:.88rem;color:var(--muted);margin-bottom:.8rem;}
+    .contact-line{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-size:.85rem;color:var(--muted);}
     .contact-line a{color:var(--primary);}
-    .qr-placeholder{
-      width:90px;height:90px;
-      border:1px solid var(--border);
-      border-radius:8px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:.7rem;color:var(--muted);text-align:center;
-      background:var(--badge-bg);
-      flex-shrink:0;
-    }
+    .qr-placeholder{width:90px;height:90px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--muted);text-align:center;background:var(--badge-bg);flex-shrink:0;}
 
-    /* ---------- SECTION ---------- */
-    .cv-section{
-      background:var(--card-bg);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:1.4rem 1.8rem;
-      margin-bottom:1.2rem;
-    }
-    .cv-section h2{
-      font-size:1.1rem;
-      color:var(--primary);
-      border-bottom:1px solid var(--border);
-      padding-bottom:.4rem;
-      margin-bottom:1rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-    }
+    .cv-section{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.8rem;margin-bottom:1.2rem;}
+    .cv-section h2{font-size:1.1rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:.4rem;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.08em;}
 
-    /* ---------- PROFILE ---------- */
     .profile-text{font-size:.92rem;color:var(--fg);text-align:justify;}
 
-    /* ---------- EXPERIENCE ---------- */
     .exp-item{margin-bottom:1.2rem;}
     .exp-item:last-child{margin-bottom:0;}
     .exp-header{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:.3rem;}
@@ -156,84 +47,44 @@
     .exp-item ul{margin-left:1.1rem;list-style:disc;font-size:.875rem;color:var(--fg);}
     .exp-item ul li{margin-bottom:.2rem;}
 
-    /* ---------- PROJECTS ---------- */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:1rem;
-    }
-    .proj-card{
-      background:var(--badge-bg);
-      border:1px solid var(--border);
-      border-radius:8px;
-      padding:1rem;
-    }
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+    .proj-card{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;}
     .proj-card h3{font-size:.95rem;color:var(--primary);margin-bottom:.25rem;}
     .proj-card p{font-size:.82rem;color:var(--fg);margin-bottom:.4rem;}
     .proj-card .tech{font-size:.75rem;color:var(--muted);}
     .proj-card a{font-size:.8rem;}
 
-    /* ---------- SKILLS ---------- */
-    .skills-cols{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:1.2rem;
-    }
+    .skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
     .skill-group h3{font-size:.88rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;}
     .skill-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
-    .tag{
-      background:var(--badge-bg);
-      border:1px solid var(--border);
-      padding:.25rem .6rem;
-      border-radius:.4rem;
-      font-size:.8rem;
-      color:var(--fg);
-    }
+    .tag{background:var(--badge-bg);border:1px solid var(--border);padding:.25rem .6rem;border-radius:.4rem;font-size:.8rem;color:var(--fg);}
 
-    /* ---------- EDUCATION ---------- */
     .edu-item{margin-bottom:.9rem;}
     .edu-item:last-child{margin-bottom:0;}
     .edu-item h3{font-size:.95rem;color:var(--fg);font-weight:700;}
     .edu-item .inst{font-size:.85rem;color:var(--primary);}
     .edu-item .period{font-size:.8rem;color:var(--muted);}
 
-    /* ---------- CERTIFICATIONS ---------- */
     .cert-list{list-style:none;padding:0;display:grid;gap:.4rem;}
-    .cert-list li{
-      font-size:.85rem;
-      padding:.35rem .7rem;
-      background:var(--badge-bg);
-      border-left:2px solid var(--border);
-      border-radius:4px;
-    }
+    .cert-list li{font-size:.85rem;padding:.35rem .7rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;}
     .cert-list li span{color:var(--muted);font-size:.8rem;margin-left:.5rem;}
 
-    /* ---------- LANGUAGES ---------- */
     .lang-row{display:flex;justify-content:space-between;font-size:.9rem;padding:.3rem 0;border-bottom:1px solid var(--border);}
     .lang-row:last-child{border-bottom:none;}
 
-    /* ---------- FOOTER ---------- */
     .cv-footer{text-align:center;font-size:.78rem;color:var(--muted);margin-top:2rem;}
 
-    /* ---------- RESPONSIVE ---------- */
     @media(max-width:640px){
       .cv-header{grid-template-columns:1fr;}
       .qr-placeholder{display:none;}
       .skills-cols{grid-template-columns:1fr;}
       .cv-header h1{font-size:1.6rem;}
     }
-
-    /* ---------- PRINT ---------- */
     @media print{
-      #binary-canvas,
-      .top-actions{display:none !important;}
+      #binary-canvas,.top-actions{display:none !important;}
       body{background:#fff;color:#111;}
       .cv-wrap{max-width:100%;padding:0;}
-      .cv-section,.cv-header{
-        background:#fff;
-        border-color:#ccc;
-        break-inside:avoid;
-      }
+      .cv-section,.cv-header{background:#fff;border-color:#ccc;break-inside:avoid;}
       .cv-section h2,.cv-header h1,.exp-company,.proj-card h3{color:#1a56c4;}
       .tag{background:#f0f0f0;border-color:#ccc;color:#111;}
       .cert-list li,.proj-card{background:#f5f5f5;}
@@ -241,289 +92,268 @@
   </style>
 </head>
 <body>
-
-  <!-- BINARY BACKGROUND CANVAS -->
   <canvas id="binary-canvas"></canvas>
-
   <div class="cv-wrap">
-
-    <!-- TOP ACTIONS -->
     <div class="top-actions">
       <a class="btn" href="index.html">← Back to Portfolio</a>
-      <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
-        <a class="btn" href="CV_JuanValentinAlducin.pdf" download>⬇ Download CV (ES)</a>
-        <a class="btn" href="CV_JuanValentinAlducin-English.pdf" download>⬇ Download CV (EN)</a>
-        <button class="btn" onclick="window.print()">🖨 Print</button>
-      </div>
+      <button class="btn" onclick="window.print()">🖨 Print / Save PDF</button>
     </div>
-
-    <!-- HEADER -->
-    <div class="cv-header">
-      <div>
-        <h1>Juan Valentin Alducin Vázquez</h1>
-        <div class="role">Software Engineer · Backend Developer · Retail Engineer</div>
-        <div class="location">CDMX, Mexico &nbsp;·&nbsp; English A2 (Technical)</div>
-        <div class="contact-line">
-          <a href="mailto:valentin.alducin88@gmail.com">valentin.alducin88@gmail.com</a>
-          <a href="https://wa.me/525510603174" target="_blank">+52 55 1060 3174</a>
-          <a href="https://github.com/jalducin" target="_blank">github.com/jalducin</a>
-          <a href="https://linkedin.com/in/juanvalducinv" target="_blank">linkedin.com/in/juanvalducinv</a>
-        </div>
-      </div>
-      <div class="qr-placeholder">jalducin<br>.github.io</div>
-    </div>
-
-    <!-- PROFILE -->
-    <div class="cv-section">
-      <h2>Profile</h2>
-      <p class="profile-text">
-        Senior Software Engineer with 8+ years of experience specialized in backend development, application support, and process automation, with a focus on scalable, secure, and high-performance solutions. Solid track record in Python, PHP, and Java; expert in GK POS system integration for the Retail sector across Latin America (Mexico, Peru, Colombia, Bolivia). Passionate about building robust ETL pipelines, REST APIs, and distributed systems.
-      </p>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="cv-section">
-      <h2>Experience</h2>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <h3>Application Support Coordinator (N2) | Fintech</h3>
-          <span class="exp-date">Sept 2025 – Present</span>
-        </div>
-        <div class="exp-company">Podemos Progresar</div>
-        <ul>
-          <li>N2 incident management and resolution on fintech platform using Asana (ticketing) and Notion (technical documentation), leveraging AI (Claude / ChatGPT) to accelerate root cause analysis.</li>
-          <li>Root cause analysis (RCA), temporary and permanent fix implementation, enabling N1 resolution and reducing recurrence.</li>
-          <li>Built and maintained knowledge base in Notion for standardization and continuous improvement.</li>
-          <li>PostgreSQL and MySQL troubleshooting, data integrity validation, and production support.</li>
-          <li>AWS monitoring (Lambda, RDS, Step Functions) and alert management via Slack.</li>
-          <li>Technical coordination across N1–N4 teams and participation in operational automation initiatives.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <h3>Software Engineer | Retail Engineer</h3>
-          <span class="exp-date">Jan 2022 – Sept 2025</span>
-        </div>
-        <div class="exp-company">Redsis</div>
-        <ul>
-          <li>Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML automation via SFTP.</li>
-          <li>Implemented Retail lab environments and led technical demos for pre-sales teams.</li>
-          <li>Deployed GK POS on cloud and physical POS hardware with multi-country Go-Live: Peru, Colombia, Bolivia.</li>
-          <li>Managed requirements and incidents under Scrum/Jira with customer-focused SLAs.</li>
-          <li>Designed and executed promotion ETL in SAP CAR and GK OmniPOS for commercial analytics.</li>
-        </ul>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-header">
-          <h3>Software Engineer | Software Developer</h3>
-          <span class="exp-date">Mar 2017 – Jan 2022</span>
-        </div>
-        <div class="exp-company">Softtek</div>
-        <ul>
-          <li>Implemented invoicing systems, internal portals, and ETL automation integrated with SAP ERP/HANA.</li>
-          <li>Developed executive dashboards in SAP BO and provided AMS support to Retail GK solutions.</li>
-          <li>Maintained applications (Python, PHP, .NET) and ETL flows under Scrum methodology.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- PROJECTS -->
-    <div class="cv-section">
-      <h2>Featured Projects</h2>
-      <div class="projects-grid">
-        <div class="proj-card">
-          <h3>dataMasterGK</h3>
-          <p>ETL middleware: Excel → XML → SFTP for GK Software with web admin panel and logging.</p>
-          <div class="tech">Python · Flask · SQLite · Paramiko · Docker</div><br>
-          <a href="https://github.com/jalducin/dataMasterGK" target="_blank">View ↗</a>
-        </div>
-        <div class="proj-card">
-          <h3>MetalShop</h3>
-          <p>Full-stack e-commerce: JWT auth, cart, orders, admin dashboard. CI via GitHub Actions.</p>
-          <div class="tech">Python · FastAPI · SQLAlchemy · PostgreSQL · Docker</div><br>
-          <a href="https://github.com/jalducin/EcommerceJVAV" target="_blank">View ↗</a>
-        </div>
-        <div class="proj-card">
-          <h3>Inventarios</h3>
-          <p>Inventory system with OpenAPI spec-driven REST API and real-time WebSocket updates.</p>
-          <div class="tech">Java · Spring Boot · Thymeleaf · H2 · WebSocket</div><br>
-          <a href="https://github.com/jalducin/Inventarios" target="_blank">View ↗</a>
-        </div>
-        <div class="proj-card">
-          <h3>socket-chat</h3>
-          <p>Real-time multi-room chat with private messaging, typing indicator and 17 unit tests.</p>
-          <div class="tech">Node.js · Express · Socket.io · Jest</div><br>
-          <a href="https://github.com/jalducin/socket-chat" target="_blank">View ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- SKILLS -->
-    <div class="cv-section">
-      <h2>Skills</h2>
-      <div class="skills-cols">
-        <div class="skill-group">
-          <h3>Languages</h3>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">PHP</span>
-            <span class="tag">Java</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">TypeScript</span>
-            <span class="tag">SQL</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Frameworks</h3>
-          <div class="skill-tags">
-            <span class="tag">FastAPI</span>
-            <span class="tag">Flask</span>
-            <span class="tag">Django</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Node.js / Express</span>
-            <span class="tag">Laravel</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Databases</h3>
-          <div class="skill-tags">
-            <span class="tag">MySQL</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">SQLite</span>
-            <span class="tag">MongoDB</span>
-            <span class="tag">H2</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>DevOps & Tools</h3>
-          <div class="skill-tags">
-            <span class="tag">Docker</span>
-            <span class="tag">Git / GitHub</span>
-            <span class="tag">GitHub Actions</span>
-            <span class="tag">AWS Lambda</span>
-            <span class="tag">Azure</span>
-            <span class="tag">Linux</span>
-            <span class="tag">Scrum / Jira</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Integration / ETL</h3>
-          <div class="skill-tags">
-            <span class="tag">GK POS / OmniPOS</span>
-            <span class="tag">SAP ERP / HANA</span>
-            <span class="tag">SAP CAR</span>
-            <span class="tag">SFTP / FTP</span>
-            <span class="tag">XML / JSON</span>
-            <span class="tag">REST APIs</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h3>Soft Skills</h3>
-          <div class="skill-tags">
-            <span class="tag">Leadership</span>
-            <span class="tag">Problem Solving</span>
-            <span class="tag">Customer Focus</span>
-            <span class="tag">Teamwork</span>
-            <span class="tag">Analytical Thinking</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- EDUCATION -->
-    <div class="cv-section">
-      <h2>Education</h2>
-      <div class="edu-item">
-        <h3>Master's in DevOps</h3>
-        <div class="inst">Universidad IEU</div>
-        <div class="period">2024 – Present · Online · Puebla, Mexico</div>
-      </div>
-      <div class="edu-item">
-        <h3>Computer Systems Engineering</h3>
-        <div class="inst">Instituto Tecnológico de Orizaba</div>
-        <div class="period">2006 – 2011 · Veracruz, Mexico</div>
-      </div>
-    </div>
-
-    <!-- CERTIFICATIONS -->
-    <div class="cv-section">
-      <h2>Recent Courses & Certifications</h2>
-      <ul class="cert-list">
-        <li>React DevTalles <span>2025</span></li>
-        <li>Developing Applications in Python on AWS — Coursera <span>2025</span></li>
-        <li>GitHub Actions — Código Facilito <span>2025</span></li>
-        <li>Introducción a la Ciencia de Datos — EDX <span>2024</span></li>
-        <li>Scrum Foundation — Certiprof <span>2023</span></li>
-      </ul>
-    </div>
-
-    <!-- LANGUAGES -->
-    <div class="cv-section">
-      <h2>Languages</h2>
-      <div class="lang-row"><span>Spanish</span><span>Native</span></div>
-      <div class="lang-row"><span>English</span><span>A2 — Technical Reading &amp; Writing</span></div>
-    </div>
-
-    <div class="cv-footer">
-      Juan Valentin Alducin Vázquez · <a href="https://jalducin.github.io">jalducin.github.io</a> · Last updated March 2026
-    </div>
-
-  </div><!-- /cv-wrap -->
+    <div id="cv-root"></div>
+    <div class="cv-footer" id="cv-footer"></div>
+  </div>
 
   <script>
-    /* ---- BINARY RAIN CANVAS ---- */
-    (function() {
-      const canvas = document.getElementById('binary-canvas');
-      const ctx    = canvas.getContext('2d');
+  /* ============================================================
+     CV DATA — editar aquí para actualizar todo el CV
+  ============================================================ */
+  const CV = {
+    name:     "Juan Valentin Alducin Vázquez",
+    role:     "Software Engineer · Backend Developer · Retail Engineer",
+    location: "CDMX, Mexico",
+    english:  "A2 (Technical)",
+    email:    "valentin.alducin88@gmail.com",
+    phone:    "+52 5643540747",
+    github:   "jalducin",
+    linkedin: "juanvalducinv",
 
-      const FONT_SIZE  = 13;
-      const OPACITY    = 0.08;   /* very subtle */
-      const COLOR      = '#58a6ff';
-      const SPEED      = 0.4;    /* px per frame */
+    profile: `Senior Software Engineer with 8+ years of experience specialized in backend development,
+      application support, and process automation, with a focus on scalable, secure, and high-performance solutions.
+      Solid track record in Python, PHP, and Java; expert in GK POS system integration for the Retail sector
+      across Latin America (Mexico, Peru, Colombia, Bolivia). Passionate about building robust ETL pipelines,
+      REST APIs, and distributed systems.`,
 
-      let cols, drops;
-
-      function resize() {
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
-        cols  = Math.floor(canvas.width / FONT_SIZE);
-        drops = Array.from({ length: cols }, () => Math.random() * -canvas.height);
+    experience: [
+      {
+        title:   "Application Support Coordinator (N2) | Fintech",
+        company: "Podemos Progresar",
+        period:  "Sept 2025 – Present",
+        bullets: [
+          "N2 incident management and resolution on fintech platform using Asana (ticketing) and Notion (technical documentation), leveraging AI (Claude / ChatGPT) to accelerate root cause analysis.",
+          "Root cause analysis (RCA), temporary and permanent fix implementation, enabling N1 resolution and reducing recurrence.",
+          "Built and maintained knowledge base in Notion for standardization and continuous improvement.",
+          "PostgreSQL and MySQL troubleshooting, data integrity validation, and production support.",
+          "AWS monitoring (Lambda, RDS, Step Functions) and alert management via Slack.",
+          "Technical coordination across N1–N4 teams and participation in operational automation initiatives."
+        ]
+      },
+      {
+        title:   "Software Engineer | Retail Engineer",
+        company: "Redsis",
+        period:  "Jan 2022 – Sept 2025",
+        bullets: [
+          "Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML automation via SFTP.",
+          "Implemented Retail lab environments and led technical demos for pre-sales teams.",
+          "Deployed GK POS on cloud and physical POS hardware with multi-country Go-Live: Peru, Colombia, Bolivia.",
+          "Managed requirements and incidents under Scrum/Jira with customer-focused SLAs.",
+          "Designed and executed promotion ETL in SAP CAR and GK OmniPOS for commercial analytics."
+        ]
+      },
+      {
+        title:   "Software Engineer | Software Developer",
+        company: "Softtek",
+        period:  "Mar 2017 – Jan 2022",
+        bullets: [
+          "Implemented invoicing systems, internal portals, and ETL automation integrated with SAP ERP/HANA.",
+          "Developed executive dashboards in SAP BO and provided AMS support to Retail GK solutions.",
+          "Maintained applications (Python, PHP, .NET) and ETL flows under Scrum methodology."
+        ]
       }
+    ],
 
-      function draw() {
-        /* fade trail */
-        ctx.fillStyle = 'rgba(13,17,23,0.08)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = COLOR;
-        ctx.globalAlpha = OPACITY;
-        ctx.font = FONT_SIZE + 'px monospace';
-
-        for (let i = 0; i < cols; i++) {
-          const char = Math.random() > 0.5 ? '1' : '0';
-          const x = i * FONT_SIZE;
-          const y = drops[i];
-
-          ctx.fillText(char, x, y);
-
-          drops[i] += FONT_SIZE * SPEED;
-
-          /* reset column randomly after it passes the bottom */
-          if (drops[i] > canvas.height && Math.random() > 0.975) {
-            drops[i] = 0;
-          }
-        }
-
-        ctx.globalAlpha = 1;
+    projects: [
+      {
+        name:  "dataMasterGK",
+        desc:  "ETL middleware: Excel → XML → SFTP for GK Software with web admin panel and logging.",
+        tech:  "Python · Flask · SQLite · Paramiko · Docker",
+        url:   "https://github.com/jalducin/dataMasterGK"
+      },
+      {
+        name:  "MetalShop",
+        desc:  "Full-stack e-commerce: JWT auth, cart, orders, admin dashboard. CI via GitHub Actions.",
+        tech:  "Python · FastAPI · SQLAlchemy · PostgreSQL · Docker",
+        url:   "https://github.com/jalducin/EcommerceJVAV"
+      },
+      {
+        name:  "Inventarios",
+        desc:  "Inventory system with OpenAPI spec-driven REST API and real-time WebSocket updates.",
+        tech:  "Java · Spring Boot · Thymeleaf · H2 · WebSocket",
+        url:   "https://github.com/jalducin/Inventarios"
+      },
+      {
+        name:  "socket-chat",
+        desc:  "Real-time multi-room chat with private messaging, typing indicator and 17 unit tests.",
+        tech:  "Node.js · Express · Socket.io · Jest",
+        url:   "https://github.com/jalducin/socket-chat"
       }
+    ],
 
-      resize();
-      window.addEventListener('resize', resize);
-      setInterval(draw, 50);
-    })();
+    skills: [
+      { group: "Languages",       tags: ["Python","PHP","Java","JavaScript","TypeScript","SQL"] },
+      { group: "Frameworks",      tags: ["FastAPI","Flask","Django","Spring Boot","Node.js / Express","Laravel"] },
+      { group: "Databases",       tags: ["MySQL","PostgreSQL","SQLite","MongoDB","H2"] },
+      { group: "DevOps & Tools",  tags: ["Docker","Git / GitHub","GitHub Actions","AWS Lambda","Azure","Linux","Scrum / Jira"] },
+      { group: "Integration/ETL", tags: ["GK POS / OmniPOS","SAP ERP / HANA","SAP CAR","SFTP / FTP","XML / JSON","REST APIs"] },
+      { group: "Soft Skills",     tags: ["Leadership","Problem Solving","Customer Focus","Teamwork","Analytical Thinking"] }
+    ],
+
+    education: [
+      { degree: "Master's in DevOps",           inst: "Universidad IEU",                    period: "2024 – Present · Online · Puebla, Mexico" },
+      { degree: "Computer Systems Engineering",  inst: "Instituto Tecnológico de Orizaba",   period: "2006 – 2011 · Veracruz, Mexico" }
+    ],
+
+    certifications: [
+      { name: "React DevTalles",                              year: "2025" },
+      { name: "Developing Applications in Python on AWS — Coursera", year: "2025" },
+      { name: "GitHub Actions — Código Facilito",             year: "2025" },
+      { name: "Introducción a la Ciencia de Datos — EDX",     year: "2024" },
+      { name: "Scrum Foundation — Certiprof",                 year: "2023" }
+    ],
+
+    languages: [
+      { lang: "Spanish", level: "Native" },
+      { lang: "English", level: "A2 — Technical Reading & Writing" }
+    ]
+  };
+
+  /* ============================================================
+     RENDERER — no tocar salvo cambios de estructura
+  ============================================================ */
+  function h(tag, attrs, ...children) {
+    const el = document.createElement(tag);
+    if (attrs) Object.entries(attrs).forEach(([k,v]) => { if(k==='class') el.className=v; else el.setAttribute(k,v); });
+    children.flat(Infinity).forEach(c => {
+      if (c == null) return;
+      el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return el;
+  }
+  function a(href, text, target) {
+    const el = h('a', { href }); el.textContent = text;
+    if(target) el.target = target;
+    return el;
+  }
+
+  function renderHeader() {
+    const wa = CV.phone.replace(/\D/g,'');
+    const header = h('div', {class:'cv-header'},
+      h('div', null,
+        h('h1', null, CV.name),
+        h('div', {class:'role'}, CV.role),
+        h('div', {class:'location'}, `${CV.location} · English ${CV.english}`),
+        h('div', {class:'contact-line'},
+          a(`mailto:${CV.email}`, CV.email),
+          a(`https://wa.me/${wa}`, CV.phone, '_blank'),
+          a(`https://github.com/${CV.github}`, `github.com/${CV.github}`, '_blank'),
+          a(`https://linkedin.com/in/${CV.linkedin}`, `linkedin.com/in/${CV.linkedin}`, '_blank')
+        )
+      ),
+      h('div', {class:'qr-placeholder'}, 'jalducin', h('br'), '.github.io')
+    );
+    return header;
+  }
+
+  function section(title, ...content) {
+    return h('div', {class:'cv-section'}, h('h2', null, title), ...content);
+  }
+
+  function renderProfile() {
+    return section('Profile', h('p', {class:'profile-text'}, CV.profile.trim().replace(/\s+/g,' ')));
+  }
+
+  function renderExperience() {
+    const items = CV.experience.map(exp =>
+      h('div', {class:'exp-item'},
+        h('div', {class:'exp-header'},
+          h('h3', null, exp.title),
+          h('span', {class:'exp-date'}, exp.period)
+        ),
+        h('div', {class:'exp-company'}, exp.company),
+        h('ul', null, ...exp.bullets.map(b => h('li', null, b)))
+      )
+    );
+    return section('Experience', ...items);
+  }
+
+  function renderProjects() {
+    const cards = CV.projects.map(p =>
+      h('div', {class:'proj-card'},
+        h('h3', null, p.name),
+        h('p', null, p.desc),
+        h('div', {class:'tech'}, p.tech),
+        h('br'),
+        a(p.url, 'View ↗', '_blank')
+      )
+    );
+    return section('Featured Projects', h('div', {class:'projects-grid'}, ...cards));
+  }
+
+  function renderSkills() {
+    const groups = CV.skills.map(s =>
+      h('div', {class:'skill-group'},
+        h('h3', null, s.group),
+        h('div', {class:'skill-tags'}, ...s.tags.map(t => h('span', {class:'tag'}, t)))
+      )
+    );
+    return section('Skills', h('div', {class:'skills-cols'}, ...groups));
+  }
+
+  function renderEducation() {
+    const items = CV.education.map(e =>
+      h('div', {class:'edu-item'},
+        h('h3', null, e.degree),
+        h('div', {class:'inst'}, e.inst),
+        h('div', {class:'period'}, e.period)
+      )
+    );
+    return section('Education', ...items);
+  }
+
+  function renderCerts() {
+    const items = CV.certifications.map(c =>
+      h('li', null, c.name, h('span', null, c.year))
+    );
+    return section('Recent Courses & Certifications', h('ul', {class:'cert-list'}, ...items));
+  }
+
+  function renderLanguages() {
+    const rows = CV.languages.map(l =>
+      h('div', {class:'lang-row'}, h('span', null, l.lang), h('span', null, l.level))
+    );
+    return section('Languages', ...rows);
+  }
+
+  const root = document.getElementById('cv-root');
+  [renderHeader(), renderProfile(), renderExperience(), renderProjects(),
+   renderSkills(), renderEducation(), renderCerts(), renderLanguages()]
+    .forEach(el => root.appendChild(el));
+
+  const now = new Date();
+  document.getElementById('cv-footer').innerHTML =
+    `Juan Valentin Alducin Vázquez · <a href="https://jalducin.github.io">jalducin.github.io</a> · Last updated ${now.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
+
+  /* ---- BINARY RAIN ---- */
+  (function(){
+    const canvas=document.getElementById('binary-canvas');
+    const ctx=canvas.getContext('2d');
+    const FS=13,OPC=0.08,COLOR='#58a6ff',SPD=0.4;
+    let cols,drops;
+    function resize(){
+      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+      cols=Math.floor(canvas.width/FS);
+      drops=Array.from({length:cols},()=>Math.random()*-canvas.height);
+    }
+    function draw(){
+      ctx.fillStyle='rgba(13,17,23,0.08)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle=COLOR; ctx.globalAlpha=OPC; ctx.font=FS+'px monospace';
+      for(let i=0;i<cols;i++){
+        ctx.fillText(Math.random()>.5?'1':'0',i*FS,drops[i]);
+        drops[i]+=FS*SPD;
+        if(drops[i]>canvas.height&&Math.random()>.975)drops[i]=0;
+      }
+      ctx.globalAlpha=1;
+    }
+    resize(); window.addEventListener('resize',resize); setInterval(draw,50);
+  })();
   </script>
 </body>
 </html>

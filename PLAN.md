@@ -62,8 +62,8 @@ jalducin.github.io/
 
 ## Contenido de datos (fuente de verdad)
 
-La fuente de verdad del contenido es `index.html` y `cv.html` directamente.
-Actualizar siempre ambos archivos cuando cambia información personal o de proyectos.
+- **`cv.html`** — contiene el objeto `const CV = {...}` al final del archivo. Es la única fuente de verdad del CV: editar ese objeto actualiza todo el renderizado al vuelo. No hay HTML de contenido en el body, solo los contenedores.
+- **`index.html`** — contiene el contenido del portafolio directamente en el HTML. Actualizar en paralelo cuando cambia experiencia, proyectos o datos de contacto.
 
 ### Experiencia (cronológica inversa)
 1. **Podemos Progresar** — Sept 2025 · Presente · Application Support Coordinator (N2) · Fintech

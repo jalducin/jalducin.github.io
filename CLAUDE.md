@@ -46,7 +46,7 @@ Consulta siempre los archivos de spec antes de modificar:
 ```
 Nombre:    Juan Valentin Alducin Vázquez
 Email:     valentin.alducin88@gmail.com
-WhatsApp:  +52 55 1060 3174
+WhatsApp:  +52 5643540747
 GitHub:    https://github.com/jalducin
 LinkedIn:  https://linkedin.com/in/juanvalducinv
 Ubicación: CDMX, Mexico
