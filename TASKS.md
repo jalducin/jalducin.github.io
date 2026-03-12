@@ -17,18 +17,19 @@
 - [x] Agregar proyecto Inventarios (Java/Spring Boot)
 - [x] Crear `cv.html` con fondo binario interactivo
 - [x] Actualizar SPEC.md, PLAN.md, README.md al estado actual
+- [x] Sección de idiomas en `index.html`
+- [x] Favicon SVG con iniciales JA
+- [x] Meta tags Open Graph (index.html y cv.html)
+- [x] Animación fade-in al hacer scroll (IntersectionObserver)
+- [x] Modo claro / oscuro con toggle en navbar (persiste en localStorage)
+- [x] Formulario de contacto Formspree (async, sin recarga)
 
 ---
 
 ## Pendientes
 
-- [ ] Sección de idiomas: Español (nativo), English A2 (técnico)
-- [ ] Agregar favicon
-- [ ] Meta tags Open Graph para preview en redes sociales
-- [ ] Animación de entrada (fade-in) en secciones al hacer scroll
-- [ ] Modo claro / modo oscuro toggle
-- [ ] Formulario de contacto funcional (Formspree o similar)
-- [ ] Versión en inglés del portafolio (`en/index.html` o toggle de idioma)
+- [ ] **Activar Formspree**: crear cuenta en formspree.io y reemplazar `YOUR_FORM_ID` en index.html
+- [ ] Versión en inglés del portafolio (el sitio ya está en inglés; pendiente versión en español)
 
 ---
 

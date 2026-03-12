@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Valentin Alducin Vázquez</title>
+  <title>Juan Valentin Alducin Vázquez — Software Engineer</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2358a6ff'>JA</text></svg>" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Juan Valentin Alducin Vázquez — Software Engineer" />
+  <meta property="og:description" content="Senior Software Engineer · Backend · ETL · Retail GK POS · Python · PHP · Java · CDMX, Mexico" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jalducin.github.io" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Juan Valentin Alducin Vázquez — Software Engineer" />
+  <meta name="twitter:description" content="Senior Software Engineer · Backend · ETL · Retail GK POS · CDMX, Mexico" />
   <style>
     /* ---------- THEME & RESET ---------- */
     :root {
@@ -14,15 +26,30 @@
       --border: #30363d;
       --badge-bg: #21262d;
       --badge-border: #30363d;
+      --container-bg: #0f131a;
     }
+    html.light {
+      --bg: #f6f8fa;
+      --fg: #24292f;
+      --primary: #0969da;
+      --card-bg: #ffffff;
+      --border: #d0d7de;
+      --badge-bg: #eaeef2;
+      --badge-border: #d0d7de;
+      --container-bg: #ffffff;
+    }
+
+    /* ---------- FADE-IN ANIMATION ---------- */
+    .fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease;}
+    .fade-in.visible{opacity:1;transform:none;}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;font-size:100%;}
-    body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);}    
+    body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);transition:background .3s,color .3s;}
     a{color:var(--primary);text-decoration:none;}
     a:hover{text-decoration:underline;}
 
     /* ---------- LAYOUT ---------- */
-    .container{max-width:900px;margin:0 auto;padding:2rem 1.25rem;background:#0f131a;border-radius:8px;}
+    .container{max-width:900px;margin:0 auto;padding:2rem 1.25rem;background:var(--container-bg);border-radius:8px;}
 
     /* ---------- NAVBAR ---------- */
     nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:center;}
@@ -85,8 +112,35 @@
 
     /* ---------- BUTTONS & FOOTER ---------- */
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.25rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;transition:background .3s,color .3s;}
-    .btn:hover{background:var(--primary);color:var(--bg);}    
+    .btn:hover{background:var(--primary);color:var(--bg);}
     footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
+
+    /* ---------- THEME TOGGLE ---------- */
+    #theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;cursor:pointer;font-size:1rem;color:var(--fg);transition:background .3s;}
+    #theme-btn:hover{background:var(--border);}
+    nav{position:relative;}
+    .nav-actions{display:flex;align-items:center;gap:.5rem;padding:.5rem;}
+
+    /* ---------- LANGUAGES SECTION ---------- */
+    .lang-table{width:100%;border-collapse:collapse;}
+    .lang-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);font-size:.95rem;}
+    .lang-table tr:last-child td{border-bottom:none;}
+    .lang-table td:first-child{font-weight:600;color:var(--fg);}
+    .lang-table td:last-child{color:#8b949e;}
+
+    /* ---------- CONTACT FORM ---------- */
+    .contact-form{display:grid;gap:.85rem;margin-top:1.2rem;}
+    .contact-form input,.contact-form textarea{
+      width:100%;padding:.65rem .9rem;
+      background:var(--card-bg);border:1px solid var(--border);border-radius:6px;
+      color:var(--fg);font-family:inherit;font-size:.95rem;
+      transition:border-color .3s;
+    }
+    .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--primary);}
+    .contact-form textarea{resize:vertical;min-height:110px;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
+    .form-success{display:none;background:rgba(88,166,255,.12);border:1px solid var(--primary);border-radius:6px;padding:.8rem 1rem;color:var(--primary);font-size:.9rem;}
+    @media(max-width:480px){.form-row{grid-template-columns:1fr;}}
 
     /* ---------- MEDIA QUERIES ---------- */
     @media(max-width:992px){
@@ -123,18 +177,31 @@
     <div class="burger" id="burger"><div></div><div></div><div></div></div>
     <ul class="nav-list" id="navList">
       <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-      <li class="nav-item"><a class="nav-link" href="#featured-projects">Featured Projects</a></li>
-      <li class="nav-item"><a class="nav-link" href="#hard-skills">Hard Skills</a></li>
-      <li class="nav-item"><a class="nav-link" href="#soft-skills">Soft Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#featured-projects">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#hard-skills">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
       <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
     </ul>
+    <div class="nav-actions">
+      <button id="theme-btn" title="Toggle dark/light mode">🌙</button>
+    </div>
   </nav>
   <script>
     const burger=document.getElementById('burger');
     const nav=document.querySelector('nav');
     burger.addEventListener('click',()=>nav.classList.toggle('open'));
+
+    // Theme toggle
+    const themeBtn=document.getElementById('theme-btn');
+    const saved=localStorage.getItem('theme');
+    if(saved==='light'){document.documentElement.classList.add('light');themeBtn.textContent='☀️';}
+    themeBtn.addEventListener('click',()=>{
+      const isLight=document.documentElement.classList.toggle('light');
+      themeBtn.textContent=isLight?'☀️':'🌙';
+      localStorage.setItem('theme',isLight?'light':'dark');
+    });
   </script>
 
   <div class="container">
@@ -167,7 +234,7 @@
     </header>
 
     <!-- EXPERIENCE -->
-    <section id="experience">
+    <section id="experience" class="fade-in">
       <h2>Experience</h2>
       <div class="timeline">
         <!-- Podemos Progresar -->
@@ -207,7 +274,7 @@
     </section>
 
     <!-- FEATURED PROJECTS -->
-    <section id="featured-projects" class="featured-section">
+    <section id="featured-projects" class="featured-section fade-in">
       <h2><span>★</span>Featured Projects</h2>
       <div class="projects">
         <div class="card">
@@ -238,7 +305,7 @@
     </section>
 
     <!-- HARD SKILLS -->
-    <section id="hard-skills">
+    <section id="hard-skills" class="fade-in">
       <h2>Hard Skills</h2>
       <div class="icons-grid">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" title="PHP" />
@@ -262,7 +329,7 @@
     </section>
 
     <!-- SOFT SKILLS -->
-    <section id="soft-skills">
+    <section id="soft-skills" class="fade-in">
       <h2>Soft Skills</h2>
       <ul class="soft-list">
         <li>Leadership</li>
@@ -276,8 +343,17 @@
       </ul>
     </section>
 
+    <!-- LANGUAGES -->
+    <section id="languages" class="fade-in">
+      <h2>Languages</h2>
+      <table class="lang-table">
+        <tr><td>Spanish</td><td>Native</td></tr>
+        <tr><td>English</td><td>A2 — Technical reading &amp; writing</td></tr>
+      </table>
+    </section>
+
     <!-- EDUCATION & CERTIFICATIONS -->
-    <section id="education">
+    <section id="education" class="fade-in">
       <h2>Education & Certifications</h2>
       <div style="display:grid;gap:1.5rem;">
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
@@ -314,19 +390,61 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
+    <section id="contact" class="fade-in">
       <h2>Contact</h2>
       <p>Looking for job opportunities? Let's talk!</p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0 1.5rem;">
         <a class="btn" href="mailto:valentin.alducin88@gmail.com">Send Email</a>
+        <a class="btn" href="https://wa.me/525510603174" target="_blank">WhatsApp</a>
         <a class="btn" href="cv.html">View CV Online</a>
         <a class="btn" href="CV_JuanValentinAlducin.pdf" download>Download CV (ES)</a>
         <a class="btn" href="CV_JuanValentinAlducin-English.pdf" download>Download CV (EN)</a>
       </div>
+
+      <!-- CONTACT FORM (Formspree) — replace YOUR_FORM_ID with your id from formspree.io -->
+      <form class="contact-form" id="contactForm"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST">
+        <div class="form-row">
+          <input type="text"  name="name"  placeholder="Your name"  required />
+          <input type="email" name="email" placeholder="Your email" required />
+        </div>
+        <input type="text" name="subject" placeholder="Subject" required />
+        <textarea name="message" placeholder="Your message..." required></textarea>
+        <div>
+          <button class="btn" type="submit">Send Message</button>
+        </div>
+        <div class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</div>
+      </form>
     </section>
 
     <footer>© 2026 Juan Valentin Alducin Vázquez. All rights reserved.</footer>
   </div>
+
+  <script>
+    // ---- FADE-IN ON SCROLL ----
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ---- CONTACT FORM (Formspree async) ----
+    const form = document.getElementById('contactForm');
+    if(form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('[type=submit]');
+        btn.textContent = 'Sending…'; btn.disabled = true;
+        try {
+          const res = await fetch(form.action, { method:'POST', body: new FormData(form), headers:{ Accept:'application/json' } });
+          if(res.ok) {
+            form.reset();
+            document.getElementById('formSuccess').style.display = 'block';
+          } else { btn.textContent = 'Error — try again'; btn.disabled = false; }
+        } catch { btn.textContent = 'Error — try again'; btn.disabled = false; }
+      });
+    }
+  </script>
 </body>
 </html>
 
