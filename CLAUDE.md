@@ -57,7 +57,7 @@ Inglés:    A2 (Técnico)
 
 | Empresa | Período | Rol |
 |---|---|---|
-| Podemos Progresar | Sept 2025 – Present | Software Engineer / Application Support |
+| Podemos Progresar | Sept 2025 – Present | Application Support Coordinator (N2) · Fintech |
 | Redsis | Ene 2022 – Sept 2025 | Retail Engineer |
 | Softtek | Mar 2017 – Ene 2022 | Software Developer |
 
@@ -67,7 +67,6 @@ Inglés:    A2 (Técnico)
 |---|---|---|
 | dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
 | socket-chat | Node.js · Express · Socket.io · JS | jalducin/socket-chat |
-| banking-ms | Python · FastAPI · Docker | jalducin/banking-microservices |
 | MetalShop | Python · FastAPI · SQLAlchemy · Docker | jalducin/EcommerceJVAV |
 | Inventarios | Java · Spring Boot · WebSocket · H2 · Thymeleaf | jalducin/Inventarios |
 
