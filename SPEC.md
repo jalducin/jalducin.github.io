@@ -13,14 +13,20 @@ Sitio estático publicado en GitHub Pages. Presenta el perfil profesional de **J
 ## Páginas
 
 ### `index.html` — Portafolio principal
-Secciones navegables mediante navbar sticky:
+Secciones navegables mediante navbar sticky (con toggle dark/light y burger menu):
 1. **Header** — Nombre, rol, ubicación, bio, links (email, GitHub, LinkedIn, WhatsApp)
 2. **Experience** — Timeline de trabajo: Podemos Progresar, Redsis, Softtek
 3. **Featured Projects** — Cards de proyectos con tech stack y link a GitHub
-4. **Hard Skills** — Grid de iconos de tecnologías
+4. **Hard Skills** — Grid de iconos de tecnologías (devicons CDN)
 5. **Soft Skills** — Badges de habilidades blandas
-6. **Education & Certifications** — Formación y cursos recientes
-7. **Contact** — Botones de email y descarga del CV
+6. **Languages** — Español nativo / English A2
+7. **Education & Certifications** — Formación y cursos recientes
+8. **Contact** — Botones + formulario Formspree async (descarga CV ES/EN)
+
+Características transversales:
+- Animaciones fade-in por sección al hacer scroll (IntersectionObserver)
+- Toggle dark/light mode persistido en localStorage
+- Favicon SVG inline con iniciales JA
 
 ### `cv.html` — CV Interactivo
 - Diseño con fondo binario (1s y 0s tenues, animados o estáticos)

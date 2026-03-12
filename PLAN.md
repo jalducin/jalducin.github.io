@@ -42,9 +42,9 @@ jalducin.github.io/
 - Media queries propios: breakpoints en 992px, 768px y 480px.
 
 ### Fondo binario (cv.html)
-- Implementado con `<canvas>` en JavaScript o con pseudoelementos CSS.
-- Números binarios (0 y 1) en color primario con opacidad 0.07–0.12 sobre fondo oscuro.
-- Animación sutil: columnas de binario que caen (estilo Matrix, pero muy tenue).
+- Implementado con `<canvas>` + `setInterval` en JavaScript.
+- Números binarios (0 y 1) en color primario con opacidad ~0.08 sobre fondo oscuro.
+- Animación: columnas de binario que caen (estilo Matrix muy tenue). Se oculta en `@media print`.
 
 ### Navbar
 - Sticky con `position: sticky; top: 0`.
@@ -66,7 +66,7 @@ La fuente de verdad del contenido es `index.html` y `cv.html` directamente.
 Actualizar siempre ambos archivos cuando cambia información personal o de proyectos.
 
 ### Experiencia (cronológica inversa)
-1. **Podemos Progresar** — Sept 2025 · Presente · Software Engineer / App Support
+1. **Podemos Progresar** — Sept 2025 · Presente · Application Support Coordinator (N2) · Fintech
 2. **Redsis** — Ene 2022 – Sept 2025 · Retail Engineer
 3. **Softtek** — Mar 2017 – Ene 2022 · Software Developer
 

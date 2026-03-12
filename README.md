@@ -22,11 +22,15 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Software Engine
 
 ```
 jalducin.github.io/
-├── index.html                        ← Portafolio principal
-├── cv.html                           ← CV interactivo (fondo binario)
-├── CV_JuanValentinAlducin.pdf        ← CV en español (descarga)
-├── CV_JuanValentinAlducin-English.pdf← CV en inglés (descarga)
-└── assets/                           ← Recursos estáticos
+├── index.html                         ← Portafolio principal
+├── cv.html                            ← CV interactivo (fondo binario animado)
+├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga)
+├── CV_JuanValentinAlducin-English.pdf ← CV en inglés (descarga)
+├── assets/                            ← Recursos estáticos
+├── CLAUDE.md                          ← Instrucciones para Claude Code
+├── SPEC.md                            ← Especificación de secciones y contenido
+├── PLAN.md                            ← Arquitectura y decisiones técnicas
+└── TASKS.md                           ← Tareas completadas y pendientes
 ```
 
 ## Despliegue
