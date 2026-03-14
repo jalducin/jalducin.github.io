@@ -41,10 +41,12 @@ jalducin.github.io/
 - Variables CSS custom properties para mantener consistencia de paleta.
 - Media queries propios: breakpoints en 992px, 768px y 480px.
 
-### Fondo binario (cv.html)
-- Implementado con `<canvas>` + `setInterval` en JavaScript.
-- Números binarios (0 y 1) en color primario con opacidad ~0.08 sobre fondo oscuro.
-- Animación: columnas de binario que caen (estilo Matrix muy tenue). Se oculta en `@media print`.
+### Fondo binario matrix (ambas páginas)
+- `index.html`: `<canvas id="matrix-bg">` fixed, z-index:-1. Lluvia binaria sutil (OPC≈0.07) en dark mode; oculta en light mode via CSS. El contenedor es `rgba(13,17,23,0.82)` semi-transparente para dejar ver la lluvia.
+- `cv.html`: mismo enfoque pero más pronunciado (OPC≈0.12, intervalo 40ms). Se oculta en `@media print`.
+- Tipografía: h1 y h2 usan `'Courier New', monospace` con `text-shadow` glow en `--accent`.
+- Prefijo `> ` en `section h2::before` y `.cv-sec h2::before` para look terminal.
+- Botones (`.btn`) con `font-family: 'Courier New'` y `letter-spacing` para feel de terminal.
 
 ### Navbar
 - Sticky con `position: sticky; top: 0`.

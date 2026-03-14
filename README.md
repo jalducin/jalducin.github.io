@@ -10,7 +10,8 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Software Engine
 - Proyectos destacados con links a GitHub
 - Hard skills con iconografía de tecnologías
 - Educación y certificaciones
-- Página de CV descargable con diseño binario
+- Diseño estético matrix/binario: lluvia de 0s y 1s animada como fondo, tipografía monospace con glow en ambas páginas
+- CV interactivo (`cv.html`) con descarga directa en español e inglés (PDFs estáticos)
 
 ## Tecnologías
 

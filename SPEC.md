@@ -27,9 +27,13 @@ Características transversales:
 - Animaciones fade-in por sección al hacer scroll (IntersectionObserver)
 - Toggle dark/light mode persistido en localStorage
 - Favicon SVG inline con iniciales JA
+- Fondo matrix: canvas con lluvia binaria (0s y 1s) en dark mode, oculto en light mode
+- Tipografía monospace con glow en títulos (`h1` y secciones `h2`) y prefijo `> ` en secciones
+- Efecto glow en cards hover, timeline dots y botones
 
 ### `cv.html` — CV Interactivo
-- Diseño con fondo binario (1s y 0s tenues, animados o estáticos)
+- Diseño matrix: fondo binario animado (lluvia de 0s y 1s) más pronunciado que en index.html
+- Tipografía monospace con glow en header y secciones; prefijo `> ` en cada sección
 - Misma paleta de colores del portafolio (dark mode)
 - Layout de CV profesional: datos, experiencia, proyectos, skills, educación
 - Botones de descarga directa de los PDFs estáticos (ES y EN)

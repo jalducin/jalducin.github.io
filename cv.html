@@ -54,10 +54,11 @@
       padding: .45rem 1rem;
       background: transparent; color: var(--accent);
       border: 1.5px solid var(--accent); border-radius: 6px;
-      font-family: "Segoe UI", sans-serif; font-weight: 600; font-size: .88rem;
-      cursor: pointer; transition: background .25s, color .25s;
+      font-family: 'Courier New', Courier, monospace; font-weight: 600; font-size: .82rem;
+      cursor: pointer; transition: background .25s, color .25s, box-shadow .25s;
+      letter-spacing: .03em; text-decoration: none;
     }
-    .btn:hover { background: var(--accent); color: var(--bg); }
+    .btn:hover { background: var(--accent); color: var(--bg); box-shadow: 0 0 14px rgba(88,166,255,.55); }
 
     /* ── CV WRAPPER ────────────────────────────────────────── */
     .cv-wrap {
@@ -70,9 +71,11 @@
     /* ── HARVARD HEADER ────────────────────────────────────── */
     .cv-header { text-align: center; padding: 1.2rem 0 .6rem; }
     .cv-header h1 {
-      font-size: 1.85rem; font-weight: 700; letter-spacing: .08em;
+      font-size: 1.85rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; color: var(--accent);
       margin-bottom: .2rem;
+      font-family: 'Courier New', Courier, monospace;
+      text-shadow: 0 0 20px rgba(88,166,255,.6), 0 0 5px rgba(88,166,255,.3);
     }
     .cv-subtitle {
       font-size: .88rem; color: var(--muted);
@@ -88,12 +91,14 @@
     /* ── HARVARD SECTION ───────────────────────────────────── */
     .cv-sec { margin: .85rem 0; }
     .cv-sec h2 {
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Courier New', Courier, monospace;
       font-size: .78rem; font-weight: 700; letter-spacing: .15em;
       text-transform: uppercase; color: var(--accent);
       border-bottom: 1.5px solid var(--accent);
       padding-bottom: .15rem; margin-bottom: .55rem;
+      text-shadow: 0 0 8px rgba(88,166,255,.45);
     }
+    .cv-sec h2::before { content: '> '; opacity: .5; letter-spacing: 0; }
 
     /* ── EXPERIENCE ────────────────────────────────────────── */
     .exp-entry { margin-bottom: .7rem; }
@@ -192,7 +197,11 @@
 
   <div class="top-actions">
     <a class="btn" href="index.html">← Portfolio</a>
-    <button class="btn" onclick="window.print()">🖨 Print / Save PDF</button>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+      <a class="btn" href="CV_JuanValentinAlducin.pdf" download>⬇ CV (ES)</a>
+      <a class="btn" href="CV_JuanValentinAlducin-English.pdf" download>⬇ CV (EN)</a>
+      <button class="btn" onclick="window.print()">🖨 Print</button>
+    </div>
   </div>
 
   <div class="cv-wrap">
@@ -388,7 +397,7 @@
   (function(){
     const cv = document.getElementById('binary-canvas');
     const cx = cv.getContext('2d');
-    const FS = 13, OPC = 0.08, COL = '#58a6ff', SP = 0.4;
+    const FS = 13, OPC = 0.12, COL = '#58a6ff', SP = 0.48;
     let cols, drops;
     function resize(){
       cv.width = innerWidth; cv.height = innerHeight;
@@ -405,7 +414,7 @@
       }
       cx.globalAlpha=1;
     }
-    resize(); addEventListener('resize',resize); setInterval(draw,50);
+    resize(); addEventListener('resize',resize); setInterval(draw,40);
   })();
   </script>
 </body>

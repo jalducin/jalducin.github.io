@@ -23,6 +23,9 @@
 - [x] Animación fade-in al hacer scroll (IntersectionObserver)
 - [x] Modo claro / oscuro con toggle en navbar (persiste en localStorage)
 - [x] Formulario de contacto Formspree (async, sin recarga)
+- [x] Diseño matrix/binario en index.html: canvas con lluvia de 0s y 1s, monospace + glow en h1 y secciones
+- [x] Botones de descarga PDF ES + EN en cv.html apuntando a archivos estáticos
+- [x] Efecto glow en cards hover, timeline dots y botones (ambas páginas)
 
 ---
 
@@ -30,7 +33,6 @@
 
 - [ ] **Activar Formspree**: crear cuenta en formspree.io y reemplazar `YOUR_FORM_ID` en index.html
 - [ ] Versión en inglés del portafolio (el sitio ya está en inglés; pendiente versión en español)
-- [ ] **Verificar botones de descarga de PDF**: confirmar que `index.html` y `cv.html` tienen botones separados para ES (`CV_JuanValentinAlducin.pdf`) y EN (`CV_JuanValentinAlducin-English.pdf`) con `download` attribute apuntando a los archivos estáticos
 
 ---
 
