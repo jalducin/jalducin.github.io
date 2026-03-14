@@ -32,8 +32,13 @@ Características transversales:
 - Diseño con fondo binario (1s y 0s tenues, animados o estáticos)
 - Misma paleta de colores del portafolio (dark mode)
 - Layout de CV profesional: datos, experiencia, proyectos, skills, educación
-- Botón de impresión / descarga del PDF
+- Botones de descarga directa de los PDFs estáticos (ES y EN)
 - Compatible con `@media print`
+
+### `CV_JuanValentinAlducin.pdf` — CV en español (archivo estático)
+### `CV_JuanValentinAlducin-English.pdf` — CV en inglés (archivo estático)
+- Se sirven directamente como archivos estáticos; **no se generan al vuelo**
+- Se actualizan manualmente subiendo los archivos al repositorio
 
 ---
 
@@ -67,4 +72,6 @@ Características transversales:
 - Compatible con GitHub Pages (solo archivos estáticos)
 - Responsivo: mobile-first con media queries propios
 - Todos los links externos abren en `_blank`
-- PDF del CV debe existir localmente para el botón de descarga
+- Los PDFs del CV (`CV_JuanValentinAlducin.pdf` y `CV_JuanValentinAlducin-English.pdf`) deben existir en la raíz del repo
+- Los PDFs **nunca** se generan al vuelo; se actualizan manualmente
+- Los botones de descarga en `index.html` y `cv.html` apuntan directamente a estos archivos estáticos

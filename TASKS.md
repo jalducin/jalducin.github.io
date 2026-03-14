@@ -30,6 +30,7 @@
 
 - [ ] **Activar Formspree**: crear cuenta en formspree.io y reemplazar `YOUR_FORM_ID` en index.html
 - [ ] Versión en inglés del portafolio (el sitio ya está en inglés; pendiente versión en español)
+- [ ] **Verificar botones de descarga de PDF**: confirmar que `index.html` y `cv.html` tienen botones separados para ES (`CV_JuanValentinAlducin.pdf`) y EN (`CV_JuanValentinAlducin-English.pdf`) con `download` attribute apuntando a los archivos estáticos
 
 ---
 

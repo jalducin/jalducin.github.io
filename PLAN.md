@@ -62,7 +62,9 @@ jalducin.github.io/
 
 ## Contenido de datos (fuente de verdad)
 
-- **`cv.html`** — contiene el objeto `const CV = {...}` al final del archivo. Es la única fuente de verdad del CV: editar ese objeto actualiza todo el renderizado al vuelo. No hay HTML de contenido en el body, solo los contenedores.
+- **`cv.html`** — CV interactivo con fondo binario. El contenido está en el HTML directamente (no se genera al vuelo desde un objeto JS). Los botones de descarga apuntan a los PDFs estáticos.
+- **`CV_JuanValentinAlducin.pdf`** — CV en español. Archivo estático, actualización manual.
+- **`CV_JuanValentinAlducin-English.pdf`** — CV en inglés. Archivo estático, actualización manual.
 - **`index.html`** — contiene el contenido del portafolio directamente en el HTML. Actualizar en paralelo cuando cambia experiencia, proyectos o datos de contacto.
 
 ### Experiencia (cronológica inversa)

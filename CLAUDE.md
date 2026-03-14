@@ -81,9 +81,20 @@ Inglés:    A2 (Técnico)
 
 ---
 
+## PDFs del CV
+
+Los PDFs son archivos estáticos precargados en el repositorio:
+- `CV_JuanValentinAlducin.pdf` — versión en español
+- `CV_JuanValentinAlducin-English.pdf` — versión en inglés
+
+Los botones de descarga en `index.html` y `cv.html` apuntan directamente a estos archivos con el atributo `download`. Los PDFs **nunca se generan al vuelo**.
+
+---
+
 ## Nunca hacer
 
 - Agregar dependencias npm o CDN de frameworks pesados
 - Romper el diseño responsive (siempre verificar los tres breakpoints: 992, 768, 480px)
 - Cambiar la paleta de colores sin actualizar ambas páginas (`index.html` y `cv.html`)
-- Modificar los PDFs del CV (`*.pdf`) — solo se actualizan manualmente
+- Modificar los PDFs del CV (`*.pdf`) — solo se actualizan manualmente subiendo los archivos al repo
+- Generar PDFs con JavaScript/librerías al vuelo — los PDFs son siempre archivos estáticos
