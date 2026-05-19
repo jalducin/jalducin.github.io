@@ -76,18 +76,15 @@ Inglés:    A2 (Técnico)
 
 - CSS embebido en `<style>` dentro del HTML (no archivos externos)
 - JavaScript inline o en `<script>` al final del body
-- El fondo binario de `cv.html` se implementa con `<canvas>` y requestAnimationFrame
-- `@media print` en `cv.html` para ocultar el canvas y limpiar el layout al imprimir
 
 ---
 
-## PDFs del CV
+## PDF del CV
 
-Los PDFs son archivos estáticos precargados en el repositorio:
+El CV en PDF es un archivo estático precargado en el repositorio:
 - `CV_JuanValentinAlducin.pdf` — versión en español
-- `CV_JuanValentinAlducin-English.pdf` — versión en inglés
 
-Los botones de descarga en `index.html` y `cv.html` apuntan directamente a estos archivos con el atributo `download`. Los PDFs **nunca se generan al vuelo**.
+El botón de descarga en `index.html` apunta directamente a este archivo con el atributo `download`. El PDF **nunca se genera al vuelo**.
 
 ---
 
@@ -95,6 +92,6 @@ Los botones de descarga en `index.html` y `cv.html` apuntan directamente a estos
 
 - Agregar dependencias npm o CDN de frameworks pesados
 - Romper el diseño responsive (siempre verificar los tres breakpoints: 992, 768, 480px)
-- Cambiar la paleta de colores sin actualizar ambas páginas (`index.html` y `cv.html`)
-- Modificar los PDFs del CV (`*.pdf`) — solo se actualizan manualmente subiendo los archivos al repo
+- Cambiar la paleta de colores sin documentarlo aquí
+- Modificar el PDF del CV (`CV_JuanValentinAlducin.pdf`) — solo se actualiza manualmente subiendo el archivo al repo
 - Generar PDFs con JavaScript/librerías al vuelo — los PDFs son siempre archivos estáticos

@@ -6,22 +6,22 @@
 
 ## Descripción general
 
-Sitio estático publicado en GitHub Pages. Presenta el perfil profesional de **Juan Valentin Alducin Vázquez** con experiencia, proyectos, habilidades, educación y un CV interactivo descargable.
+Sitio estático publicado en GitHub Pages. Presenta el perfil profesional de **Juan Valentin Alducin Vázquez** con experiencia, proyectos, habilidades, educación y descarga directa del CV en PDF.
 
 ---
 
 ## Páginas
 
-### `index.html` — Portafolio principal
+### `index.html` — Portafolio principal (single page)
 Secciones navegables mediante navbar sticky (con toggle dark/light y burger menu):
 1. **Header** — Nombre, rol, ubicación, bio, links (email, GitHub, LinkedIn, WhatsApp)
 2. **Experience** — Timeline de trabajo: Podemos Progresar, Redsis, Softtek
 3. **Featured Projects** — Cards de proyectos con tech stack y link a GitHub
-4. **Hard Skills** — Grid de iconos de tecnologías (devicons CDN)
+4. **Hard Skills** — Grid de iconos de tecnologías (devicons CDN) + sub-sección "Tech Stack & Tools" con badges categorizados (Backend & APIs, AWS & Serverless, Enterprise Integrations, Retail & POS, Python Tooling & Testing, AI & Knowledge, Workflow & Management)
 5. **Soft Skills** — Badges de habilidades blandas
-6. **Languages** — Español nativo / English A2
+6. **Languages** — Español nativo / Inglés B1
 7. **Education & Certifications** — Formación y cursos recientes
-8. **Contact** — Botones + formulario Formspree async (descarga CV ES/EN)
+8. **Contact** — Botones (incluye descarga directa del CV en PDF) + formulario Formspree async
 
 Características transversales:
 - Animaciones fade-in por sección al hacer scroll (IntersectionObserver)
@@ -31,18 +31,9 @@ Características transversales:
 - Tipografía monospace con glow en títulos (`h1` y secciones `h2`) y prefijo `> ` en secciones
 - Efecto glow en cards hover, timeline dots y botones
 
-### `cv.html` — CV Interactivo
-- Diseño matrix: fondo binario animado (lluvia de 0s y 1s) más pronunciado que en index.html
-- Tipografía monospace con glow en header y secciones; prefijo `> ` en cada sección
-- Misma paleta de colores del portafolio (dark mode)
-- Layout de CV profesional: datos, experiencia, proyectos, skills, educación
-- Botones de descarga directa de los PDFs estáticos (ES y EN)
-- Compatible con `@media print`
-
 ### `CV_JuanValentinAlducin.pdf` — CV en español (archivo estático)
-### `CV_JuanValentinAlducin-English.pdf` — CV en inglés (archivo estático)
-- Se sirven directamente como archivos estáticos; **no se generan al vuelo**
-- Se actualizan manualmente subiendo los archivos al repositorio
+- Se sirve directamente como archivo estático; **no se genera al vuelo**
+- Se actualiza manualmente subiendo el archivo al repositorio
 
 ---
 
@@ -50,10 +41,11 @@ Características transversales:
 
 | Proyecto | Stack | GitHub |
 |---|---|---|
+| Enkoth | Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework · PostgreSQL RDS · Webhooks · SDD | (interno, en desarrollo activo) |
 | dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
-| socket-chat | Node.js · Express · Socket.io · JavaScript | jalducin/socket-chat |
-| MetalShop (EcommerceJVAV) | Python · FastAPI · SQLAlchemy · Docker | jalducin/EcommerceJVAV |
-| Inventarios | Java · Spring Boot · WebSocket · H2 · Thymeleaf | jalducin/Inventarios |
+| socket-chat | Node.js · Express · WebSocket · JavaScript | jalducin/socket-chat |
+| MetalShop (EcommerceJVAV) | Python · FastAPI · SQLAlchemy · PostgreSQL · Docker · pytest | jalducin/EcommerceJVAV |
+| Inventarios | Java · Spring Boot · Spring Data JPA · WebSocket · H2 · Thymeleaf · Maven | jalducin/Inventarios |
 
 ---
 
@@ -76,6 +68,6 @@ Características transversales:
 - Compatible con GitHub Pages (solo archivos estáticos)
 - Responsivo: mobile-first con media queries propios
 - Todos los links externos abren en `_blank`
-- Los PDFs del CV (`CV_JuanValentinAlducin.pdf` y `CV_JuanValentinAlducin-English.pdf`) deben existir en la raíz del repo
-- Los PDFs **nunca** se generan al vuelo; se actualizan manualmente
-- Los botones de descarga en `index.html` y `cv.html` apuntan directamente a estos archivos estáticos
+- El PDF del CV (`CV_JuanValentinAlducin.pdf`) debe existir en la raíz del repo
+- El PDF **nunca** se genera al vuelo; se actualiza manualmente
+- El botón de descarga en `index.html` apunta directamente al archivo estático

@@ -8,10 +8,10 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Software Engine
 
 - Experiencia laboral (timeline interactivo)
 - Proyectos destacados con links a GitHub
-- Hard skills con iconografía de tecnologías
+- Hard skills con iconografía de tecnologías y sub-sección "Tech Stack & Tools" categorizada
 - Educación y certificaciones
-- Diseño estético matrix/binario: lluvia de 0s y 1s animada como fondo, tipografía monospace con glow en ambas páginas
-- CV interactivo (`cv.html`) con descarga directa en español e inglés (PDFs estáticos)
+- Diseño estético matrix/binario: lluvia de 0s y 1s animada como fondo, tipografía monospace con glow
+- Descarga directa del CV en PDF (español)
 
 ## Tecnologías
 
@@ -23,10 +23,9 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Software Engine
 
 ```
 jalducin.github.io/
-├── index.html                         ← Portafolio principal
-├── cv.html                            ← CV interactivo (fondo binario animado)
-├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga)
-├── CV_JuanValentinAlducin-English.pdf ← CV en inglés (descarga)
+├── index.html                         ← Portafolio principal (single page)
+├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga directa)
+├── logo.png                           ← Logo
 ├── assets/                            ← Recursos estáticos
 ├── CLAUDE.md                          ← Instrucciones para Claude Code
 ├── SPEC.md                            ← Especificación de secciones y contenido

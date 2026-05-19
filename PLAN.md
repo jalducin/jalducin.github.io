@@ -17,10 +17,9 @@
 ```
 jalducin.github.io/
 ├── index.html                         ← Portafolio principal (single-page)
-├── cv.html                            ← CV interactivo con fondo binario
-├── CV_JuanValentinAlducin.pdf         ← CV en español
-├── CV_JuanValentinAlducin-English.pdf ← CV en inglés
+├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga directa)
 ├── assets/                            ← Imágenes y recursos
+├── logo.png                           ← Logo
 ├── README.md                          ← Descripción del repo
 ├── SPEC.md                            ← Qué contiene el sitio
 ├── PLAN.md                            ← Este archivo
@@ -32,20 +31,19 @@ jalducin.github.io/
 
 ## Decisiones de arquitectura
 
-### Single-page vs multi-page
-- `index.html` es la página principal. Toda la navegación es intra-página via `href="#section"`.
-- `cv.html` es una segunda página para el CV interactivo, con su propio diseño de fondo binario.
+### Single-page
+- `index.html` es la única página HTML. Toda la navegación es intra-página via `href="#section"`.
+- El CV completo se descarga como PDF estático (`CV_JuanValentinAlducin.pdf`) desde el botón de la sección Contact.
 
 ### Estilos
-- CSS embebido en `<style>` dentro de cada HTML para simplicidad de despliegue (sin archivos `.css` separados que puedan perderse en GitHub Pages).
+- CSS embebido en `<style>` dentro del HTML para simplicidad de despliegue (sin archivos `.css` separados que puedan perderse en GitHub Pages).
 - Variables CSS custom properties para mantener consistencia de paleta.
 - Media queries propios: breakpoints en 992px, 768px y 480px.
 
-### Fondo binario matrix (ambas páginas)
-- `index.html`: `<canvas id="matrix-bg">` fixed, z-index:-1. Lluvia binaria sutil (OPC≈0.07) en dark mode; oculta en light mode via CSS. El contenedor es `rgba(13,17,23,0.82)` semi-transparente para dejar ver la lluvia.
-- `cv.html`: mismo enfoque pero más pronunciado (OPC≈0.12, intervalo 40ms). Se oculta en `@media print`.
-- Tipografía: h1 y h2 usan `'Courier New', monospace` con `text-shadow` glow en `--accent`.
-- Prefijo `> ` en `section h2::before` y `.cv-sec h2::before` para look terminal.
+### Fondo binario matrix
+- `<canvas id="matrix-bg">` fixed, z-index:-1. Lluvia binaria sutil (OPC≈0.07) en dark mode; oculta en light mode via CSS. El contenedor es `rgba(13,17,23,0.82)` semi-transparente para dejar ver la lluvia.
+- Tipografía: h1 y h2 usan `'Courier New', monospace` con `text-shadow` glow en `--primary`.
+- Prefijo `> ` en `section h2::before` para look terminal.
 - Botones (`.btn`) con `font-family: 'Courier New'` y `letter-spacing` para feel de terminal.
 
 ### Navbar
@@ -64,18 +62,17 @@ jalducin.github.io/
 
 ## Contenido de datos (fuente de verdad)
 
-- **`cv.html`** — CV interactivo con fondo binario. El contenido está en el HTML directamente (no se genera al vuelo desde un objeto JS). Los botones de descarga apuntan a los PDFs estáticos.
-- **`CV_JuanValentinAlducin.pdf`** — CV en español. Archivo estático, actualización manual.
-- **`CV_JuanValentinAlducin-English.pdf`** — CV en inglés. Archivo estático, actualización manual.
-- **`index.html`** — contiene el contenido del portafolio directamente en el HTML. Actualizar en paralelo cuando cambia experiencia, proyectos o datos de contacto.
+- **`index.html`** — contiene todo el contenido del portafolio directamente en el HTML (experiencia, proyectos, skills, educación, certificaciones, idiomas, contacto). Actualizar aquí cuando cambia cualquier dato.
+- **`CV_JuanValentinAlducin.pdf`** — CV en español. Archivo estático, actualización manual subiendo el archivo al repo.
 
 ### Experiencia (cronológica inversa)
-1. **Podemos Progresar** — Sept 2025 · Presente · Application Support Coordinator (N2) · Fintech
-2. **Redsis** — Ene 2022 – Sept 2025 · Retail Engineer
-3. **Softtek** — Mar 2017 – Ene 2022 · Software Developer
+1. **Podemos Progresar** — Sept 2025 · Presente · Software Engineer (construyendo Enkoth, plataforma full serverless)
+2. **Redsis** — Ene 2022 – Sept 2025 · Retail Engineer / Software Engineer (GK POS multi-país)
+3. **Softtek** — Mar 2017 – Ene 2022 · Software Developer (SAP ERP/HANA, AMS)
 
 ### Proyectos destacados
-1. dataMasterGK — Python/Flask ETL para GK Software
-2. socket-chat — Chat en tiempo real Node.js + Socket.io
-3. MetalShop — Ecommerce FastAPI + frontend metálico
-4. Inventarios — Inventario Spring Boot + WebSocket + Thymeleaf
+1. Enkoth — Full serverless webhook platform (Podemos Progresar, en desarrollo activo)
+2. dataMasterGK — Python/Flask ETL para GK Software
+3. socket-chat — Chat en tiempo real Node.js + WebSocket
+4. MetalShop — Ecommerce FastAPI + frontend metálico
+5. Inventarios — Inventario Spring Boot + WebSocket + Thymeleaf
