@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV — Juan Valentin Alducin Vázquez</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2358a6ff'>JA</text></svg>" />
   <meta property="og:title" content="CV — Juan Valentin Alducin Vázquez" />
-  <meta property="og:description" content="Application Support Coordinator · Software Engineer · Python · Java · PHP · CDMX, Mexico" />
+  <meta property="og:description" content="Software Engineer · +10 años · Python · PHP · AWS · GK POS · IA (Claude/SDD, Gemini) · CDMX, México" />
   <meta property="og:type" content="profile" />
   <meta property="og:url" content="https://jalducin.github.io/cv.html" />
   <style>
@@ -196,11 +196,10 @@
   <canvas id="binary-canvas"></canvas>
 
   <div class="top-actions">
-    <a class="btn" href="index.html">← Portfolio</a>
+    <a class="btn" href="index.html">← Portafolio</a>
     <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-      <a class="btn" href="CV_JuanValentinAlducin.pdf" download>⬇ CV (ES)</a>
-      <a class="btn" href="CV_JuanValentinAlducin-English.pdf" download>⬇ CV (EN)</a>
-      <button class="btn" onclick="window.print()">🖨 Print</button>
+      <a class="btn" href="CV_JuanValentinAlducin.pdf" download>⬇ CV (PDF)</a>
+      <button class="btn" onclick="window.print()">🖨 Imprimir</button>
     </div>
   </div>
 
@@ -216,80 +215,96 @@
   ============================================================ */
   const CV = {
     name:     "Juan Valentin Alducin Vázquez",
-    subtitle: "Application Support Coordinator · Software Engineer · Backend Developer",
-    location: "CDMX, Mexico",
-    english:  "A2 (Technical)",
+    subtitle: "Software Engineer · Backend Developer · IA & Automatización",
+    location: "CDMX, México",
+    english:  "B1 (Intermedio)",
     email:    "valentin.alducin88@gmail.com",
     phone:    "+52 5640800494",
     github:   "jalducin",
     linkedin: "juanvalducinv",
 
-    profile: "Senior Software Engineer with 8+ years of experience in backend development, application support, and process automation. Expert in GK POS integration for the Retail sector across Latin America. Solid background in Python, PHP, Java, ETL pipelines, REST APIs, and AWS cloud operations.",
+    profile: "Software Engineer con +10 años de experiencia centrada en desarrollo backend, análisis de código, resolución de problemas y adopción de tecnología. Integro IA (Claude/SDD, Gemini) como parte central de mi flujo de ingeniería. Especializado en Python, PHP y AWS, con experiencia en implementación de GK POS en América Latina.",
 
     experience: [
       {
-        title:   "Application Support Coordinator (N2) | Fintech",
+        title:   "Software Engineer",
         company: "Podemos Progresar",
-        period:  "Sept 2025 – Present",
+        period:  "Sept 2025 – Presente",
         printBullets: [
-          "N2 incident management on fintech platform using Asana, Notion and AI (Claude / ChatGPT) to accelerate RCA and resolution.",
-          "RCA, temporary and permanent fix implementation; built knowledge base in Notion to enable N1 resolution and reduce recurrence.",
-          "AWS monitoring (Lambda, RDS, Step Functions), PostgreSQL/MySQL troubleshooting, Slack alert management, N1–N4 coordination."
+          "Desarrollo Enkoth: sistema de webhooks con monitoreo en tiempo real, gráficos de métricas y base de conocimiento; arquitectura con Spec-Driven Development (SDD).",
+          "Gestión de incidentes con RCA, post mortem y fixes a nivel de código en Django/Python, habilitando resolución autónoma por N1.",
+          "Monitoreo AWS (Lambda, RDS, Step Functions) vía Slack y operaciones críticas en PostgreSQL/MySQL.",
+          "Integré Claude (SDD), ChatGPT y Gemini en flujos de ingeniería para análisis, debugging y documentación en Notion."
         ]
       },
       {
-        title:   "Software Engineer | Retail Engineer",
-        company: "Redsis",
-        period:  "Jan 2022 – Sept 2025",
+        title:   "Software Engineer",
+        company: "Redsis — Redes y Sistemas Integrados",
+        period:  "Ene 2022 – Sept 2025",
         printBullets: [
-          "Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs via XML/SFTP; multi-country Go-Live: Peru, Colombia, Bolivia.",
-          "Designed and executed promotion ETL in SAP CAR and GK OmniPOS; led pre-sales technical demos and Retail lab implementations.",
-          "Managed requirements and incidents under Scrum/Jira with customer-focused SLAs."
+          "Desarrollé APIs REST (Python, Java, PHP) integrando GK POS con ERPs/CRMs vía automatización XML/SFTP.",
+          "Lideré Go-Live multi-país de GK POS en cloud (Perú, Colombia, Bolivia) y demos técnicas de preventa.",
+          "Diseñé ETL de promociones para GK OmniPOS para análisis comercial."
         ]
       },
       {
-        title:   "Software Engineer | Software Developer",
+        title:   "Software Engineer",
         company: "Softtek",
-        period:  "Mar 2017 – Jan 2022",
+        period:  "Mar 2017 – Ene 2022",
         printBullets: [
-          "Implemented invoicing systems, internal portals, and ETL automation integrated with SAP ERP/HANA.",
-          "Developed executive dashboards in SAP BO and provided AMS support to Retail GK solutions.",
-          "Maintained Python, PHP, and .NET applications and ETL flows under Scrum methodology."
+          "Implementé sistemas de facturación, portales y ETLs con SAP ERP/HANA; dashboards ejecutivos en SAP BO.",
+          "Soporte AMS a soluciones Retail GK y mantenimiento de aplicativos Python, PHP, .NET bajo Scrum."
         ]
       }
     ],
 
     projects: [
-      { name: "dataMasterGK",  desc: "ETL middleware: Excel → XML → SFTP for GK Software, web admin panel & logging.", tech: "Python · Flask · Docker",          url: "github.com/jalducin/dataMasterGK" },
-      { name: "MetalShop",     desc: "Full-stack e-commerce: JWT auth, cart, orders, admin dashboard, CI/CD.",          tech: "Python · FastAPI · Docker",        url: "github.com/jalducin/EcommerceJVAV" },
-      { name: "Inventarios",   desc: "Inventory system: OpenAPI spec-driven REST API, real-time WebSocket updates.",    tech: "Java · Spring Boot · H2",          url: "github.com/jalducin/Inventarios" },
-      { name: "socket-chat",   desc: "Real-time multi-room chat: private messaging, typing indicator, 17 tests.",       tech: "Node.js · Socket.io · Jest",       url: "github.com/jalducin/socket-chat" }
+      {
+        name:   "Proyecto Enkoth",
+        desc:   "Sistema de webhooks con monitoreo en tiempo real, gráficos de métricas y base de conocimiento centralizada; arquitectura con Spec-Driven Development (SDD).",
+        period: "03/2026 · CDMX"
+      },
+      {
+        name:   "Go-Live Multi-País",
+        desc:   "Lideré Go-Live multi-país de GK POS en cloud y PDV físicos (Perú, Colombia, Bolivia) y demos técnicas de preventa.",
+        period: "01/2022 – 09/2025 · CDMX"
+      },
+      {
+        name:   "Automatización de Interfaces",
+        desc:   "Integraciones Flask/SFTP para intercambio de datos maestros y operativos en GK POS; alertas y flujos operativos que redujeron tiempos de respuesta.",
+        period: "01/2025 – 04/2025 · CDMX"
+      }
     ],
 
     skills: [
-      { label: "Languages",       items: "Python, PHP, Java, JavaScript, TypeScript, SQL" },
-      { label: "Frameworks",      items: "FastAPI, Flask, Django, Spring Boot, Node.js / Express, Laravel" },
-      { label: "Databases",       items: "MySQL, PostgreSQL, MongoDB, SQLite" },
-      { label: "DevOps & Cloud",  items: "Docker, GitHub Actions, AWS (Lambda, RDS, Step Functions), Azure, Linux, Git" },
-      { label: "Integration/ETL", items: "GK POS / OmniPOS, SAP ERP/HANA, SAP CAR, SFTP, XML/JSON, REST APIs" }
+      { label: "Lenguajes",      items: "Python, PHP, Java, JavaScript, TypeScript, SQL" },
+      { label: "Frameworks",     items: "Django, Flask, FastAPI, Laravel, Spring Boot, Node.js / Express, React" },
+      { label: "Bases de datos", items: "PostgreSQL, MySQL, SQL Server, MongoDB, HanaSQL, Dynamo, SQLite" },
+      { label: "Cloud & DevOps", items: "AWS (Lambda, RDS, S3, Step Functions), Azure, Docker, GitHub Actions, CI/CD, n8n, Linux, Git" },
+      { label: "IA & Métodos",   items: "Claude (SDD), Gemini, ChatGPT" },
+      { label: "Retail & POS",   items: "GK POS, GK OmniPOS, SAP ERP/HANA, SAP CAR" },
+      { label: "Integración/ETL", items: "SFTP, XML/JSON, REST APIs" },
+      { label: "Gestión",        items: "Scrum, Jira, Asana, Notion, Postman" }
     ],
 
     education: [
-      { degree: "Master's in DevOps",          inst: "Universidad IEU",                   period: "2024 – Present" },
-      { degree: "Computer Systems Engineering", inst: "Instituto Tecnológico de Orizaba",  period: "2006 – 2011" }
+      { degree: "Maestría en DevOps",                inst: "IEU Universidad",                   period: "2024 – Presente" },
+      { degree: "Ingeniería en Sistemas Computacionales", inst: "Instituto Tecnológico de Orizaba", period: "2006 – 2011" }
     ],
 
     certifications: [
+      "Generative AI with Amazon Bedrock — Coursera (2026)",
+      "Claude Code: SE with Gen AI Agents — Vanderbilt (2026)",
+      "Python en AWS — Coursera (2025)",
+      "GitHub Actions Bootcamp — Código Facilito (2025)",
       "React — DevTalles (2025)",
-      "Python on AWS — Coursera (2025)",
-      "GitHub Actions — Código Facilito (2025)",
-      "Data Science Intro — EDX (2024)",
+      "Understanding the World Through Data — EDX (2024)",
       "Scrum Foundation — Certiprof (2023)"
     ],
 
     languages: [
-      { lang: "Spanish", level: "Native" },
-      { lang: "English", level: "A2 — Technical Reading & Writing" }
+      { lang: "Español", level: "Nativo" },
+      { lang: "Inglés",  level: "B1 — Intermedio" }
     ]
   };
 
@@ -318,9 +333,13 @@
         A(`https://wa.me/${wa}`, CV.phone),
         A(`https://github.com/${CV.github}`, `github.com/${CV.github}`),
         A(`https://linkedin.com/in/${CV.linkedin}`, `linkedin.com/in/${CV.linkedin}`),
-        document.createTextNode(CV.location + ' · English ' + CV.english)
+        document.createTextNode(CV.location + ' · Inglés ' + CV.english)
       )
     );
+  }
+
+  function renderProfile() {
+    return sec('Perfil', E('p','skill-row', CV.profile));
   }
 
   function renderExperience() {
@@ -335,7 +354,7 @@
         ul
       );
     });
-    return sec('Professional Experience', ...entries);
+    return sec('Experiencia Profesional', ...entries);
   }
 
   function renderProjects() {
@@ -343,20 +362,18 @@
     CV.projects.forEach(p => {
       const tr = E('tr');
       tr.appendChild(E('td',null,p.name));
-      tr.appendChild(E('td',null,p.desc + ' ' + E('span',null,'').outerHTML));
-      const td = E('td'); td.appendChild(A(`https://${p.url}`, p.url)); tbl.appendChild(tr);
-      // rebuild properly
-      tr.children[1].textContent = p.desc;
-      tr.appendChild(td);
+      tr.appendChild(E('td',null,p.desc));
+      tr.appendChild(E('td',null,p.period));
+      tbl.appendChild(tr);
     });
-    return sec('Featured Projects', tbl);
+    return sec('Logros y Proyectos', tbl);
   }
 
   function renderSkills() {
     const rows = CV.skills.map(s =>
       E('div','skill-row', E('span','label', s.label + ': '), s.items)
     );
-    return sec('Technical Skills', ...rows);
+    return sec('Habilidades Técnicas', ...rows);
   }
 
   function renderEducation() {
@@ -368,30 +385,30 @@
         )
       )
     );
-    return sec('Education', ...items);
+    return sec('Educación', ...items);
   }
 
   function renderCerts() {
     const ul = E('ul','two-col');
     CV.certifications.forEach(c => ul.appendChild(E('li',null,c)));
-    return sec('Recent Courses & Certifications', ul);
+    return sec('Cursos y Certificaciones', ul);
   }
 
   function renderLanguages() {
     const line = CV.languages.map(l =>
       `${l.lang}: ${l.level}`
     ).join('   ·   ');
-    return sec('Languages', E('p','lang-inline', line));
+    return sec('Idiomas', E('p','lang-inline', line));
   }
 
   const root = document.getElementById('cv-root');
-  [renderHeader(), renderExperience(), renderProjects(),
+  [renderHeader(), renderProfile(), renderExperience(), renderProjects(),
    renderSkills(), renderEducation(), renderCerts(), renderLanguages()]
     .forEach(el => root.appendChild(el));
 
   const now = new Date();
   document.getElementById('cv-footer').innerHTML =
-    `jalducin.github.io/cv.html · Updated ${now.toLocaleDateString('en-US',{month:'long',year:'numeric'})}`;
+    `jalducin.github.io/cv.html · Actualizado ${now.toLocaleDateString('es-MX',{month:'long',year:'numeric'})}`;
 
   /* ── BINARY RAIN (screen only) ── */
   (function(){
