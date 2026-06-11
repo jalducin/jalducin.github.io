@@ -4,7 +4,7 @@ Sitio de portafolio personal publicado en [jalducin.github.io](https://jalducin.
 
 ## Descripción
 
-Portafolio profesional de **Juan Valentin Alducin Vázquez** — Software Engineer con enfoque en backend, automatización e integración de sistemas. El sitio incluye:
+Portafolio profesional de **Juan Valentin Alducin Vázquez** — Senior Software Engineer · AI-native Development, con enfoque en backend, integración de IA generativa (Claude/SDD, Gemini, OpenAI) en el SDLC y Spec-Driven Development. El sitio incluye:
 
 - Experiencia laboral (timeline interactivo)
 - Proyectos destacados con links a GitHub
