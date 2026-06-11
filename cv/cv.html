@@ -13,7 +13,7 @@
   :root{ --navy:#2b3947; --gold:#c47d1a; --text:#586069; --muted:#8a9099; --rule:#2b3947; --dot:#d7dbdf; }
   html,body{ font-family:"Rubik","Segoe UI",Arial,sans-serif; color:#586069; font-size:9.6px; line-height:1.45; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ background:#ffffff url("hex-bg.svg") repeat; }
-  .sheet{ width:216mm; min-height:340mm; padding:12mm 11mm; }
+  .sheet{ width:216mm; min-height:340mm; padding:10mm 11mm; }
 
   header{ display:flex; justify-content:space-between; align-items:flex-start; gap:8mm; }
   .name{ font-size:28px; font-weight:800; color:var(--navy); letter-spacing:.4px; line-height:1; text-transform:uppercase; }
@@ -24,15 +24,15 @@
   .qr{ width:98px; height:98px; flex-shrink:0; }
   .qr img{ width:98px; height:98px; }
 
-  .cols{ display:flex; gap:8mm; margin-top:7mm; align-items:flex-start; }
+  .cols{ display:flex; gap:8mm; margin-top:5mm; align-items:flex-start; }
   .col-left{ width:58%; }
   .col-right{ width:42%; }
 
-  section{ margin-bottom:12px; }
-  h2{ font-size:13.5px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:3px; border-bottom:2px solid var(--rule); margin-bottom:7px; }
+  section{ margin-bottom:9px; }
+  h2{ font-size:13.5px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:3px; border-bottom:2px solid var(--rule); margin-bottom:5px; }
   .summary{ color:#586069; }
 
-  .entry{ padding-bottom:7px; margin-bottom:7px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .entry{ padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .entry:last-child{ border-bottom:none; }
   .role{ font-size:12px; font-weight:700; color:var(--navy); }
   .org{ font-size:10.4px; font-weight:700; color:var(--gold); margin:1px 0 2px; }
@@ -44,17 +44,17 @@
   ul.b li::marker{ color:var(--navy); }
   .stack{ font-size:9.2px; color:#6b727a; margin-top:3px; }
 
-  .skill{ padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted var(--dot); }
+  .skill{ padding-bottom:4px; margin-bottom:4px; border-bottom:1px dotted var(--dot); }
   .skill:last-child{ border-bottom:none; }
   .skill .cat{ font-size:10.5px; font-weight:700; color:var(--gold); margin-bottom:1px; }
   .skill .val{ font-size:9.6px; color:#586069; }
 
-  .course{ padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted var(--dot); }
+  .course{ padding-bottom:4px; margin-bottom:4px; border-bottom:1px dotted var(--dot); }
   .course:last-child{ border-bottom:none; }
   .course b{ font-size:10.5px; color:var(--navy); display:block; }
   .course span{ font-size:9.2px; color:var(--muted); }
 
-  .proj{ padding-bottom:7px; margin-bottom:7px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .proj{ padding-bottom:5px; margin-bottom:5px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .proj:last-child{ border-bottom:none; }
   .proj .ptitle{ font-size:11px; font-weight:700; color:var(--navy); }
   .proj .pdesc{ font-size:9.4px; color:#586069; margin:2px 0; }
@@ -83,7 +83,7 @@
         <span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX, México</span>
       </div>
     </div>
-    <div class="qr"><img src="../assets/icons/qr.png" alt="QR" /></div>
+    <div class="qr"><img src="../QR.png" alt="QR — repositorio del portafolio" /></div>
   </header>
 
   <div class="cols">
@@ -204,6 +204,11 @@
           <div class="ptitle">dataMasterGK</div>
           <p class="pdesc">Procesamiento de archivos Excel → XML → SFTP con panel de administración web, logging centralizado y soporte Docker. Desarrollado y desplegado en entorno productivo.</p>
           <div class="pstack"><b>Stack:</b> Python · Flask · SQLite · Paramiko · Docker</div>
+        </div>
+        <div class="proj">
+          <div class="ptitle">MetalShop</div>
+          <p class="pdesc">Proyecto de práctica personal: e-commerce full-stack con autenticación JWT, carrito, gestión de pedidos y panel de administración. En mejora continua aplicando Spec-Driven Development (SDD) y buenas prácticas; despliegue en AWS planeado.</p>
+          <div class="pstack"><b>Stack:</b> Python · FastAPI · SQLAlchemy · PostgreSQL · Docker · pytest</div>
         </div>
       </section>
     </div>

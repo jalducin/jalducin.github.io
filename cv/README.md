@@ -28,6 +28,6 @@ O manual:
 
 - **Tamaño Oficio (México): 216 × 340 mm** (definido en `@page` de `cv.html`).
 - **ATS-friendly**: texto real (no imágenes), encabezados estándar, orden de lectura limpio, fuentes
-  embebidas. El QR usa `assets/icons/qr.png`.
+  embebidas. El QR usa `QR.png` (raíz del repo) y vincula al repositorio del portafolio.
 - Diseño y fidelidad: ver el agente `design-specialist` en `ai-specs/agents/`.
 - Datos del propietario (fuente de verdad): `CLAUDE.md` y `docs/frontend-standards.md`.
