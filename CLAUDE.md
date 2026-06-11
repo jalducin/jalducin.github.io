@@ -72,7 +72,7 @@ Inglés:      B1 (Intermedio)
 
 | Empresa | Período | Rol |
 |---|---|---|
-| Podemos Progresar | Sept 2025 – Present | Backend Support Engineer & AI Specialist · Fintech |
+| Podemos Progresar | Sept 2025 – Present | Backend Engineer & AI Specialist · Fintech |
 | Redsis | Ene 2022 – Sept 2025 | Software Engineer → Tech Lead |
 | Softtek | Mar 2017 – Ene 2022 | Software Engineer |
 

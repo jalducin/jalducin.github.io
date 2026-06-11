@@ -5,12 +5,12 @@
 ### Requirement: Rol Podemos Progresar alineado al CV
 
 La entrada de experiencia de Podemos Progresar SHALL usar el título y los logros del CV vigente
-(*Backend Support Engineer & IA Specialist*), conservando Enkoth como hito de agentic engineering que
+(*Backend Engineer & AI Specialist*), conservando Enkoth como hito de agentic engineering que
 llegó a producción.
 
 #### Scenario: Título y stack de Podemos coinciden con el CV
 - **WHEN** un visitante lee la entrada de Podemos Progresar en la timeline
-- **THEN** el título del rol es coherente con "Backend Support Engineer & IA Specialist"
+- **THEN** el título del rol es coherente con "Backend Engineer & AI Specialist"
 - **AND** el badge "Current" sigue presente con el rango "Sept 2025 – Present"
 - **AND** el stack visible incluye Python, Django, FastAPI, PostgreSQL, AWS Serverless, Docker y n8n
 
