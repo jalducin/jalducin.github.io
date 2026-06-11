@@ -1,0 +1,45 @@
+name: Deploy to AWS (S3 + CloudFront)
+
+# Flujo: push a main -> el sitio ya está en el repo -> se publica a AWS.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # requerido para OIDC (sin llaves estáticas)
+  contents: read
+
+concurrency:
+  group: deploy-aws
+  cancel-in-progress: true
+
+env:
+  BUCKET: jalducin-portfolio-957266312835
+  DISTRIBUTION_ID: EG4961CAMR9Z8
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::957266312835:role/gh-actions-portfolio-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync site to S3 (solo archivos del sitio)
+        run: |
+          aws s3 sync . "s3://$BUCKET" \
+            --exclude ".git/*" --exclude ".github/*" --exclude "openspec/*" \
+            --exclude "ai-specs/*" --exclude "docs/*" --exclude ".claude/*" \
+            --exclude ".gemini/*" --exclude "scripts/*" --exclude "*.md" \
+            --exclude ".gitignore" --exclude "cv/build.ps1" --exclude "cv/og.html" \
+            --delete
+
+      - name: Invalidate CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION_ID" --paths "/*"
