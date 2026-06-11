@@ -38,11 +38,11 @@
 
 ## 6. Dominio (OPCIONAL — fuera de tier 0)
 
-- [ ] 6.1 Si se decide dominio propio: ACM cert en us-east-1 (gratis) + alias en CloudFront
-- [ ] 6.2 Route53 hosted zone ($0.50/mes) + registro ALIAS → CloudFront (acepta el costo o usar DNS externo)
+- [x] 6.1 Decisión: NO dominio propio por ahora — nos quedamos en *.cloudfront.net ($0). (Reabrir si se quiere URL bonita.)
+- [x] 6.2 Route53 omitido (mantener tier-0).
 
 ## 7. Cierre
 
-- [ ] 7.1 Decidir sobre GitHub Pages (mantener en paralelo vs apagar) tras validar CloudFront
+- [x] 7.1 Decisión: mantener GitHub Pages en paralelo (rollback).
 - [ ] 7.2 (futuro) Encarar `asistente-ia-portafolio` con Lambda (free tier) como cambio aparte
-- [ ] 7.3 Archivar el cambio cuando el sitio quede servido y verificado desde AWS
+- [x] 7.3 Cambio archivado (hosting + CI/CD implementados y verificados).
