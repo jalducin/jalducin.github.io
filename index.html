@@ -11,7 +11,10 @@
   <meta property="og:description" content="10+ years in backend. AI (Claude/SDD, Gemini, OpenAI) at the core of my SDLC. Spec-Driven Development: ~40% faster reviews, 80% N1 self-resolution. AWS Serverless · Python · CDMX, Mexico." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jalducin.github.io" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+  <link rel="canonical" href="https://jalducin.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://jalducin.github.io/assets/img/og-image.png" />
   <meta name="twitter:title" content="Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development" />
   <meta name="twitter:description" content="10+ years in backend. AI-native engineering with Spec-Driven Development. AWS Serverless · Python · CDMX, Mexico." />
   <script type="application/ld+json">
@@ -22,7 +25,7 @@
     "jobTitle": "Senior Software Engineer · AI-native Development",
     "description": "Senior Software Engineer with 10+ years in backend, integrating Generative AI (Claude, Gemini, OpenAI) as the central copilot of the SDLC and championing Spec-Driven Development (SDD).",
     "url": "https://jalducin.github.io",
-    "image": "https://jalducin.github.io/QR.png",
+    "image": "https://jalducin.github.io/assets/img/QR.png",
     "email": "mailto:valentin.alducin88@gmail.com",
     "telephone": "+525640800494",
     "address": {
@@ -136,6 +139,18 @@
     #matrix-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
     html.light #matrix-bg{display:none;}
     .cursor-blink{display:inline-block;width:3px;height:.85em;background:var(--primary);margin-left:5px;animation:blink 1.1s step-end infinite;vertical-align:text-bottom;border-radius:1px;}
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.nav-link:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px;}
+    .cmdk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:flex-start;justify-content:center;padding-top:12vh;}
+    .cmdk-overlay.open{display:flex;}
+    .cmdk{width:min(560px,92vw);background:var(--card-bg);border:1px solid var(--border);border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.55);overflow:hidden;}
+    .cmdk input{width:100%;padding:1rem 1.1rem;background:transparent;border:none;border-bottom:1px solid var(--border);color:var(--fg);font-size:1rem;font-family:inherit;}
+    .cmdk input:focus{outline:none;}
+    .cmdk ul{list-style:none;max-height:46vh;overflow:auto;margin:0;padding:0;}
+    .cmdk li{padding:.7rem 1.1rem;cursor:pointer;display:flex;gap:.6rem;align-items:center;font-size:.95rem;color:var(--fg);}
+    .cmdk li .tag{font-family:'Courier New',monospace;font-size:.72rem;color:#8b949e;margin-left:auto;}
+    .cmdk li.active,.cmdk li:hover{background:var(--border);}
+    .cmdk-hint{padding:.5rem 1.1rem;font-size:.72rem;color:#8b949e;border-top:1px solid var(--border);font-family:'Courier New',monospace;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}html{scroll-behavior:auto;}}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
     @media(max-width:992px){header h1{font-size:2.25rem;}.timeline-item{width:48%;}}
     @media(max-width:768px){
@@ -156,6 +171,13 @@
 </head>
 <body>
   <canvas id="matrix-bg"></canvas>
+  <div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="cmdk">
+      <input id="cmdkInput" type="text" placeholder="Jump to a section or action…  (Esc to close)" aria-label="Search sections and actions" autocomplete="off" />
+      <ul id="cmdkList"></ul>
+      <div class="cmdk-hint">↑↓ navigate · Enter select · Esc close · ⌘/Ctrl K</div>
+    </div>
+  </div>
   <nav>
     <div class="burger" id="burger"><div></div><div></div><div></div></div>
     <ul class="nav-list" id="navList">
@@ -174,12 +196,14 @@
     burger.addEventListener('click',()=>nav.classList.toggle('open'));
     const themeBtn=document.getElementById('theme-btn');
     const saved=localStorage.getItem('theme');
-    if(saved==='light'){document.documentElement.classList.add('light');themeBtn.textContent='☀️';}
-    themeBtn.addEventListener('click',()=>{
-      const isLight=document.documentElement.classList.toggle('light');
-      themeBtn.textContent=isLight?'☀️':'🌙';
-      localStorage.setItem('theme',isLight?'light':'dark');
-    });
+    if(saved==='light'){document.documentElement.classList.add('light');if(themeBtn)themeBtn.textContent='☀️';}
+    if(themeBtn){
+      themeBtn.addEventListener('click',()=>{
+        const isLight=document.documentElement.classList.toggle('light');
+        themeBtn.textContent=isLight?'☀️':'🌙';
+        localStorage.setItem('theme',isLight?'light':'dark');
+      });
+    }
   </script>
   <div class="container">
     <header>
@@ -195,23 +219,23 @@
         <span class="metric"><strong>&lt;10 min</strong> first response</span>
       </div>
       <div class="header-links">
-        <a href="mailto:valentin.alducin88@gmail.com" title="Email">
+        <a href="mailto:valentin.alducin88@gmail.com" title="Email" aria-label="Enviar email">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/>
           </svg>
         </a>
-        <a href="https://github.com/jalducin" target="_blank" title="GitHub">
+        <a href="https://github.com/jalducin" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
         </a>
-        <a href="https://linkedin.com/in/juanvalducinv" target="_blank" title="LinkedIn">
+        <a href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" />
         </a>
-        <a href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener" title="WhatsApp">
+        <a href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
             <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
           </svg>
         </a>
-        <a href="CV_JuanValentinAlducin.pdf" download title="Download CV (PDF)">
+        <a href="cv/CV_JuanValentinAlducin.pdf" download title="Download CV (PDF)" aria-label="Descargar CV en PDF">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
             <path fill="currentColor" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm0 2.5L18.5 9H14V4.5zM12 11l4 4h-3v4h-2v-4H8l4-4z"/>
           </svg>
@@ -493,12 +517,13 @@
       <p>Looking for job opportunities? Let's talk!</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0 1.5rem;">
         <a class="btn" href="mailto:valentin.alducin88@gmail.com">Send Email</a>
+        <button class="btn" type="button" id="copyEmail" aria-label="Copy email address">Copy Email</button>
         <a class="btn" href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn" href="CV_JuanValentinAlducin.pdf" download>Download CV (PDF)</a>
+        <a class="btn" href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download>Download CV (PDF)</a>
       </div>
-      <form class="contact-form" id="contactForm"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST">
+      <p style="font-size:.85rem;color:#8b949e;margin-bottom:.6rem;">Or send me a message — it opens your email app with everything prefilled:</p>
+      <form class="contact-form" id="contactForm">
         <div class="form-row">
           <input type="text"  name="name"  placeholder="Your name"  required />
           <input type="email" name="email" placeholder="Your email" required />
@@ -506,9 +531,9 @@
         <input type="text" name="subject" placeholder="Subject" required />
         <textarea name="message" placeholder="Your message..." required></textarea>
         <div>
-          <button class="btn" type="submit">Send Message</button>
+          <button class="btn" type="submit">Compose Message</button>
         </div>
-        <div class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</div>
+        <div class="form-success" id="formSuccess">✓ Opening your email app… If nothing happens, write me at valentin.alducin88@gmail.com</div>
       </form>
     </section>
 
@@ -539,25 +564,88 @@
         }
         cx.globalAlpha=1;
       }
-      resize();addEventListener('resize',resize);setInterval(draw,55);
+      resize();addEventListener('resize',resize);
+      const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduceMotion){setInterval(draw,55);}
     })();
     const observer=new IntersectionObserver((entries)=>{
       entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
     },{threshold:0.12});
     document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+    const EMAIL='valentin.alducin88@gmail.com';
     const form=document.getElementById('contactForm');
     if(form){
-      form.addEventListener('submit',async(e)=>{
+      form.addEventListener('submit',(e)=>{
         e.preventDefault();
-        const btn=form.querySelector('[type=submit]');
-        btn.textContent='Sending…';btn.disabled=true;
-        try{
-          const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-          if(res.ok){form.reset();document.getElementById('formSuccess').style.display='block';}
-          else{btn.textContent='Error — try again';btn.disabled=false;}
-        }catch{btn.textContent='Error — try again';btn.disabled=false;}
+        const f=new FormData(form);
+        const subject=`[Portfolio] ${f.get('subject')||'Contacto'} — ${f.get('name')||''}`.trim();
+        const body=`${f.get('message')||''}\n\n—\n${f.get('name')||''} · ${f.get('email')||''}`;
+        window.location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        document.getElementById('formSuccess').style.display='block';
       });
     }
+    const copyBtn=document.getElementById('copyEmail');
+    if(copyBtn){
+      copyBtn.addEventListener('click',async()=>{
+        try{await navigator.clipboard.writeText(EMAIL);}catch{}
+        const t=copyBtn.textContent;copyBtn.textContent='✓ Copied!';
+        setTimeout(()=>{copyBtn.textContent=t;},1600);
+      });
+    }
+
+    /* Command palette (⌘/Ctrl+K) */
+    (function(){
+      const overlay=document.getElementById('cmdkOverlay');
+      const input=document.getElementById('cmdkInput');
+      const list=document.getElementById('cmdkList');
+      if(!overlay||!input||!list)return;
+      const go=(sel)=>{const el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});};
+      const cmds=[
+        {label:'AI Method',tag:'section',run:()=>go('#ai-method')},
+        {label:'Experience',tag:'section',run:()=>go('#experience')},
+        {label:'Projects',tag:'section',run:()=>go('#featured-projects')},
+        {label:'Skills',tag:'section',run:()=>go('#hard-skills')},
+        {label:'Languages',tag:'section',run:()=>go('#languages')},
+        {label:'Education',tag:'section',run:()=>go('#education')},
+        {label:'Contact',tag:'section',run:()=>go('#contact')},
+        {label:'Download CV (PDF)',tag:'action',run:()=>window.open('cv/CV_JuanValentinAlducin.pdf','_blank')},
+        {label:'Email me',tag:'action',run:()=>{window.location.href='mailto:'+EMAIL;}},
+        {label:'Copy email',tag:'action',run:()=>{navigator.clipboard&&navigator.clipboard.writeText(EMAIL);}},
+        {label:'GitHub',tag:'link',run:()=>window.open('https://github.com/jalducin','_blank')},
+        {label:'LinkedIn',tag:'link',run:()=>window.open('https://linkedin.com/in/juanvalducinv','_blank')},
+        {label:'Toggle theme',tag:'action',run:()=>{const l=document.documentElement.classList.toggle('light');localStorage.setItem('theme',l?'light':'dark');}}
+      ];
+      let filtered=cmds.slice(),active=0;
+      function render(){
+        list.innerHTML='';
+        filtered.forEach((c,i)=>{
+          const li=document.createElement('li');
+          li.textContent=c.label;li.setAttribute('role','option');
+          const tag=document.createElement('span');tag.className='tag';tag.textContent=c.tag;li.appendChild(tag);
+          if(i===active)li.classList.add('active');
+          li.addEventListener('click',()=>{exec(i);});
+          list.appendChild(li);
+        });
+      }
+      function filter(){
+        const q=input.value.trim().toLowerCase();
+        filtered=cmds.filter(c=>c.label.toLowerCase().includes(q));
+        active=0;render();
+      }
+      function open(){overlay.classList.add('open');input.value='';filter();input.focus();}
+      function close(){overlay.classList.remove('open');}
+      function exec(i){const c=filtered[i];if(c){close();c.run();}}
+      document.addEventListener('keydown',(e)=>{
+        if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();overlay.classList.contains('open')?close():open();return;}
+        if(!overlay.classList.contains('open'))return;
+        if(e.key==='Escape'){close();}
+        else if(e.key==='ArrowDown'){e.preventDefault();active=Math.min(active+1,filtered.length-1);render();}
+        else if(e.key==='ArrowUp'){e.preventDefault();active=Math.max(active-1,0);render();}
+        else if(e.key==='Enter'){e.preventDefault();exec(active);}
+      });
+      input.addEventListener('input',filter);
+      overlay.addEventListener('click',(e)=>{if(e.target===overlay)close();});
+    })();
   </script>
 </body>
 </html>

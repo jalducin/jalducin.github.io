@@ -31,6 +31,7 @@ implementarlas de forma incremental.
 - `asistente-ia-portafolio`: asistente IA sobre el perfil (proxy serverless + Claude).
 - `case-study-sdd`: caso de estudio del flujo SDD del propio repo.
 - `project-deep-dives`: páginas de detalle de proyectos con arquitectura.
+- `organizacion-de-archivos`: estructura de archivos profesional (imágenes en `assets/img/`, CV en `cv/`).
 
 ### Modified Capabilities
 (ninguna — se construyen sobre las capabilities ya vigentes en `openspec/specs/`)

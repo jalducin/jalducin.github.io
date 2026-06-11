@@ -15,7 +15,7 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - GitHub: https://github.com/jalducin
 - LinkedIn: https://linkedin.com/in/juanvalducinv
 - Website: https://jalducin.github.io
-- CV (PDF): https://jalducin.github.io/CV_JuanValentinAlducin.pdf
+- CV (PDF): https://jalducin.github.io/cv/CV_JuanValentinAlducin.pdf
 
 ## How I work (AI-native)
 - Spec-Driven Development (proposal → specs → design → tasks → apply → archive); the spec is the source of truth.

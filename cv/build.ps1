@@ -1,11 +1,10 @@
 # Regenera el CV en PDF (tamaño Oficio) desde cv/cv.html con Chrome headless.
 # Uso:  powershell -ExecutionPolicy Bypass -File cv\build.ps1
-# Salida: CV_JuanValentinAlducin.pdf en la raíz del repo (lo que descarga el sitio).
+# Salida: cv/CV_JuanValentinAlducin.pdf (lo que descarga el sitio).
 
 $ErrorActionPreference = "Stop"
-$root   = Split-Path -Parent $PSScriptRoot
 $src    = Join-Path $PSScriptRoot "cv.html"
-$out    = Join-Path $root "CV_JuanValentinAlducin.pdf"
+$out    = Join-Path $PSScriptRoot "CV_JuanValentinAlducin.pdf"
 
 $chrome = @(
   "$env:ProgramFiles\Google\Chrome\Application\chrome.exe",
