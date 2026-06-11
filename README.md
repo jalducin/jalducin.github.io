@@ -27,12 +27,24 @@ jalducin.github.io/
 ├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga directa)
 ├── logo.png                           ← Logo
 ├── assets/                            ← Recursos estáticos
-├── CLAUDE.md                          ← Instrucciones para Claude Code
-├── SPEC.md                            ← Especificación de secciones y contenido
-├── PLAN.md                            ← Arquitectura y decisiones técnicas
-└── TASKS.md                           ← Tareas completadas y pendientes
+├── CLAUDE.md / AGENTS.md / GEMINI.md  ← Contexto por asistente de IA
+├── docs/                              ← Estándares (base, frontend, documentación)
+├── openspec/                          ← Flujo SDD: project.md, specs/, changes/, schemas
+├── ai-specs/                          ← Fuente canónica de agentes y skills
+├── .claude/  /  .gemini/              ← Comandos /opsx:*, skills, agentes, reglas
+└── .gitignore
 ```
 
 ## Despliegue
 
 El sitio se publica automáticamente vía GitHub Pages desde la rama `main`.
+
+## 🔄 Cómo contribuir (SDD / OpenSpec)
+
+El proyecto sigue **Spec-Driven Development**: la especificación es la fuente de verdad y cada cambio
+recorre `proposal → specs → design → tasks → apply → archive` antes (y durante) la codificación.
+
+1. Lee los estándares: `docs/base-standards.md` y `docs/frontend-standards.md`.
+2. Inicia un cambio con `/opsx:new` (o `/opsx:ff` para generar todos los artefactos de un tirón).
+3. Implementa con `/opsx:apply` desde una rama `feature/<change-name>`.
+4. Verifica con `/opsx:verify` (verificación manual en navegador, 3 breakpoints) y archiva con `/opsx:archive`.

@@ -6,10 +6,24 @@
 ## Rol
 
 Eres el desarrollador del sitio de portafolio personal de **Juan Valentin Alducin Vázquez**, publicado en GitHub Pages.
-Consulta siempre los archivos de spec antes de modificar:
-- `SPEC.md` → qué páginas existen, secciones y datos de contenido
-- `PLAN.md` → arquitectura, decisiones de diseño y fuente de verdad de datos
-- `TASKS.md` → qué está pendiente y en qué orden
+
+## Flujo de trabajo: Spec-Driven Development (OpenSpec)
+
+Este proyecto usa **SDD/OpenSpec**. La especificación es la fuente de verdad: cada cambio recorre
+artefactos antes de codificar (`proposal → specs → design → tasks → apply → archive`).
+
+Antes de modificar, lee y aplica:
+- `docs/base-standards.md` → principios base, idioma, skills, planificación y reglas OpenSpec.
+- `docs/frontend-standards.md` → stack estático, paleta, reglas de código y responsive (este proyecto).
+- `docs/documentation-standards.md` → estructura y mantenimiento de la documentación.
+- `openspec/project.md` → contexto del proyecto. `openspec/specs/` → capabilities vigentes.
+
+Comandos del flujo en Claude Code: `/opsx:new`, `/opsx:ff`, `/opsx:continue`, `/opsx:explore`,
+`/opsx:apply`, `/opsx:verify`, `/opsx:sync`, `/opsx:archive`, `/opsx:onboard`. Para implementar,
+adopta el agente `frontend-developer` de `ai-specs/agents/`.
+
+> Las secciones siguientes (stack, paleta, datos del propietario, reglas de código) son la referencia
+> rápida del proyecto; el detalle completo y los estándares vinculados viven en `docs/`.
 
 ---
 
