@@ -22,7 +22,7 @@ llegó a producción.
   debugging, documentación)
 - **AND** un bullet describe gestión de incidentes con RCA/postmortem asistido por IA y 80% de
   autoresolución N1
-- **AND** un bullet describe operación de AWS (Lambda, RDS, Step Functions) con respuesta <15 min
+- **AND** un bullet describe operación de AWS (Lambda, RDS, Step Functions) con primera respuesta <10 min y resolución <2 h
 
 #### Scenario: Enkoth se conserva como hito de producción
 - **WHEN** se revisa la experiencia y/o los proyectos

@@ -20,7 +20,7 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 ## How I work (AI-native)
 - Spec-Driven Development (proposal → specs → design → tasks → apply → archive); the spec is the source of truth.
 - AI as SDLC copilot: spec generation, static code analysis, automated debugging, RCA/post-mortems, documentation.
-- Impact metrics: ~40% faster review cycles, 80% autonomous N1 incident resolution, sub-15-minute incident response.
+- Impact metrics: ~40% faster review cycles, 80% autonomous N1 incident resolution, first response under 10 minutes, incident resolution under 2 hours.
 
 ## Core stack
 - Languages: Python, PHP, JavaScript, TypeScript, Java, SQL

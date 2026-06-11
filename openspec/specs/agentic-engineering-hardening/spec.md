@@ -13,7 +13,7 @@ candidato, demostrando el *cómo* con métricas verificables, no solo declarando
   archive) como práctica central
 - **AND** se mencionan las herramientas (Claude/Anthropic, Gemini, OpenAI) como copilotos del SDLC
 - **AND** se muestran las métricas de impacto: ~40% de reducción del ciclo de revisión, 80% de
-  autoresolución de incidentes N1 y respuesta <15 min
+  autoresolución de incidentes N1, primera respuesta <10 min y resolución de incidentes <2 h
 
 #### Scenario: La sección es accesible desde la navegación
 - **WHEN** se carga el sitio
@@ -55,7 +55,7 @@ sistema de diseño existente.
 
 #### Scenario: Badges de métricas visibles y consistentes
 - **WHEN** un visitante ve el header o la sección de metodología/experiencia
-- **THEN** se muestran badges con "−40% ciclo de revisión", "80% autoresolución N1" y "<15 min respuesta"
+- **THEN** se muestran badges con "−40% ciclo de revisión", "80% autoresolución N1" y "<10 min primera respuesta"
 - **AND** los badges reutilizan estilos existentes (p. ej. `.tl-badge` / `.card-badge` / `.soft-list`) y
   respetan la paleta y el responsive
 - **AND** las cifras coinciden exactamente con las del CV (sin inventar ni redondear de más)

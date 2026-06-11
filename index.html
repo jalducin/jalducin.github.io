@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development</title>
-  <meta name="description" content="Senior Software Engineer with 10+ years in backend. I integrate AI (Claude/SDD, Gemini, OpenAI) as the core of my engineering workflow. Spec-Driven Development: ~40% faster review cycles, 80% N1 incident self-resolution, sub-15-min response. AWS Serverless · Python · CDMX, Mexico." />
+  <meta name="description" content="Senior Software Engineer with 10+ years in backend. I integrate AI (Claude/SDD, Gemini, OpenAI) as the core of my engineering workflow. Spec-Driven Development: ~40% faster review cycles, 80% N1 incident self-resolution, sub-10-min first response. AWS Serverless · Python · CDMX, Mexico." />
   <meta name="keywords" content="AI-native engineer, agentic engineering, Spec-Driven Development, SDD, Claude, Anthropic, Gemini, OpenAI, LLM integration, AI agents, RAG, Python, FastAPI, Django, AWS Lambda, serverless, backend engineer, CDMX" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2358a6ff'>JA</text></svg>" />
   <meta property="og:title" content="Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development" />
@@ -51,11 +51,11 @@
     .fade-in.visible{opacity:1;transform:none;}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
     html{scroll-behavior:smooth;font-size:100%;}
-    body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);transition:background .3s,color .3s;}
+    body{font-family:"Segoe UI",Tahoma,sans-serif;line-height:1.6;color:var(--fg);background:var(--bg);transition:background .3s,color .3s;padding-top:60px;}
     a{color:var(--primary);text-decoration:none;}
     a:hover{text-decoration:underline;}
     .container{max-width:900px;margin:0 auto;padding:2rem 1.25rem;background:var(--container-bg);border-radius:8px;}
-    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 12px rgba(88,166,255,.08);}
+    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 12px rgba(88,166,255,.08);}
     .nav-list{display:flex;list-style:none;gap:.5rem;}
     .nav-link{display:block;padding:1rem;font-weight:600;color:var(--fg);border-radius:4px;}
     .nav-link:hover,.nav-link.active{background:var(--border);}
@@ -70,7 +70,7 @@
     .header-links a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:34px;background:var(--card-bg);border:2px solid var(--border);border-radius:6px;transition:background .3s;}
     .header-links a:hover{background:var(--border);}
     .header-links img,.header-links svg{width:40px;height:40px;filter:invert(1) brightness(1.4);}
-    section{margin:3.5rem 0;}
+    section{margin:3.5rem 0;scroll-margin-top:72px;}
     section h2{font-size:1.9rem;color:var(--primary);border-bottom:2px solid var(--border);padding-bottom:.45rem;margin-bottom:1rem;display:flex;align-items:center;gap:.4rem;font-family:'Courier New',Courier,monospace;}
     section h2::before{content:'> ';font-family:'Courier New',monospace;font-size:.7em;opacity:.5;flex-shrink:0;letter-spacing:0;}
     section h2 span{font-size:1.1em;}
@@ -120,7 +120,7 @@
     footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
     #theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;cursor:pointer;font-size:1rem;color:var(--fg);transition:background .3s;}
     #theme-btn:hover{background:var(--border);}
-    nav{position:relative;}
+    /* nav usa position:fixed (regla superior); no sobreescribir */
     .nav-actions{display:flex;align-items:center;gap:.5rem;padding:.5rem;}
     .lang-table{width:100%;border-collapse:collapse;}
     .lang-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);font-size:.95rem;}
@@ -192,7 +192,7 @@
       <div class="metric-badges">
         <span class="metric"><strong>~40%</strong> faster review cycles</span>
         <span class="metric"><strong>80%</strong> N1 self-resolution</span>
-        <span class="metric"><strong>&lt;15 min</strong> incident response</span>
+        <span class="metric"><strong>&lt;10 min</strong> first response</span>
       </div>
       <div class="header-links">
         <a href="mailto:valentin.alducin88@gmail.com" title="Email">
@@ -240,7 +240,7 @@
           <ul>
             <li>~40% faster review cycles</li>
             <li>80% autonomous N1 incident resolution</li>
-            <li>&lt;15 min incident response</li>
+            <li>&lt;10 min first response · &lt;2 h resolution</li>
           </ul>
         </div>
         <div class="ai-card">
@@ -266,7 +266,7 @@
             <li>Integrate <strong>Claude (SDD)</strong> and <strong>Gemini</strong> across the full SDLC — spec generation, static code analysis, automated debugging and technical documentation — driving adoption across the engineering team.</li>
             <li>Built <strong>Enkoth</strong>, a <strong>full serverless</strong> webhook platform (AWS Lambda + Step Functions + EventBridge, Serverless Framework IaC) with real-time monitoring and a centralized knowledge base — <strong>shipped to production</strong>; bidirectional sync with Asana, Freshdesk, Notion and Slack APIs.</li>
             <li>Manage incidents with RCA and AI-assisted post-mortems; transfer knowledge to N1, enabling <strong>80% autonomous resolution</strong> without escalation to senior engineering.</li>
-            <li>Operate AWS infrastructure (Lambda, RDS, Step Functions) and translate operational needs into technical solutions with <strong>sub-15-minute response</strong>.</li>
+            <li>Operate AWS infrastructure (Lambda, RDS, Step Functions) and translate operational needs into technical solutions with <strong>first response under 10 minutes</strong> and incident resolution under 2 hours.</li>
             <li>Automate operational flows and alert routing with <strong>n8n</strong>, reducing team response times.</li>
             <li><strong>Stack:</strong> Python · Django · FastAPI · PostgreSQL · AWS Serverless · Docker · n8n · Pydantic v2 · SQLModel · Alembic</li>
           </ul>
