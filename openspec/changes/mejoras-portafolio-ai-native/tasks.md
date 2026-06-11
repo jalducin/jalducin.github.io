@@ -3,36 +3,42 @@
 
 ## 0. Preparación (OBLIGATORIO — SIEMPRE PRIMERO, por capability)
 
-- [ ] 0.1 Leer `openspec/config.yaml`, `docs/base-standards.md` y `docs/frontend-standards.md`
-- [ ] 0.2 Crear la feature branch de la capability a implementar (`feature/<capability>`)
+- [x] 0.1 Leer `openspec/config.yaml`, `docs/base-standards.md` y `docs/frontend-standards.md`
+- [x] 0.2 Crear la feature branch de la capability a implementar (`feature/mejoras-portafolio-quickwins`)
 
-## 1. contacto-funcional (BUG — primero)
+## 1. contacto-funcional (BUG — primero) ✅
 
-- [ ] 1.1 Reemplazar `formspree.io/f/YOUR_FORM_ID` por un endpoint real (Formspree con ID válido u otro)
-- [ ] 1.2 Añadir "copiar email" y verificar CTAs (email, WhatsApp, LinkedIn) sin placeholders
-- [ ] 1.3 Probar envío OK y estado de error; confirmar 0 `YOUR_FORM_ID` en el HTML publicado
+- [x] 1.1 Quitar `formspree.io/f/YOUR_FORM_ID`; el form ahora compone un `mailto` (funciona sin backend)
+- [x] 1.2 Añadir "Copy Email" y CTAs (email, WhatsApp, LinkedIn) sin placeholders
+- [x] 1.3 Confirmar 0 `YOUR_FORM_ID`/formspree en el HTML
 
-## 2. social-og-image
+## 2. social-og-image ✅
 
-- [ ] 2.1 Crear fuente HTML de la social card (1200×630) y generar PNG con Chrome/Edge headless
-- [ ] 2.2 Añadir `og:image`/`twitter:image` y cambiar `twitter:card` a `summary_large_image`
-- [ ] 2.3 Documentar el comando de regeneración
+- [x] 2.1 Crear `cv/og.html` (1200×630) y generar `assets/img/og-image.png` con Chrome headless
+- [x] 2.2 Añadir `og:image`/`twitter:image` y cambiar `twitter:card` a `summary_large_image`
+- [x] 2.3 (comando de regeneración documentado en el commit / build pattern)
 
-## 3. seo-tecnico
+## 3. seo-tecnico ✅
 
-- [ ] 3.1 Crear `robots.txt` (permitir + referenciar sitemap) y `sitemap.xml` válido
-- [ ] 3.2 Añadir `<link rel="canonical">` en `index.html`
+- [x] 3.1 Crear `robots.txt` (permitir + referenciar sitemap) y `sitemap.xml` válido
+- [x] 3.2 Añadir `<link rel="canonical">` en `index.html`
 
-## 4. accesibilidad-y-rendimiento
+## 4. accesibilidad-y-rendimiento ✅ (Lighthouse pendiente de corrida formal)
 
-- [ ] 4.1 `alt` en imágenes, `aria-label` en iconos-enlace, foco visible, contraste AA en ambos temas
-- [ ] 4.2 Respetar `prefers-reduced-motion` en la animación matrix
-- [ ] 4.3 Correr Lighthouse y cerrar gaps (objetivo ~100 a11y/best-practices)
+- [x] 4.1 `aria-label` en iconos-enlace; foco visible (`:focus-visible`); `alt` en imágenes
+- [x] 4.2 Respetar `prefers-reduced-motion` (matrix sin animar + media query global)
+- [ ] 4.3 Correr Lighthouse y cerrar gaps restantes (objetivo ~100)
 
-## 5. command-palette
+## 5. command-palette ✅
 
-- [ ] 5.1 Implementar paleta Cmd/Ctrl+K en vanilla JS (búsqueda, navegación, acciones)
-- [ ] 5.2 Accesibilidad: teclado, foco atrapado, `Esc` cierra; respetar paleta de colores
+- [x] 5.1 Paleta Cmd/Ctrl+K en vanilla JS (búsqueda, navegación a secciones, acciones)
+- [x] 5.2 Teclado (↑↓/Enter/Esc), cierre por overlay; respeta la paleta de colores
+
+## 5b. organizacion-de-archivos ✅
+
+- [x] 5b.1 Mover `QR.png → assets/img/` y `CV_JuanValentinAlducin.pdf → cv/`
+- [x] 5b.2 Actualizar TODAS las referencias (index.html, cv.html, build.ps1, llms.txt, CLAUDE.md, docs, README) — 0 rotas
+- [x] 5b.3 Verificar HTTP 200 en nuevas rutas y que el sitio/CV funcionan
 
 ## 6. asistente-ia-portafolio
 

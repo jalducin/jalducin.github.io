@@ -42,7 +42,7 @@ No romper el diseño responsive.
 ## 4. CV en PDF (self-hosted)
 
 - La fuente editable es `cv/cv.html` (formato estilo enhancv, **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
-- El PDF se genera con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia `CV_JuanValentinAlducin.pdf` en la raíz.
+- El PDF se genera con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia `cv/CV_JuanValentinAlducin.pdf`.
 - El botón de descarga apunta a ese PDF con `download`. El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio).
 - Para editar el CV: cambiar `cv/cv.html` → regenerar → commitear HTML + PDF. No editar el binario a mano.
 

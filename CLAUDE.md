@@ -101,7 +101,7 @@ Inglés:      B1 (Intermedio)
 El CV se genera **dentro del repo** desde una fuente HTML editable, sin depender de enhancv ni suscripciones:
 - `cv/cv.html` — fuente editable (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
 - `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera el PDF con Chrome/Edge headless.
-- `CV_JuanValentinAlducin.pdf` (raíz) — artefacto resultante; es el que descarga `index.html`. Versionado en el repo.
+- `cv/CV_JuanValentinAlducin.pdf` — artefacto resultante; es el que descarga `index.html`. Versionado en el repo.
 
 Flujo: editar `cv/cv.html` → ejecutar `cv\build.ps1` (o el comando Chrome headless) → commitear el HTML y el PDF.
 El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio); es un build step manual.

@@ -24,8 +24,8 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Senior Software
 ```
 jalducin.github.io/
 ├── index.html                         ← Portafolio principal (single page)
-├── CV_JuanValentinAlducin.pdf         ← CV en español (descarga directa)
-├── QR.png                             ← QR (vincula al repo) · usado en el CV
+├── cv/                                ← CV: fuente (cv.html) + PDF generado
+├── assets/img/                        ← imágenes (QR.png, og-image)
 ├── assets/                            ← Recursos estáticos
 ├── CLAUDE.md / AGENTS.md / GEMINI.md  ← Contexto por asistente de IA
 ├── docs/                              ← Estándares (base, frontend, documentación)
