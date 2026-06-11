@@ -37,3 +37,12 @@ yarn-error.log*
 
 # git worktrees
 .worktrees/
+
+# AWS — nunca commitear credenciales ni JSON temporales de infra
+**/.aws/
+aws-credentials*
+dist.json
+policy.json
+trust.json
+perms.json
+*.pem

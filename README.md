@@ -37,7 +37,15 @@ jalducin.github.io/
 
 ## Despliegue
 
-El sitio se publica automáticamente vía GitHub Pages desde la rama `main`.
+El sitio se hospeda en **AWS (tier 0)**: **S3 privado + CloudFront** (HTTPS), con bucket cerrado vía OAC.
+
+- **En vivo:** https://d3r3bnavnwzqaw.cloudfront.net
+- **CI/CD:** push a `main` → GitHub Actions (`.github/workflows/deploy.yml`) asume un rol IAM por **OIDC**
+  (sin llaves estáticas) y hace `aws s3 sync` + invalidación de CloudFront.
+- **Deploy manual:** `powershell -ExecutionPolicy Bypass -File scripts\deploy-aws.ps1`
+- **Recursos AWS** (cuenta 957266312835, us-east-2): bucket `jalducin-portfolio-957266312835`,
+  distribución CloudFront `EG4961CAMR9Z8`, rol `gh-actions-portfolio-deploy`.
+- GitHub Pages se mantiene en paralelo por ahora (rollback). Dominio propio (Route53) = opcional, fuera de tier 0.
 
 ## 🔄 Cómo contribuir (SDD / OpenSpec)
 
