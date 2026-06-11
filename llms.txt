@@ -1,0 +1,45 @@
+# Juan Valentin Alducin Vázquez
+
+> Senior Software Engineer · AI-native Development. 10+ years in backend engineering, integrating
+> Generative AI / LLMs (Claude, Gemini, OpenAI) as the central copilot of the SDLC and championing
+> Spec-Driven Development (SDD/OpenSpec). Based in CDMX, Mexico.
+
+This file summarizes the profile for AI agents and LLMs. Source of truth: the CV PDF and index.html.
+
+## Profile
+- Role: Senior Software Engineer, AI-native Development
+- Location: Mexico City (CDMX), Mexico
+- Languages: Spanish (native), English (B1)
+- Email: valentin.alducin88@gmail.com
+- WhatsApp: +52 5640800494
+- GitHub: https://github.com/jalducin
+- LinkedIn: https://linkedin.com/in/juanvalducinv
+- Website: https://jalducin.github.io
+- CV (PDF): https://jalducin.github.io/CV_JuanValentinAlducin.pdf
+
+## How I work (AI-native)
+- Spec-Driven Development (proposal → specs → design → tasks → apply → archive); the spec is the source of truth.
+- AI as SDLC copilot: spec generation, static code analysis, automated debugging, RCA/post-mortems, documentation.
+- Impact metrics: ~40% faster review cycles, 80% autonomous N1 incident resolution, sub-15-minute incident response.
+
+## Core stack
+- Languages: Python, PHP, JavaScript, TypeScript, Java, SQL
+- Frameworks: Django, Flask, FastAPI, React, Node.js
+- Cloud/Serverless/BaaS: AWS (Lambda, RDS, S3, Step Functions, EventBridge, EC2, CloudWatch), Serverless Framework, GitHub Actions, Supabase, Azure (base), GCP (base)
+- Databases: PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA SQL, DynamoDB
+- AI & GenAI: Claude API, OpenAI API, Gemini API, Anthropic SDK, Prompt Engineering, LLM Integration, AI Agents, RAG, Agentic Workflows, Amazon Bedrock, OpenSpec/SDD
+
+## Experience
+- Podemos Progresar (Sep 2025 – present) — Backend Support Engineer & AI Specialist (Fintech). SDD, AI across the SDLC, AWS Serverless, n8n. Built Enkoth (serverless webhook platform, shipped to production).
+- Redsis (Jan 2022 – Sep 2025) — Software Engineer → Tech Lead. GK POS multi-country Go-Live (Peru, Colombia, Bolivia), REST APIs, ETL, team leadership.
+- Softtek (Mar 2017 – Jan 2022) — Software Engineer. SAP ERP/HANA, ETL, SAP BO dashboards, AMS support, Scrum (98% SLA).
+
+## Featured projects
+- Fidello — Loyalty Card System: multi-business digital loyalty, roles (Owner/Manager/Employee), mobile-first QR, JWT, realtime WebSockets, multi-tenant RLS, QR tokens (60s TTL + SHA-256 fingerprint). 100% SDD/OpenSpec. Stack: React 18, TypeScript, Vite, Tailwind, Supabase, PL/pgSQL, Edge Functions (Deno), Vitest.
+- Enkoth — full serverless webhook platform (AWS Lambda, Step Functions, EventBridge), shipped to production. Stack: Python, FastAPI, Serverless Framework, PostgreSQL RDS.
+- dataMasterGK — Excel → XML → SFTP processing with admin panel and logging. Stack: Python, Flask, SQLite, Paramiko, Docker.
+
+## Education
+- Master's in DevOps — Universidad IEU (2024 – present)
+- Computer Systems Engineering — Instituto Tecnológico de Orizaba (2006 – 2011)
+- Advanced English — Quick Learning (in progress)

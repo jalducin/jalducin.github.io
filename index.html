@@ -3,15 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Valentin Alducin Vázquez — Software Engineer</title>
+  <title>Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development</title>
+  <meta name="description" content="Senior Software Engineer with 10+ years in backend. I integrate AI (Claude/SDD, Gemini, OpenAI) as the core of my engineering workflow. Spec-Driven Development: ~40% faster review cycles, 80% N1 incident self-resolution, sub-15-min response. AWS Serverless · Python · CDMX, Mexico." />
+  <meta name="keywords" content="AI-native engineer, agentic engineering, Spec-Driven Development, SDD, Claude, Anthropic, Gemini, OpenAI, LLM integration, AI agents, RAG, Python, FastAPI, Django, AWS Lambda, serverless, backend engineer, CDMX" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230d1117'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-weight='bold' font-size='14' fill='%2358a6ff'>JA</text></svg>" />
-  <meta property="og:title" content="Juan Valentin Alducin Vázquez — Software Engineer" />
-  <meta property="og:description" content="Senior Software Engineer · AI-native Engineering · AWS Serverless · Fintech · Retail GK POS · Python · PHP · CDMX, Mexico" />
+  <meta property="og:title" content="Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development" />
+  <meta property="og:description" content="10+ years in backend. AI (Claude/SDD, Gemini, OpenAI) at the core of my SDLC. Spec-Driven Development: ~40% faster reviews, 80% N1 self-resolution. AWS Serverless · Python · CDMX, Mexico." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jalducin.github.io" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Juan Valentin Alducin Vázquez — Software Engineer" />
-  <meta name="twitter:description" content="Senior Software Engineer · AI-native Engineering · AWS Serverless · Fintech · Retail GK POS · CDMX, Mexico" />
+  <meta name="twitter:title" content="Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development" />
+  <meta name="twitter:description" content="10+ years in backend. AI-native engineering with Spec-Driven Development. AWS Serverless · Python · CDMX, Mexico." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Juan Valentin Alducin Vázquez",
+    "jobTitle": "Senior Software Engineer · AI-native Development",
+    "description": "Senior Software Engineer with 10+ years in backend, integrating Generative AI (Claude, Gemini, OpenAI) as the central copilot of the SDLC and championing Spec-Driven Development (SDD).",
+    "url": "https://jalducin.github.io",
+    "image": "https://jalducin.github.io/logo.png",
+    "email": "mailto:valentin.alducin88@gmail.com",
+    "telephone": "+525640800494",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mexico City",
+      "addressRegion": "CDMX",
+      "addressCountry": "MX"
+    },
+    "sameAs": [
+      "https://github.com/jalducin",
+      "https://linkedin.com/in/juanvalducinv"
+    ],
+    "knowsLanguage": ["es", "en"],
+    "knowsAbout": [
+      "Spec-Driven Development", "AI-native engineering", "Agentic workflows",
+      "Claude API", "Gemini API", "OpenAI API", "LLM integration", "RAG", "AI Agents",
+      "Python", "FastAPI", "Django", "PHP", "JavaScript", "TypeScript",
+      "AWS Lambda", "AWS Step Functions", "Serverless", "PostgreSQL", "Docker"
+    ]
+  }
+  </script>
   <style>
     :root{--bg:#0d1117;--fg:#c9d1d9;--primary:#58a6ff;--card-bg:#161b22;--border:#30363d;--badge-bg:#21262d;--badge-border:#30363d;--container-bg:rgba(13,17,23,0.82);}
     html.light{--bg:#f6f8fa;--fg:#24292f;--primary:#0969da;--card-bg:#ffffff;--border:#d0d7de;--badge-bg:#eaeef2;--badge-border:#d0d7de;--container-bg:rgba(246,248,250,0.97);}
@@ -72,6 +104,17 @@
     .icons-grid img{width:38px;height:38px;background:#fff;padding:3px;border-radius:6px;}
     .soft-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;}
     .soft-list li{background:var(--badge-bg);border:1px solid var(--badge-border);padding:.4rem .8rem;border-radius:.5rem;font-size:.9rem;}
+    .metric-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1.1rem auto 0;max-width:720px;}
+    .metric{background:rgba(88,166,255,.1);border:1px solid rgba(88,166,255,.4);border-radius:999px;padding:.4rem .95rem;font-size:.82rem;color:var(--primary);font-family:'Courier New',Courier,monospace;font-weight:600;}
+    .metric strong{font-size:1.08em;letter-spacing:.02em;}
+    .ai-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:1.2rem;}
+    .ai-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;}
+    .ai-card h3{color:var(--primary);font-size:1.05rem;margin-bottom:.5rem;font-family:'Courier New',Courier,monospace;}
+    .ai-card p,.ai-card ul{font-size:.9rem;color:var(--fg);}
+    .ai-card ul{margin-left:1.1rem;}
+    .sdd-flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1.1rem 0;font-family:'Courier New',Courier,monospace;font-size:.82rem;}
+    .sdd-flow span{background:var(--badge-bg);border:1px solid var(--badge-border);border-radius:6px;padding:.3rem .6rem;color:var(--primary);}
+    .sdd-flow em{color:#8b949e;font-style:normal;}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.25rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;transition:background .3s,color .3s;font-family:'Courier New',Courier,monospace;letter-spacing:.03em;}
     .btn:hover{background:var(--primary);color:var(--bg);}
     footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
@@ -116,6 +159,7 @@
   <nav>
     <div class="burger" id="burger"><div></div><div></div><div></div></div>
     <ul class="nav-list" id="navList">
+      <li class="nav-item"><a class="nav-link" href="#ai-method">AI Method</a></li>
       <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
       <li class="nav-item"><a class="nav-link" href="#featured-projects">Projects</a></li>
       <li class="nav-item"><a class="nav-link" href="#hard-skills">Skills</a></li>
@@ -140,11 +184,16 @@
   <div class="container">
     <header>
       <h1>Juan Valentin Alducin Vázquez<span class="cursor-blink" aria-hidden="true"></span></h1>
-      <h3>Senior Software Engineer &nbsp;|&nbsp; AI-native Engineering &nbsp;|&nbsp; AWS Serverless &nbsp;|&nbsp; Fintech &amp; Retail</h3>
+      <h3>Senior Software Engineer &nbsp;|&nbsp; AI-native Development &nbsp;|&nbsp; AWS Serverless</h3>
       <p class="tl-location">CDMX, Mexico &nbsp;·&nbsp; English B1 Intermediate</p>
       <p>
-        Senior Software Engineer with 10+ years of experience focused on backend development, code analysis, problem solving, and technology adoption. I integrate AI (Claude/SDD, ChatGPT, Gemini) as a core part of my engineering workflow. Specialized in Python, PHP, and AWS, with experience in GK POS implementation across Latin America. Currently pursuing a Master's degree in DevOps.
+        Senior Software Engineer with 10+ years of experience in backend development and the integration of Generative AI / LLMs (Claude API, Gemini, OpenAI API) as the central copilot of the SDLC. I champion Spec-Driven Development (SDD), cutting review cycles by ~40% and enabling autonomous resolution of 80% of incidents. Specialized in Python · PHP · JavaScript · AWS Serverless, with GK POS implementation experience across Latin America. Currently pursuing a Master's degree in DevOps.
 		</p>
+      <div class="metric-badges">
+        <span class="metric"><strong>~40%</strong> faster review cycles</span>
+        <span class="metric"><strong>80%</strong> N1 self-resolution</span>
+        <span class="metric"><strong>&lt;15 min</strong> incident response</span>
+      </div>
       <div class="header-links">
         <a href="mailto:valentin.alducin88@gmail.com" title="Email">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -170,6 +219,37 @@
       </div>
     </header>
 
+    <!-- AI METHOD -->
+    <section id="ai-method" class="fade-in">
+      <h2>How I Build with AI</h2>
+      <p style="color:#8b949e;">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
+      <div class="sdd-flow">
+        <span>proposal</span><em>→</em><span>specs</span><em>→</em><span>design</span><em>→</em><span>tasks</span><em>→</em><span>apply</span><em>→</em><span>archive</span>
+      </div>
+      <div class="ai-method-grid">
+        <div class="ai-card">
+          <h3>Spec-Driven Development</h3>
+          <p>Requirements and verifiable scenarios drive the work. AI generates specs, analyzes code statically and proposes implementations against the contract — cutting review cycles by ~40%.</p>
+        </div>
+        <div class="ai-card">
+          <h3>AI as SDLC copilot</h3>
+          <p>Claude (Anthropic), Gemini and OpenAI across the loop: spec generation, automated debugging, RCA &amp; post-mortems, and technical documentation — driving team adoption.</p>
+        </div>
+        <div class="ai-card">
+          <h3>Measurable impact</h3>
+          <ul>
+            <li>~40% faster review cycles</li>
+            <li>80% autonomous N1 incident resolution</li>
+            <li>&lt;15 min incident response</li>
+          </ul>
+        </div>
+        <div class="ai-card">
+          <h3>Agentic &amp; machine-readable</h3>
+          <p>Agentic workflows with RAG and AI agents. This very site ships structured <strong>JSON-LD</strong> and a <strong>/llms.txt</strong> so agents and LLMs can read my profile directly.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- EXPERIENCE -->
     <section id="experience" class="fade-in">
       <h2>Experience</h2>
@@ -179,41 +259,43 @@
         <div class="timeline-item left">
           <span class="tl-date">Sept 2025 – Present</span>
           <span class="tl-badge">Current</span>
-          <h3>Software Engineer | Support &amp; Automation</h3>
+          <h3>Backend Support Engineer &amp; AI Specialist</h3>
           <div class="tl-company">Podemos Progresar · Fintech</div>
           <ul>
-            <li>Building <strong>Enkoth</strong> (in active development): <strong>full serverless</strong> webhook platform on AWS Lambda + Step Functions + EventBridge with Serverless Framework (IaC, 3 stages), real-time monitoring, metrics dashboards, and a centralized knowledge base — architecture and code analysis driven by <strong>Spec-Driven Development (SDD)</strong> with Claude.</li>
-            <li>Bidirectional integrations via webhooks with <strong>Asana, Freshdesk, Notion and Slack APIs</strong> for incident sync and operational alerts.</li>
-            <li>N2 incident management with RCA, post mortem documentation, and code-level fixes in Django/Python and FastAPI on Lambda, enabling N1 self-resolution and reducing recurrence.</li>
-            <li>Workflow automation with <strong>n8n</strong> for alert routing and operational flows, reducing team response times.</li>
-            <li>AWS operations (Lambda, RDS, S3, Step Functions, EventBridge) and critical operations in PostgreSQL/MySQL via Slack.</li>
-            <li>Modern Python sub-stack: <strong>Pydantic v2, SQLModel, Alembic, Poetry, Ruff, Gunicorn</strong>. Spec-Driven workflow with Claude, ChatGPT and Gemini for analysis, debugging and Notion documentation.</li>
-            <li>Technical coordination across N1–N4 teams and participation in operational optimization initiatives.</li>
+            <li>Diagnose and resolve bugs, technical debt and incidents end-to-end applying <strong>Spec-Driven Development (SDD)</strong>, cutting the review cycle by <strong>~40%</strong>.</li>
+            <li>Integrate <strong>Claude (SDD)</strong> and <strong>Gemini</strong> across the full SDLC — spec generation, static code analysis, automated debugging and technical documentation — driving adoption across the engineering team.</li>
+            <li>Built <strong>Enkoth</strong>, a <strong>full serverless</strong> webhook platform (AWS Lambda + Step Functions + EventBridge, Serverless Framework IaC) with real-time monitoring and a centralized knowledge base — <strong>shipped to production</strong>; bidirectional sync with Asana, Freshdesk, Notion and Slack APIs.</li>
+            <li>Manage incidents with RCA and AI-assisted post-mortems; transfer knowledge to N1, enabling <strong>80% autonomous resolution</strong> without escalation to senior engineering.</li>
+            <li>Operate AWS infrastructure (Lambda, RDS, Step Functions) and translate operational needs into technical solutions with <strong>sub-15-minute response</strong>.</li>
+            <li>Automate operational flows and alert routing with <strong>n8n</strong>, reducing team response times.</li>
+            <li><strong>Stack:</strong> Python · Django · FastAPI · PostgreSQL · AWS Serverless · Docker · n8n · Pydantic v2 · SQLModel · Alembic</li>
           </ul>
         </div>
 
         <!-- Redsis -->
         <div class="timeline-item right">
           <span class="tl-date">Jan 2022 – Sept 2025</span>
-          <h3>Software Engineer | Retail Engineer</h3>
+          <h3>Software Engineer → Tech Lead</h3>
           <div class="tl-company">Redsis – Redes y Sistemas Integrados</div>
           <ul>
-            <li>Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML automation via SFTP.</li>
-            <li>Led multi-country GK POS Go-Live on cloud and physical POS environments (Peru, Colombia, Bolivia) and technical pre-sales demos.</li>
-            <li>Designed and executed promotional ETL pipelines in SAP CAR and GK OmniPOS for commercial analysis.</li>
-            <li>Managed requirements and incidents under Scrum/Jira with customer-focused support.</li>
+            <li>Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML/SFTP automation for retail across 3 LATAM countries, adapting solutions to distinct cultural and regulatory contexts.</li>
+            <li>Technical lead for the cloud GK POS Go-Live (Peru, Colombia, Bolivia): coordinated timelines, managed business and IT stakeholders, ran technical pre-sales demos and trained local teams.</li>
+            <li>Designed the promotions ETL pipeline for GK OmniPOS, enabling real-time commercial analysis for decision-making.</li>
+            <li>Led the functional-technical GK POS team: defined the testing strategy (unit, regression, integration) and ensured end-to-end quality on every release.</li>
+            <li><strong>Stack:</strong> Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL</li>
           </ul>
         </div>
 
         <!-- Softtek -->
         <div class="timeline-item left">
           <span class="tl-date">Mar 2017 – Jan 2022</span>
-          <h3>Software Engineer | Software Developer</h3>
+          <h3>Software Engineer</h3>
           <div class="tl-company">Softtek</div>
           <ul>
-            <li>Implemented billing systems, internal portals, and ETL automation integrated with SAP ERP/HANA.</li>
-            <li>Developed executive dashboards in SAP BO and provided AMS support to Retail GK solutions.</li>
-            <li>Maintained applications (Python, PHP, .NET) and ETL flows under Scrum methodology.</li>
+            <li>Implemented billing systems, customer portals and ETLs integrated with SAP ERP/HANA; built executive dashboards in SAP BO communicating key metrics to business leadership.</li>
+            <li>Provided AMS support to Retail GK solutions: help desk, corrective and evolutive maintenance of applications and ETL flows.</li>
+            <li>Collaborated in cross-functional teams under Scrum, maintaining a 98% SLA.</li>
+            <li><strong>Stack:</strong> Python · PHP · .NET · SAP ERP/HANA · SAP BO · ETL · Web Services · Scrum</li>
           </ul>
         </div>
 
@@ -226,9 +308,16 @@
       <div class="projects">
 
         <div class="card">
-          <div class="card-badge">🔧 In Active Development</div>
+          <div class="card-badge">★ AI-native · 100% SDD</div>
+          <h3>Fidello — Loyalty Card System</h3>
+          <p>Multi-business digital loyalty platform with points management and differentiated roles (Owner, Manager, Employee). Mobile-first via QR, no install required. <strong>JWT auth</strong>, real-time <strong>WebSockets</strong>, multi-tenant <strong>RLS</strong>, and QR tokens with <strong>60s TTL + SHA-256 fingerprint</strong> against replay attacks. Built 100% under Spec-Driven Development (SDD/OpenSpec).</p>
+          <div class="tech">React 18 · TypeScript 5.5 · Vite · Tailwind CSS · Supabase (PostgreSQL + Auth + PostgREST + Realtime) · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
+        </div>
+
+        <div class="card">
+          <div class="card-badge">🚀 Shipped to Production</div>
           <h3>Enkoth</h3>
-          <p>Internal platform being built at Podemos Progresar: <strong>full serverless</strong> webhook platform with real-time monitoring, metrics dashboards, and a centralized knowledge base. Bidirectional sync with Asana, Freshdesk, Notion and Slack. Architecture and code analysis driven by Spec-Driven Development (SDD) with Claude.</p>
+          <p>Internal platform at Podemos Progresar: <strong>full serverless</strong> webhook platform with real-time monitoring, metrics dashboards, and a centralized knowledge base. Bidirectional sync with Asana, Freshdesk, Notion and Slack. Architecture and code analysis driven by Spec-Driven Development (SDD) with Claude.</p>
           <div class="tech">Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework · PostgreSQL RDS · Webhooks · SDD</div>
         </div>
 
@@ -294,9 +383,14 @@
           <li>FastAPI</li><li>Spring Boot</li><li>Node.js</li><li>Express</li><li>Thymeleaf</li><li>WebSocket</li><li>OpenAPI / Spec-Driven Dev</li><li>Pydantic v2</li><li>SQLModel</li><li>SQLAlchemy</li><li>Alembic</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">AWS &amp; Serverless</p>
+        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Cloud, Serverless &amp; BaaS</p>
         <ul class="soft-list">
-          <li>AWS Lambda</li><li>Step Functions</li><li>EventBridge</li><li>S3</li><li>RDS</li><li>Serverless Framework (IaC)</li><li>CI/CD · GitHub Actions</li>
+          <li>AWS Lambda</li><li>Step Functions</li><li>EventBridge</li><li>S3</li><li>RDS</li><li>EC2</li><li>CloudWatch</li><li>Serverless Framework (IaC)</li><li>CI/CD · GitHub Actions</li><li>Azure (base)</li><li>GCP (base)</li><li>Supabase</li>
+        </ul>
+
+        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Databases</p>
+        <ul class="soft-list">
+          <li>PostgreSQL</li><li>MySQL</li><li>SQL Server</li><li>MongoDB</li><li>SAP HANA SQL</li><li>DynamoDB</li><li>SQLite</li>
         </ul>
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Enterprise Integrations</p>
@@ -316,7 +410,7 @@
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">AI &amp; Knowledge</p>
         <ul class="soft-list">
-          <li>Claude (SDD)</li><li>ChatGPT</li><li>Gemini</li><li>Anthropic SDK</li><li>RAG</li><li>AI Agents</li><li>Sentence Transformers</li><li>Amazon Bedrock</li>
+          <li>Claude API (SDD)</li><li>OpenAI API</li><li>Gemini API</li><li>Anthropic SDK</li><li>Prompt Engineering</li><li>LLM Integration</li><li>Agentic Workflows</li><li>AI Agents</li><li>RAG</li><li>Sentence Transformers</li><li>OpenSpec / SDD</li><li>Amazon Bedrock</li>
         </ul>
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Workflow &amp; Management</p>
@@ -362,7 +456,12 @@
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
           <h3 style="color:var(--primary);margin-bottom:0.3rem;">Computer Systems Engineering</h3>
           <p style="font-weight:600;color:#8b949e;font-size:0.9rem;">Instituto Tecnológico de Orizaba · 2006 – 2011</p>
-          <p style="font-size:0.85rem;color:#8b949e;">Veracruz, Mexico</p>
+          <p style="font-size:0.85rem;color:#8b949e;">Orizaba, Veracruz, Mexico</p>
+        </div>
+        <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
+          <h3 style="color:var(--primary);margin-bottom:0.3rem;">Advanced English</h3>
+          <p style="font-weight:600;color:#8b949e;font-size:0.9rem;">Quick Learning · In progress</p>
+          <p style="font-size:0.85rem;color:#8b949e;">Online</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;">
           <h3 style="color:var(--primary);margin-bottom:0.8rem;">Certifications &amp; Courses</h3>

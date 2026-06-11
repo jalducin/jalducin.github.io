@@ -58,27 +58,30 @@ adopta el agente `frontend-developer` de `ai-specs/agents/`.
 ## Datos del propietario (fuente de verdad)
 
 ```
-Nombre:    Juan Valentin Alducin Vázquez
-Email:     valentin.alducin88@gmail.com
-WhatsApp:  +52 5643540747
-GitHub:    https://github.com/jalducin
-LinkedIn:  https://linkedin.com/in/juanvalducinv
-Ubicación: CDMX, Mexico
-Inglés:    A2 (Técnico)
+Nombre:      Juan Valentin Alducin Vázquez
+Posición:    Senior Software Engineer · AI-native Development
+Email:       valentin.alducin88@gmail.com
+WhatsApp:    525640800494
+GitHub:      https://github.com/jalducin
+LinkedIn:    https://linkedin.com/in/juanvalducinv
+Ubicación:   CDMX, Mexico
+Inglés:      B1 (Intermedio)
 ```
 
 ### Experiencia
 
 | Empresa | Período | Rol |
 |---|---|---|
-| Podemos Progresar | Sept 2025 – Present | Application Support Coordinator (N2) · Fintech |
-| Redsis | Ene 2022 – Sept 2025 | Retail Engineer |
-| Softtek | Mar 2017 – Ene 2022 | Software Developer |
+| Podemos Progresar | Sept 2025 – Present | Backend Support Engineer & AI Specialist · Fintech |
+| Redsis | Ene 2022 – Sept 2025 | Software Engineer → Tech Lead |
+| Softtek | Mar 2017 – Ene 2022 | Software Engineer |
 
 ### Proyectos destacados
 
 | Proyecto | Stack | Repo |
 |---|---|---|
+| Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest | privado/seed |
+| Enkoth | Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework | privado (Podemos) |
 | dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
 | socket-chat | Node.js · Express · Socket.io · JS | jalducin/socket-chat |
 | MetalShop | Python · FastAPI · SQLAlchemy · Docker | jalducin/EcommerceJVAV |

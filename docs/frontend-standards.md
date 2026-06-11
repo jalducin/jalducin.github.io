@@ -49,12 +49,13 @@ No romper el diseño responsive.
 
 ```
 Nombre:    Juan Valentin Alducin Vázquez
+Posición:  Senior Software Engineer · AI-native Development
 Email:     valentin.alducin88@gmail.com
-WhatsApp:  +52 5643540747
+WhatsApp:  525640800494
 GitHub:    https://github.com/jalducin
 LinkedIn:  https://linkedin.com/in/juanvalducinv
 Ubicación: CDMX, Mexico
-Inglés:    A2 (Técnico)
+Inglés:    B1 (Intermedio)
 ```
 
 La tabla completa de experiencia y proyectos vive en `CLAUDE.md` (sección "Datos del propietario").
