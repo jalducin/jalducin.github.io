@@ -64,5 +64,5 @@
 ## 9. Cierre
 
 - [x] 9.1 Commit(s) con conventional commits y PR de la feature branch
-- [ ] 9.2 Tras merge a `main`, verificar el sitio publicado en GitHub Pages
-- [ ] 9.3 Archivar el cambio (`/opsx:archive`) moviéndolo a `openspec/changes/archive/`
+- [x] 9.2 Tras merge a `main`, verificar el sitio publicado en GitHub Pages
+- [x] 9.3 Archivar el cambio (`/opsx:archive`) moviéndolo a `openspec/changes/archive/`
