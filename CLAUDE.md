@@ -96,12 +96,16 @@ Inglés:      B1 (Intermedio)
 
 ---
 
-## PDF del CV
+## PDF del CV (self-hosted, sin enhancv)
 
-El CV en PDF es un archivo estático precargado en el repositorio:
-- `CV_JuanValentinAlducin.pdf` — versión en español
+El CV se genera **dentro del repo** desde una fuente HTML editable, sin depender de enhancv ni suscripciones:
+- `cv/cv.html` — fuente editable (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
+- `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera el PDF con Chrome/Edge headless.
+- `CV_JuanValentinAlducin.pdf` (raíz) — artefacto resultante; es el que descarga `index.html`. Versionado en el repo.
 
-El botón de descarga en `index.html` apunta directamente a este archivo con el atributo `download`. El PDF **nunca se genera al vuelo**.
+Flujo: editar `cv/cv.html` → ejecutar `cv\build.ps1` (o el comando Chrome headless) → commitear el HTML y el PDF.
+El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio); es un build step manual.
+Para diseño/fidelidad usar el agente `design-specialist` (`ai-specs/agents/`).
 
 ---
 
@@ -110,5 +114,5 @@ El botón de descarga en `index.html` apunta directamente a este archivo con el 
 - Agregar dependencias npm o CDN de frameworks pesados
 - Romper el diseño responsive (siempre verificar los tres breakpoints: 992, 768, 480px)
 - Cambiar la paleta de colores sin documentarlo aquí
-- Modificar el PDF del CV (`CV_JuanValentinAlducin.pdf`) — solo se actualiza manualmente subiendo el archivo al repo
-- Generar PDFs con JavaScript/librerías al vuelo — los PDFs son siempre archivos estáticos
+- Editar el PDF a mano: el CV se edita en `cv/cv.html` y se regenera; nunca se modifica el binario directamente
+- Generar PDFs en el navegador del visitante (JS al vuelo en el sitio) — el PDF es un build step, no runtime

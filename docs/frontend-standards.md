@@ -39,11 +39,12 @@ No cambiar la paleta sin documentarlo aquí.
 Verificar siempre los tres breakpoints antes de dar un cambio por terminado: **992, 768, 480px**.
 No romper el diseño responsive.
 
-## 4. CV en PDF
+## 4. CV en PDF (self-hosted)
 
-- `CV_JuanValentinAlducin.pdf` (español) es un archivo **estático precargado** en el repo.
-- El botón de descarga apunta directamente al archivo con el atributo `download`.
-- El PDF **nunca se genera al vuelo** con JS/librerías. Solo se actualiza subiendo el archivo manualmente.
+- La fuente editable es `cv/cv.html` (formato estilo enhancv, **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
+- El PDF se genera con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia `CV_JuanValentinAlducin.pdf` en la raíz.
+- El botón de descarga apunta a ese PDF con `download`. El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio).
+- Para editar el CV: cambiar `cv/cv.html` → regenerar → commitear HTML + PDF. No editar el binario a mano.
 
 ## 5. Datos del propietario (fuente de verdad)
 
