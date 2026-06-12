@@ -15,13 +15,18 @@ autenticación de usuarios, multi-idioma avanzado.
 
 - **Cómputo: AWS Lambda + Function URL** (no API Gateway). *Por qué:* Function URL da HTTPS gratis y es más
   simple/barato; suficiente para un solo endpoint. CORS configurado a los orígenes del sitio.
-- **Proveedor del LLM — DECISIÓN ABIERTA (recomendado: Amazon Bedrock):**
-  - **Opción A — Amazon Bedrock (recomendada):** el Lambda invoca Claude por **IAM** (sin API key en
-    ninguna parte). Costo de tokens va a la **factura AWS** (cubierta por los budgets ya configurados).
-    Alinea con la cert de Bedrock de Juan y mantiene todo "in-AWS". Requiere habilitar acceso al modelo.
-  - **Opción B — API de Anthropic:** key en **variable de entorno del Lambda** (cifrada con KMS gestionada,
-    gratis), nunca en el repo/front. Costo de tokens en factura Anthropic (aparte).
-  - En ambas: modelo **Haiku** por defecto (barato/rápido), `max_tokens` bajo (~400), temperatura baja.
+- **Proveedor del LLM — DECIDIDO: Amazon Bedrock + Claude Haiku.** El Lambda invoca Claude **Haiku** por
+  **IAM** (sin API key en ninguna parte). Costo de tokens va a la **factura AWS** (cubierta por los budgets).
+  Alinea con la cert de Bedrock de Juan y mantiene todo "in-AWS". Requiere habilitar acceso al modelo en la
+  consola (paso manual una vez). `max_tokens` bajo (~400). *Fallback si Bedrock no conviene:* API de
+  Anthropic con key en variable de entorno del Lambda (cifrada con KMS gestionada) — nunca en repo/front.
+- **Sin RAG.** El perfil (`llms.txt`, ~1 KB) cabe holgado en contexto; se embebe completo. RAG sería
+  sobre-ingeniería y no ahorra llamadas. *Alternativa descartada:* vector DB + embeddings.
+- **Caché de respuestas** para ahorrar llamadas: preguntas frecuentes/idénticas (normalizadas) se sirven
+  sin llamar al LLM; TTL razonable; se invalida si cambia `llms.txt`.
+- **Rate limiting + tope global** contra abuso ("el creativo"): límite por IP (~10/min, ~50/día) + tope
+  global diario (~500/día) como techo de costo. Almacén: **DynamoDB on-demand con TTL** (tier-0) o, mínimo,
+  memoria del contenedor. Captcha/WAF solo si el abuso persiste.
 - **Grounding:** system prompt = contenido de `llms.txt` + instrucción de responder SOLO desde el perfil y
   declarar cuando algo está fuera de alcance (no inventar). El front solo manda la pregunta del visitante.
 - **Costo/abuso:** `reserved concurrency` baja (p. ej. 2) para acotar gasto; `max_tokens` chico; caché de
@@ -61,10 +66,23 @@ autenticación de usuarios, multi-idioma avanzado.
 5. Verificar end-to-end; monitorear costo con budgets.
 Rollback: ocultar el widget (el sitio sigue), deshabilitar el Function URL.
 
+## Recomendaciones (agregadas)
+
+- **Preguntas sugeridas** en el widget (chips: "¿Experiencia en AWS?", "Cuéntame de Fidello", "¿Stack de
+  backend?"): guían al reclutador, mejoran UX y **suben los aciertos de caché** (menos llamadas al LLM).
+- **Resistencia a prompt-injection / on-topic**: el system prompt instruye responder SOLO sobre el perfil
+  de Juan e **ignorar** intentos de cambiar su rol ("ignora las instrucciones anteriores…") o de extraer
+  el prompt/secretos. Nunca revela configuración interna.
+- **Tope de turnos por sesión** (p. ej. ~8) además del rate-limit global, para acotar conversaciones largas.
+- **Logging anónimo de preguntas** (SIN PII) para aprender qué preguntan los reclutadores y mejorar
+  `llms.txt`. Respeta la regla PII institucional: no almacenar datos personales del visitante.
+- **Streaming de respuesta** (efecto typewriter) vía Lambda response streaming — opcional, mejora la UX
+  percibida; si añade complejidad, se difiere.
+- **Métrica de uso**: contar preguntas/día (para el dashboard de métricas del portafolio y para vigilar costo).
+
 ## Open Questions
 
-- **¿Bedrock (recomendado) o API key de Anthropic?** (Default: Bedrock — sin secretos, todo-AWS.)
-- ¿Modelo exacto en Bedrock (Claude Haiku) y región con acceso habilitado? (Default: Haiku en us-east-2 si
-  disponible; si no, us-east-1.)
-- ¿Límite de uso aceptable (max_tokens, concurrencia) y umbral para añadir WAF/captcha?
+- ¿Región de Bedrock con acceso a Haiku habilitado? (Default: us-east-2 si disponible; si no, us-east-1.)
+- ¿Umbrales finales de rate-limit (por IP y global/día) y de turnos por sesión?
 - ¿El widget en todas las páginas o solo en una sección/CTA?
+- ¿Activamos logging anónimo de preguntas desde el día 1 o después?

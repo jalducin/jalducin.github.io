@@ -13,6 +13,10 @@
 - [ ] 1.2 Bootstrap: crear función Lambda + rol de ejecución; habilitar Bedrock (Opción A) o setear key en env cifrada (Opción B, una sola vez, fuera de CI)
 - [ ] 1.3 Function URL (HTTPS) + CORS acotado a los orígenes del sitio (CloudFront / github.io)
 - [ ] 1.4 Controles: modelo Haiku, `max_tokens` bajo, reserved concurrency baja; grounding + manejo de fuera-de-alcance; degradación elegante
+- [ ] 1.5 Grounding embebido (sin RAG): `llms.txt` completo en el prompt; resistencia a prompt-injection / on-topic
+- [ ] 1.6 Caché de respuestas (preguntas normalizadas) para no llamar al LLM en repeticiones; invalidar si cambia `llms.txt`
+- [ ] 1.7 Rate limiting por IP (~10/min, ~50/día) + tope global diario (~500/día) con DynamoDB on-demand + TTL; 429 sin llamar al LLM
+- [ ] 1.8 (opcional) Logging anónimo de preguntas SIN PII para mejorar `llms.txt`
 
 ## 2. cicd-asistente-aws (GitHub → AWS)
 
@@ -25,6 +29,8 @@
 - [ ] 3.1 Widget de chat vanilla en `index.html` (burbuja) que hace `fetch` al Function URL
 - [ ] 3.2 Accesible (teclado, foco, Esc), responsive, respeta paleta y `prefers-reduced-motion`
 - [ ] 3.3 Fallback con CTAs si el backend falla; sin secretos en el front
+- [ ] 3.4 Preguntas sugeridas (chips) que disparan preguntas frecuentes (mejoran UX y aciertos de caché)
+- [ ] 3.5 Tope de turnos por sesión (~8) que invita a contacto directo al alcanzarse
 
 ## 4. qr-apunta-al-sitio-aws
 
