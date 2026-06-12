@@ -1,0 +1,51 @@
+name: Deploy AI Assistant (Lambda + Bedrock)
+
+# Flujo git -> AWS: push a main que toque el backend del asistente -> actualiza el código del Lambda.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/assistant/**"
+      - "llms.txt"
+      - ".github/workflows/deploy-assistant.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # OIDC, sin llaves estáticas
+  contents: read
+
+concurrency:
+  group: deploy-assistant
+  cancel-in-progress: true
+
+env:
+  FN: jalducin-assistant
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::957266312835:role/gh-actions-portfolio-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Package Lambda (app.py + profile.txt desde llms.txt)
+        run: |
+          cp llms.txt backend/assistant/profile.txt
+          cd backend/assistant
+          zip -q -r ../../assistant.zip app.py profile.txt
+          cd ../..
+          ls -la assistant.zip
+
+      - name: Update Lambda code
+        run: |
+          aws lambda update-function-code \
+            --function-name "$FN" \
+            --zip-file fileb://assistant.zip \
+            --query "LastUpdateStatus" --output text

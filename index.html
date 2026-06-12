@@ -167,6 +167,28 @@
       .timeline-item.left::after,.timeline-item.right::after{left:-28px;}
     }
     @media(max-width:480px){html{font-size:93%;}.container{padding:1.5rem 1rem;}header h1{font-size:1.9rem;}section h2{font-size:1.6rem;}.projects{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
+    /* Ask my portfolio — AI chat widget */
+    #ai-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;background:var(--primary);color:var(--bg);border:none;border-radius:999px;font-weight:700;font-family:'Courier New',Courier,monospace;cursor:pointer;box-shadow:0 6px 20px rgba(88,166,255,.35);}
+    #ai-fab:hover{filter:brightness(1.08);}
+    .ai-panel{position:fixed;right:18px;bottom:80px;z-index:91;width:min(380px,92vw);max-height:72vh;display:none;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+    .ai-panel.open{display:flex;}
+    .ai-head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid var(--border);}
+    .ai-head b{color:var(--primary);font-family:'Courier New',Courier,monospace;}
+    .ai-head .ai-x{background:none;border:none;color:var(--fg);font-size:1.2rem;cursor:pointer;line-height:1;}
+    .ai-msgs{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.6rem;}
+    .ai-msg{font-size:.9rem;line-height:1.5;padding:.55rem .8rem;border-radius:10px;max-width:90%;}
+    .ai-msg.u{align-self:flex-end;background:rgba(88,166,255,.16);border:1px solid rgba(88,166,255,.4);}
+    .ai-msg.a{align-self:flex-start;background:var(--badge-bg);border:1px solid var(--border);}
+    .ai-msg.sys{align-self:center;color:#8b949e;font-size:.78rem;background:none;}
+    .ai-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .6rem;}
+    .ai-chip{background:var(--badge-bg);border:1px solid var(--border);color:var(--fg);border-radius:999px;padding:.35rem .7rem;font-size:.78rem;cursor:pointer;}
+    .ai-chip:hover{border-color:var(--primary);}
+    .ai-form{display:flex;gap:.5rem;padding:.7rem 1rem;border-top:1px solid var(--border);}
+    .ai-form input{flex:1;padding:.55rem .8rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--fg);font-family:inherit;font-size:.9rem;}
+    .ai-form input:focus{outline:none;border-color:var(--primary);}
+    .ai-form button{background:var(--primary);color:var(--bg);border:none;border-radius:8px;padding:0 .9rem;font-weight:700;cursor:pointer;}
+    .ai-form button:disabled{opacity:.5;cursor:default;}
+    .ai-typing{font-size:.8rem;color:#8b949e;font-style:italic;}
   </style>
 </head>
 <body>
@@ -540,6 +562,18 @@
     <footer>© 2026 Juan Valentin Alducin Vázquez. All rights reserved.</footer>
   </div>
 
+  <!-- Ask my portfolio — AI assistant -->
+  <button id="ai-fab" aria-label="Open AI assistant">🤖 Ask my portfolio</button>
+  <div class="ai-panel" id="ai-panel" role="dialog" aria-modal="false" aria-label="AI assistant">
+    <div class="ai-head"><b>Ask my portfolio</b><button class="ai-x" id="ai-x" aria-label="Close">×</button></div>
+    <div class="ai-msgs" id="ai-msgs" aria-live="polite"></div>
+    <div class="ai-chips" id="ai-chips"></div>
+    <form class="ai-form" id="ai-form">
+      <input id="ai-input" type="text" placeholder="Ask about Juan…" autocomplete="off" aria-label="Your question" />
+      <button type="submit" id="ai-send">↩</button>
+    </form>
+  </div>
+
   <script>
     (function(){
       const cv=document.getElementById('matrix-bg');
@@ -645,6 +679,43 @@
       });
       input.addEventListener('input',filter);
       overlay.addEventListener('click',(e)=>{if(e.target===overlay)close();});
+    })();
+    /* Ask my portfolio — AI assistant widget */
+    (function(){
+      const ASSISTANT_URL="https://vd4c00py15.execute-api.us-east-2.amazonaws.com";
+      const fab=document.getElementById('ai-fab');
+      const panel=document.getElementById('ai-panel');
+      const closeBtn=document.getElementById('ai-x');
+      const msgs=document.getElementById('ai-msgs');
+      const chipsEl=document.getElementById('ai-chips');
+      const form=document.getElementById('ai-form');
+      const input=document.getElementById('ai-input');
+      const sendBtn=document.getElementById('ai-send');
+      if(!fab||!panel)return;
+      const CHIPS=["AWS & serverless experience?","Tell me about Fidello","Backend stack?","What is SDD?"];
+      const MAX_TURNS=8; let turns=0, busy=false, greeted=false;
+      function add(text,cls){const d=document.createElement('div');d.className='ai-msg '+cls;d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+      function renderChips(){chipsEl.innerHTML='';CHIPS.forEach(q=>{const b=document.createElement('button');b.className='ai-chip';b.type='button';b.textContent=q;b.addEventListener('click',()=>ask(q));chipsEl.appendChild(b);});}
+      function openPanel(){panel.classList.add('open');if(!greeted){add("¡Hola! Soy el asistente de Juan. Pregúntame sobre su experiencia, stack o proyectos.","a");renderChips();greeted=true;}input.focus();}
+      function closePanel(){panel.classList.remove('open');}
+      async function ask(q){
+        q=(q||'').trim(); if(!q||busy)return;
+        if(turns>=MAX_TURNS){add("Para seguir, escríbele directo: valentin.alducin88@gmail.com o LinkedIn.","sys");return;}
+        busy=true; sendBtn.disabled=true; input.value='';
+        add(q,'u'); const t=add("escribiendo…","a typing");
+        try{
+          const r=await fetch(ASSISTANT_URL,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({question:q})});
+          const data=await r.json().catch(()=>({}));
+          t.remove(); add(data.answer||"No pude responder. Escríbele a Juan: valentin.alducin88@gmail.com","a");
+        }catch(e){
+          t.remove(); add("Ahora mismo no puedo responder. Escríbele a Juan: valentin.alducin88@gmail.com o LinkedIn.","a");
+        }
+        turns++; busy=false; sendBtn.disabled=false; input.focus();
+      }
+      fab.addEventListener('click',()=>panel.classList.contains('open')?closePanel():openPanel());
+      closeBtn.addEventListener('click',closePanel);
+      form.addEventListener('submit',(e)=>{e.preventDefault();ask(input.value);});
+      document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&panel.classList.contains('open'))closePanel();});
     })();
   </script>
 </body>
