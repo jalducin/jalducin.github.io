@@ -46,3 +46,8 @@ policy.json
 trust.json
 perms.json
 *.pem
+# Asistente IA — artefactos de build (profile.txt se regenera desde llms.txt en CI)
+backend/assistant/profile.txt
+assistant.zip
+.fnurl
+*.json.tmp
