@@ -45,13 +45,17 @@ adopta el agente `frontend-developer` de `ai-specs/agents/`.
 ## Paleta de colores
 
 ```css
---bg:        #0d1117
---fg:        #c9d1d9
---primary:   #58a6ff
---card-bg:   #161b22
---border:    #30363d
---badge-bg:  #21262d
+--bg:        #17120e   (café muy oscuro, no negro puro)
+--fg:        #e8ddcf   (crema)
+--primary:   #c8924a   (café-dorado, acento)
+--accent2:   #e0a96d   (ámbar claro)
+--card-bg:   #221a13
+--border:    #3a2e22
+--badge-bg:  #2a2017
 ```
+
+> Paleta **café elegante** (armoniza con el CV). El efecto **matrix** se conserva pero recoloreado a ámbar.
+> Tema claro (`html.light`): variante cálida crema. No usar el azul `#58a6ff`/negro `#0d1117` anteriores.
 
 ---
 

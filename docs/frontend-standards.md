@@ -21,17 +21,20 @@ alwaysApply: true
 - Frameworks CSS (Bootstrap nuevo, Tailwind).
 - Dependencias de npm o CDNs de frameworks pesados.
 
-## 2. Paleta de colores
+## 2. Paleta de colores (café elegante)
 
 ```css
---bg:        #0d1117
---fg:        #c9d1d9
---primary:   #58a6ff
---card-bg:   #161b22
---border:    #30363d
---badge-bg:  #21262d
+--bg:        #17120e   /* café muy oscuro (no negro puro) */
+--fg:        #e8ddcf   /* crema */
+--primary:   #c8924a   /* café-dorado (acento) */
+--accent2:   #e0a96d   /* ámbar claro */
+--card-bg:   #221a13
+--border:    #3a2e22
+--badge-bg:  #2a2017
 ```
 
+Tema claro (`html.light`): variante cálida crema (`--bg:#f4ece0`, `--primary:#9a6b2f`). El efecto **matrix**
+se conserva pero **recoloreado a ámbar**. No usar el azul `#58a6ff` ni el negro `#0d1117` anteriores.
 No cambiar la paleta sin documentarlo aquí.
 
 ## 3. Responsive
