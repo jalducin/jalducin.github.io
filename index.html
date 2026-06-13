@@ -277,7 +277,7 @@
             <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
           </svg>
         </a>
-        <a href="cv/CV_JuanValentinAlducin.pdf" download title="Download CV (PDF)" aria-label="Descargar CV en PDF">
+        <a href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es" title="Download CV — Español (PDF)" aria-label="Descargar CV en español (PDF)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
             <path fill="currentColor" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm0 2.5L18.5 9H14V4.5zM12 11l4 4h-3v4h-2v-4H8l4-4z"/>
           </svg>
@@ -572,7 +572,8 @@
         <button class="btn" type="button" id="copyEmail" aria-label="Copy email address">Copy Email</button>
         <a class="btn" href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn" href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download>Download CV (PDF)</a>
+        <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es">Download CV · ES (PDF)</a>
+        <a class="btn" href="cv/CV_JuanValentinAlducin_EN.pdf" download data-cv="en">Download CV · EN (PDF)</a>
       </div>
       <p style="font-size:.85rem;color:#8b949e;margin-bottom:.6rem;">Or send me a message — it opens your email app with everything prefilled:</p>
       <form class="contact-form" id="contactForm">
@@ -696,7 +697,8 @@
         {label:'Education',tag:'section',run:()=>go('#education')},
         {label:'Contact',tag:'section',run:()=>go('#contact')},
         {label:'Terminal',tag:'section',run:()=>go('#terminal')},
-        {label:'Download CV (PDF)',tag:'action',run:()=>window.open('cv/CV_JuanValentinAlducin.pdf','_blank')},
+        {label:'Download CV · ES (PDF)',tag:'action',run:()=>window.__downloadCV('es')},
+        {label:'Download CV · EN (PDF)',tag:'action',run:()=>window.__downloadCV('en')},
         {label:'Email me',tag:'action',run:()=>{window.location.href='mailto:'+EMAIL;}},
         {label:'Copy email',tag:'action',run:()=>{navigator.clipboard&&navigator.clipboard.writeText(EMAIL);}},
         {label:'GitHub',tag:'link',run:()=>window.open('https://github.com/jalducin','_blank')},
@@ -803,8 +805,9 @@
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
           contact:()=>"📧 "+EMAIL+"   ·   in/juanvalducinv   ·   github.com/jalducin",
-          'ls projects':()=>"Fidello/   VoltGrid/   Trackion/   JV-Market/   Monitoreo-Cloud/   dataMasterGK/\n(usa 'cat cv' para abrir el PDF)",
-          'cat cv':()=>{window.open('cv/CV_JuanValentinAlducin.pdf','_blank'); return "Abriendo CV (PDF)…";},
+          'ls projects':()=>"Fidello/   VoltGrid/   Trackion/   JV-Market/   Monitoreo-Cloud/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
+          'cat cv':()=>{window.__downloadCV('es'); return "Descargando CV en español (PDF)…";},
+          'cat cv en':()=>{window.__downloadCV('en'); return "Downloading CV in English (PDF)…";},
           clear:()=>{out.innerHTML=''; return null;},
           'sudo hire-me':()=>"✅ Permission granted. Excelente decisión 😏 — escríbele a "+EMAIL,
           matrix:()=>"Wake up, Neo… 🟫 (el matrix ámbar ya corre detrás de ti)",
@@ -823,6 +826,21 @@
           else if(e.key==='ArrowDown'){if(hi>0){hi--; inp.value=hist[hi]||'';}else{hi=-1; inp.value='';}}
         });
       }
+    })();
+  </script>
+  <script>
+    /* Descarga del CV con sufijo mes-año dinámico (AAAA-MM). El PDF es estático en el repo;
+       solo se renombra la copia descargada. ES => CV_JuanValentinAlducin_AAAA-MM.pdf, EN => _EN_AAAA-MM. */
+    (function(){
+      function ym(){ var d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); }
+      function fileFor(lang){ var en=lang==='en'; return {href:'cv/CV_JuanValentinAlducin'+(en?'_EN':'')+'.pdf', name:'CV_JuanValentinAlducin'+(en?'_EN':'')+'_'+ym()+'.pdf'}; }
+      // Atributo download dinámico en los enlaces marcados con data-cv
+      document.querySelectorAll('a[data-cv]').forEach(function(a){ a.setAttribute('download', fileFor(a.getAttribute('data-cv')).name); });
+      // Acción programática (command palette / terminal)
+      window.__downloadCV=function(lang){
+        var f=fileFor(lang), a=document.createElement('a');
+        a.href=f.href; a.download=f.name; document.body.appendChild(a); a.click(); a.remove();
+      };
     })();
   </script>
 </body>
