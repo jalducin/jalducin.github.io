@@ -88,7 +88,7 @@ Inglés:      B1 (Intermedio)
 | Enkoth | Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework | privado (Podemos) |
 | dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
 | socket-chat | Node.js · Express · Socket.io · JS | jalducin/socket-chat |
-| MetalShop | Python · FastAPI · SQLAlchemy · Docker | jalducin/EcommerceJVAV |
+| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — desplegado | jalducin/EcommerceJVAV |
 | Inventarios | Java · Spring Boot · WebSocket · H2 · Thymeleaf | jalducin/Inventarios |
 
 ---
