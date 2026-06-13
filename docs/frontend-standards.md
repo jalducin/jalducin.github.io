@@ -42,12 +42,18 @@ No cambiar la paleta sin documentarlo aquí.
 Verificar siempre los tres breakpoints antes de dar un cambio por terminado: **992, 768, 480px**.
 No romper el diseño responsive.
 
-## 4. CV en PDF (self-hosted)
+## 4. CV en PDF (self-hosted, bilingüe ES/EN)
 
-- La fuente editable es `cv/cv.html` (formato estilo enhancv, **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
-- El PDF se genera con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia `cv/CV_JuanValentinAlducin.pdf`.
-- El botón de descarga apunta a ese PDF con `download`. El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio).
-- Para editar el CV: cambiar `cv/cv.html` → regenerar → commitear HTML + PDF. No editar el binario a mano.
+- Fuentes editables: `cv/cv.html` (español) y `cv/cv-en.html` (inglés) — mismo diseño estilo enhancv,
+  **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly. La sección Idiomas vive en la columna derecha.
+- Los PDFs se generan con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia
+  `cv/CV_JuanValentinAlducin.pdf` (ES) y `cv/CV_JuanValentinAlducin_EN.pdf` (EN). `build.ps1` usa un
+  `--user-data-dir` único por PDF (evita el singleton de Chrome headless en llamadas seguidas).
+- Las descargas usan `download` con **sufijo mes-año dinámico** (JS vanilla): el archivo se entrega como
+  `CV_JuanValentinAlducin_AAAA-MM.pdf` / `..._EN_AAAA-MM.pdf`. El binario sigue siendo estático; el PDF
+  **no se genera en el navegador del visitante** (no hay JS de generación en el sitio).
+- El botón EN aparece donde aplique (Contact, command palette, terminal `cat cv en`).
+- Para editar el CV: cambiar `cv/cv.html` y/o `cv/cv-en.html` → regenerar → commitear HTML + PDFs. No editar el binario a mano.
 
 ## 5. Datos del propietario (fuente de verdad)
 

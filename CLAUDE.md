@@ -106,12 +106,13 @@ Inglés:      B1 (Intermedio)
 
 ## PDF del CV (self-hosted, sin enhancv)
 
-El CV se genera **dentro del repo** desde una fuente HTML editable, sin depender de enhancv ni suscripciones:
-- `cv/cv.html` — fuente editable (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly).
-- `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera el PDF con Chrome/Edge headless.
-- `cv/CV_JuanValentinAlducin.pdf` — artefacto resultante; es el que descarga `index.html`. Versionado en el repo.
+El CV se genera **dentro del repo** desde fuentes HTML editables (bilingüe ES/EN), sin depender de enhancv ni suscripciones:
+- `cv/cv.html` (ES) y `cv/cv-en.html` (EN) — fuentes editables (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly). Idiomas va en la columna derecha (Español Nativo + Inglés).
+- `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera **ambos** PDFs con Chrome/Edge headless (`--user-data-dir` único por PDF).
+- `cv/CV_JuanValentinAlducin.pdf` (ES) y `cv/CV_JuanValentinAlducin_EN.pdf` (EN) — artefactos; los que descarga `index.html`. Versionados en el repo.
+- Descarga con **sufijo mes-año dinámico** (JS vanilla): el archivo se entrega como `CV_JuanValentinAlducin_AAAA-MM.pdf` / `..._EN_AAAA-MM.pdf`. El botón EN aparece en Contact, command palette y terminal (`cat cv en`).
 
-Flujo: editar `cv/cv.html` → ejecutar `cv\build.ps1` (o el comando Chrome headless) → commitear el HTML y el PDF.
+Flujo: editar `cv/cv.html` y/o `cv/cv-en.html` → ejecutar `cv\build.ps1` → commitear los HTML y los PDFs.
 El PDF **no se genera en el navegador del visitante** (no hay JS de generación en el sitio); es un build step manual.
 Para diseño/fidelidad usar el agente `design-specialist` (`ai-specs/agents/`).
 
