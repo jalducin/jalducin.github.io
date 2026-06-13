@@ -37,7 +37,7 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 ## Featured projects
 - Fidello — Loyalty Card System: multi-business digital loyalty, roles (Owner/Manager/Employee), mobile-first QR, JWT, realtime WebSockets, multi-tenant RLS, QR tokens (60s TTL + SHA-256 fingerprint). 100% SDD/OpenSpec. Stack: React 18, TypeScript, Vite, Tailwind, Supabase, PL/pgSQL, Edge Functions (Deno), Vitest.
 - Enkoth — full serverless webhook platform (AWS Lambda, Step Functions, EventBridge), shipped to production. Stack: Python, FastAPI, Serverless Framework, PostgreSQL RDS.
-- JV Market — full-stack e-commerce deployed on AWS: JWT auth, product catalog, cart, checkout, admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Live demo: https://d3rw1q49m6mvnq.cloudfront.net/ · API docs: https://cizs8fa7lf.execute-api.us-east-2.amazonaws.com/dev/api/docs. Stack: Python, FastAPI, JWT, SQLite/PostgreSQL, AWS Lambda, API Gateway, S3, CloudFront.
+- JV Market — full-stack e-commerce deployed on AWS: JWT auth, product catalog, cart, checkout, admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Live demo: https://d3rw1q49m6mvnq.cloudfront.net/. Stack: Python, FastAPI, JWT, SQLite/PostgreSQL, AWS Lambda, API Gateway, S3, CloudFront.
 - dataMasterGK — Excel → XML → SFTP processing with admin panel and logging. Stack: Python, Flask, SQLite, Paramiko, Docker.
 
 ## Education
