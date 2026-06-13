@@ -330,11 +330,11 @@
           <ul>
             <li>Diagnose and resolve bugs, technical debt and incidents end-to-end applying <strong>Spec-Driven Development (SDD)</strong>, cutting the review cycle by <strong>~40%</strong>.</li>
             <li>Integrate <strong>Claude (SDD)</strong> and <strong>Gemini</strong> across the full SDLC — spec generation, static code analysis, automated debugging and technical documentation — driving adoption across the engineering team.</li>
-            <li>Built <strong>Enkoth</strong>, a <strong>full serverless</strong> webhook platform (AWS Lambda + Step Functions + EventBridge, Serverless Framework IaC) with real-time monitoring and a centralized knowledge base — <strong>shipped to production</strong>; bidirectional sync with Asana, Freshdesk, Notion and Slack APIs.</li>
+            <li>Build internal <strong>serverless tooling</strong> (Enkoth — AWS Lambda · Step Functions · EventBridge, Serverless Framework IaC) for webhook processing and integrations with Asana, Freshdesk, Notion and Slack.</li>
             <li>Manage incidents with RCA and AI-assisted post-mortems; transfer knowledge to N1, enabling <strong>80% autonomous resolution</strong> without escalation to senior engineering.</li>
             <li>Operate AWS infrastructure (Lambda, RDS, Step Functions) and translate operational needs into technical solutions with <strong>first response under 10 minutes</strong> and incident resolution under 2 hours.</li>
-            <li>Automate operational flows and alert routing with <strong>n8n</strong>, reducing team response times.</li>
-            <li><strong>Stack:</strong> Python · Django · FastAPI · PostgreSQL · AWS Serverless · Docker · n8n · Pydantic v2 · SQLModel · Alembic</li>
+            <li>Automate operational flows and alert routing with <strong>n8n</strong> and build observability dashboards with <strong>Grafana</strong>, reducing team response times.</li>
+            <li><strong>Stack:</strong> Python · Django · FastAPI · PostgreSQL · AWS Serverless · Docker · n8n · Grafana · Pydantic v2 · SQLModel · Alembic</li>
           </ul>
         </div>
 
@@ -381,17 +381,21 @@
         </div>
 
         <div class="card">
-          <div class="card-badge">🚀 Shipped to Production</div>
-          <h3>Enkoth</h3>
-          <p>Internal platform at Podemos Progresar: <strong>full serverless</strong> webhook platform with real-time monitoring, metrics dashboards, and a centralized knowledge base. Bidirectional sync with Asana, Freshdesk, Notion and Slack. Architecture and code analysis driven by Spec-Driven Development (SDD) with Claude.</p>
-          <div class="tech">Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework · PostgreSQL RDS · Webhooks · SDD</div>
+          <div class="card-badge">★ Multi-tenant · SDD</div>
+          <h3>VoltGrid — EV Charging Platform</h3>
+          <p>Multi-tenant, white-label <strong>SaaS</strong> for EV charging-station operators: live station status over <strong>WebSocket</strong> (polling fallback), tenant isolation via PostgreSQL <strong>Row-Level Security (RLS)</strong>, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analytics (uptime, kWh, CSV export), an auditable state <strong>scheduler</strong> and an installable <strong>PWA</strong>. Built 100% under SDD/OpenSpec.</p>
+          <div class="tech">FastAPI · SQLAlchemy 2.0 async · asyncpg · Alembic · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) · GitHub Actions</div>
+          <a class="btn" href="https://github.com/jalducin/voltgrid" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
         <div class="card">
-          <h3>dataMasterGK</h3>
-          <p>Python/Flask system to process Excel → XML → SFTP with admin web panel and logging.</p>
-          <div class="tech">Python · Flask · SQLite · Paramiko · Docker</div>
-          <a class="btn" href="https://github.com/jalducin/dataMasterGK" target="_blank">View Code ↗</a>
+          <div class="card-badge">🚀 Live on AWS</div>
+          <h3>Trackion — Serverless Help Desk</h3>
+          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana</strong> monitoring. Built with SDD.</p>
+          <div class="tech">Python 3.12 · AWS Lambda · API Gateway (HTTP API) · Serverless Framework · PostgreSQL (pg8000) · JWT (PyJWT) · SSM Parameter Store · Grafana · vanilla JS</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <a class="btn" href="https://dkzxcb6ja48r3.cloudfront.net" target="_blank" rel="noopener">Live Demo ↗</a>
+          </div>
         </div>
 
         <div class="card">
@@ -405,17 +409,18 @@
         </div>
 
         <div class="card">
-          <h3>Inventarios</h3>
-          <p>Inventory management system with REST API (OpenAPI spec-driven), real-time WebSocket updates, Thymeleaf UI, and Swagger docs.</p>
-          <div class="tech">Java · Spring Boot · Spring Data JPA · WebSocket · H2 · Maven</div>
-          <a class="btn" href="https://github.com/jalducin/Inventarios" target="_blank">View Code ↗</a>
+          <div class="card-badge">📊 Observability · $0</div>
+          <h3>Monitoreo-Cloud</h3>
+          <p>Cloud <strong>observability pipeline</strong> on AWS Free Tier (cost $0): <strong>CloudWatch → n8n → PostgreSQL → Grafana</strong>. Automated metric collection with a read-only <strong>IAM</strong> role, operational dashboards and alerts, all self-hosted on a single EC2, cost-guarded with <strong>AWS Budgets</strong>. Built with SDD.</p>
+          <div class="tech">AWS EC2 · CloudWatch · n8n · PostgreSQL · Grafana · Docker Compose · AWS Budgets</div>
+          <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
         <div class="card">
-          <h3>socket-chat</h3>
-          <p>Real-time chat using WebSocket and Node.js, with a JavaScript client &amp; Express server.</p>
-          <div class="tech">Node.js · Express · WebSocket · JavaScript</div>
-          <a class="btn" href="https://github.com/jalducin/socket-chat" target="_blank">View Code ↗</a>
+          <h3>dataMasterGK</h3>
+          <p>Python/Flask system to process Excel → XML → SFTP with admin web panel and logging.</p>
+          <div class="tech">Python · Flask · SQLite · Paramiko · Docker</div>
+          <a class="btn" href="https://github.com/jalducin/dataMasterGK" target="_blank">View Code ↗</a>
         </div>
 
       </div>
@@ -442,6 +447,9 @@
         <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git" />
         <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" title="GitHub" />
         <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" title="Azure" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" title="Next.js" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" title="Kubernetes" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana" title="Grafana" />
       </div>
 
       <div style="margin-top:2rem;">
@@ -449,12 +457,12 @@
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Backend &amp; APIs</p>
         <ul class="soft-list">
-          <li>FastAPI</li><li>Spring Boot</li><li>Node.js</li><li>Express</li><li>Thymeleaf</li><li>WebSocket</li><li>OpenAPI / Spec-Driven Dev</li><li>Pydantic v2</li><li>SQLModel</li><li>SQLAlchemy</li><li>Alembic</li>
+          <li>FastAPI</li><li>Next.js 14</li><li>Node.js</li><li>Express</li><li>WebSocket</li><li>SSO / OIDC</li><li>OpenAPI / Spec-Driven Dev</li><li>Pydantic v2</li><li>SQLModel</li><li>SQLAlchemy 2.0 async</li><li>Alembic</li>
         </ul>
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Cloud, Serverless &amp; BaaS</p>
         <ul class="soft-list">
-          <li>AWS Lambda</li><li>Step Functions</li><li>EventBridge</li><li>S3</li><li>RDS</li><li>EC2</li><li>CloudWatch</li><li>Serverless Framework (IaC)</li><li>CI/CD · GitHub Actions</li><li>Azure (base)</li><li>GCP (base)</li><li>Supabase</li>
+          <li>AWS Lambda</li><li>Step Functions</li><li>EventBridge</li><li>S3</li><li>RDS</li><li>EC2</li><li>CloudWatch</li><li>Serverless Framework (IaC)</li><li>Kubernetes (Kustomize)</li><li>Grafana (observabilidad)</li><li>CI/CD · GitHub Actions</li><li>Azure (base)</li><li>GCP (base)</li><li>Supabase</li>
         </ul>
 
         <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Databases</p>
@@ -795,7 +803,7 @@
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
           contact:()=>"📧 "+EMAIL+"   ·   in/juanvalducinv   ·   github.com/jalducin",
-          'ls projects':()=>"Fidello/   Enkoth/   JV-Market/   dataMasterGK/\n(usa 'cat cv' para abrir el PDF)",
+          'ls projects':()=>"Fidello/   VoltGrid/   Trackion/   JV-Market/   Monitoreo-Cloud/   dataMasterGK/\n(usa 'cat cv' para abrir el PDF)",
           'cat cv':()=>{window.open('cv/CV_JuanValentinAlducin.pdf','_blank'); return "Abriendo CV (PDF)…";},
           clear:()=>{out.innerHTML=''; return null;},
           'sudo hire-me':()=>"✅ Permission granted. Excelente decisión 😏 — escríbele a "+EMAIL,

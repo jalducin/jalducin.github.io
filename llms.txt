@@ -24,20 +24,22 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 
 ## Core stack
 - Languages: Python, PHP, JavaScript, TypeScript, Java, SQL
-- Frameworks: Django, Flask, FastAPI, React, Node.js
-- Cloud/Serverless/BaaS: AWS (Lambda, RDS, S3, Step Functions, EventBridge, EC2, CloudWatch), Serverless Framework, GitHub Actions, Supabase, Azure (base), GCP (base)
+- Frameworks: Django, Flask, FastAPI, React, Next.js 14, Node.js, SQLAlchemy 2.0 async; SSO/OIDC
+- Cloud/Serverless/DevOps/Observability: AWS (Lambda, RDS, S3, Step Functions, EventBridge, EC2, CloudWatch), Serverless Framework, Kubernetes (Kustomize), Docker, n8n, Grafana, GitHub Actions, Supabase, Azure (base), GCP (base)
 - Databases: PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA SQL, DynamoDB
 - AI & GenAI: Claude API, OpenAI API, Gemini API, Anthropic SDK, Prompt Engineering, LLM Integration, AI Agents, RAG, Agentic Workflows, Amazon Bedrock, OpenSpec/SDD
 
 ## Experience
-- Podemos Progresar (Sep 2025 – present) — Backend Engineer & AI Specialist (Fintech). SDD, AI across the SDLC, AWS Serverless, n8n. Built Enkoth (serverless webhook platform, shipped to production).
+- Podemos Progresar (Sep 2025 – present) — Backend Engineer & AI Specialist (Fintech). SDD, AI across the SDLC, AWS Serverless, n8n automation and Grafana observability. Builds internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) for webhook processing and integrations (Asana, Freshdesk, Notion, Slack).
 - Redsis (Jan 2022 – Sep 2025) — Software Engineer → Tech Lead. GK POS multi-country Go-Live (Peru, Colombia, Bolivia), REST APIs, ETL, team leadership.
 - Softtek (Mar 2017 – Jan 2022) — Software Engineer. SAP ERP/HANA, ETL, SAP BO dashboards, AMS support, Scrum (98% SLA).
 
 ## Featured projects
 - Fidello — Loyalty Card System: multi-business digital loyalty, roles (Owner/Manager/Employee), mobile-first QR, JWT, realtime WebSockets, multi-tenant RLS, QR tokens (60s TTL + SHA-256 fingerprint). 100% SDD/OpenSpec. Stack: React 18, TypeScript, Vite, Tailwind, Supabase, PL/pgSQL, Edge Functions (Deno), Vitest.
-- Enkoth — full serverless webhook platform (AWS Lambda, Step Functions, EventBridge), shipped to production. Stack: Python, FastAPI, Serverless Framework, PostgreSQL RDS.
+- VoltGrid — multi-tenant, white-label SaaS for EV charging-station operators: live status over WebSocket, tenant isolation via PostgreSQL Row-Level Security (RLS), RBAC (superadmin/org_admin/operator/viewer) + SSO (OIDC), analytics (uptime, kWh, CSV export), auditable state scheduler and installable PWA. 100% SDD. Code: https://github.com/jalducin/voltgrid. Stack: FastAPI, SQLAlchemy 2.0 async, asyncpg, Alembic, PostgreSQL 16 (RLS), Next.js 14, TypeScript, Tailwind, WebSockets, Docker, Kubernetes (Kustomize), GitHub Actions.
+- Trackion — white-label serverless help desk deployed on AWS: end-to-end ticketing, admin-managed catalogs and an open API-integration module (generic inbound webhooks + outbound domain-event dispatch). Grafana monitoring. Live demo: https://dkzxcb6ja48r3.cloudfront.net. Stack: Python 3.12, AWS Lambda, API Gateway (HTTP API), Serverless Framework, PostgreSQL (pg8000), JWT (PyJWT), SSM Parameter Store, Grafana, vanilla JS.
 - JV Market — full-stack e-commerce deployed on AWS: JWT auth, product catalog, cart, checkout, admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Live demo: https://d3rw1q49m6mvnq.cloudfront.net/. Stack: Python, FastAPI, JWT, SQLite/PostgreSQL, AWS Lambda, API Gateway, S3, CloudFront.
+- Monitoreo-Cloud — cloud observability pipeline on AWS Free Tier (cost $0): CloudWatch → n8n → PostgreSQL → Grafana, automated collection with a read-only IAM role, dashboards/alerts self-hosted on one EC2, cost-guarded with AWS Budgets. SDD. Code: https://github.com/jalducin/monitoreo-cloud. Stack: AWS EC2, CloudWatch, n8n, PostgreSQL, Grafana, Docker Compose, AWS Budgets.
 - dataMasterGK — Excel → XML → SFTP processing with admin panel and logging. Stack: Python, Flask, SQLite, Paramiko, Docker.
 
 ## Education

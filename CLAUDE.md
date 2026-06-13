@@ -85,11 +85,15 @@ Inglés:      B1 (Intermedio)
 | Proyecto | Stack | Repo |
 |---|---|---|
 | Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest | privado/seed |
-| Enkoth | Python · FastAPI · AWS Lambda · Step Functions · EventBridge · Serverless Framework | privado (Podemos) |
-| dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
-| socket-chat | Node.js · Express · Socket.io · JS | jalducin/socket-chat |
+| VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
+| Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless, desplegado | jalducin/Trackion |
 | JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — desplegado | jalducin/EcommerceJVAV |
-| Inventarios | Java · Spring Boot · WebSocket · H2 · Thymeleaf | jalducin/Inventarios |
+| Monitoreo-Cloud | AWS EC2 · CloudWatch · n8n · PostgreSQL · Grafana · Docker Compose · AWS Budgets — observabilidad Free Tier | jalducin/monitoreo-cloud |
+| dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
+
+> Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
+> ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios y socket-chat
+> se retiraron del portafolio por considerarse obsoletos para la narrativa AI-native / AWS serverless.
 
 ---
 
