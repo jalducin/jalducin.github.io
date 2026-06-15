@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multi-source observability with Grafana — Juan Valentin Alducin</title>
+<meta name="description" content="One Grafana, three sources: AWS serverless via CloudWatch, local Docker containers, and application data (Trackion tickets & SLA) — a single pane of glass." />
+<link rel="canonical" href="https://jalducin.github.io/blog/grafana-multi-source.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Multi-source observability with Grafana" />
+<meta property="og:description" content="A single pane over AWS serverless (CloudWatch), local Docker containers, and app data (tickets & SLA)." />
+<meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+<meta property="og:url" content="https://jalducin.github.io/blog/grafana-multi-source.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--muted:#8b949e;--card-bg:#161d26;--border:#2a3744;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  a{color:var(--primary);text-decoration:none;} a:hover{text-decoration:underline;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;font-family:'Courier New',monospace;font-size:.9rem;}
+  .top .brand{color:var(--primary);font-weight:700;}
+  h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .6rem;color:var(--fg);}
+  h2{font-size:1.3rem;margin:2.2rem 0 .7rem;color:var(--primary);}
+  p{margin:.9rem 0;color:#c6d2df;}
+  ul,ol{margin:.6rem 0 .6rem 1.3rem;color:#c6d2df;} li{margin:.35rem 0;}
+  .meta{color:var(--muted);font-size:.85rem;font-family:'Courier New',monospace;margin-bottom:1.6rem;}
+  .tag{display:inline-block;background:rgba(127,168,201,.14);border:1px solid rgba(127,168,201,.4);color:var(--primary);border-radius:999px;padding:.1rem .55rem;font-size:.72rem;margin-right:.3rem;}
+  code{background:var(--card-bg);border:1px solid var(--border);border-radius:5px;padding:.1rem .4rem;font-family:'Courier New',monospace;font-size:.88em;color:var(--primary);}
+  pre{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;margin:1rem 0;}
+  pre code{background:none;border:none;padding:0;color:#c6d2df;}
+  blockquote{border-left:3px solid var(--primary);margin:1.2rem 0;padding:.3rem 0 .3rem 1rem;color:#aebccb;font-style:italic;}
+  .foot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../index.html">‹ Juan Valentin Alducin</a>
+      <a href="../index.html#writing">Writing</a>
+    </div>
+    <article>
+      <span class="tag">Grafana</span><span class="tag">CloudWatch</span><span class="tag">Observability</span>
+      <h1>Multi-source observability with Grafana</h1>
+      <div class="meta">2026-06-14 · 4 min read</div>
+
+      <p>A dashboard for one system is easy. The useful trick is putting <strong>different kinds of signals on one pane</strong> so you can correlate them. My Monitoreo-Cloud stack watches three very different sources from a single Grafana:</p>
+      <ul>
+        <li><strong>AWS serverless</strong> — Lambda invocations / errors / duration and S3 objects, via <strong>CloudWatch</strong>.</li>
+        <li><strong>Local Docker containers</strong> — CPU, memory and health of the services running on my machine.</li>
+        <li><strong>Application data</strong> — Trackion's <strong>tickets &amp; SLA</strong> straight from PostgreSQL.</li>
+      </ul>
+
+      <h2>One pane, three datasources</h2>
+      <p>Grafana doesn't care where data lives — each source is just a datasource. Infra metrics and business metrics (open tickets, breached SLAs) sit side by side, so "the Lambda is slow" and "tickets are piling up" can be read in the same glance.</p>
+      <pre><code>CloudWatch  ─┐
+Docker stats ─┼─►  PostgreSQL  ─►  Grafana (dashboards + alerts)
+App (tickets)─┘        ▲
+                  n8n (scheduled collection)</code></pre>
+
+      <h2>How collection stays simple</h2>
+      <ul>
+        <li><strong>n8n</strong> runs the scheduled pulls (CloudWatch → normalize → insert) — low-code, no ad-hoc cron scripts.</li>
+        <li><strong>Read-only IAM</strong> for anything touching AWS. Observability should never need write access.</li>
+        <li><strong>SQL panels</strong> for app KPIs (tickets by status, SLA breached vs. on-time) — business observability, not just CPU graphs.</li>
+      </ul>
+
+      <blockquote>The value isn't the graphs — it's seeing infra and business signals in the same place.</blockquote>
+
+      <h2>Takeaway</h2>
+      <p>Treat Grafana as a correlation layer, not a CPU monitor. Mix cloud, infra and product data on one board and your dashboards start answering "why", not just "what".</p>
+
+      <div class="foot">
+        Written by Juan Valentin Alducin Vázquez · <a href="../index.html#contact">Get in touch ›</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

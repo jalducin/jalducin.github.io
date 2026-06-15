@@ -42,6 +42,11 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - Monitoreo-Cloud — self-hosted observability stack (Grafana + Docker) over three sources: AWS serverless (Lambda/S3 via CloudWatch), local Docker containers, and Trackion's tickets/SLA. Automated collection with n8n + a read-only IAM role. SDD. Code: https://github.com/jalducin/monitoreo-cloud. Stack: Grafana, Docker, n8n, PostgreSQL, AWS CloudWatch, Lambda, S3.
 - dataMasterGK — retail ETL middleware that automates master-data integration into GK Software: watches directories, transforms Excel → GK XML (stores, operators, promotions) and transmits via SFTP/FTP, with a Flask web panel (config/operation/audit), scheduler and SQLite auditing. Re-engineered under SDD (idempotent single-pass pipeline, pooled SFTP/SQLite connections, security hardening). Code: https://github.com/jalducin/dataMasterGK. Stack: Python 3.12, Flask, Pandas, openpyxl, SQLite, Paramiko (SFTP), Jinja2.
 
+## Writing (blog)
+- "Spec-Driven Development: the spec is the source of truth" — the artifact flow and why it cuts review cycles ~40%. /blog/sdd-openspec.html
+- "A zero-cost local observability stack with Docker Compose" — from always-on EC2 to a reproducible local stack ($0 idle). /blog/docker-observability-local.html
+- "Multi-source observability with Grafana" — one pane over AWS serverless (CloudWatch), Docker containers and app data (tickets/SLA). /blog/grafana-multi-source.html
+
 ## Education
 - Master's in DevOps — Universidad IEU (2024 – present)
 - Computer Systems Engineering — Instituto Tecnológico de Orizaba (2006 – 2011)

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Spec-Driven Development: the spec is the source of truth — Juan Valentin Alducin</title>
+<meta name="description" content="How I build AI-native with Spec-Driven Development (SDD/OpenSpec): the artifact flow, why it cuts review cycles, and how I run it with Claude." />
+<link rel="canonical" href="https://jalducin.github.io/blog/sdd-openspec.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Spec-Driven Development: the spec is the source of truth" />
+<meta property="og:description" content="The artifact flow (proposal → specs → design → tasks → apply → archive), why it cuts review cycles ~40%, and how I run it with Claude." />
+<meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+<meta property="og:url" content="https://jalducin.github.io/blog/sdd-openspec.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--muted:#8b949e;--card-bg:#161d26;--border:#2a3744;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  a{color:var(--primary);text-decoration:none;} a:hover{text-decoration:underline;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;font-family:'Courier New',monospace;font-size:.9rem;}
+  .top .brand{color:var(--primary);font-weight:700;}
+  h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .6rem;color:var(--fg);}
+  h2{font-size:1.3rem;margin:2.2rem 0 .7rem;color:var(--primary);}
+  p{margin:.9rem 0;color:#c6d2df;}
+  ul,ol{margin:.6rem 0 .6rem 1.3rem;color:#c6d2df;} li{margin:.35rem 0;}
+  .meta{color:var(--muted);font-size:.85rem;font-family:'Courier New',monospace;margin-bottom:1.6rem;}
+  .tag{display:inline-block;background:rgba(127,168,201,.14);border:1px solid rgba(127,168,201,.4);color:var(--primary);border-radius:999px;padding:.1rem .55rem;font-size:.72rem;margin-right:.3rem;}
+  code{background:var(--card-bg);border:1px solid var(--border);border-radius:5px;padding:.1rem .4rem;font-family:'Courier New',monospace;font-size:.88em;color:var(--primary);}
+  pre{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;margin:1rem 0;}
+  pre code{background:none;border:none;padding:0;color:#c6d2df;}
+  blockquote{border-left:3px solid var(--primary);margin:1.2rem 0;padding:.3rem 0 .3rem 1rem;color:#aebccb;font-style:italic;}
+  .foot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../index.html">‹ Juan Valentin Alducin</a>
+      <a href="../index.html#writing">Writing</a>
+    </div>
+    <article>
+      <span class="tag">SDD</span><span class="tag">OpenSpec</span><span class="tag">AI-native</span>
+      <h1>Spec-Driven Development: the spec is the source of truth</h1>
+      <div class="meta">2026-06-14 · 5 min read</div>
+
+      <p>Most "AI-assisted" workflows treat the prompt as the artifact and the code as the truth. I flip that: the <strong>spec</strong> is the contract, and code is just its current implementation. That single inversion is what makes working with an LLM predictable instead of a slot machine.</p>
+
+      <h2>The artifact flow</h2>
+      <p>Every change — a feature, a fix, a refactor — walks through versioned artifacts before a line of code is written:</p>
+      <pre><code>proposal → specs → design → tasks → apply → archive</code></pre>
+      <ul>
+        <li><strong>proposal</strong> — why the change exists and what it touches.</li>
+        <li><strong>specs</strong> — <em>what</em> the system must do, as verifiable requirements/scenarios.</li>
+        <li><strong>design</strong> — <em>how</em>: decisions, alternatives, trade-offs.</li>
+        <li><strong>tasks</strong> — the ordered, ≤2h steps (with mandatory testing/verification).</li>
+        <li><strong>apply</strong> — implement against the spec; the spec is the acceptance test.</li>
+        <li><strong>archive</strong> — promote the deltas into the living specs.</li>
+      </ul>
+
+      <h2>Why it works</h2>
+      <p>When the spec is explicit, the model isn't guessing intent — it's executing a contract. Reviews stop being "is this what we meant?" and become "does this satisfy the spec?". In practice that cut my review cycles by <strong>~40%</strong> and let N1 resolve <strong>80%</strong> of incidents autonomously, because the expected behavior is written down, not tribal.</p>
+      <blockquote>If a change can't be expressed as a spec, it isn't understood well enough to build yet.</blockquote>
+
+      <h2>How I run it with Claude</h2>
+      <p>I keep the specs in the repo (OpenSpec) and feed them as grounding. The model generates the proposal and spec deltas, I review the <em>spec</em> (not the diff), and only then we implement. Documentation is part of the same change — a change is incomplete if it leaves docs stale. Every project in my portfolio — Fidello, VoltGrid, Trackion, JV Market, Monitoreo-Cloud, dataMasterGK — is built this way, 100% SDD/OpenSpec.</p>
+
+      <h2>Takeaway</h2>
+      <p>Spec-Driven Development isn't ceremony; it's leverage. Write the contract first, let AI execute it, and verify against it. The spec is what survives — the code is replaceable.</p>
+
+      <div class="foot">
+        Written by Juan Valentin Alducin Vázquez · <a href="../index.html#contact">Get in touch ›</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

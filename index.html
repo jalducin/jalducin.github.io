@@ -13,8 +13,6 @@
   <meta property="og:url" content="https://jalducin.github.io" />
   <meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
   <link rel="canonical" href="https://jalducin.github.io/" />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://jalducin.github.io/assets/img/og-image.png" />
   <meta name="twitter:title" content="Juan Valentin Alducin Vázquez — Senior Software Engineer · AI-native Development" />
@@ -102,13 +100,26 @@
     .featured-section{background:rgba(24,33,45,.5);padding:1.4rem 1.8rem;border-radius:12px;}
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
     .card{background:linear-gradient(135deg,#1f2630,#161b22);border-radius:16px;padding:1.4rem;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.5);transition:transform .3s;display:flex;flex-direction:column;}
-    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(127,168,201,.25) 0%,rgba(127,168,201,.05) 50%,rgba(127,168,201,.25) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:-1;}
+    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(127,168,201,.25) 0%,rgba(127,168,201,.05) 50%,rgba(127,168,201,.25) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:0;}
     .card:hover::before{left:0;}
+    .card>*{position:relative;z-index:1;}
     .card:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 0 24px rgba(127,168,201,.22),0 4px 18px rgba(0,0,0,.5);}
     .card h3{margin-bottom:.45rem;font-size:1.25rem;color:var(--primary);}
     .card p{font-size:.93rem;margin-bottom:.95rem;color:var(--fg);flex:1;}
     .tech{font-size:.78rem;color:var(--muted);margin-bottom:.9rem;}
     .card-badge{display:inline-block;background:rgba(127,168,201,.15);border:1px solid rgba(127,168,201,.4);padding:.15rem .5rem;border-radius:999px;font-size:.72rem;color:var(--primary);margin-bottom:.6rem;font-weight:600;}
+    .post-card{text-decoration:none;color:inherit;}
+    .post-card h3{color:var(--fg);}
+    .post-card:hover h3{color:var(--primary);}
+    .post-meta{color:var(--muted);font-size:.78rem;font-family:'Courier New',Courier,monospace;margin:.5rem 0 .9rem;}
+    .tag-mini{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);border-radius:5px;padding:0 .35rem;font-size:.68rem;margin-left:.15rem;}
+    .post-card .btn{align-self:flex-start;margin-top:auto;}
+    .now-card{background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:10px;padding:.9rem 1.1rem;margin:1rem 0 1.4rem;}
+    .now-card>strong{color:var(--primary);font-family:'Courier New',Courier,monospace;letter-spacing:.04em;}
+    .now-card .now-dot{color:#3fb950;font-size:.8rem;animation:nowpulse 2s ease-in-out infinite;}
+    .now-card ul{margin:.5rem 0 0 1.1rem;} .now-card li{margin:.25rem 0;color:var(--fg);font-size:.92rem;}
+    @keyframes nowpulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+    @media (prefers-reduced-motion: reduce){.now-card .now-dot{animation:none;}}
     .icons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(48px,1fr));gap:1rem;justify-items:center;}
     .icons-grid img{width:38px;height:38px;background:#fff;padding:3px;border-radius:6px;}
     .soft-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;}
@@ -144,6 +155,10 @@
     .form-success{display:none;background:rgba(127,168,201,.12);border:1px solid var(--primary);border-radius:6px;padding:.8rem 1rem;color:var(--primary);font-size:.9rem;}
     #matrix-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
     html.light #matrix-bg{display:none;}
+    #spotlight{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(600px circle at var(--mx,50%) var(--my,-30%), rgba(127,168,201,.09), transparent 45%);}
+    html.light #spotlight{background:radial-gradient(600px circle at var(--mx,50%) var(--my,-30%), rgba(63,100,136,.12), transparent 45%);}
+    @media (prefers-reduced-motion: reduce){#spotlight{display:none;}}
+    @media (hover: none){#spotlight{display:none;}}
     .cursor-blink{display:inline-block;width:3px;height:.85em;background:var(--primary);margin-left:5px;animation:blink 1.1s step-end infinite;vertical-align:text-bottom;border-radius:1px;}
     a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.nav-link:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:4px;}
     .cmdk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:none;align-items:flex-start;justify-content:center;padding-top:12vh;}
@@ -216,6 +231,7 @@
 </head>
 <body>
   <canvas id="matrix-bg"></canvas>
+  <div id="spotlight" aria-hidden="true"></div>
   <div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command palette">
     <div class="cmdk">
       <input id="cmdkInput" type="text" placeholder="Jump to a section or action…  (Esc to close)" aria-label="Search sections and actions" autocomplete="off" />
@@ -229,6 +245,7 @@
       <li class="nav-item"><a class="nav-link" href="#ai-method">AI Method</a></li>
       <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
       <li class="nav-item"><a class="nav-link" href="#featured-projects">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#writing">Writing</a></li>
       <li class="nav-item"><a class="nav-link" href="#hard-skills">Skills</a></li>
       <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
       <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
@@ -295,6 +312,14 @@
     <!-- AI METHOD -->
     <section id="ai-method" class="fade-in">
       <h2>How I Build with AI</h2>
+      <div class="now-card">
+        <span class="now-dot">●</span> <strong>Now</strong>
+        <ul>
+          <li>Building AI-native serverless at <strong>Podemos Progresar</strong> (fintech) with SDD.</li>
+          <li>Running my projects locally with <strong>Docker</strong>; observability via <strong>Grafana</strong>.</li>
+          <li>Studying a <strong>Master's in DevOps</strong> and pushing my English toward <strong>B2</strong>.</li>
+        </ul>
+      </div>
       <p style="color:var(--muted);">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
       <div class="sdd-flow">
         <span>proposal</span><em>→</em><span>specs</span><em>→</em><span>design</span><em>→</em><span>tasks</span><em>→</em><span>apply</span><em>→</em><span>archive</span>
@@ -433,30 +458,63 @@
       </div>
     </section>
 
+    <!-- WRITING / BLOG -->
+    <section id="writing" class="fade-in">
+      <h2><span>✎</span>Writing</h2>
+      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;">Notes from building AI-native: Spec-Driven Development, Docker and observability — drawn from real projects.</p>
+      <div class="projects">
+
+        <a class="card post-card" href="blog/sdd-openspec.html">
+          <div class="card-badge">★ SDD</div>
+          <h3>Spec-Driven Development: the spec is the source of truth</h3>
+          <p>Why I treat the spec as the contract and code as its current implementation — the artifact flow (proposal → specs → design → tasks → apply → archive), and why it cut my review cycles ~40%.</p>
+          <div class="post-meta">2026-06-14 · 5 min read · <span class="tag-mini">SDD</span> <span class="tag-mini">OpenSpec</span> <span class="tag-mini">AI-native</span></div>
+          <span class="btn">Read ↗</span>
+        </a>
+
+        <a class="card post-card" href="blog/docker-observability-local.html">
+          <div class="card-badge">★ Docker</div>
+          <h3>A zero-cost local observability stack with Docker Compose</h3>
+          <p>From an always-on EC2 to a reproducible local stack (Grafana + PostgreSQL + n8n): $0 idle, idempotent, and still cloud-aware over a read-only IAM role.</p>
+          <div class="post-meta">2026-06-14 · 4 min read · <span class="tag-mini">Docker</span> <span class="tag-mini">Observability</span> <span class="tag-mini">Cost</span></div>
+          <span class="btn">Read ↗</span>
+        </a>
+
+        <a class="card post-card" href="blog/grafana-multi-source.html">
+          <div class="card-badge">★ Grafana</div>
+          <h3>Multi-source observability with Grafana</h3>
+          <p>One pane over three sources: AWS serverless (CloudWatch), local Docker containers, and application data (tickets &amp; SLA) — correlating infra and business signals.</p>
+          <div class="post-meta">2026-06-14 · 4 min read · <span class="tag-mini">Grafana</span> <span class="tag-mini">CloudWatch</span> <span class="tag-mini">Observability</span></div>
+          <span class="btn">Read ↗</span>
+        </a>
+
+      </div>
+    </section>
+
     <!-- HARD SKILLS -->
     <section id="hard-skills" class="fade-in">
       <h2>Hard Skills</h2>
       <div class="icons-grid">
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" title="PHP" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" title="TypeScript" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" title="Django" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" title="Flask" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" title="Laravel" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" title="Docker" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" title="MySQL" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" title="MongoDB" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" title="Linux" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" title="GitHub" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg" alt="Azure" title="Azure" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" title="Next.js" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" title="Kubernetes" />
-        <img loading="lazy" decoding="async" width="38" height="38" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana" title="Grafana" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/python-original.svg" alt="Python" title="Python" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/php-original.svg" alt="PHP" title="PHP" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/javascript-original.svg" alt="JavaScript" title="JavaScript" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/typescript-original.svg" alt="TypeScript" title="TypeScript" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/java-original.svg" alt="Java" title="Java" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/django-plain.svg" alt="Django" title="Django" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/flask-original.svg" alt="Flask" title="Flask" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/laravel-original.svg" alt="Laravel" title="Laravel" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/react-original.svg" alt="React" title="React" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/docker-original.svg" alt="Docker" title="Docker" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/mysql-original.svg" alt="MySQL" title="MySQL" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/mongodb-original.svg" alt="MongoDB" title="MongoDB" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/linux-original.svg" alt="Linux" title="Linux" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/git-original.svg" alt="Git" title="Git" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/github-original.svg" alt="GitHub" title="GitHub" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/azure-original.svg" alt="Azure" title="Azure" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/nextjs-original.svg" alt="Next.js" title="Next.js" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/kubernetes-plain.svg" alt="Kubernetes" title="Kubernetes" />
+        <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/grafana-original.svg" alt="Grafana" title="Grafana" />
       </div>
 
       <div style="margin-top:2rem;">
@@ -699,6 +757,7 @@
         {label:'AI Method',tag:'section',run:()=>go('#ai-method')},
         {label:'Experience',tag:'section',run:()=>go('#experience')},
         {label:'Projects',tag:'section',run:()=>go('#featured-projects')},
+        {label:'Writing',tag:'section',run:()=>go('#writing')},
         {label:'Skills',tag:'section',run:()=>go('#hard-skills')},
         {label:'Languages',tag:'section',run:()=>go('#languages')},
         {label:'Education',tag:'section',run:()=>go('#education')},
@@ -782,7 +841,7 @@
     })();
     /* Tabs (una sección a la vez) + Terminal interactiva */
     (function(){
-      const GROUPS={'ai-method':['ai-method'],'experience':['experience'],'featured-projects':['featured-projects'],'hard-skills':['hard-skills','soft-skills'],'languages':['languages'],'education':['education'],'contact':['contact'],'terminal':['terminal']};
+      const GROUPS={'ai-method':['ai-method'],'experience':['experience'],'featured-projects':['featured-projects'],'writing':['writing'],'hard-skills':['hard-skills','soft-skills'],'languages':['languages'],'education':['education'],'contact':['contact'],'terminal':['terminal']};
       const ALL=[...new Set(Object.values(GROUPS).flat())];
       ALL.forEach(id=>{const el=document.getElementById(id); if(el)el.classList.add('tabpage');});
       document.body.classList.add('tabs');
@@ -807,7 +866,7 @@
         const hist=[]; let hi=-1;
         function line(text,cls){const d=document.createElement('div'); d.className=cls; d.textContent=text; out.appendChild(d); out.scrollTop=out.scrollHeight;}
         const CMDS={
-          help:()=>"Comandos: whoami · ls projects · cat cv · skills · contact · sdd · clear · help\nTip: hay un par de secretos por ahí…",
+          help:()=>"Comandos: whoami · ls projects · writing · cat cv · skills · contact · sdd · clear · help\nTip: hay un par de secretos por ahí… (prueba 'mundial')",
           whoami:()=>"Juan Valentin Alducin Vázquez — Senior Backend Engineer · AI-native Development (CDMX, México).",
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
@@ -815,9 +874,13 @@
           'ls projects':()=>"Fidello/   VoltGrid/   Trackion/   JV-Market/   Monitoreo-Cloud/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
           'cat cv':()=>{window.__downloadCV('es'); return "Descargando CV en español (PDF)…";},
           'cat cv en':()=>{window.__downloadCV('en'); return "Downloading CV in English (PDF)…";},
+          writing:()=>{window.__showTab('writing'); return "Abriendo Writing… posts: SDD/OpenSpec · Docker · Grafana.";},
+          blog:()=>{window.__showTab('writing'); return "Abriendo Writing… posts: SDD/OpenSpec · Docker · Grafana.";},
           clear:()=>{out.innerHTML=''; return null;},
           'sudo hire-me':()=>"✅ Permission granted. Excelente decisión 😏 — escríbele a "+EMAIL,
-          matrix:()=>"Wake up, Neo… 🟫 (el matrix ámbar ya corre detrás de ti)",
+          mundial:()=>"🏟️ Mundial 2026 en México 🇲🇽⚽ … y de repente TODO cobra: Uber x3, la chela a precio de oro y el taco 'edición mundialista' a $200 😱 me da mello. Plan B: verlo en casa con el matrix de fondo 🔵",
+          worldcup:()=>"🏟️ 2026 World Cup in Mexico 🇲🇽⚽ … and suddenly EVERYTHING surcharges. Staying home with the matrix on, thanks 🔵",
+          matrix:()=>"Wake up, Neo… 🔵 (el matrix azul metálico ya corre detrás de ti)",
         };
         function run(raw){
           const cmd=(raw||'').trim(); if(!cmd)return;
@@ -848,6 +911,22 @@
         var f=fileFor(lang), a=document.createElement('a');
         a.href=f.href; a.download=f.name; document.body.appendChild(a); a.click(); a.remove();
       };
+    })();
+  </script>
+  <script>
+    /* Spotlight: glow azul que sigue el cursor (ligero, rAF). Off en reduced-motion / touch. */
+    (function(){
+      var sp=document.getElementById('spotlight'); if(!sp)return;
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches || matchMedia('(hover: none)').matches) return;
+      var raf=0;
+      addEventListener('pointermove',function(e){
+        if(raf)return;
+        raf=requestAnimationFrame(function(){
+          sp.style.setProperty('--mx', e.clientX+'px');
+          sp.style.setProperty('--my', e.clientY+'px');
+          raf=0;
+        });
+      },{passive:true});
     })();
   </script>
 </body>

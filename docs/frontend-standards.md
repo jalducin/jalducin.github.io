@@ -72,6 +72,16 @@ No romper el diseño responsive.
 - El botón EN aparece donde aplique (Contact, command palette, terminal `cat cv en`).
 - Para editar el CV: cambiar `cv/cv.html` y/o `cv/cv-en.html` → regenerar → commitear HTML + PDFs. No editar el binario a mano.
 
+## 4.1 Blog "Writing" y assets self-host
+
+- **Blog**: sección/tab `#writing` en `index.html` que lista posts y enlaza a **páginas dedicadas**
+  `blog/<slug>.html` (HTML estático, tema azul metálico inline, OG/canonical propios). Sin build step.
+- **Íconos**: los SVG de tecnología se sirven **localmente** desde `assets/img/icons/` (no CDN). Provienen de
+  [devicon](https://devicon.dev) (licencia **MIT**); los logos son marcas de sus dueños y se usan de forma
+  nominativa para indicar experiencia. No reintroducir el CDN `cdn.jsdelivr.net`.
+- **UX**: `#spotlight` (glow que sigue el cursor, `z-index:-1`, off con `prefers-reduced-motion`/`hover:none`)
+  y bloque `.now-card`. El CV lleva doble QR (portafolio + LinkedIn) en el encabezado.
+
 ## 5. Datos del propietario (fuente de verdad)
 
 ```

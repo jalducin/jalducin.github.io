@@ -21,8 +21,10 @@
   .contact{ display:flex; flex-wrap:wrap; gap:4px 15px; margin-top:8px; font-size:9.8px; color:#3f4750; align-items:center; }
   .contact span{ display:inline-flex; align-items:center; gap:4px; }
   .contact svg{ width:12px; height:12px; fill:var(--gold); flex-shrink:0; }
-  .qr{ width:98px; height:98px; flex-shrink:0; }
-  .qr img{ width:98px; height:98px; }
+  .qr-group{ display:flex; gap:7px; flex-shrink:0; }
+  .qr{ width:78px; text-align:center; }
+  .qr img{ width:78px; height:78px; display:block; }
+  .qr figcaption{ font-size:8px; color:var(--navy); margin-top:1px; text-transform:uppercase; letter-spacing:.05em; }
 
   .cols{ display:flex; gap:8mm; margin-top:3mm; align-items:flex-start; }
   .col-left{ width:58%; }
@@ -83,7 +85,10 @@
         <span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX, México</span>
       </div>
     </div>
-    <div class="qr"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /></div>
+    <div class="qr-group">
+      <figure class="qr"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /><figcaption>Portfolio</figcaption></figure>
+      <figure class="qr"><img src="../assets/img/QR-linkedin.png" alt="QR — LinkedIn" /><figcaption>LinkedIn</figcaption></figure>
+    </div>
   </header>
 
   <div class="cols">
