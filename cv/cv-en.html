@@ -11,64 +11,62 @@
   @page { size: 216mm 340mm; margin: 0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
   :root{ --navy:#2b3947; --gold:#3f6488; --text:#586069; --muted:#8a9099; --rule:#2b3947; --dot:#d7dbdf; }
-  html,body{ font-family:"Rubik","Segoe UI",Arial,sans-serif; color:#586069; font-size:9.6px; line-height:1.34; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ font-family:"Rubik","Segoe UI",Arial,sans-serif; color:#586069; font-size:11.3px; line-height:1.28; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ background:#ffffff url("hex-bg.svg") repeat; }
   .sheet{ width:216mm; min-height:332mm; padding:10mm 11mm; }
 
   header{ display:flex; align-items:center; gap:6mm; }
-  .qr-li{ order:-1; }
-  .qr.qr-bottom{ width:100%; margin-top:10px; padding-top:8px; border-top:1px dotted var(--dot); text-align:right; }
-  .qr.qr-bottom img{ display:inline-block; }
+  .head-main{ flex:1; }
   .name{ font-size:22px; font-weight:800; color:var(--navy); letter-spacing:.3px; line-height:1.05; text-transform:uppercase; }
-  .tagline{ font-size:14.5px; font-weight:700; color:var(--gold); margin-top:4px; }
-  .contact{ display:flex; flex-wrap:wrap; gap:3px 12px; margin-top:6px; font-size:9.1px; color:#3f4750; align-items:center; }
+  .tagline{ font-size:14px; font-weight:700; color:var(--gold); margin-top:4px; }
+  .contact{ display:flex; flex-wrap:wrap; gap:3px 12px; margin-top:3px; font-size:11.3px; color:#3f4750; align-items:center; }
   .contact span{ display:inline-flex; align-items:center; gap:4px; }
   .contact svg{ width:12px; height:12px; fill:var(--gold); flex-shrink:0; }
   .qr-group{ display:flex; gap:7px; flex-shrink:0; }
   .qr{ width:78px; text-align:center; }
-  .qr img{ width:66px; height:66px; display:block; }
+  .qr img{ width:54px; height:54px; display:block; }
   .qr figcaption{ font-size:8px; color:var(--navy); margin-top:1px; text-transform:uppercase; letter-spacing:.05em; }
 
-  .cols{ display:flex; gap:8mm; margin-top:1mm; align-items:flex-start; }
+  .cols{ display:flex; gap:8mm; margin-top:0; align-items:flex-start; }
   .col-left{ width:58%; }
   .col-right{ width:42%; }
 
-  section{ margin-bottom:2px; }
-  h2{ font-size:13px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:3px; border-bottom:2px solid var(--rule); margin-bottom:5px; }
+  section{ margin-bottom:1px; }
+  h2{ font-size:14px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:2px; border-bottom:2px solid var(--rule); margin-bottom:3px; }
   .summary{ color:#586069; }
 
-  .entry{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .entry{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .entry:last-child{ border-bottom:none; }
-  .role{ font-size:11.6px; font-weight:700; color:var(--navy); }
-  .org{ font-size:10.2px; font-weight:700; color:var(--gold); margin:1px 0 2px; }
-  .meta{ display:flex; flex-wrap:wrap; gap:2px 13px; font-size:9.2px; color:var(--muted); margin-bottom:4px; }
+  .role{ font-size:13px; font-weight:700; color:var(--navy); }
+  .org{ font-size:12px; font-weight:700; color:var(--gold); margin:1px 0 2px; }
+  .meta{ display:flex; flex-wrap:wrap; gap:2px 13px; font-size:11.3px; color:var(--muted); margin-bottom:4px; }
   .meta span{ display:inline-flex; align-items:center; gap:3px; }
   .meta svg{ width:10px; height:10px; fill:var(--muted); }
   ul.b{ list-style:disc; margin-left:14px; }
-  ul.b li{ margin-bottom:1px; font-size:9.5px; color:#586069; }
+  ul.b li{ margin-bottom:1px; font-size:11.3px; color:#586069; }
   ul.b li::marker{ color:var(--navy); }
-  .stack{ font-size:9.3px; color:#6b727a; margin-top:2px; }
+  .stack{ font-size:11.3px; color:#6b727a; margin-top:2px; }
 
-  .skill{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); }
+  .skill{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); }
   .skill:last-child{ border-bottom:none; }
-  .skill .cat{ font-size:10.4px; font-weight:700; color:var(--gold); margin-bottom:1px; }
-  .skill .val{ font-size:9.5px; color:#586069; }
+  .skill .cat{ font-size:12px; font-weight:700; color:var(--gold); margin-bottom:1px; }
+  .skill .val{ font-size:11.3px; color:#586069; }
 
-  .course{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); }
+  .course{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); }
   .course:last-child{ border-bottom:none; }
-  .course b{ font-size:10.3px; color:var(--navy); display:block; }
-  .course span{ font-size:9.4px; color:var(--muted); }
+  .course b{ font-size:12px; color:var(--navy); display:block; }
+  .course span{ font-size:11.3px; color:var(--muted); }
 
-  .proj{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .proj{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .proj:last-child{ border-bottom:none; }
-  .proj .ptitle{ font-size:10.8px; font-weight:700; color:var(--navy); }
-  .proj .pdesc{ font-size:9.5px; color:#586069; margin:1.5px 0; }
-  .proj .pstack{ font-size:9.3px; color:#586069; }
+  .proj .ptitle{ font-size:12.5px; font-weight:700; color:var(--navy); }
+  .proj .pdesc{ font-size:11.3px; color:#586069; margin:1.5px 0; }
+  .proj .pstack{ font-size:11.3px; color:#586069; }
   .proj .pstack b{ color:var(--navy); }
 
   .lang{ display:flex; align-items:center; justify-content:space-between; margin-bottom:3px; }
-  .lang .lname b{ font-size:10.5px; color:var(--navy); display:block; }
-  .lang .lname span{ font-size:9.2px; color:var(--muted); }
+  .lang .lname b{ font-size:12px; color:var(--navy); display:block; }
+  .lang .lname span{ font-size:11.3px; color:var(--muted); }
   .dots{ display:flex; gap:4px; }
   .dots i{ width:10px; height:10px; border-radius:50%; background:#dfe2e6; display:inline-block; }
   .dots i.on{ background:var(--gold); }
@@ -91,6 +89,7 @@
         <span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX, México</span>
       </div>
     </div>
+    <figure class="qr qr-pf"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /><figcaption>Portfolio</figcaption></figure>
   </header>
 
   <div class="cols">
@@ -98,7 +97,7 @@
     <div class="col-left">
       <section>
         <h2>Summary</h2>
-        <p class="summary">Senior Backend Engineer with 10+ years building APIs and backend services (Python, FastAPI, Django) and integrating Generative AI / LLMs (Claude, Gemini, OpenAI) as the central copilot of the SDLC. Champion of Spec-Driven Development (SDD): cut review cycles by ~40% and enabled 80% autonomous resolution of N1 incidents. Experienced in AWS Serverless, CI/CD and technical leadership (Tech Lead) across fintech and retail.</p>
+        <p class="summary">Senior Backend Engineer with 10+ years in APIs and backend services (Python, FastAPI, Django) integrating Generative AI / LLMs (Claude, Gemini, OpenAI) as the SDLC copilot. SDD champion: −40% review cycles and 80% autonomous N1 resolution. AWS Serverless, CI/CD and technical leadership (Tech Lead) in fintech and retail.</p>
       </section>
 
       <section>
@@ -109,11 +108,11 @@
           <div class="org">Podemos Progresar</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>09/2025 - Present</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Diagnose and resolve bugs, technical debt and incidents end-to-end applying Spec-Driven Development (SDD), cutting the review cycle by ~40%.</li>
-            <li>Integrate Claude (SDD) and Gemini across the full SDLC: spec generation, static code analysis, automated debugging and technical documentation; driving adoption across engineering.</li>
+            <li>Resolve bugs, technical debt and incidents end-to-end with Spec-Driven Development (SDD): −40% review cycle.</li>
+            <li>Integrate Claude (SDD) and Gemini across the full SDLC (specs, static analysis, debugging, documentation), driving adoption across engineering.</li>
             <li>Manage incidents with RCA and AI-assisted post-mortems; transfer knowledge to N1, enabling 80% autonomous resolution without senior escalation.</li>
-            <li>Operate AWS infrastructure (Lambda, RDS, Step Functions) with first response under 10 min and critical incident resolution under 2 hours.</li>
-            <li>Build internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) for webhooks and integrations (Asana, Freshdesk, Notion, Slack), automating flows with n8n.</li>
+            <li>Operate AWS infra (Lambda, RDS, Step Functions): first response under 10 min, critical resolution under 2 h.</li>
+            <li>Build internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) for webhooks and integrations (Asana, Freshdesk, Notion, Slack); automation with n8n.</li>
           </ul>
           <div class="stack">Stack: Python · Django · FastAPI · PostgreSQL · AWS Serverless · Docker · n8n · Grafana</div>
         </div>
@@ -125,7 +124,6 @@
           <ul class="b">
             <li>Built REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs via XML/SFTP automation for retail across 3 LATAM countries.</li>
             <li>Technical lead for the cloud GK POS Go-Live (Peru, Colombia, Bolivia): timelines, business/IT stakeholders, pre-sales demos and local-team training.</li>
-            <li>Designed the promotions ETL pipeline for GK OmniPOS, enabling real-time commercial analysis for decision-making.</li>
             <li>Led the functional-technical team: defined the testing strategy (unit, regression, integration) and ensured end-to-end quality on every release.</li>
           </ul>
           <div class="stack">Stack: Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL</div>
@@ -136,7 +134,7 @@
           <div class="org">Softtek</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>03/2017 - 01/2022</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Implemented billing systems, customer portals and ETLs integrated with SAP ERP/HANA; built executive dashboards in SAP BO for business leadership.</li>
+            <li>Implemented billing, customer portals and ETLs with SAP ERP/HANA; executive dashboards in SAP BO.</li>
             <li>Provided AMS support to Retail GK solutions (help desk, corrective/evolutive maintenance) under Scrum, sustaining a 98% SLA.</li>
           </ul>
           <div class="stack">Stack: Python · PHP · .NET · SAP ERP/HANA · SAP BO · ETL · Web Services · Scrum</div>
@@ -168,7 +166,20 @@
         <div class="course"><b>Generative AI with Amazon Bedrock</b><span>Coursera · 2026</span></div>
         <div class="course"><b>Developing Applications in Python on AWS</b><span>Coursera · 2025</span></div>
         <div class="course"><b>GitHub Actions Bootcamp</b><span>Código Facilito · 2025</span></div>
-        <div class="course"><b>Understanding the World Through Data</b><span>edX · 2024</span></div>
+      </section>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-right">
+      <section>
+        <h2>Skills</h2>
+        <div class="skill"><div class="cat">Languages</div><div class="val">Python, PHP, JavaScript, TypeScript, Java, SQL</div></div>
+        <div class="skill"><div class="cat">Frameworks &amp; APIs</div><div class="val">Django, FastAPI, Flask, React, Next.js 14, Node.js, REST APIs, SSO/OIDC</div></div>
+        <div class="skill"><div class="cat">Cloud · DevOps · Observability</div><div class="val">AWS (Lambda, RDS, S3, Step Functions, EC2, CloudWatch), Serverless Framework, Kubernetes, CI/CD (GitHub Actions), Docker, n8n, Grafana, Supabase</div></div>
+        <div class="skill"><div class="cat">Databases</div><div class="val">PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA, DynamoDB</div></div>
+        <div class="skill"><div class="cat">AI &amp; Generative AI</div><div class="val">Claude/OpenAI/Gemini APIs, Prompt Engineering, LLM Integration, RAG, AI Agents, Agentic Workflows, SDD/OpenSpec, Bedrock</div></div>
+        <div class="skill"><div class="cat">Management</div><div class="val">Scrum, Jira, Asana, Notion, Postman</div></div>
+        <div class="skill"><div class="cat">Soft Skills</div><div class="val">Technical Leadership, Mentoring, Executive Communication, Stakeholder Management, Ownership, Problem Solving</div></div>
       </section>
 
       <section>
@@ -178,60 +189,45 @@
           <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
         </div>
         <div class="lang">
-          <div class="lname"><b>English</b><span>B1 · B2 technical reading &amp; writing</span></div>
+          <div class="lname"><b>English</b><span>B1 · B2 technical reading/writing</span></div>
           <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
         </div>
-      </section>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="col-right">
-      <section>
-        <h2>Skills</h2>
-        <div class="skill"><div class="cat">Languages</div><div class="val">Python, PHP, JavaScript, TypeScript, Java, SQL</div></div>
-        <div class="skill"><div class="cat">Frameworks &amp; APIs</div><div class="val">Django, FastAPI, Flask, React, Next.js 14, Node.js, REST APIs, Microservices, SSO/OIDC</div></div>
-        <div class="skill"><div class="cat">Cloud · DevOps · Observability</div><div class="val">AWS (Lambda, RDS, S3, Step Functions, EC2, CloudWatch), Serverless Framework (IaC), Kubernetes (Kustomize), CI/CD (GitHub Actions), Docker, n8n, Grafana, Supabase, Azure/GCP (basic)</div></div>
-        <div class="skill"><div class="cat">Databases</div><div class="val">PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA, DynamoDB</div></div>
-        <div class="skill"><div class="cat">AI &amp; Generative AI</div><div class="val">Claude API, OpenAI API, Gemini API, Prompt Engineering, LLM Integration, RAG, AI Agents, Agentic Workflows, SDD / OpenSpec, AWS Bedrock</div></div>
-        <div class="skill"><div class="cat">Management</div><div class="val">Scrum, Jira, Asana, Notion, Postman</div></div>
-        <div class="skill"><div class="cat">Soft Skills</div><div class="val">Technical Leadership, Mentoring, Executive Communication, Stakeholder Management, Ownership, Problem Solving</div></div>
       </section>
 
       <section>
         <h2>Projects</h2>
         <div class="proj">
           <div class="ptitle">Fidello — Loyalty Card System</div>
-          <p class="pdesc">Multi-business digital loyalty with points and roles, mobile-first via QR. JWT, real-time WebSockets, multi-tenant RLS and QR tokens (60s TTL + SHA-256 fingerprint) against replay. 100% SDD/OpenSpec · continuously evolving.</p>
-          <div class="pstack"><b>Stack:</b> React 18 · TypeScript · Vite · Tailwind · Supabase (PostgreSQL · Auth · Realtime) · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
+          <p class="pdesc">Multi-business digital loyalty (roles, mobile-first QR): JWT, WebSockets, multi-tenant RLS and anti-replay QR tokens. 100% SDD · evolving.</p>
+          <div class="pstack"><b>Stack:</b> React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
         </div>
         <div class="proj">
           <div class="ptitle">Monitoreo-Cloud — Observability</div>
-          <p class="pdesc">Self-hosted observability stack (Grafana + Docker) over 3 sources: AWS serverless (Lambda/S3 via CloudWatch), local Docker containers, and Trackion's tickets/SLA. Collection with n8n + read-only IAM. SDD.</p>
+          <p class="pdesc">Self-hosted observability (Grafana + Docker) over 3 sources: AWS serverless (CloudWatch), local Docker and Trackion's tickets/SLA. SDD.</p>
           <div class="pstack"><b>Stack:</b> Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
         </div>
         <div class="proj">
           <div class="ptitle">VoltGrid — EV Charging Platform</div>
-          <p class="pdesc">Multi-tenant white-label SaaS for EV charging-station operators: live status over WebSocket, RLS tenant isolation, RBAC + SSO (OIDC), analytics (uptime, kWh, CSV export), auditable scheduler and PWA. 100% SDD.</p>
-          <div class="pstack"><b>Stack:</b> FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize)</div>
+          <p class="pdesc">Multi-tenant white-label EV-charging SaaS: real-time (WebSocket), RLS, RBAC + SSO (OIDC), analytics and PWA. 100% SDD.</p>
+          <div class="pstack"><b>Stack:</b> FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · WebSockets · Docker · Kubernetes</div>
         </div>
         <div class="proj">
           <div class="ptitle">Trackion — Serverless Help Desk</div>
-          <p class="pdesc">White-label serverless help desk: end-to-end ticketing, admin-managed catalogs and an open API-integration module (generic webhooks + domain-event dispatch). Grafana tickets &amp; SLA dashboards. SDD.</p>
+          <p class="pdesc">White-label serverless help desk: end-to-end ticketing, catalogs and an open API-integration module; Grafana dashboards. SDD.</p>
           <div class="pstack"><b>Stack:</b> Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana</div>
         </div>
         <div class="proj">
           <div class="ptitle">JV Market — E-commerce</div>
-          <p class="pdesc">Full-stack e-commerce (streetwear/sneakers) deployed on AWS: JWT, catalog, cart, checkout, <b>Click &amp; Collect</b>, <b>wishlist</b> and admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. SDD.</p>
+          <p class="pdesc">Streetwear/sneakers e-commerce on AWS: JWT, cart, checkout, <b>Click &amp; Collect</b> and <b>wishlist</b>; API Gateway + Lambda, S3 + CloudFront. SDD.</p>
           <div class="pstack"><b>Stack:</b> Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3 · CloudFront)</div>
         </div>
         <div class="proj">
           <div class="ptitle">dataMasterGK — ETL Middleware (GK Retail)</div>
-          <p class="pdesc">ETL middleware that integrates master data into GK retail systems: watches directories, transforms Excel → GK XML (4 interfaces) and transmits via SFTP/FTP, with a web panel (config/operation/audit), scheduler and SQLite auditing. Re-engineered under SDD: idempotent single-pass pipeline, pooled SFTP/SQLite connections and security hardening (parameterized SQL).</p>
-          <div class="pstack"><b>Stack:</b> Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2</div>
+          <p class="pdesc">Retail ETL middleware for GK: Excel → GK XML (4 interfaces) via SFTP/FTP, Flask panel and SQLite auditing. Re-engineered under SDD (idempotent, security).</p>
+          <div class="pstack"><b>Stack:</b> Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP)</div>
         </div>
       </section>
 
-      <figure class="qr qr-bottom"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /><figcaption>Portfolio</figcaption></figure>
     </div>
   </div>
 
