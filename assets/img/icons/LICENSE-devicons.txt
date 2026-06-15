@@ -1,0 +1,4 @@
+Technology icons in this folder are from Devicon (https://devicon.dev),
+licensed under the MIT License (https://github.com/devicons/devicon/blob/master/LICENSE).
+Brand logos are trademarks of their respective owners and are used here nominatively
+to indicate technologies/experience, without implying affiliation or endorsement.

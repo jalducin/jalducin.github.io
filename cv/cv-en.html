@@ -15,7 +15,10 @@
   body{ background:#ffffff url("hex-bg.svg") repeat; }
   .sheet{ width:216mm; min-height:332mm; padding:10mm 11mm; }
 
-  header{ display:flex; justify-content:space-between; align-items:flex-start; gap:8mm; }
+  header{ display:flex; align-items:center; gap:6mm; }
+  .qr-li{ order:-1; }
+  .qr-bottom{ width:100%; margin-top:10px; padding-top:8px; border-top:1px dotted var(--dot); text-align:center; }
+  .qr-bottom img{ display:inline-block; }
   .name{ font-size:28px; font-weight:800; color:var(--navy); letter-spacing:.4px; line-height:1; text-transform:uppercase; }
   .tagline{ font-size:14.5px; font-weight:700; color:var(--gold); margin-top:4px; }
   .contact{ display:flex; flex-wrap:wrap; gap:4px 15px; margin-top:8px; font-size:9.8px; color:#3f4750; align-items:center; }
@@ -26,15 +29,15 @@
   .qr img{ width:78px; height:78px; display:block; }
   .qr figcaption{ font-size:8px; color:var(--navy); margin-top:1px; text-transform:uppercase; letter-spacing:.05em; }
 
-  .cols{ display:flex; gap:8mm; margin-top:2mm; align-items:flex-start; }
+  .cols{ display:flex; gap:8mm; margin-top:1mm; align-items:flex-start; }
   .col-left{ width:58%; }
   .col-right{ width:42%; }
 
-  section{ margin-bottom:3px; }
+  section{ margin-bottom:2px; }
   h2{ font-size:13px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:3px; border-bottom:2px solid var(--rule); margin-bottom:5px; }
   .summary{ color:#586069; }
 
-  .entry{ padding-bottom:3px; margin-bottom:3px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .entry{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .entry:last-child{ border-bottom:none; }
   .role{ font-size:11.6px; font-weight:700; color:var(--navy); }
   .org{ font-size:10.2px; font-weight:700; color:var(--gold); margin:1px 0 2px; }
@@ -42,7 +45,7 @@
   .meta span{ display:inline-flex; align-items:center; gap:3px; }
   .meta svg{ width:10px; height:10px; fill:var(--muted); }
   ul.b{ list-style:disc; margin-left:14px; }
-  ul.b li{ margin-bottom:2px; font-size:9.5px; color:#586069; }
+  ul.b li{ margin-bottom:1px; font-size:9.5px; color:#586069; }
   ul.b li::marker{ color:var(--navy); }
   .stack{ font-size:9.3px; color:#6b727a; margin-top:2px; }
 
@@ -51,7 +54,7 @@
   .skill .cat{ font-size:10.4px; font-weight:700; color:var(--gold); margin-bottom:1px; }
   .skill .val{ font-size:9.5px; color:#586069; }
 
-  .course{ padding-bottom:3px; margin-bottom:3px; border-bottom:1px dotted var(--dot); }
+  .course{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); }
   .course:last-child{ border-bottom:none; }
   .course b{ font-size:10.3px; color:var(--navy); display:block; }
   .course span{ font-size:9.4px; color:var(--muted); }
@@ -63,7 +66,7 @@
   .proj .pstack{ font-size:9.3px; color:#586069; }
   .proj .pstack b{ color:var(--navy); }
 
-  .lang{ display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; }
+  .lang{ display:flex; align-items:center; justify-content:space-between; margin-bottom:3px; }
   .lang .lname b{ font-size:10.5px; color:var(--navy); display:block; }
   .lang .lname span{ font-size:9.2px; color:var(--muted); }
   .dots{ display:flex; gap:4px; }
@@ -75,6 +78,7 @@
 <div class="sheet">
 
   <header>
+    <figure class="qr qr-li"><img src="../assets/img/QR-linkedin.png" alt="QR — LinkedIn" /><figcaption>LinkedIn</figcaption></figure>
     <div class="head-main">
       <div class="name">Juan Valentin</div>
       <div class="tagline">Senior Backend Engineer | AI-native Development</div>
@@ -83,10 +87,6 @@
         <span><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20c1.5 0 2.5-.2 2.5-1s-1-1-2.5-1a8 8 0 118-8v1.5c0 .8-.7 1.5-1.5 1.5S17 .8 17 v-3a5 5 0 10-1.5 3.5c.6.9 1.6 1.5 2.5 1.5 1.9 0 3.5-1.6 3.5-3.5V12A10 10 0 0012 2zm0 13a3 3 0 110-6 3 3 0 010 6z"/></svg>valentin.alducin88@gmail.com</span>
         <span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX, México</span>
       </div>
-    </div>
-    <div class="qr-group">
-      <figure class="qr"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /><figcaption>Portfolio</figcaption></figure>
-      <figure class="qr"><img src="../assets/img/QR-linkedin.png" alt="QR — LinkedIn" /><figcaption>LinkedIn</figcaption></figure>
     </div>
   </header>
 
@@ -167,6 +167,18 @@
         <div class="course"><b>GitHub Actions Bootcamp</b><span>Código Facilito · 2025</span></div>
         <div class="course"><b>Understanding the World Through Data</b><span>edX · 2024</span></div>
       </section>
+
+      <section>
+        <h2>Languages</h2>
+        <div class="lang">
+          <div class="lname"><b>Spanish</b><span>Native</span></div>
+          <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+        </div>
+        <div class="lang">
+          <div class="lname"><b>English</b><span>B1 · B2 technical reading &amp; writing</span></div>
+          <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+        </div>
+      </section>
     </div>
 
     <!-- RIGHT -->
@@ -180,18 +192,6 @@
         <div class="skill"><div class="cat">AI &amp; Generative AI</div><div class="val">Claude API, OpenAI API, Gemini API, Prompt Engineering, LLM Integration, RAG, AI Agents, Agentic Workflows, SDD / OpenSpec, AWS Bedrock</div></div>
         <div class="skill"><div class="cat">Management</div><div class="val">Scrum, Jira, Asana, Notion, Postman</div></div>
         <div class="skill"><div class="cat">Soft Skills</div><div class="val">Technical Leadership, Mentoring, Executive Communication, Stakeholder Management, Ownership, Problem Solving</div></div>
-      </section>
-
-      <section>
-        <h2>Languages</h2>
-        <div class="lang">
-          <div class="lname"><b>Spanish</b><span>Native</span></div>
-          <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-        </div>
-        <div class="lang">
-          <div class="lname"><b>English</b><span>B1 · B2 technical reading &amp; writing</span></div>
-          <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
-        </div>
       </section>
 
       <section>
@@ -227,6 +227,8 @@
           <div class="pstack"><b>Stack:</b> Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2</div>
         </div>
       </section>
+
+      <figure class="qr qr-bottom"><img src="../assets/img/QR.png" alt="QR — portfolio repository" /><figcaption>Portfolio</figcaption></figure>
     </div>
   </div>
 

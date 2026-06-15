@@ -51,3 +51,4 @@ backend/assistant/profile.txt
 assistant.zip
 .fnurl
 *.json.tmp
+*.zip
