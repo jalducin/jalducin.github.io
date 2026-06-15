@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A zero-cost local observability stack with Docker Compose — Juan Valentin Alducin</title>
+<meta name="description" content="Why I moved my observability stack from an always-on EC2 to a reproducible local Docker Compose setup — and how to keep it idempotent and cheap." />
+<link rel="canonical" href="https://jalducin.github.io/blog/docker-observability-local.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="A zero-cost local observability stack with Docker Compose" />
+<meta property="og:description" content="From an always-on EC2 to a reproducible local Docker Compose stack: Grafana + PostgreSQL + n8n, idempotent and $0." />
+<meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+<meta property="og:url" content="https://jalducin.github.io/blog/docker-observability-local.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--muted:#8b949e;--card-bg:#161d26;--border:#2a3744;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  a{color:var(--primary);text-decoration:none;} a:hover{text-decoration:underline;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;font-family:'Courier New',monospace;font-size:.9rem;}
+  .top .brand{color:var(--primary);font-weight:700;}
+  h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .6rem;color:var(--fg);}
+  h2{font-size:1.3rem;margin:2.2rem 0 .7rem;color:var(--primary);}
+  p{margin:.9rem 0;color:#c6d2df;}
+  ul,ol{margin:.6rem 0 .6rem 1.3rem;color:#c6d2df;} li{margin:.35rem 0;}
+  .meta{color:var(--muted);font-size:.85rem;font-family:'Courier New',monospace;margin-bottom:1.6rem;}
+  .tag{display:inline-block;background:rgba(127,168,201,.14);border:1px solid rgba(127,168,201,.4);color:var(--primary);border-radius:999px;padding:.1rem .55rem;font-size:.72rem;margin-right:.3rem;}
+  code{background:var(--card-bg);border:1px solid var(--border);border-radius:5px;padding:.1rem .4rem;font-family:'Courier New',monospace;font-size:.88em;color:var(--primary);}
+  pre{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;margin:1rem 0;}
+  pre code{background:none;border:none;padding:0;color:#c6d2df;}
+  blockquote{border-left:3px solid var(--primary);margin:1.2rem 0;padding:.3rem 0 .3rem 1rem;color:#aebccb;font-style:italic;}
+  .foot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../index.html">‹ Juan Valentin Alducin</a>
+      <a href="../index.html#writing">Writing</a>
+    </div>
+    <article>
+      <span class="tag">Docker</span><span class="tag">Observability</span><span class="tag">Cost</span>
+      <h1>A zero-cost local observability stack with Docker Compose</h1>
+      <div class="meta">2026-06-14 · 4 min read</div>
+
+      <p>I used to run my monitoring stack on an always-on <code>t3.micro</code>. It worked — until the bill reminded me that "free tier" stops being free once you add a couple of public IPv4 addresses. The fix wasn't a bigger instance; it was moving the stack to <strong>local Docker Compose</strong> and spinning it up only when I need it.</p>
+
+      <h2>Why local first</h2>
+      <ul>
+        <li><strong>$0 idle.</strong> Nothing runs when I'm not demoing. No EC2 hours, no idle Elastic IPs.</li>
+        <li><strong>Reproducible.</strong> One <code>docker compose up</code> brings up the exact same stack on any machine.</li>
+        <li><strong>Still cloud-aware.</strong> The local Grafana reads AWS CloudWatch over a read-only IAM role — local UI, cloud data.</li>
+      </ul>
+
+      <h2>The shape of it</h2>
+      <p>Three services, one network, persistent volumes:</p>
+      <pre><code>services:
+  grafana:    # dashboards + alerts
+  postgres:   # metrics + app data (volume)
+  n8n:        # scheduled collection / ETL</code></pre>
+      <p>Grafana talks to PostgreSQL as a datasource; n8n runs the scheduled pulls (CloudWatch → normalize → insert). Everything is declared, nothing is hand-clicked.</p>
+
+      <h2>Lessons that kept it cheap and stable</h2>
+      <ul>
+        <li><strong>Reuse connections.</strong> One SFTP/DB connection per run, batched inserts — not one per row.</li>
+        <li><strong>Healthchecks + <code>depends_on</code>.</strong> Grafana shouldn't boot before Postgres is actually ready.</li>
+        <li><strong>Idempotency.</strong> Re-running the pipeline must converge, not duplicate.</li>
+        <li><strong>Secrets out of the image.</strong> Env files ignored by git; never bake credentials into a layer.</li>
+      </ul>
+
+      <blockquote>Cloud is a deployment target, not a place your dev loop has to live.</blockquote>
+
+      <h2>Takeaway</h2>
+      <p>For side projects and portfolios, "always-on in the cloud" is a tax you don't need to pay. Containerize it, run it locally, and promote to the cloud only when something actually needs to be public.</p>
+
+      <div class="foot">
+        Written by Juan Valentin Alducin Vázquez · <a href="../index.html#contact">Get in touch ›</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
