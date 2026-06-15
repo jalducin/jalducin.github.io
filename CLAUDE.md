@@ -91,7 +91,7 @@ Inglés:      B1 (Intermedio)
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
 | JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (Live Demo) | jalducin/EcommerceJVAV |
 | Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
-| dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
+| dataMasterGK | Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 — middleware ETL retail (Excel→GK XML, 4 interfaces, SFTP/FTP), rediseñado con SDD (pipeline idempotente, seguridad) | jalducin/dataMasterGK |
 
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
 > ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios y socket-chat

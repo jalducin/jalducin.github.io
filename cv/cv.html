@@ -218,9 +218,9 @@
           <div class="pstack"><b>Stack:</b> Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
         </div>
         <div class="proj">
-          <div class="ptitle">dataMasterGK</div>
-          <p class="pdesc">Procesamiento Excel → XML → SFTP con panel admin web, logging centralizado y Docker. Desplegado en productivo.</p>
-          <div class="pstack"><b>Stack:</b> Python · Flask · SQLite · Paramiko · Docker</div>
+          <div class="ptitle">dataMasterGK — Middleware ETL (GK Retail)</div>
+          <p class="pdesc">Middleware ETL que integra datos maestros a sistemas GK: vigila directorios, transforma Excel → XML de GK (4 interfaces) y transmite por SFTP/FTP, con panel web (config/operación/auditoría), scheduler y auditoría SQLite. Rediseñado con SDD: pipeline idempotente de una sola pasada, conexiones SFTP/SQLite reutilizadas y endurecimiento de seguridad (SQL parametrizado).</p>
+          <div class="pstack"><b>Stack:</b> Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2</div>
         </div>
       </section>
     </div>
