@@ -408,9 +408,18 @@
 
         <div class="card">
           <div class="card-badge">★ AI-native · 100% SDD</div>
+          <div class="card-badge">🚧 In active development</div>
           <h3>Fidello — Loyalty Card System</h3>
           <p>Multi-business digital loyalty platform with points management and differentiated roles (Owner, Manager, Employee). Mobile-first via QR, no install required. <strong>JWT auth</strong>, real-time <strong>WebSockets</strong>, multi-tenant <strong>RLS</strong>, and QR tokens with <strong>60s TTL + SHA-256 fingerprint</strong> against replay attacks. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">React 18 · TypeScript 5.5 · Vite · Tailwind CSS · Supabase (PostgreSQL + Auth + PostgREST + Realtime) · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
+        </div>
+
+        <div class="card">
+          <div class="card-badge">📊 Observability · multi-source</div>
+          <h3>Monitoreo-Cloud — Observability Stack</h3>
+          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. <strong>100% SDD/OpenSpec</strong>.</p>
+          <div class="tech">Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
+          <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
         <div class="card">
@@ -437,14 +446,6 @@
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
             <a class="btn" href="https://d3rw1q49m6mvnq.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-badge">📊 Observability · multi-source</div>
-          <h3>Monitoreo-Cloud — Observability Stack</h3>
-          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. <strong>100% SDD/OpenSpec</strong>.</p>
-          <div class="tech">Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
-          <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
         <div class="card">
@@ -871,7 +872,7 @@
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
           contact:()=>"📧 "+EMAIL+"   ·   in/juanvalducinv   ·   github.com/jalducin",
-          'ls projects':()=>"Fidello/   VoltGrid/   Trackion/   JV-Market/   Monitoreo-Cloud/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
+          'ls projects':()=>"Fidello/   Monitoreo-Cloud/   VoltGrid/   Trackion/   JV-Market/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
           'cat cv':()=>{window.__downloadCV('es'); return "Descargando CV en español (PDF)…";},
           'cat cv en':()=>{window.__downloadCV('en'); return "Downloading CV in English (PDF)…";},
           writing:()=>{window.__showTab('writing'); return "Abriendo Writing… posts: SDD/OpenSpec · Docker · Grafana.";},
