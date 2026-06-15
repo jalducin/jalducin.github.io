@@ -45,17 +45,19 @@ adopta el agente `frontend-developer` de `ai-specs/agents/`.
 ## Paleta de colores
 
 ```css
---bg:        #17120e   (café muy oscuro, no negro puro)
---fg:        #e8ddcf   (crema)
---primary:   #c8924a   (café-dorado, acento)
---accent2:   #e0a96d   (ámbar claro)
---card-bg:   #221a13
---border:    #3a2e22
---badge-bg:  #2a2017
+--bg:        #0f141a   (azul noche muy oscuro, no negro puro)
+--fg:        #dde6ef   (blanco azulado)
+--primary:   #7fa8c9   (azul acero metálico, acento)
+--accent2:   #a9c5dd   (azul niebla)
+--card-bg:   #161d26
+--border:    #2a3744
+--badge-bg:  #1b232d
 ```
 
-> Paleta **café elegante** (armoniza con el CV). El efecto **matrix** se conserva pero recoloreado a ámbar.
-> Tema claro (`html.light`): variante cálida crema. No usar el azul `#58a6ff`/negro `#0d1117` anteriores.
+> Paleta **azul metálico profesional** (armoniza con el CV, acento `#3f6488`). El efecto **matrix** se conserva
+> pero recoloreado a azul metálico (`#7fa8c9`). Tema claro (`html.light`): variante fría (`--bg:#eef2f6`,
+> `--primary:#3f6488`). Detalle completo de tokens en `docs/frontend-standards.md §2`. No usar el café/dorado
+> anterior ni el azul `#58a6ff`/negro `#0d1117`.
 
 ---
 
@@ -86,9 +88,9 @@ Inglés:      B1 (Intermedio)
 |---|---|---|
 | Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
-| Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless, desplegado | jalducin/Trackion |
-| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — desplegado | jalducin/EcommerceJVAV |
-| Monitoreo-Cloud | AWS EC2 · CloudWatch · n8n · PostgreSQL · Grafana · Docker Compose · AWS Budgets — observabilidad Free Tier | jalducin/monitoreo-cloud |
+| Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
+| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (Live Demo) | jalducin/EcommerceJVAV |
+| Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
 | dataMasterGK | Python · Flask · SQLite · Paramiko · Docker | jalducin/dataMasterGK |
 
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma

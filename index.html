@@ -50,8 +50,10 @@
   }
   </script>
   <style>
-    :root{--bg:#17120e;--fg:#e8ddcf;--primary:#c8924a;--accent2:#e0a96d;--card-bg:#221a13;--border:#3a2e22;--badge-bg:#2a2017;--badge-border:#3a2e22;--container-bg:rgba(23,18,14,0.85);}
-    html.light{--bg:#f4ece0;--fg:#2b2118;--primary:#9a6b2f;--accent2:#b07d3a;--card-bg:#fbf6ee;--border:#e0d4c2;--badge-bg:#efe6d8;--badge-border:#e0d4c2;--container-bg:rgba(244,236,224,0.97);}
+    :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--accent2:#a9c5dd;--card-bg:#161d26;--border:#2a3744;--badge-bg:#1b232d;--badge-border:#2a3744;--container-bg:rgba(15,20,26,0.85);--muted:#8b949e;}
+    html.light{--bg:#eef2f6;--fg:#1f2a35;--primary:#3f6488;--accent2:#5b80a6;--card-bg:#ffffff;--border:#ccd8e2;--badge-bg:#e2eaf1;--badge-border:#ccd8e2;--container-bg:rgba(238,242,246,0.97);--muted:#596573;}
+    html.light #terminal .term{background:#1e2730;}
+    html.light .term-out .resp{color:#b8c8d8;}
     .fade-in{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease;}
     .fade-in.visible{opacity:1;transform:none;}
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -60,20 +62,20 @@
     a{color:var(--primary);text-decoration:none;}
     a:hover{text-decoration:underline;}
     .container{max-width:900px;margin:0 auto;padding:2rem 1.25rem;background:var(--container-bg);border-radius:8px;}
-    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 12px rgba(200,146,74,.08);}
+    nav{background:var(--card-bg);border-bottom:1px solid var(--border);position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 12px rgba(127,168,201,.08);}
     .nav-list{display:flex;list-style:none;gap:.5rem;}
     .nav-link{display:block;padding:1rem;font-weight:600;color:var(--fg);border-radius:4px;}
     .nav-link:hover,.nav-link.active{background:var(--border);}
     .burger{display:none;flex-direction:column;gap:4px;padding:1rem;cursor:pointer;}
     .burger div{width:24px;height:3px;background:var(--fg);transition:.4s;}
     header{text-align:center;padding:2rem 0;}
-    header h1{font-size:2.5rem;color:var(--primary);margin-bottom:.35rem;font-family:'Courier New',Courier,monospace;letter-spacing:.04em;text-shadow:0 0 22px rgba(200,146,74,.55),0 0 6px rgba(200,146,74,.25);}
+    header h1{font-size:2.5rem;color:var(--primary);margin-bottom:.35rem;font-family:'Courier New',Courier,monospace;letter-spacing:.04em;text-shadow:0 0 22px rgba(127,168,201,.55),0 0 6px rgba(127,168,201,.25);}
     header h3{font-size:1rem;color:var(--primary);margin-bottom:.35rem;font-weight:600;}
-    .tl-location{font-size:.95rem;color:#8b949e;margin-bottom:.55rem;}
-    header p{font-size:1rem;color:#8b949e;margin:.3rem auto;max-width:800px;text-align:justify;}
+    .tl-location{font-size:.95rem;color:var(--muted);margin-bottom:.55rem;}
+    header p{font-size:1rem;color:var(--muted);margin:.3rem auto;max-width:800px;text-align:justify;}
     .header-links{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:1rem;}
     .header-links a{display:inline-flex;align-items:center;justify-content:center;gap:.3rem;width:42px;height:38px;color:var(--primary);background:var(--card-bg);border:1px solid var(--border);border-radius:9px;transition:background .25s,border-color .25s,transform .15s,box-shadow .25s;}
-    .header-links a:hover{background:var(--badge-bg);border-color:var(--primary);transform:translateY(-2px);box-shadow:0 6px 16px rgba(200,146,74,.20);}
+    .header-links a:hover{background:var(--badge-bg);border-color:var(--primary);transform:translateY(-2px);box-shadow:0 6px 16px rgba(127,168,201,.20);}
     .header-links svg{width:22px;height:22px;fill:currentColor;}
     .header-links a.cv-link{width:auto;padding:0 .6rem;}
     .header-links a.cv-link span{font-family:'Courier New',Courier,monospace;font-size:.72rem;font-weight:700;letter-spacing:.03em;color:var(--primary);}
@@ -85,14 +87,14 @@
     .timeline{position:relative;display:flex;flex-direction:column;gap:3.5rem;padding:1.5rem 0;}
     .timeline::before{content:"";position:absolute;left:50%;top:0;height:100%;width:2px;background:var(--border);transform:translateX(-50%);}
     .timeline-item{position:relative;width:45%;padding:1rem 1.4rem;background:var(--card-bg);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.4);border:1px solid var(--border);transition:border-color .3s,box-shadow .3s;}
-    .timeline-item:hover{border-color:rgba(200,146,74,.35);box-shadow:0 0 16px rgba(200,146,74,.08);}
+    .timeline-item:hover{border-color:rgba(127,168,201,.35);box-shadow:0 0 16px rgba(127,168,201,.08);}
     .timeline-item.left{align-self:flex-start;margin-right:55%;}
     .timeline-item.right{align-self:flex-end;margin-left:55%;}
     .timeline-item::after{content:"";position:absolute;top:1rem;width:12px;height:12px;border-radius:50%;background:var(--primary);border:2px solid var(--bg);box-shadow:0 0 10px var(--primary);}
     .timeline-item.left::after{right:-34px;}
     .timeline-item.right::after{left:-34px;}
-    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:.25rem .65rem;border-radius:999px;font-size:.78rem;color:#8b949e;margin-bottom:.45rem;}
-    .tl-badge{display:inline-block;background:rgba(200,146,74,.15);border:1px solid rgba(200,146,74,.4);padding:.2rem .55rem;border-radius:999px;font-size:.72rem;color:var(--primary);margin-left:.4rem;font-weight:600;}
+    .tl-date{display:inline-block;background:var(--badge-bg);border:1px solid var(--badge-border);padding:.25rem .65rem;border-radius:999px;font-size:.78rem;color:var(--muted);margin-bottom:.45rem;}
+    .tl-badge{display:inline-block;background:rgba(127,168,201,.15);border:1px solid rgba(127,168,201,.4);padding:.2rem .55rem;border-radius:999px;font-size:.72rem;color:var(--primary);margin-left:.4rem;font-weight:600;}
     .timeline-item h3{color:var(--primary);margin-bottom:.25rem;font-size:1.15rem;line-height:1.3;}
     .tl-company{font-weight:600;margin-bottom:.25rem;}
     .timeline-item ul{margin-left:1rem;list-style:disc;}
@@ -100,19 +102,19 @@
     .featured-section{background:rgba(24,33,45,.5);padding:1.4rem 1.8rem;border-radius:12px;}
     .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem;}
     .card{background:linear-gradient(135deg,#1f2630,#161b22);border-radius:16px;padding:1.4rem;position:relative;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.5);transition:transform .3s;display:flex;flex-direction:column;}
-    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(200,146,74,.25) 0%,rgba(200,146,74,.05) 50%,rgba(200,146,74,.25) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:-1;}
+    .card::before{content:"";position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(120deg,rgba(127,168,201,.25) 0%,rgba(127,168,201,.05) 50%,rgba(127,168,201,.25) 100%);transform:skewX(-25deg);transition:left .5s;pointer-events:none;z-index:-1;}
     .card:hover::before{left:0;}
-    .card:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 0 24px rgba(200,146,74,.22),0 4px 18px rgba(0,0,0,.5);}
+    .card:hover{transform:translateY(-8px) scale(1.04);box-shadow:0 0 24px rgba(127,168,201,.22),0 4px 18px rgba(0,0,0,.5);}
     .card h3{margin-bottom:.45rem;font-size:1.25rem;color:var(--primary);}
     .card p{font-size:.93rem;margin-bottom:.95rem;color:var(--fg);flex:1;}
-    .tech{font-size:.78rem;color:#8b949e;margin-bottom:.9rem;}
-    .card-badge{display:inline-block;background:rgba(200,146,74,.15);border:1px solid rgba(200,146,74,.4);padding:.15rem .5rem;border-radius:999px;font-size:.72rem;color:var(--primary);margin-bottom:.6rem;font-weight:600;}
+    .tech{font-size:.78rem;color:var(--muted);margin-bottom:.9rem;}
+    .card-badge{display:inline-block;background:rgba(127,168,201,.15);border:1px solid rgba(127,168,201,.4);padding:.15rem .5rem;border-radius:999px;font-size:.72rem;color:var(--primary);margin-bottom:.6rem;font-weight:600;}
     .icons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(48px,1fr));gap:1rem;justify-items:center;}
     .icons-grid img{width:38px;height:38px;background:#fff;padding:3px;border-radius:6px;}
     .soft-list{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;}
     .soft-list li{background:var(--badge-bg);border:1px solid var(--badge-border);padding:.4rem .8rem;border-radius:.5rem;font-size:.9rem;}
     .metric-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin:1.1rem auto 0;max-width:720px;}
-    .metric{background:rgba(200,146,74,.1);border:1px solid rgba(200,146,74,.4);border-radius:999px;padding:.4rem .95rem;font-size:.82rem;color:var(--primary);font-family:'Courier New',Courier,monospace;font-weight:600;}
+    .metric{background:rgba(127,168,201,.1);border:1px solid rgba(127,168,201,.4);border-radius:999px;padding:.4rem .95rem;font-size:.82rem;color:var(--primary);font-family:'Courier New',Courier,monospace;font-weight:600;}
     .metric strong{font-size:1.08em;letter-spacing:.02em;}
     .ai-method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:1.2rem;}
     .ai-card{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.3rem;}
@@ -121,10 +123,10 @@
     .ai-card ul{margin-left:1.1rem;}
     .sdd-flow{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;margin:1.1rem 0;font-family:'Courier New',Courier,monospace;font-size:.82rem;}
     .sdd-flow span{background:var(--badge-bg);border:1px solid var(--badge-border);border-radius:6px;padding:.3rem .6rem;color:var(--primary);}
-    .sdd-flow em{color:#8b949e;font-style:normal;}
+    .sdd-flow em{color:var(--muted);font-style:normal;}
     .btn{display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.25rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;transition:background .3s,color .3s;font-family:'Courier New',Courier,monospace;letter-spacing:.03em;}
     .btn:hover{background:var(--primary);color:var(--bg);}
-    footer{text-align:center;font-size:.8rem;color:#8b949e;padding:2rem 0;}
+    footer{text-align:center;font-size:.8rem;color:var(--muted);padding:2rem 0;}
     #theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;cursor:pointer;font-size:1rem;color:var(--fg);transition:background .3s;}
     #theme-btn:hover{background:var(--border);}
     /* nav usa position:fixed (regla superior); no sobreescribir */
@@ -133,13 +135,13 @@
     .lang-table td{padding:.5rem .8rem;border-bottom:1px solid var(--border);font-size:.95rem;}
     .lang-table tr:last-child td{border-bottom:none;}
     .lang-table td:first-child{font-weight:600;color:var(--fg);}
-    .lang-table td:last-child{color:#8b949e;}
+    .lang-table td:last-child{color:var(--muted);}
     .contact-form{display:grid;gap:.85rem;margin-top:1.2rem;}
     .contact-form input,.contact-form textarea{width:100%;padding:.65rem .9rem;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;color:var(--fg);font-family:inherit;font-size:.95rem;transition:border-color .3s;}
     .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--primary);}
     .contact-form textarea{resize:vertical;min-height:110px;}
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
-    .form-success{display:none;background:rgba(200,146,74,.12);border:1px solid var(--primary);border-radius:6px;padding:.8rem 1rem;color:var(--primary);font-size:.9rem;}
+    .form-success{display:none;background:rgba(127,168,201,.12);border:1px solid var(--primary);border-radius:6px;padding:.8rem 1rem;color:var(--primary);font-size:.9rem;}
     #matrix-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
     html.light #matrix-bg{display:none;}
     .cursor-blink{display:inline-block;width:3px;height:.85em;background:var(--primary);margin-left:5px;animation:blink 1.1s step-end infinite;vertical-align:text-bottom;border-radius:1px;}
@@ -151,9 +153,9 @@
     .cmdk input:focus{outline:none;}
     .cmdk ul{list-style:none;max-height:46vh;overflow:auto;margin:0;padding:0;}
     .cmdk li{padding:.7rem 1.1rem;cursor:pointer;display:flex;gap:.6rem;align-items:center;font-size:.95rem;color:var(--fg);}
-    .cmdk li .tag{font-family:'Courier New',monospace;font-size:.72rem;color:#8b949e;margin-left:auto;}
+    .cmdk li .tag{font-family:'Courier New',monospace;font-size:.72rem;color:var(--muted);margin-left:auto;}
     .cmdk li.active,.cmdk li:hover{background:var(--border);}
-    .cmdk-hint{padding:.5rem 1.1rem;font-size:.72rem;color:#8b949e;border-top:1px solid var(--border);font-family:'Courier New',monospace;}
+    .cmdk-hint{padding:.5rem 1.1rem;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);font-family:'Courier New',monospace;}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}html{scroll-behavior:auto;}}
     @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
     @media(max-width:992px){header h1{font-size:2.25rem;}.timeline-item{width:48%;}}
@@ -172,7 +174,7 @@
     }
     @media(max-width:480px){html{font-size:93%;}.container{padding:1.5rem 1rem;}header h1{font-size:1.9rem;}section h2{font-size:1.6rem;}.projects{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
     /* Ask my portfolio — AI chat widget */
-    #ai-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;background:var(--primary);color:var(--bg);border:none;border-radius:999px;font-weight:700;font-family:'Courier New',Courier,monospace;cursor:pointer;box-shadow:0 6px 20px rgba(200,146,74,.35);}
+    #ai-fab{position:fixed;right:18px;bottom:18px;z-index:90;display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;background:var(--primary);color:var(--bg);border:none;border-radius:999px;font-weight:700;font-family:'Courier New',Courier,monospace;cursor:pointer;box-shadow:0 6px 20px rgba(127,168,201,.35);}
     #ai-fab:hover{filter:brightness(1.08);}
     .ai-panel{position:fixed;right:18px;bottom:80px;z-index:91;width:min(380px,92vw);max-height:72vh;display:none;flex-direction:column;background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.55);}
     .ai-panel.open{display:flex;}
@@ -181,9 +183,9 @@
     .ai-head .ai-x{background:none;border:none;color:var(--fg);font-size:1.2rem;cursor:pointer;line-height:1;}
     .ai-msgs{flex:1;overflow-y:auto;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.6rem;}
     .ai-msg{font-size:.9rem;line-height:1.5;padding:.55rem .8rem;border-radius:10px;max-width:90%;}
-    .ai-msg.u{align-self:flex-end;background:rgba(200,146,74,.16);border:1px solid rgba(200,146,74,.4);}
+    .ai-msg.u{align-self:flex-end;background:rgba(127,168,201,.16);border:1px solid rgba(127,168,201,.4);}
     .ai-msg.a{align-self:flex-start;background:var(--badge-bg);border:1px solid var(--border);}
-    .ai-msg.sys{align-self:center;color:#8b949e;font-size:.78rem;background:none;}
+    .ai-msg.sys{align-self:center;color:var(--muted);font-size:.78rem;background:none;}
     .ai-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 1rem .6rem;}
     .ai-chip{background:var(--badge-bg);border:1px solid var(--border);color:var(--fg);border-radius:999px;padding:.35rem .7rem;font-size:.78rem;cursor:pointer;}
     .ai-chip:hover{border-color:var(--primary);}
@@ -192,7 +194,7 @@
     .ai-form input:focus{outline:none;border-color:var(--primary);}
     .ai-form button{background:var(--primary);color:var(--bg);border:none;border-radius:8px;padding:0 .9rem;font-weight:700;cursor:pointer;}
     .ai-form button:disabled{opacity:.5;cursor:default;}
-    .ai-typing{font-size:.8rem;color:#8b949e;font-style:italic;}
+    .ai-typing{font-size:.8rem;color:var(--muted);font-style:italic;}
     /* Tabs: una sección a la vez */
     body.tabs .tabpage{display:none;}
     body.tabs .tabpage.active{display:block;animation:tabIn .35s ease;}
@@ -201,7 +203,7 @@
     #terminal .term{background:#120d09;border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.4);}
     .term-bar{display:flex;align-items:center;gap:.45rem;padding:.5rem .8rem;background:var(--card-bg);border-bottom:1px solid var(--border);}
     .term-dot{width:11px;height:11px;border-radius:50%;}
-    .term-title{margin-left:.4rem;font-family:'Courier New',monospace;font-size:.8rem;color:#8b949e;}
+    .term-title{margin-left:.4rem;font-family:'Courier New',monospace;font-size:.8rem;color:var(--muted);}
     .term-out{padding:.9rem 1rem;min-height:230px;max-height:52vh;overflow-y:auto;font-family:'Courier New',Courier,monospace;font-size:.9rem;line-height:1.55;}
     .term-out .cmd{color:var(--accent2);}
     .term-out .cmd::before{content:'$ ';color:var(--primary);}
@@ -293,7 +295,7 @@
     <!-- AI METHOD -->
     <section id="ai-method" class="fade-in">
       <h2>How I Build with AI</h2>
-      <p style="color:#8b949e;">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
+      <p style="color:var(--muted);">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
       <div class="sdd-flow">
         <span>proposal</span><em>→</em><span>specs</span><em>→</em><span>design</span><em>→</em><span>tasks</span><em>→</em><span>apply</span><em>→</em><span>archive</span>
       </div>
@@ -394,19 +396,17 @@
         </div>
 
         <div class="card">
-          <div class="card-badge">🚀 Live on AWS</div>
+          <div class="card-badge">★ Serverless · SDD</div>
           <h3>Trackion — Serverless Help Desk</h3>
-          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana</strong> monitoring. Built with SDD.</p>
+          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana tickets &amp; SLA</strong> dashboards. Built with SDD; runs locally via Docker.</p>
           <div class="tech">Python 3.12 · AWS Lambda · API Gateway (HTTP API) · Serverless Framework · PostgreSQL (pg8000) · JWT (PyJWT) · SSM Parameter Store · Grafana · vanilla JS</div>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-            <a class="btn" href="https://dkzxcb6ja48r3.cloudfront.net" target="_blank" rel="noopener">Live Demo ↗</a>
-          </div>
+          <a class="btn" href="https://github.com/jalducin/Trackion" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
         <div class="card">
           <div class="card-badge">🚀 Live on AWS</div>
           <h3>JV Market</h3>
-          <p>Full-stack e-commerce <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Built with Spec-Driven Development (SDD).</p>
+          <p>Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Built with Spec-Driven Development (SDD).</p>
           <div class="tech">Python · FastAPI · JWT · SQLite/PostgreSQL · AWS Lambda · API Gateway · S3 · CloudFront · vanilla JS</div>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
             <a class="btn" href="https://d3rw1q49m6mvnq.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
@@ -414,10 +414,10 @@
         </div>
 
         <div class="card">
-          <div class="card-badge">📊 Observability · $0</div>
-          <h3>Monitoreo-Cloud</h3>
-          <p>Cloud <strong>observability pipeline</strong> on AWS Free Tier (cost $0): <strong>CloudWatch → n8n → PostgreSQL → Grafana</strong>. Automated metric collection with a read-only <strong>IAM</strong> role, operational dashboards and alerts, all self-hosted on a single EC2, cost-guarded with <strong>AWS Budgets</strong>. Built with SDD.</p>
-          <div class="tech">AWS EC2 · CloudWatch · n8n · PostgreSQL · Grafana · Docker Compose · AWS Budgets</div>
+          <div class="card-badge">📊 Observability · multi-source</div>
+          <h3>Monitoreo-Cloud — Observability Stack</h3>
+          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. Built with SDD.</p>
+          <div class="tech">Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
           <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
         </div>
 
@@ -460,42 +460,42 @@
       <div style="margin-top:2rem;">
         <h3 style="color:var(--primary);font-size:1.05rem;margin-bottom:.9rem;font-family:'Courier New',monospace;letter-spacing:.05em;">Tech Stack &amp; Tools</h3>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Backend &amp; APIs</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Backend &amp; APIs</p>
         <ul class="soft-list">
           <li>FastAPI</li><li>Next.js 14</li><li>Node.js</li><li>Express</li><li>WebSocket</li><li>SSO / OIDC</li><li>OpenAPI / Spec-Driven Dev</li><li>Pydantic v2</li><li>SQLModel</li><li>SQLAlchemy 2.0 async</li><li>Alembic</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Cloud, Serverless &amp; BaaS</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Cloud, Serverless &amp; BaaS</p>
         <ul class="soft-list">
           <li>AWS Lambda</li><li>Step Functions</li><li>EventBridge</li><li>S3</li><li>RDS</li><li>EC2</li><li>CloudWatch</li><li>Serverless Framework (IaC)</li><li>Kubernetes (Kustomize)</li><li>Grafana (observabilidad)</li><li>CI/CD · GitHub Actions</li><li>Azure (base)</li><li>GCP (base)</li><li>Supabase</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Databases</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Databases</p>
         <ul class="soft-list">
           <li>PostgreSQL</li><li>MySQL</li><li>SQL Server</li><li>MongoDB</li><li>SAP HANA SQL</li><li>DynamoDB</li><li>SQLite</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Enterprise Integrations</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Enterprise Integrations</p>
         <ul class="soft-list">
           <li>Asana API</li><li>Freshdesk API</li><li>Notion API</li><li>Slack API</li><li>Webhooks</li><li>Ngrok</li><li>SFTP / Paramiko</li><li>XML / JSON</li><li>REST APIs</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Retail &amp; POS</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Retail &amp; POS</p>
         <ul class="soft-list">
           <li>GK POS</li><li>GK OmniPOS</li><li>SAP ERP/HANA</li><li>SAP CAR</li><li>SAP BO</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Python Tooling &amp; Testing</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Python Tooling &amp; Testing</p>
         <ul class="soft-list">
           <li>Poetry</li><li>Ruff</li><li>Gunicorn</li><li>slowapi</li><li>FastAPI-Mail / Jinja2</li><li>pytest</li><li>Jest</li><li>Vitest</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">AI &amp; Knowledge</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">AI &amp; Knowledge</p>
         <ul class="soft-list">
           <li>Claude API (SDD)</li><li>OpenAI API</li><li>Gemini API</li><li>Anthropic SDK</li><li>Prompt Engineering</li><li>LLM Integration</li><li>Agentic Workflows</li><li>AI Agents</li><li>RAG</li><li>Sentence Transformers</li><li>OpenSpec / SDD</li><li>Amazon Bedrock</li>
         </ul>
 
-        <p style="font-size:.78rem;color:#8b949e;margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Workflow &amp; Management</p>
+        <p style="font-size:.78rem;color:var(--muted);margin:.9rem 0 .35rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;">Workflow &amp; Management</p>
         <ul class="soft-list">
           <li>n8n</li><li>Scrum</li><li>Jira</li><li>Asana</li><li>Notion</li><li>Postman</li>
         </ul>
@@ -532,18 +532,18 @@
       <div style="display:grid;gap:1.5rem;">
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
           <h3 style="color:var(--primary);margin-bottom:0.3rem;">Master's in DevOps</h3>
-          <p style="font-weight:600;color:#8b949e;font-size:0.9rem;">Universidad IEU · 2024 – Present</p>
-          <p style="font-size:0.85rem;color:#8b949e;">Online · Puebla, Mexico</p>
+          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;">Universidad IEU · 2024 – Present</p>
+          <p style="font-size:0.85rem;color:var(--muted);">Online · Puebla, Mexico</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
           <h3 style="color:var(--primary);margin-bottom:0.3rem;">Computer Systems Engineering</h3>
-          <p style="font-weight:600;color:#8b949e;font-size:0.9rem;">Instituto Tecnológico de Orizaba · 2006 – 2011</p>
-          <p style="font-size:0.85rem;color:#8b949e;">Orizaba, Veracruz, Mexico</p>
+          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;">Instituto Tecnológico de Orizaba · 2006 – 2011</p>
+          <p style="font-size:0.85rem;color:var(--muted);">Orizaba, Veracruz, Mexico</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
           <h3 style="color:var(--primary);margin-bottom:0.3rem;">Advanced English</h3>
-          <p style="font-weight:600;color:#8b949e;font-size:0.9rem;">Quick Learning · In progress</p>
-          <p style="font-size:0.85rem;color:#8b949e;">Online</p>
+          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;">Quick Learning · In progress</p>
+          <p style="font-size:0.85rem;color:var(--muted);">Online</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;">
           <h3 style="color:var(--primary);margin-bottom:0.8rem;">Certifications &amp; Courses</h3>
@@ -580,7 +580,7 @@
         <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es">Download CV · ES (PDF)</a>
         <a class="btn" href="cv/CV_JuanValentinAlducin_EN.pdf" download data-cv="en">Download CV · EN (PDF)</a>
       </div>
-      <p style="font-size:.85rem;color:#8b949e;margin-bottom:.6rem;">Or send me a message — it opens your email app with everything prefilled:</p>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.6rem;">Or send me a message — it opens your email app with everything prefilled:</p>
       <form class="contact-form" id="contactForm">
         <div class="form-row">
           <input type="text"  name="name"  placeholder="Your name"  required />
@@ -598,7 +598,7 @@
     <!-- TERMINAL -->
     <section id="terminal" class="fade-in">
       <h2>Terminal</h2>
-      <p style="color:#8b949e;margin-bottom:.8rem;">Una mini-terminal real. Escribe <code style="color:var(--accent2)">help</code> y Enter. 😉</p>
+      <p style="color:var(--muted);margin-bottom:.8rem;">Una mini-terminal real. Escribe <code style="color:var(--accent2)">help</code> y Enter. 😉</p>
       <div class="term">
         <div class="term-bar">
           <span class="term-dot" style="background:#e06c5e"></span>
@@ -634,17 +634,17 @@
       const cv=document.getElementById('matrix-bg');
       const cx=cv.getContext('2d');
       const FS=14,OPC=0.07,SP=0.38;
-      let cols,drops,col='#c8924a';
+      let cols,drops,col='#7fa8c9';
       function resize(){
         cv.width=innerWidth;cv.height=innerHeight;
-        cx.fillStyle='#17120e';cx.fillRect(0,0,cv.width,cv.height);
+        cx.fillStyle='#0f141a';cx.fillRect(0,0,cv.width,cv.height);
         cols=Math.floor(cv.width/FS);
         drops=Array.from({length:cols},()=>Math.random()*-cv.height);
       }
       function draw(){
         const light=document.documentElement.classList.contains('light');
         if(light){cx.clearRect(0,0,cv.width,cv.height);return;}
-        cx.fillStyle='rgba(23,18,14,0.06)';cx.fillRect(0,0,cv.width,cv.height);
+        cx.fillStyle='rgba(15,20,26,0.06)';cx.fillRect(0,0,cv.width,cv.height);
         cx.fillStyle=col;cx.globalAlpha=OPC;cx.font=FS+'px monospace';
         for(let i=0;i<cols;i++){
           cx.fillText(Math.random()>.5?'1':'0',i*FS,drops[i]);

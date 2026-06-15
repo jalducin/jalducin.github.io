@@ -10,7 +10,7 @@
   /* Tamaño OFICIO (México) — 216 x 340 mm */
   @page { size: 216mm 340mm; margin: 0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
-  :root{ --navy:#2b3947; --gold:#c47d1a; --text:#586069; --muted:#8a9099; --rule:#2b3947; --dot:#d7dbdf; }
+  :root{ --navy:#2b3947; --gold:#3f6488; --text:#586069; --muted:#8a9099; --rule:#2b3947; --dot:#d7dbdf; }
   html,body{ font-family:"Rubik","Segoe UI",Arial,sans-serif; color:#586069; font-size:9.6px; line-height:1.34; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ background:#ffffff url("hex-bg.svg") repeat; }
   .sheet{ width:216mm; min-height:332mm; padding:10mm 11mm; }
@@ -204,18 +204,18 @@
         </div>
         <div class="proj">
           <div class="ptitle">Trackion — Serverless Help Desk</div>
-          <p class="pdesc">Mesa de ayuda serverless white-label desplegada en AWS: ticketing end-to-end, catálogos administrables y módulo de integración de APIs abierto (webhooks genéricos + dispatch de eventos de dominio). Monitoreo Grafana. SDD.</p>
+          <p class="pdesc">Mesa de ayuda serverless white-label: ticketing end-to-end, catálogos administrables y módulo de integración de APIs abierto (webhooks + dispatch de eventos de dominio). Dashboards Grafana de tickets y SLA. SDD.</p>
           <div class="pstack"><b>Stack:</b> Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana</div>
         </div>
         <div class="proj">
           <div class="ptitle">JV Market — E-commerce</div>
-          <p class="pdesc">E-commerce full-stack desplegado en AWS: JWT, catálogo, carrito, checkout y panel admin. API en API Gateway + Lambda; frontend en S3 + CloudFront. SDD.</p>
+          <p class="pdesc">E-commerce full-stack (streetwear/sneakers) desplegado en AWS: JWT, catálogo, carrito, checkout, <b>Click &amp; Collect</b>, <b>lista de deseos</b> y panel admin. API en API Gateway + Lambda; frontend en S3 + CloudFront. SDD.</p>
           <div class="pstack"><b>Stack:</b> Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3 · CloudFront)</div>
         </div>
         <div class="proj">
           <div class="ptitle">Monitoreo-Cloud — Observabilidad</div>
-          <p class="pdesc">Pipeline de observabilidad AWS Free Tier (costo $0): CloudWatch → n8n → PostgreSQL → Grafana. Recolección con IAM read-only, dashboards y alertas self-hosted, cost-guard con AWS Budgets. SDD.</p>
-          <div class="pstack"><b>Stack:</b> AWS EC2 · CloudWatch · n8n · PostgreSQL · Grafana · Docker Compose · AWS Budgets</div>
+          <p class="pdesc">Stack de observabilidad self-hosted (Grafana + Docker) sobre 3 fuentes: AWS serverless (Lambda/S3 vía CloudWatch), contenedores Docker locales y tickets/SLA de Trackion. Recolección con n8n + IAM read-only. SDD.</p>
+          <div class="pstack"><b>Stack:</b> Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
         </div>
         <div class="proj">
           <div class="ptitle">dataMasterGK</div>

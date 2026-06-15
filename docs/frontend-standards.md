@@ -21,20 +21,37 @@ alwaysApply: true
 - Frameworks CSS (Bootstrap nuevo, Tailwind).
 - Dependencias de npm o CDNs de frameworks pesados.
 
-## 2. Paleta de colores (café elegante)
+## 2. Paleta de colores (azul metálico profesional)
 
 ```css
---bg:        #17120e   /* café muy oscuro (no negro puro) */
---fg:        #e8ddcf   /* crema */
---primary:   #c8924a   /* café-dorado (acento) */
---accent2:   #e0a96d   /* ámbar claro */
---card-bg:   #221a13
---border:    #3a2e22
---badge-bg:  #2a2017
+/* DARK (default) */
+--bg:          #0f141a   /* azul noche muy oscuro */
+--fg:          #dde6ef   /* blanco azulado */
+--primary:     #7fa8c9   /* azul acero claro */
+--accent2:     #a9c5dd   /* azul niebla */
+--card-bg:     #161d26
+--border:      #2a3744
+--badge-bg:    #1b232d
+--badge-border:#2a3744
+--container-bg:rgba(15,20,26,0.85)
+--muted:       #8b949e   /* texto secundario — dark: ratio ≥6:1 */
+
+/* LIGHT (html.light) */
+--bg:          #eef2f6
+--fg:          #1f2a35
+--primary:     #3f6488   /* azul acero oscuro */
+--accent2:     #5b80a6
+--card-bg:     #ffffff
+--border:      #ccd8e2
+--badge-bg:    #e2eaf1
+--badge-border:#ccd8e2
+--container-bg:rgba(238,242,246,0.97)
+--muted:       #596573   /* override para light: ratio 5.28:1 sobre #eef2f6, PASS AA */
 ```
 
-Tema claro (`html.light`): variante cálida crema (`--bg:#f4ece0`, `--primary:#9a6b2f`). El efecto **matrix**
-se conserva pero **recoloreado a ámbar**. No usar el azul `#58a6ff` ni el negro `#0d1117` anteriores.
+El efecto **matrix** se conserva **recoloreado a azul metálico** (`#7fa8c9` sobre `#0f141a`).
+Se oculta en modo claro (`html.light #matrix-bg{display:none}`).
+Terminal (`#terminal .term`): fondo `#120d09` en dark; override a `#1e2730` en light.
 No cambiar la paleta sin documentarlo aquí.
 
 ## 3. Responsive
