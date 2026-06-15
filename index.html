@@ -378,19 +378,20 @@
     <!-- FEATURED PROJECTS -->
     <section id="featured-projects" class="featured-section fade-in">
       <h2><span>★</span>Featured Projects</h2>
+      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;">★ <strong style="color:var(--primary);">100% built with Spec-Driven Development</strong> (SDD/OpenSpec) — the spec is the source of truth in every project.</p>
       <div class="projects">
 
         <div class="card">
           <div class="card-badge">★ AI-native · 100% SDD</div>
           <h3>Fidello — Loyalty Card System</h3>
-          <p>Multi-business digital loyalty platform with points management and differentiated roles (Owner, Manager, Employee). Mobile-first via QR, no install required. <strong>JWT auth</strong>, real-time <strong>WebSockets</strong>, multi-tenant <strong>RLS</strong>, and QR tokens with <strong>60s TTL + SHA-256 fingerprint</strong> against replay attacks. Built 100% under Spec-Driven Development (SDD/OpenSpec).</p>
+          <p>Multi-business digital loyalty platform with points management and differentiated roles (Owner, Manager, Employee). Mobile-first via QR, no install required. <strong>JWT auth</strong>, real-time <strong>WebSockets</strong>, multi-tenant <strong>RLS</strong>, and QR tokens with <strong>60s TTL + SHA-256 fingerprint</strong> against replay attacks. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">React 18 · TypeScript 5.5 · Vite · Tailwind CSS · Supabase (PostgreSQL + Auth + PostgREST + Realtime) · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
         </div>
 
         <div class="card">
           <div class="card-badge">★ Multi-tenant · SDD</div>
           <h3>VoltGrid — EV Charging Platform</h3>
-          <p>Multi-tenant, white-label <strong>SaaS</strong> for EV charging-station operators: live station status over <strong>WebSocket</strong> (polling fallback), tenant isolation via PostgreSQL <strong>Row-Level Security (RLS)</strong>, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analytics (uptime, kWh, CSV export), an auditable state <strong>scheduler</strong> and an installable <strong>PWA</strong>. Built 100% under SDD/OpenSpec.</p>
+          <p>Multi-tenant, white-label <strong>SaaS</strong> for EV charging-station operators: live station status over <strong>WebSocket</strong> (polling fallback), tenant isolation via PostgreSQL <strong>Row-Level Security (RLS)</strong>, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analytics (uptime, kWh, CSV export), an auditable state <strong>scheduler</strong> and an installable <strong>PWA</strong>. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">FastAPI · SQLAlchemy 2.0 async · asyncpg · Alembic · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) · GitHub Actions</div>
           <a class="btn" href="https://github.com/jalducin/voltgrid" target="_blank" rel="noopener">View Code ↗</a>
         </div>
@@ -398,7 +399,7 @@
         <div class="card">
           <div class="card-badge">★ Serverless · SDD</div>
           <h3>Trackion — Serverless Help Desk</h3>
-          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana tickets &amp; SLA</strong> dashboards. Built with SDD; runs locally via Docker.</p>
+          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana tickets &amp; SLA</strong> dashboards. <strong>100% SDD/OpenSpec</strong>; runs locally via Docker.</p>
           <div class="tech">Python 3.12 · AWS Lambda · API Gateway (HTTP API) · Serverless Framework · PostgreSQL (pg8000) · JWT (PyJWT) · SSM Parameter Store · Grafana · vanilla JS</div>
           <a class="btn" href="https://github.com/jalducin/Trackion" target="_blank" rel="noopener">View Code ↗</a>
         </div>
@@ -406,7 +407,7 @@
         <div class="card">
           <div class="card-badge">🚀 Live on AWS</div>
           <h3>JV Market</h3>
-          <p>Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Built with Spec-Driven Development (SDD).</p>
+          <p>Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">Python · FastAPI · JWT · SQLite/PostgreSQL · AWS Lambda · API Gateway · S3 · CloudFront · vanilla JS</div>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
             <a class="btn" href="https://d3rw1q49m6mvnq.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
@@ -416,7 +417,7 @@
         <div class="card">
           <div class="card-badge">📊 Observability · multi-source</div>
           <h3>Monitoreo-Cloud — Observability Stack</h3>
-          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. Built with SDD.</p>
+          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
           <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
         </div>
@@ -424,7 +425,7 @@
         <div class="card">
           <div class="card-badge">★ Re-engineered · SDD</div>
           <h3>dataMasterGK — Retail ETL Middleware</h3>
-          <p>ETL middleware that automates master-data integration into <strong>GK Software</strong> retail systems: watches directories, transforms <strong>Excel → GK XML</strong> across four interfaces (stores, operators, promotions) and transmits via <strong>SFTP/FTP</strong> — with a Flask web panel (config, operation, audit), a scheduler and SQLite auditing. Re-engineered under SDD: <strong>idempotent single-pass pipeline</strong>, pooled SFTP/SQLite connections, and security hardening (parameterized/whitelisted SQL, secrets out of the repo).</p>
+          <p>ETL middleware that automates master-data integration into <strong>GK Software</strong> retail systems: watches directories, transforms <strong>Excel → GK XML</strong> across four interfaces (stores, operators, promotions) and transmits via <strong>SFTP/FTP</strong> — with a Flask web panel (config, operation, audit), a scheduler and SQLite auditing. Re-engineered under <strong>SDD/OpenSpec</strong>: idempotent single-pass pipeline, pooled SFTP/SQLite connections, and security hardening (parameterized/whitelisted SQL, secrets out of the repo).</p>
           <div class="tech">Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 · Tailwind</div>
           <a class="btn" href="https://github.com/jalducin/dataMasterGK" target="_blank" rel="noopener">View Code ↗</a>
         </div>
