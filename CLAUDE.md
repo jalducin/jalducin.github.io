@@ -65,7 +65,7 @@ adopta el agente `frontend-developer` de `ai-specs/agents/`.
 
 ```
 Nombre:      Juan Valentin Alducin Vázquez
-Posición:    Senior Software Engineer · AI-native Development
+Posición:    Senior Backend Engineer · Tech Lead · Agentic AI Systems
 Email:       valentin.alducin88@gmail.com
 WhatsApp:    525640800494
 GitHub:      https://github.com/jalducin
@@ -86,7 +86,7 @@ Inglés:      B1 (Intermedio)
 
 | Proyecto | Stack | Repo |
 |---|---|---|
-| Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest | privado/seed |
+| Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Google Wallet passes (RS256 JWT) · Feature Flags · Vitest | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
 | JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (Live Demo) | jalducin/EcommerceJVAV |
