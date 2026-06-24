@@ -644,16 +644,17 @@
         <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es">Download CV · ES (PDF)</a>
         <a class="btn" href="cv/CV_JuanValentinAlducin_EN.pdf" download data-cv="en">Download CV · EN (PDF)</a>
       </div>
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.6rem;">Or send me a message — it opens your email app with everything prefilled:</p>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.6rem;">Or send me a message:</p>
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <input type="text"  name="name"  placeholder="Your name"  required />
-          <input type="email" name="email" placeholder="Your email" required />
+          <input id="cf-name"  type="text"  name="name"  placeholder="Your name"  aria-label="Your name"  required />
+          <input id="cf-email" type="email" name="email" placeholder="Your email" aria-label="Your email" required />
         </div>
-        <input type="text" name="subject" placeholder="Subject" required />
-        <textarea name="message" placeholder="Your message..." required></textarea>
+        <input id="cf-subject" type="text" name="subject" placeholder="Subject" aria-label="Subject" required />
+        <textarea id="cf-message" name="message" placeholder="Your message..." aria-label="Your message" required></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
         <div>
-          <button class="btn" type="submit">Compose Message</button>
+          <button class="btn" type="submit">Send Message</button>
         </div>
         <div class="form-success" id="formSuccess">✓ Opening your email app… I also copied my address to your clipboard: valentin.alducin88@gmail.com</div>
       </form>
@@ -744,7 +745,8 @@
     window.__copyEmail=copyEmail;window.__toast=showToast;
     const heroEmail=document.getElementById('heroEmail');
     if(heroEmail){heroEmail.addEventListener('click',()=>{copyEmail();});}
-    /* Endpoint real opcional (Formspree https://formspree.io/f/xxxx o Lambda). Vacío = fallback copiar+mailto */
+    /* Endpoint real del contacto. Pega aquí la URL del API Gateway tras `serverless deploy` (ver contact-api/).
+       Vacío = fallback copiar+mailto (la web sigue funcionando sin backend). */
     const CONTACT_ENDPOINT='';
     const form=document.getElementById('contactForm');
     if(form){
@@ -754,7 +756,8 @@
         const success=document.getElementById('formSuccess');
         if(CONTACT_ENDPOINT){
           try{
-            const r=await fetch(CONTACT_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:f});
+            const payload={name:f.get('name'),email:f.get('email'),subject:f.get('subject'),message:f.get('message'),website:f.get('website')||''};
+            const r=await fetch(CONTACT_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
             if(r.ok){success.textContent='✓ Message sent! I will reply soon.';success.style.display='block';form.reset();showToast('✓ Message sent');return;}
           }catch(err){/* cae al fallback de abajo */}
         }

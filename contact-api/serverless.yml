@@ -1,0 +1,42 @@
+service: jalducin-contact-api
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: ${opt:region, 'us-east-2'}
+  memorySize: 128
+  timeout: 10
+  httpApi:
+    cors:
+      allowedOrigins:
+        - https://jalducin.github.io
+        - https://d3r3bnavnwzqaw.cloudfront.net
+      allowedMethods:
+        - POST
+        - OPTIONS
+      allowedHeaders:
+        - content-type
+  environment:
+    TO_EMAIL: ${env:TO_EMAIL, 'valentin.alducin88@gmail.com'}
+    FROM_EMAIL: ${env:FROM_EMAIL, 'valentin.alducin88@gmail.com'}
+    ALLOW_ORIGIN: 'https://jalducin.github.io'
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - ses:SendEmail
+          Resource: "*"
+
+functions:
+  contact:
+    handler: handler.handler
+    events:
+      - httpApi:
+          path: /contact
+          method: post
+      - httpApi:
+          path: /contact
+          method: options
