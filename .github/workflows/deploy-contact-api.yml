@@ -1,0 +1,50 @@
+name: Deploy Contact API (Lambda + SES)
+
+# Flujo git -> AWS: push a main que toque contact-api/ -> serverless deploy (crea/actualiza el stack).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "contact-api/**"
+      - ".github/workflows/deploy-contact-api.yml"
+  workflow_dispatch:
+
+permissions:
+  id-token: write   # OIDC, sin llaves estáticas
+  contents: read
+
+concurrency:
+  group: deploy-contact-api
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: us-east-2
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Serverless Framework v3
+        run: npm install -g serverless@3
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::957266312835:role/gh-actions-portfolio-deploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Serverless deploy
+        working-directory: contact-api
+        run: serverless deploy --region "$AWS_REGION"
+
+      - name: Mostrar endpoint
+        working-directory: contact-api
+        run: serverless info --region "$AWS_REGION" --verbose | grep -iE "POST -|endpoint" || true

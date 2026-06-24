@@ -52,3 +52,6 @@ assistant.zip
 .fnurl
 *.json.tmp
 *.zip
+
+# Serverless Framework (contact-api) — artefactos de deploy
+**/.serverless/
