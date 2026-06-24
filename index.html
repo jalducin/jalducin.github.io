@@ -745,9 +745,8 @@
     window.__copyEmail=copyEmail;window.__toast=showToast;
     const heroEmail=document.getElementById('heroEmail');
     if(heroEmail){heroEmail.addEventListener('click',()=>{copyEmail();});}
-    /* Endpoint real del contacto. Pega aquí la URL del API Gateway tras `serverless deploy` (ver contact-api/).
-       Vacío = fallback copiar+mailto (la web sigue funcionando sin backend). */
-    const CONTACT_ENDPOINT='';
+    /* Endpoint real del contacto (Lambda + SES, ver contact-api/). Si falla, cae al fallback copiar+mailto. */
+    const CONTACT_ENDPOINT='https://tekik4wm8e.execute-api.us-east-2.amazonaws.com/contact';
     const form=document.getElementById('contactForm');
     if(form){
       form.addEventListener('submit',async(e)=>{
