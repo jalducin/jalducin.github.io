@@ -140,6 +140,8 @@
     footer{text-align:center;font-size:.8rem;color:var(--muted);padding:2rem 0;}
     #theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;cursor:pointer;font-size:1rem;color:var(--fg);transition:background .3s;}
     #theme-btn:hover{background:var(--border);}
+    #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--card-bg);color:var(--fg);border:1px solid var(--primary);border-radius:8px;padding:.7rem 1.1rem;font-size:.92rem;box-shadow:0 6px 24px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999;max-width:90vw;}
+    #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
     /* nav usa position:fixed (regla superior); no sobreescribir */
     .nav-actions{display:flex;align-items:center;gap:.5rem;padding:.5rem;}
     .lang-table{width:100%;border-collapse:collapse;}
@@ -251,6 +253,7 @@
       <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
       <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       <li class="nav-item"><a class="nav-link" href="#terminal">Terminal</a></li>
+      <li class="nav-item nav-theme"><button id="theme-btn" type="button" aria-label="Toggle light/dark theme" title="Light / dark theme">🌙</button></li>
     </ul>
   </nav>
   <script>
@@ -282,7 +285,7 @@
         <span class="metric"><strong>&lt;10 min</strong> first response</span>
       </div>
       <div class="header-links">
-        <a href="mailto:valentin.alducin88@gmail.com" title="Email" aria-label="Enviar email">
+        <a href="mailto:valentin.alducin88@gmail.com" id="heroEmail" title="Email (copies address to clipboard)" aria-label="Email — copies address to clipboard">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/>
           </svg>
@@ -652,7 +655,7 @@
         <div>
           <button class="btn" type="submit">Compose Message</button>
         </div>
-        <div class="form-success" id="formSuccess">✓ Opening your email app… If nothing happens, write me at valentin.alducin88@gmail.com</div>
+        <div class="form-success" id="formSuccess">✓ Opening your email app… I also copied my address to your clipboard: valentin.alducin88@gmail.com</div>
       </form>
     </section>
 
@@ -727,15 +730,39 @@
     },{threshold:0.12});
     document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
     const EMAIL='valentin.alducin88@gmail.com';
+    /* Contacto robusto: toast + copiar al portapapeles (un mailto sin cliente de correo "no jala") */
+    function showToast(msg){
+      let t=document.getElementById('toast');
+      if(!t){t=document.createElement('div');t.id='toast';t.setAttribute('role','status');t.setAttribute('aria-live','polite');document.body.appendChild(t);}
+      t.textContent=msg;t.classList.add('show');
+      clearTimeout(window.__toastT);window.__toastT=setTimeout(()=>t.classList.remove('show'),2400);
+    }
+    async function copyEmail(){
+      try{await navigator.clipboard.writeText(EMAIL);showToast('📋 Email copied: '+EMAIL);return true;}
+      catch{showToast('✉ Write me: '+EMAIL);return false;}
+    }
+    window.__copyEmail=copyEmail;window.__toast=showToast;
+    const heroEmail=document.getElementById('heroEmail');
+    if(heroEmail){heroEmail.addEventListener('click',()=>{copyEmail();});}
+    /* Endpoint real opcional (Formspree https://formspree.io/f/xxxx o Lambda). Vacío = fallback copiar+mailto */
+    const CONTACT_ENDPOINT='';
     const form=document.getElementById('contactForm');
     if(form){
-      form.addEventListener('submit',(e)=>{
+      form.addEventListener('submit',async(e)=>{
         e.preventDefault();
         const f=new FormData(form);
+        const success=document.getElementById('formSuccess');
+        if(CONTACT_ENDPOINT){
+          try{
+            const r=await fetch(CONTACT_ENDPOINT,{method:'POST',headers:{'Accept':'application/json'},body:f});
+            if(r.ok){success.textContent='✓ Message sent! I will reply soon.';success.style.display='block';form.reset();showToast('✓ Message sent');return;}
+          }catch(err){/* cae al fallback de abajo */}
+        }
         const subject=`[Portfolio] ${f.get('subject')||'Contacto'} — ${f.get('name')||''}`.trim();
         const body=`${f.get('message')||''}\n\n—\n${f.get('name')||''} · ${f.get('email')||''}`;
+        copyEmail();
         window.location.href=`mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        document.getElementById('formSuccess').style.display='block';
+        success.style.display='block';
       });
     }
     const copyBtn=document.getElementById('copyEmail');
@@ -766,8 +793,8 @@
         {label:'Terminal',tag:'section',run:()=>go('#terminal')},
         {label:'Download CV · ES (PDF)',tag:'action',run:()=>window.__downloadCV('es')},
         {label:'Download CV · EN (PDF)',tag:'action',run:()=>window.__downloadCV('en')},
-        {label:'Email me',tag:'action',run:()=>{window.location.href='mailto:'+EMAIL;}},
-        {label:'Copy email',tag:'action',run:()=>{navigator.clipboard&&navigator.clipboard.writeText(EMAIL);}},
+        {label:'Email me',tag:'action',run:()=>{window.__copyEmail&&window.__copyEmail();window.location.href='mailto:'+EMAIL;}},
+        {label:'Copy email',tag:'action',run:()=>{window.__copyEmail?window.__copyEmail():(navigator.clipboard&&navigator.clipboard.writeText(EMAIL));}},
         {label:'GitHub',tag:'link',run:()=>window.open('https://github.com/jalducin','_blank')},
         {label:'LinkedIn',tag:'link',run:()=>window.open('https://linkedin.com/in/juanvalducinv','_blank')},
         {label:'Toggle theme',tag:'action',run:()=>{const l=document.documentElement.classList.toggle('light');localStorage.setItem('theme',l?'light':'dark');}}
@@ -863,7 +890,6 @@
       /* Terminal */
       const out=document.getElementById('term-out'), inp=document.getElementById('term-input');
       if(out&&inp){
-        const EMAIL='valentin.alducin88@gmail.com';
         const hist=[]; let hi=-1;
         function line(text,cls){const d=document.createElement('div'); d.className=cls; d.textContent=text; out.appendChild(d); out.scrollTop=out.scrollHeight;}
         const CMDS={
