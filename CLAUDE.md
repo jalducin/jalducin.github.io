@@ -89,7 +89,8 @@ Inglés:      B1 (Intermedio)
 | Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Google Wallet passes (RS256 JWT) · Feature Flags · Vitest | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
-| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (Live Demo) | jalducin/EcommerceJVAV |
+| Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio) | jalducin/pyzzeria |
+| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (sin enlace de demo en el portafolio; la demo destacada es Pyzzeria) | jalducin/EcommerceJVAV |
 | Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
 | dataMasterGK | Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 — middleware ETL retail (Excel→GK XML, 4 interfaces, SFTP/FTP), rediseñado con SDD (pipeline idempotente, seguridad) | jalducin/dataMasterGK |
 

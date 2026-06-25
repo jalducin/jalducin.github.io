@@ -442,13 +442,21 @@
         </div>
 
         <div class="card">
-          <div class="card-badge">🚀 Live on AWS</div>
+          <div class="card-badge">🍕 Live on AWS · 100% SDD</div>
+          <h3>Pyzzeria — Serverless Pizza Ordering</h3>
+          <p>Serverless pizza-ordering demo with <strong>live order tracking</strong>: build your pizza, place the order and watch it move <code>recibido→preparando→horno→listo→entregado</code> in ~70s over <strong>WebSocket</strong>, driven by a <strong>Step Functions Express</strong> workflow. Orders in <strong>DynamoDB</strong>, fully documented <strong>OpenAPI/Swagger</strong>, frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>. Demo only — no real payments.</p>
+          <div class="tech">Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3 · CloudFront</div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+            <a class="btn" href="https://d3ni8wwgux3wy8.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
+            <a class="btn" href="https://github.com/jalducin/pyzzeria" target="_blank" rel="noopener">View Code ↗</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-badge">★ E-commerce · SDD</div>
           <h3>JV Market</h3>
           <p>Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">Python · FastAPI · JWT · SQLite/PostgreSQL · AWS Lambda · API Gateway · S3 · CloudFront · vanilla JS</div>
-          <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-            <a class="btn" href="https://d3rw1q49m6mvnq.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
-          </div>
         </div>
 
         <div class="card">
@@ -904,7 +912,7 @@
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
           contact:()=>"📧 "+EMAIL+"   ·   in/juanvalducinv   ·   github.com/jalducin",
-          'ls projects':()=>"Fidello/   Monitoreo-Cloud/   VoltGrid/   Trackion/   JV-Market/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
+          'ls projects':()=>"Fidello/   Monitoreo-Cloud/   VoltGrid/   Trackion/   Pyzzeria/   JV-Market/   dataMasterGK/\n(usa 'cat cv' para el PDF · 'cat cv en' para la versión en inglés)",
           'cat cv':()=>{window.__downloadCV('es'); return "Descargando CV en español (PDF)…";},
           'cat cv en':()=>{window.__downloadCV('en'); return "Downloading CV in English (PDF)…";},
           writing:()=>{window.__showTab('writing'); return "Abriendo Writing… posts: SDD/OpenSpec · Docker · Grafana.";},
