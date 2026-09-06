@@ -4,24 +4,32 @@
 
 ### Requirement: Rol Podemos Progresar alineado al CV
 
-La entrada de experiencia de Podemos Progresar SHALL usar el título y los logros del CV vigente
-(*Backend Engineer & AI Specialist*), conservando Enkoth como hito de agentic engineering que
-llegó a producción.
+La experiencia en Podemos Progresar SHALL presentarse como dos entradas cronológicas con los títulos
+y logros del CV vigente —*Service Support Tech Lead & AI Specialist* (rol actual) y *Backend Support
+Specialist* (rol anterior)—, conservando Enkoth como hito de agentic engineering que llegó a producción.
 
-#### Scenario: Título y stack de Podemos coinciden con el CV
-- **WHEN** un visitante lee la entrada de Podemos Progresar en la timeline
-- **THEN** el título del rol es coherente con "Backend Engineer & AI Specialist"
-- **AND** el badge "Current" sigue presente con el rango "Sept 2025 – Present"
-- **AND** el stack visible incluye Python, Django, FastAPI, PostgreSQL, AWS Serverless, Docker y n8n
+#### Scenario: Título y stack del rol actual coinciden con el CV
+- **WHEN** un visitante lee la entrada actual de Podemos Progresar en la timeline
+- **THEN** el título del rol es coherente con "Service Support Tech Lead & AI Specialist"
+- **AND** el badge "Current" sigue presente con el rango "Jul 2026 – Present"
+- **AND** el stack visible incluye Python, Django, FastAPI, PostgreSQL, AWS Serverless, Claude API, Docker y n8n
 
-#### Scenario: Bullets reflejan métricas e integración de IA en el SDLC
-- **WHEN** se revisan los bullets de Podemos
-- **THEN** al menos un bullet describe la aplicación de Spec-Driven Development a bugs/deuda técnica/
-  incidentes con reducción del ciclo de revisión (~40%)
-- **AND** un bullet describe integración de Claude (SDD) y Gemini en el SDLC (specs, análisis estático,
-  debugging, documentación)
-- **AND** un bullet describe gestión de incidentes con RCA/postmortem asistido por IA y 80% de
-  autoresolución N1
+#### Scenario: El rol anterior en Podemos permanece visible
+- **WHEN** un visitante recorre la timeline por debajo del rol actual
+- **THEN** existe una entrada "Backend Support Specialist" en Podemos Progresar con el rango "Sept 2025 – Jun 2026"
+- **AND** sus bullets incluyen gestión de incidentes N2 con RCA/postmortem asistido por IA y 80% de
+  autoresolución N1 sin escalamiento senior
+
+#### Scenario: Bullets del rol actual reflejan liderazgo, métricas e IA en el SDLC
+- **WHEN** se revisan los bullets del rol actual de Podemos
+- **THEN** al menos un bullet describe el liderazgo del equipo de Service Support resolviendo bugs/deuda
+  técnica/incidentes con Spec-Driven Development y Claude API, con reducción del tiempo de revisión (~40%)
+- **AND** un bullet describe la arquitectura de flujos de IA (Claude, OpenAI, Gemini) en el SDLC (specs,
+  análisis estático, debugging, documentación)
+- **AND** un bullet describe el tablero de gobierno de post-mortems con lectura en vivo desde Asana
+  (atrasos, subtareas abiertas, escalaciones N3/N4 y semáforo ITG contra meta)
+- **AND** un bullet describe la participación en los trenes de liberación semanales (SCI, Spore, Hipatia,
+  Mambu Tools)
 - **AND** un bullet describe operación de AWS (Lambda, RDS, Step Functions) con primera respuesta <10 min y resolución <2 h
 
 #### Scenario: Enkoth se conserva como hito de producción
