@@ -30,7 +30,8 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - AI & GenAI: Claude API, OpenAI API, Gemini API, Anthropic SDK, Prompt Engineering, LLM Integration, AI Agents, RAG, Agentic Workflows, Amazon Bedrock, OpenSpec/SDD
 
 ## Experience
-- Podemos Progresar (Sep 2025 – present) — Backend Engineer & AI Specialist (Fintech). SDD, AI across the SDLC, AWS Serverless, n8n automation and Grafana observability. Builds internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) for webhook processing and integrations (Asana, Freshdesk, Notion, Slack).
+- Podemos Progresar (Jul 2026 – present) — Service Support Tech Lead & AI Specialist (Fintech). Leads the Service Support engineering team end-to-end (bugs, critical incidents, technical debt) with SDD + Claude API (-40% code review time); architects AI flows (Claude, OpenAI, Gemini) across the SDLC; built a post-mortem governance dashboard reading live from Asana (delays, open subtasks, N3/N4 escalations, ITG traffic light vs. target); weekly release trains (SCI, Spore, Hipatia, Mambu Tools); internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) and n8n automations (Asana, Freshdesk, Notion, Slack).
+- Podemos Progresar (Sep 2025 – Jun 2026) — Backend Support Specialist (Fintech). N2 incident management with RCAs and AI-assisted post-mortems; 80% autonomous N1 resolution via knowledge transfer; central technical liaison across Python, Django, FastAPI and PostgreSQL.
 - Redsis (Jan 2022 – Sep 2025) — Software Engineer → Tech Lead. GK POS multi-country Go-Live (Peru, Colombia, Bolivia), REST APIs, ETL, team leadership.
 - Softtek (Mar 2017 – Jan 2022) — Software Engineer. SAP ERP/HANA, ETL, SAP BO dashboards, AMS support, Scrum (98% SLA).
 
