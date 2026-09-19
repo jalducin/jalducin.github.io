@@ -104,7 +104,7 @@ Inglés:      B1 (Intermedio)
 > sistemas internos (SCI, Spore, Hipatia, Mambu Tools, LUCI/Aleph, etc.), personas, bases de datos, IDs de
 > incidentes/workflows ni conteos de registros de clientes. Herramientas SaaS de terceros (Freshdesk, Notion,
 > Asana, Slack, Sentry, n8n, Grafana) sí se pueden citar. Lo verifica
-> `openspec/changes/cv-portafolio-sre-automation/scripts/audit.py`.
+> `openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/scripts/audit.py`.
 >
 > **Skills por niveles:** el sitio lista el stack con la rúbrica honesta Own / Build / Operate / Learning
 > (`#hard-skills`, capability `stack-por-niveles`); solo tecnologías con evidencia de uso (sin Amazon Kendra ni
