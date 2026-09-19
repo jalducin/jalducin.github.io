@@ -31,8 +31,9 @@ Learning*.
 
 #### Scenario: Educación lista los programas del CV
 - **WHEN** un visitante lee la sección de educación
-- **THEN** aparecen: Maestría en DevOps (IEU, 2024–Presente), Ingeniería en Sistemas Computacionales
-  (Instituto Tecnológico de Orizaba, 2006–2011) e Inglés Avanzado (Quick Learning, en curso)
+- **THEN** aparecen: Ingeniería en Sistemas Computacionales (Instituto Tecnológico de Orizaba, 2006–2011)
+  e Inglés Avanzado (Quick Learning, en curso)
+- **AND** no aparece la Maestría en DevOps (IEU), retirada del CV en septiembre de 2026
 
 ### Requirement: Certificaciones reconciliadas con el CV
 
