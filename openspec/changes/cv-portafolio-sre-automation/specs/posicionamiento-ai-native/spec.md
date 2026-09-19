@@ -1,6 +1,6 @@
-# Capability: posicionamiento-ai-native
+# Capability: posicionamiento-ai-native (delta)
 
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Header alineado al posicionamiento AI-native del CV
 

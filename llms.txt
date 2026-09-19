@@ -1,13 +1,15 @@
 # Juan Valentin Alducin Vázquez
 
-> Senior Software Engineer · AI-native Development. 10+ years in backend engineering, integrating
-> Generative AI / LLMs (Claude, Gemini, OpenAI) as the central copilot of the SDLC and championing
-> Spec-Driven Development (SDD/OpenSpec). Based in CDMX, Mexico.
+> Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI. 10+ years in backend engineering.
+> Reliability and automation as a product (post-mortem system, 99.95% monthly uptime, runbooks, n8n and
+> spec-driven pipelines), with Generative AI / LLMs (Claude, Gemini, OpenAI, Bedrock) as the copilot of the
+> SDLC and Spec-Driven Development (SDD/OpenSpec). Based in CDMX, Mexico.
 
 This file summarizes the profile for AI agents and LLMs. Source of truth: the CV PDF and index.html.
 
 ## Profile
-- Role: Senior Software Engineer, AI-native Development
+- Role: Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI
+- Current position: Service Support Tech Lead & AI Specialist at Podemos Progresar (fintech / microfinance)
 - Location: Mexico City (CDMX), Mexico
 - Languages: Spanish (native), English (B1)
 - Email: valentin.alducin88@gmail.com
@@ -15,28 +17,32 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - GitHub: https://github.com/jalducin
 - LinkedIn: https://linkedin.com/in/juanvalducinv
 - Website: https://jalducin.github.io
-- CV (PDF): https://jalducin.github.io/cv/CV_JuanValentinAlducin.pdf
+- CV (PDF, ES): https://jalducin.github.io/cv/CV_JuanValentinAlducin.pdf
+- CV (PDF, EN): https://jalducin.github.io/cv/CV_JuanValentinAlducin_EN.pdf
 
-## How I work (AI-native)
-- Spec-Driven Development (proposal → specs → design → tasks → apply → archive); the spec is the source of truth.
-- AI as SDLC copilot: spec generation, static code analysis, automated debugging, RCA/post-mortems, documentation.
-- Impact metrics: ~40% faster review cycles, 80% autonomous N1 incident resolution, first response under 10 minutes, incident resolution under 2 hours.
+## How I work
+- Automate > operate. Rule of two: any manual report or task done more than twice becomes a spec-driven pipeline.
+- Reliability as a product. Downtime is measured by real user impact, not by ticket closure; blameless post-mortems; least-privilege runbooks.
+- State outside the code. IDs, cut-offs and thresholds live in configuration (JSON / Notion) read alike by the workflow and the dashboard; the spec is the contract.
+- Cursor over ingestion, not the clock. Designed for failure (missed runs, late data), not for the happy path.
+- Spec-Driven Development (proposal → specs → design → tasks → apply → archive); the spec is the source of truth. AI as SDLC copilot: spec generation, static code analysis, automated debugging, RCA/post-mortems, documentation, AI Skills (e.g. ticket routing with human review on low confidence).
+- Impact metrics: ~40% less code review time, 80% autonomous N1 incident resolution, first response under 10 minutes, critical resolution under 2 hours, 99.95% monthly uptime (July 2026).
 
-## Core stack
-- Languages: Python, PHP, JavaScript, TypeScript, Java, SQL
-- Frameworks: Django, Flask, FastAPI, React, Next.js 14, Node.js, SQLAlchemy 2.0 async; SSO/OIDC
-- Cloud/Serverless/DevOps/Observability: AWS (Lambda, RDS, S3, Step Functions, EventBridge, EC2, CloudWatch), Serverless Framework, Kubernetes (Kustomize), Docker, n8n, Grafana, GitHub Actions, Supabase, Azure (base), GCP (base)
-- Databases: PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA SQL, DynamoDB
-- AI & GenAI: Claude API, OpenAI API, Gemini API, Anthropic SDK, Prompt Engineering, LLM Integration, AI Agents, RAG, Agentic Workflows, Amazon Bedrock, OpenSpec/SDD
+## Stack by level of mastery (honest inventory)
+- Own (built end-to-end, operationally owned): PostgreSQL & advanced SQL, idempotent production ETL, post-mortem system (P0–P3, blameless, self-assessment rubric), uptime/downtime methodology, runbooks & least-privilege access, Notion as knowledge system, Spec-Driven Development (OpenSpec).
+- Build (recurring): Python (FastAPI, Django, Flask, pytest with mocks), SQL, Liquibase, n8n (workflow SDK), Freshdesk/Notion/Asana/Slack APIs, webhooks & serverless tooling, spec-driven pipelines, Grafana dashboards & alerting, Chart.js, Claude API / Claude Code, OpenAI API, Gemini API, Amazon Bedrock, Prompt Engineering, LLM Integration, AI Agents/Skills, Agentic Workflows, RAG, SonarQube, GitHub Actions, Docker, Serverless Framework, Supabase (PL/pgSQL, RLS, Edge Functions), React, TypeScript, Next.js, Node.js, Vitest/Jest, SQLAlchemy 2.0 async, Alembic, Pydantic v2, Pandas/openpyxl, SFTP/Paramiko, OpenAPI/REST/WebSocket, SSO/OIDC.
+- Operate (diagnosis and operations): AWS Lambda, Step Functions, CloudWatch Logs Insights, RDS, S3, EventBridge, EC2, AWS SSO/Identity Center, Sentry, MySQL, SQL Server, MongoDB, DynamoDB, SAP ERP/HANA, SAP BO, GK POS/OmniPOS, core banking and credit-bureau integrations, Scrum/Jira/Asana/Postman, Azure (base), GCP (base).
+- Learning: IaC (Terraform / AWS CDK), Amazon QuickSight, synthetic checks & proactive observability, AWS Glue at scale.
+- Languages: Python, SQL, PHP, JavaScript, TypeScript, Java.
 
 ## Experience
-- Podemos Progresar (Jul 2026 – present) — Service Support Tech Lead & AI Specialist (Fintech). Leads the Service Support engineering team end-to-end (bugs, critical incidents, technical debt) with SDD + Claude API (-40% code review time); architects AI flows (Claude, OpenAI, Gemini) across the SDLC; built a post-mortem governance dashboard reading live from Asana (delays, open subtasks, N3/N4 escalations, ITG traffic light vs. target); weekly release trains (SCI, Spore, Hipatia, Mambu Tools); internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge) and n8n automations (Asana, Freshdesk, Notion, Slack).
-- Podemos Progresar (Sep 2025 – Jun 2026) — Backend Support Specialist (Fintech). N2 incident management with RCAs and AI-assisted post-mortems; 80% autonomous N1 resolution via knowledge transfer; central technical liaison across Python, Django, FastAPI and PostgreSQL.
+- Podemos Progresar (Jul 2026 – present) — Service Support Tech Lead & AI Specialist (fintech / microfinance). Leads the Service Support team end-to-end (bugs, critical incidents, technical debt) with SDD + Claude API (~40% less code review time). Built the post-mortem system (P0–P3, 5 Whys, blameless, rubric) with a live governance dashboard (delays, open subtasks, N3/N4 escalations, KPI traffic light vs. target) and management reports. Defined the monthly uptime/downtime methodology (99.95% in July 2026), standardized runbooks and least-privilege access. Automates operations with n8n (workflow SDK): Freshdesk → Notion → Slack with ingestion cursor, post-mortem delay watcher, ticket-spike alerts; spec-driven pipelines (n8n orchestrates, Python computes, FastAPI, Notion sink). Architects AI flows (Claude, OpenAI, Gemini, Bedrock) across the SDLC and designs an AI Skill for automatic ticket routing with human review. Weekly release trains across core banking, origination and field-app platforms; internal serverless tooling (Enkoth — Lambda · Step Functions · EventBridge). Diagnoses and operates AWS (Step Functions, Lambda, CloudWatch Logs Insights, RDS) and audits error tracking (Sentry); SLAs: first response <10 min, critical resolution <2 h.
+- Podemos Progresar (Sep 2025 – Jun 2026) — Backend Support Specialist. N2 incident management with RCAs and AI-assisted post-mortems; 80% autonomous N1 resolution via knowledge transfer; owner of the weekly idempotent PostgreSQL cleanup ETL (backup → delete → update → audit log, pre-validated) and identity deduplication in production; Liquibase-versioned schema changes; central technical liaison across Python, Django, FastAPI and PostgreSQL.
 - Redsis (Jan 2022 – Sep 2025) — Software Engineer → Tech Lead. GK POS multi-country Go-Live (Peru, Colombia, Bolivia), REST APIs, ETL, team leadership.
 - Softtek (Mar 2017 – Jan 2022) — Software Engineer. SAP ERP/HANA, ETL, SAP BO dashboards, AMS support, Scrum (98% SLA).
 
 ## Featured projects
-- Fidello — Loyalty Card System: multi-business digital loyalty, roles (Owner/Manager/Employee), mobile-first QR, JWT, realtime WebSockets, multi-tenant RLS, QR tokens (60s TTL + SHA-256 fingerprint). 100% SDD/OpenSpec. Stack: React 18, TypeScript, Vite, Tailwind, Supabase, PL/pgSQL, Edge Functions (Deno), Vitest.
+- Fidello — Loyalty Card System (pilot, cloud beta): multi-business digital loyalty (stamps via QR, nothing to install); five actors (guest, registered customer, cashier, owner/manager, platform admin), multi-business wallet, tiers and redemptions, self-service business onboarding, KPIs/analytics, satisfaction surveys, scheduled monthly platform report (pg_cron). All business rules in PostgreSQL: multi-tenant RLS, RPC in PL/pgSQL SECURITY DEFINER, QR tokens with TTL + SHA-256 fingerprint (anti-replay), rate limiting on anonymous functions, PII-free audit log, feature flags (global + per-business). Core journeys validated by product in real coffee shops. Engineering: 793 tests (337 DB against real Postgres + 456 UI), 91 SQL migrations, 22 tables, 7 Edge Functions, 5 cron jobs, 97 OpenSpec changes, 28 journeys with twin runbooks, CI with 2 blocking jobs (frontend + DB), QAS/PROD environments, architecture review package for external reviewers. 100% SDD/OpenSpec with 5 specialized AI agents. Stack: React 18, TypeScript, Vite 5, Tailwind 3, React Router 7, PWA (Workbox), WCAG AA, html5-qrcode, Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron), Vitest + Testing Library + msw + pg harness, ESLint, GitHub Actions, Vercel, Supabase CLI + Docker. Private repository.
 - VoltGrid — multi-tenant, white-label SaaS for EV charging-station operators: live status over WebSocket, tenant isolation via PostgreSQL Row-Level Security (RLS), RBAC (superadmin/org_admin/operator/viewer) + SSO (OIDC), analytics (uptime, kWh, CSV export), auditable state scheduler and installable PWA. 100% SDD. Code: https://github.com/jalducin/voltgrid. Stack: FastAPI, SQLAlchemy 2.0 async, asyncpg, Alembic, PostgreSQL 16 (RLS), Next.js 14, TypeScript, Tailwind, WebSockets, Docker, Kubernetes (Kustomize), GitHub Actions.
 - Trackion — white-label serverless help desk: end-to-end ticketing, admin-managed catalogs and an open API-integration module (generic inbound webhooks + outbound domain-event dispatch). Grafana tickets & SLA dashboards. Built with SDD; runs locally via Docker. Code: https://github.com/jalducin/Trackion. Stack: Python 3.12, AWS Lambda, API Gateway (HTTP API), Serverless Framework, PostgreSQL (pg8000), JWT (PyJWT), SSM Parameter Store, Grafana, vanilla JS.
 - JV Market — full-stack streetwear/sneakers e-commerce deployed on AWS: JWT auth, product catalog, cart, checkout, Click & Collect, wishlist, admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. Live demo: https://d3rw1q49m6mvnq.cloudfront.net/. Stack: Python, FastAPI, JWT, SQLite/PostgreSQL, AWS Lambda, API Gateway, S3, CloudFront.

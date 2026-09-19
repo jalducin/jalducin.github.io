@@ -1,13 +1,13 @@
 <!--
   Borrador editable del CV (ES) — refleja 1:1 el contenido de cv/cv.html al 2026-09-19.
   Fuente canónica del PDF: cv/cv.html (+ cv/cv-en.html). Edita aquí, y al terminar pásamelo para
-  volcarlo a los HTML, regenerar los PDF (cv\build.ps1) y alinear index.html / llms.txt.
-  Restricción del PDF: 1 página Oficio. Guía: bullets de ≤ ~125 caracteres caben en 2 líneas.
+  volcarlo a los HTML, regenerar los PDF (cvuild.ps1) y alinear index.html / llms.txt.
+  Restricción del PDF: 1 página Oficio. Guía: bullets de ≤ ~120 caracteres caben en 2 líneas.
 -->
 
 # Juan Valentin Alducin Vázquez
 
-**Senior Backend Engineer | Tech Lead | Agentic AI Systems**
+**Senior Backend Engineer | Tech Lead · SRE & Automation | Agentic AI**
 
 - WhatsApp: +52 56 4080 0494
 - Email: valentin.alducin88@gmail.com
@@ -20,31 +20,33 @@
 
 ## Resumen
 
-Senior Backend Engineer y Tech Lead con +10 años en APIs, sistemas distribuidos y cloud-native (Python, FastAPI, AWS Serverless). Especializado en IA generativa: agentes, RAG y LLMs (Claude, Gemini, OpenAI) con AWS AI/ML (Bedrock, Kendra). Pipelines de datos y ETL. Tech Lead en fintech y retail; acelero la entrega con SDD: -40% en revisión y 80% de autoresolución N1.
+Senior Backend Engineer y Tech Lead (+10 años; Python, SQL, AWS). Confiabilidad y automatización como producto: post-mortems, uptime 99.95%, runbooks y pipelines n8n/spec-driven. IA generativa (Claude, Gemini, OpenAI, Bedrock) como copiloto del SDLC con SDD: -40% en revisión, 80% de autoresolución N1.
 
 ---
 
 ## Experiencia
 
 ### Service Support Tech Lead & IA Specialist — Podemos Progresar
-07/2026 – Presente · CDMX
+07/2026 - Presente · CDMX
 
-- Lidero el equipo de Service Support: bugs, incidentes críticos y deuda técnica end-to-end con SDD + Claude API (-40% en revisión).
-- Arquitecto flujos de IA (Claude, OpenAI, Gemini) en todo el SDLC: specs, análisis estático, debugging y documentación.
-- Construí el tablero de post-mortems en vivo desde Asana (atrasos, escalaciones N3/N4, semáforo ITG) y reportes para dirección.
-- Diseño tooling serverless interno (Enkoth — Lambda · Step Functions · EventBridge) y automatizaciones n8n (Asana, Freshdesk, Slack).
-- Trenes de liberación semanales (SCI, Spore, Hipatia, Mambu Tools) y AWS: primera respuesta <10 min, crítica <2 h.
+- Lidero Service Support: bugs, incidentes críticos y deuda técnica end-to-end con SDD + Claude API (-40% en revisión).
+- Sistema de post-mortems (P0–P3, blameless, tablero en vivo) y metodología de uptime mensual: 99.95% en jul 2026.
+- Automatización con n8n (SDK): Freshdesk → Notion → Slack, alertas de atrasos y picos; pipelines spec-driven.
+- Flujos de IA (Claude, OpenAI, Gemini, Bedrock) en el SDLC; Skill de routing de tickets con revisión humana.
+- Trenes de liberación semanales: validación y despliegue entre core banking, originación y app de campo.
+- AWS (Step Functions, Lambda, CloudWatch, RDS) y tooling serverless interno (Enkoth); SLA: respuesta <10 min, crítica <2 h.
 
-**Stack:** Python · Django · FastAPI · PostgreSQL · AWS Serverless · AWS Glue · Claude API · Docker · n8n · Grafana
+**Stack:** Python · SQL · PostgreSQL · Django · FastAPI · AWS (Lambda, Step Functions, CloudWatch, RDS) · n8n · Grafana · Sentry · Claude API · Docker
 
 ### Backend Support Specialist — Podemos Progresar
-09/2025 – 06/2026 · CDMX
+09/2025 - 06/2026 · CDMX
 
-- Lideré incidentes N2 con RCAs y postmortems técnicos asistidos por IA que previnieron fallos recurrentes.
-- Habilité 80% de autoresolución en N1 vía transferencia de conocimiento; fui el enlace técnico central del área.
+- Lideré incidentes N2 con RCAs y post-mortems asistidos por IA; 80% de autoresolución N1 vía transferencia de conocimiento.
+- ETL semanal idempotente en PostgreSQL (respaldo → limpieza → actualización → bitácora) y deduplicación de identidades.
+- Enlace técnico central del área (Python, Django, FastAPI, PostgreSQL).
 
 ### Software Engineer > Tech Lead — Redsis
-01/2022 – 09/2025 · CDMX
+01/2022 - 09/2025 · CDMX
 
 - Desarrollé APIs REST (Python, Java, PHP) integrando GK POS con ERPs/CRMs vía XML/SFTP en 3 países LATAM.
 - Lideré el Go-Live cloud de GK POS (Perú, Colombia, Bolivia): cronogramas, stakeholders negocio/TI, preventa y capacitación local.
@@ -53,7 +55,7 @@ Senior Backend Engineer y Tech Lead con +10 años en APIs, sistemas distribuidos
 **Stack:** Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL
 
 ### Software Engineer — Softtek
-03/2017 – 01/2022 · CDMX
+03/2017 - 01/2022 · CDMX
 
 - Implementé facturación, portales cliente y ETLs con SAP ERP/HANA y dashboards ejecutivos en SAP BO.
 - Soporte AMS a Retail GK (correctivo/evolutivo) bajo Scrum, con SLA al 98%.
@@ -65,7 +67,7 @@ Senior Backend Engineer y Tech Lead con +10 años en APIs, sistemas distribuidos
 ## Educación
 
 ### Ingeniería en Sistemas Computacionales — Instituto Tecnológico de Orizaba
-2006 – 2011 · Orizaba, México
+2006 - 2011 · Orizaba, México
 
 ---
 
@@ -82,13 +84,15 @@ Senior Backend Engineer y Tech Lead con +10 años en APIs, sistemas distribuidos
 
 | Categoría | Detalle |
 |---|---|
-| Lenguajes | Python, PHP, JavaScript, TypeScript, Java, SQL |
+| Lenguajes | Python, SQL, PHP, JavaScript, TypeScript, Java |
 | Frameworks & APIs | Django, FastAPI, Flask, React, Next.js 14, Node.js, REST APIs, SSO/OIDC, Microservices, Event-Driven Architecture |
-| Cloud · DevOps · Observabilidad | AWS (Lambda, RDS, S3, Step Functions, EC2, CloudWatch), Serverless Framework, Kubernetes, CI/CD (GitHub Actions), Docker, n8n, Grafana, Supabase |
-| Bases de datos | PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA, DynamoDB |
+| Cloud & Serverless | AWS (Lambda, Step Functions, EventBridge, CloudWatch, RDS, S3, EC2), Serverless Framework, CI/CD (GitHub Actions), Docker, Supabase |
+| SRE & Observabilidad | Post-mortems (P0–P3, blameless), uptime/downtime, runbooks, SLAs, Grafana, Sentry, CloudWatch Logs Insights |
+| Automatización | n8n (workflow SDK), APIs Freshdesk/Notion/Asana/Slack, webhooks serverless, pipelines spec-driven |
+| Bases de datos | PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA, DynamoDB, Liquibase |
 | Datos & ETL | Pipelines ETL, AWS Glue, SFTP/XML, Pandas/openpyxl, SAP ETL |
-| IA & Generative AI | Claude/OpenAI/Gemini APIs, Prompt Engineering, LLM Integration, RAG, AI Agents, Agentic Workflows, Amazon Bedrock, Amazon Kendra, AWS Kiro, SDD/OpenSpec |
-| Gestión | Scrum, Jira, Asana, Notion, Postman |
+| IA & Generative AI | Claude API / Claude Code, OpenAI, Gemini, Amazon Bedrock, Prompt Engineering, LLM Integration, RAG, AI Agents/Skills, Agentic Workflows, SDD/OpenSpec |
+| Calidad & Gestión | pytest (mocks), Vitest, SonarQube, Merge Requests/CI, Scrum, Jira, Asana, Notion |
 | Soft Skills | Liderazgo Técnico, Mentoring, Comunicación Ejecutiva, Gestión de Stakeholders, Ownership, Resolución de Problemas |
 
 ---
@@ -103,7 +107,7 @@ Senior Backend Engineer y Tech Lead con +10 años en APIs, sistemas distribuidos
 ## Proyectos
 
 ### Fidello — Loyalty Card System
-Fidelidad digital multi-negocio (roles, QR mobile-first): JWT, RLS multi-tenant, QR anti-replay, passes de Google Wallet (JWT RS256) y feature flags administrables. 100% SDD · en evolución.
+Piloto en beta cloud (cafeterías reales). Fidelidad digital multi-negocio (QR mobile-first): RLS multi-tenant, RPC PL/pgSQL, QR anti-replay, feature flags. 793 pruebas · 91 migraciones · 100% SDD.
 **Stack:** React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest
 
 ### Monitoreo-Cloud — Observabilidad

@@ -62,7 +62,7 @@ No romper el diseño responsive.
 ## 4. CV en PDF (self-hosted, bilingüe ES/EN)
 
 - Fuentes editables: `cv/cv.html` (español) y `cv/cv-en.html` (inglés) — mismo diseño estilo enhancv,
-  **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly. La sección Idiomas vive en la columna derecha.
+  **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly. La sección Idiomas vive en la columna izquierda, bajo Educación (desde 2026-09-19).
 - Los PDFs se generan con un **build step** (Chrome/Edge headless, `cv/build.ps1`) hacia
   `cv/CV_JuanValentinAlducin.pdf` (ES) y `cv/CV_JuanValentinAlducin_EN.pdf` (EN). `build.ps1` usa un
   `--user-data-dir` único por PDF (evita el singleton de Chrome headless en llamadas seguidas).
@@ -86,7 +86,7 @@ No romper el diseño responsive.
 
 ```
 Nombre:    Juan Valentin Alducin Vázquez
-Posición:  Senior Software Engineer · AI-native Development
+Posición:  Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI
 Email:     valentin.alducin88@gmail.com
 WhatsApp:  525640800494
 GitHub:    https://github.com/jalducin

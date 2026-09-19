@@ -1,6 +1,6 @@
-# Capability: skills-y-formacion
+# Capability: skills-y-formacion (delta)
 
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Taxonomía de skills alineada al CV
 
