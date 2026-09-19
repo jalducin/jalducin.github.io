@@ -49,6 +49,5 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - "Multi-source observability with Grafana" — one pane over AWS serverless (CloudWatch), Docker containers and app data (tickets/SLA). /blog/grafana-multi-source.html
 
 ## Education
-- Master's in DevOps — Universidad IEU (2024 – present)
 - Computer Systems Engineering — Instituto Tecnológico de Orizaba (2006 – 2011)
 - Advanced English — Quick Learning (in progress)
