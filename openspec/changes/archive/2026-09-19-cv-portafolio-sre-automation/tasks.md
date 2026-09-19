@@ -111,5 +111,5 @@ ejecuta el agente; nunca se delegan al usuario. Orden de edición según `design
 - [x] 8.2 Verificar en vivo (`curl https://d3r3bnavnwzqaw.cloudfront.net/`): headline híbrido presente, PDF ES/EN
       HTTP 200 con el mismo tamaño en bytes que los locales, `llms.txt` con "How I work"; `gh run list` con los
       3 workflows en success
-- [ ] 8.3 Entregar al usuario `cv/CV_JuanValentinAlducin.md` como base para LinkedIn y ejecutar `/opsx:verify`
+- [x] 8.3 Entregar al usuario `cv/CV_JuanValentinAlducin.md` como base para LinkedIn y ejecutar `/opsx:verify`
       antes de archivar
