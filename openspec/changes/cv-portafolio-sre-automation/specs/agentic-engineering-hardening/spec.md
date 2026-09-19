@@ -1,24 +1,6 @@
-# Capability: agentic-engineering-hardening
+# Capability: agentic-engineering-hardening (delta)
 
-## Requirements
-
-### Requirement: Sección "How I build with AI" (metodología agentic)
-
-El sitio SHALL incluir una sección dedicada que explique el método de trabajo AI-native / agentic del
-candidato, demostrando el *cómo* con métricas verificables, no solo declarando herramientas.
-
-#### Scenario: La sección comunica el método y las métricas
-- **WHEN** un visitante navega a la sección de metodología AI-native
-- **THEN** se describe el flujo Spec-Driven Development (proposal → specs → design → tasks → apply →
-  archive) como práctica central
-- **AND** se mencionan las herramientas (Claude/Anthropic, Gemini, OpenAI) como copilotos del SDLC
-- **AND** se muestran las métricas de impacto: ~40% de reducción del ciclo de revisión, 80% de
-  autoresolución de incidentes N1, primera respuesta <10 min y resolución de incidentes <2 h
-
-#### Scenario: La sección es accesible desde la navegación
-- **WHEN** se carga el sitio
-- **THEN** existe un enlace de navegación hacia la sección de metodología AI-native
-- **AND** la sección respeta el sistema de diseño y el responsive (992/768/480px)
+## MODIFIED Requirements
 
 ### Requirement: Datos estructurados JSON-LD (Schema.org Person)
 

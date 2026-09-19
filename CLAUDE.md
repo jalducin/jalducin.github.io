@@ -65,7 +65,7 @@ adopta el agente `frontend-developer` de `ai-specs/agents/`.
 
 ```
 Nombre:      Juan Valentin Alducin Vázquez
-Posición:    Senior Backend Engineer · Tech Lead · Agentic AI Systems
+Posición:    Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI
 Email:       valentin.alducin88@gmail.com
 WhatsApp:    525640800494
 GitHub:      https://github.com/jalducin
@@ -87,7 +87,7 @@ Inglés:      B1 (Intermedio)
 
 | Proyecto | Stack | Repo |
 |---|---|---|
-| Fidello | React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Google Wallet passes (RS256 JWT) · Feature Flags · Vitest | privado/seed |
+| Fidello | **Piloto en beta cloud** (cafeterías reales). React 18 · TypeScript · Vite 5 · Tailwind 3 · PWA · Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron) · RLS · PL/pgSQL SECURITY DEFINER · Feature Flags · Vitest + pg harness · Vercel (QAS/PROD). Cifras (2026-09-17): 793 pruebas (337 DB + 456 UI), 91 migraciones, 22 tablas, 7 Edge Functions, 5 cron, 97 cambios OpenSpec, 28 journeys + runbooks. Google Wallet / Google OAuth / Resend / WhatsApp: construidos pero **apagados** (no presentarlos como activos) | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
 | Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio) | jalducin/pyzzeria |
@@ -98,6 +98,17 @@ Inglés:      B1 (Intermedio)
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
 > ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios y socket-chat
 > se retiraron del portafolio por considerarse obsoletos para la narrativa AI-native / AWS serverless.
+>
+> **Privacidad del empleador (regla dura, 2026-09-19):** la experiencia en Podemos se describe en lenguaje
+> genérico ("core banking", "app de campo", "buró de crédito", "sistema de tickets"). Nunca nombres propios de
+> sistemas internos (SCI, Spore, Hipatia, Mambu Tools, LUCI/Aleph, etc.), personas, bases de datos, IDs de
+> incidentes/workflows ni conteos de registros de clientes. Herramientas SaaS de terceros (Freshdesk, Notion,
+> Asana, Slack, Sentry, n8n, Grafana) sí se pueden citar. Lo verifica
+> `openspec/changes/cv-portafolio-sre-automation/scripts/audit.py`.
+>
+> **Skills por niveles:** el sitio lista el stack con la rúbrica honesta Own / Build / Operate / Learning
+> (`#hard-skills`, capability `stack-por-niveles`); solo tecnologías con evidencia de uso (sin Amazon Kendra ni
+> AWS Kiro; Kubernetes solo en la card de VoltGrid). El CV y `llms.txt` derivan de ese inventario.
 
 ---
 
@@ -111,7 +122,7 @@ Inglés:      B1 (Intermedio)
 ## PDF del CV (self-hosted, sin enhancv)
 
 El CV se genera **dentro del repo** desde fuentes HTML editables (bilingüe ES/EN), sin depender de enhancv ni suscripciones:
-- `cv/cv.html` (ES) y `cv/cv-en.html` (EN) — fuentes editables (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly). Idiomas va en la columna derecha (Español Nativo + Inglés).
+- `cv/cv.html` (ES) y `cv/cv-en.html` (EN) — fuentes editables (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly). Idiomas va en la columna izquierda, bajo Educación (desde 2026-09-19; antes en la derecha — se mueve a la columna con más holgura para conservar 1 página).
 - `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera **ambos** PDFs con Chrome/Edge headless (`--user-data-dir` único por PDF).
 - `cv/CV_JuanValentinAlducin.pdf` (ES) y `cv/CV_JuanValentinAlducin_EN.pdf` (EN) — artefactos; los que descarga `index.html`. Versionados en el repo.
 - Descarga con **sufijo mes-año dinámico** (JS vanilla): el archivo se entrega como `CV_JuanValentinAlducin_AAAA-MM.pdf` / `..._EN_AAAA-MM.pdf`. El botón EN aparece en Contact, command palette y terminal (`cat cv en`).

@@ -1,6 +1,6 @@
-# Capability: experiencia-actualizada
+# Capability: experiencia-actualizada (delta)
 
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Rol Podemos Progresar alineado al CV
 
@@ -59,26 +59,3 @@ conserva como mención ligera de tooling serverless interno (Lambda · Step Func
 - **THEN** el CV contiene un subconjunto compactado (≤ 6 bullets rol actual, ≤ 3 rol anterior) de los mismos
   hechos, sin hechos que no estén en el portafolio
 - **AND** las fechas y títulos coinciden en las cuatro fuentes (CV ES, CV EN, `index.html`, `llms.txt`)
-
-### Requirement: Rol Redsis como Software Engineer → Tech Lead
-
-La entrada de Redsis SHALL reflejar la progresión a *Tech Lead* y los logros de liderazgo del CV.
-
-#### Scenario: Redsis muestra progresión a Tech Lead y logros de liderazgo
-- **WHEN** un visitante lee la entrada de Redsis
-- **THEN** el título refleja "Software Engineer → Tech Lead" con rango "Jan 2022 – Sept 2025"
-- **AND** los bullets incluyen: APIs REST integrando GK POS con ERPs/CRMs vía XML/SFTP en 3 países LATAM;
-  liderazgo técnico del Go-Live de GK POS en cloud (Perú, Colombia, Bolivia); pipeline ETL de promociones
-  para GK OmniPOS; dirección del equipo funcional-técnico con estrategia de pruebas
-- **AND** el stack incluye Python, Java, PHP, GK POS, GK OmniPOS, XML, SFTP, Docker y ETL
-
-### Requirement: Rol Softtek consistente con el CV
-
-La entrada de Softtek SHALL mantener los logros del CV (facturación, portales, ETL con SAP, dashboards
-SAP BO, soporte AMS, Scrum con SLA 98%).
-
-#### Scenario: Softtek refleja los logros del CV
-- **WHEN** un visitante lee la entrada de Softtek
-- **THEN** el rango es "Mar 2017 – Jan 2022" y los bullets cubren facturación/portales/ETL con SAP
-  ERP/HANA, dashboards ejecutivos en SAP BO, soporte AMS a Retail GK y trabajo bajo Scrum
-- **AND** el stack incluye Python, PHP, .NET, SAP ERP/HANA, SAP BO, ETL, Web Services y Scrum

@@ -1,6 +1,6 @@
-# Capability: proyecto-fidello
+# Capability: proyecto-fidello (delta)
 
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Card de proyecto estrella Fidello
 
