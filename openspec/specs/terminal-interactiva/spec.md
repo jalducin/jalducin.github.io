@@ -25,7 +25,8 @@ en JavaScript vanilla, on-brand con la estética matrix/monospace.
 #### Scenario: Accesible y on-brand
 - **WHEN** se usa el terminal
 - **THEN** el input es navegable por teclado, hay historial básico (↑/↓) y autoscroll de salida
-- **AND** respeta la paleta café/ámbar, es responsive (992/768/480) y no expone datos sensibles
+- **AND** respeta la paleta azul metálico (`paleta-azul-metalico`: acento `--primary` `#7fa8c9`), es responsive
+  (992/768/480) y no expone datos sensibles
 
 ### Requirement: Comando de idioma en la terminal
 

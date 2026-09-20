@@ -40,7 +40,7 @@ Los botones de descarga del CV en el hero (ES y EN) SHALL usar un ícono **de cu
 
 #### Scenario: Ícono del botón de CV
 - **WHEN** un visitante ve los botones de descarga del CV en el hero
-- **THEN** el glifo es un ícono tipo résumé (hoja + persona), renderizado en **dorado** (`--primary`)
+- **THEN** el glifo es un ícono tipo résumé (hoja + persona), renderizado con el acento de la paleta (`--primary`, azul metálico `#7fa8c9`)
 - **AND** se conservan las etiquetas **ES** y **EN** que distinguen cada idioma
 - **AND** NO aparece una flecha de "subir/upload" como glifo
 
