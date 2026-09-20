@@ -16,7 +16,7 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - WhatsApp: +52 5640800494
 - GitHub: https://github.com/jalducin
 - LinkedIn: https://linkedin.com/in/juanvalducinv
-- Website: https://jalducin.github.io
+- Website: https://jalducin.github.io (bilingual ES/EN — language switch in the nav; `?lang=es` or `?lang=en`)
 - CV (PDF, ES): https://jalducin.github.io/cv/CV_JuanValentinAlducin.pdf
 - CV (PDF, EN): https://jalducin.github.io/cv/CV_JuanValentinAlducin_EN.pdf
 

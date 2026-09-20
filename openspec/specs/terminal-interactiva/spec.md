@@ -21,3 +21,13 @@ en JavaScript vanilla, on-brand con la estética matrix/monospace.
 - **WHEN** se usa el terminal
 - **THEN** el input es navegable por teclado, hay historial básico (↑/↓) y autoscroll de salida
 - **AND** respeta la paleta café/ámbar, es responsive (992/768/480) y no expone datos sensibles
+
+### Requirement: Comando de idioma en la terminal
+
+La terminal SHALL aceptar los comandos `lang es`, `lang en` e `idioma es|en` para cambiar el idioma del sitio,
+y `lang` sin argumento MUST responder el idioma activo. `help` lista el comando.
+
+#### Scenario: Cambiar idioma desde la terminal
+- **WHEN** el visitante escribe `lang es` y presiona Enter
+- **THEN** el sitio cambia a español y la terminal confirma ("Idioma: español")
+- **AND** `lang` devuelve el idioma activo y `help` incluye `lang es|en`

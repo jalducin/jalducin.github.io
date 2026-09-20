@@ -82,6 +82,20 @@ No romper el diseño responsive.
 - **UX**: `#spotlight` (glow que sigue el cursor, `z-index:-1`, off con `prefers-reduced-motion`/`hover:none`)
   y bloque `.now-card`. El CV lleva doble QR (portafolio + LinkedIn) en el encabezado.
 
+## 4b. Internacionalización (ES/EN) en `index.html`
+
+- El **inglés vive en el DOM** (fuente de verdad); el español vive en el diccionario embebido
+  `<script type="application/json" id="i18n-es">`. El runtime (script i18n antes del de tabs) captura el
+  innerHTML EN al cargar y alterna con `window.__setLang('es'|'en')`.
+- **Todo texto visible nuevo** DEBE llevar `data-i18n="<seccion>.<tag><n>"` (o `data-i18n-title|aria|placeholder`
+  para atributos) y una entrada ES en `es.py` del cambio que lo introduzca; luego `build_dict.py` regenera el
+  JSON. Tecnologías, nombres propios y el headline son invariantes (se declaran en `INVARIANTES`).
+- Nunca poner `data-i18n` en elementos con hijos interactivos (inputs, `#term-out`, contenedores con handlers):
+  solo en hojas de contenido (h2/h3/p/li/badges/botones/td).
+- Resolución del idioma: `?lang=` → `localStorage.lang` → `navigator.language` (es→ES) → EN.
+- Verificación: `audit_i18n.py` (claves huérfanas / sin traducción) y `probe_i18n.py` (headless) en
+  `openspec/changes/archive/*portafolio-bilingue/scripts/`.
+
 ## 5. Datos del propietario (fuente de verdad)
 
 ```

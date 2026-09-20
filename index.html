@@ -153,6 +153,8 @@
     footer{text-align:center;font-size:.8rem;color:var(--muted);padding:2rem 0;}
     #theme-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;cursor:pointer;font-size:1rem;color:var(--fg);transition:background .3s;}
     #theme-btn:hover{background:var(--border);}
+    #lang-btn{background:none;border:1px solid var(--border);border-radius:6px;padding:.5rem .75rem;margin-left:.5rem;cursor:pointer;font-size:.85rem;font-weight:700;letter-spacing:.06em;color:var(--primary);font-family:'Courier New',Courier,monospace;transition:background .3s;}
+    #lang-btn:hover{background:var(--border);}
     #toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--card-bg);color:var(--fg);border:1px solid var(--primary);border-radius:8px;padding:.7rem 1.1rem;font-size:.92rem;box-shadow:0 6px 24px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:9999;max-width:90vw;}
     #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
     /* nav usa position:fixed (regla superior); no sobreescribir */
@@ -191,6 +193,7 @@
     @media(max-width:992px){header h1{font-size:2.25rem;}.timeline-item{width:48%;}}
     @media(max-width:768px){.level-grid{grid-template-columns:1fr;}
       .burger{display:flex;}
+      nav{flex-wrap:wrap;justify-content:flex-start;} #lang-btn{position:absolute;right:1rem;top:.75rem;margin:0;} /* idioma visible en la barra en móvil */
       .nav-list{display:none;flex-direction:column;width:100%;background:var(--card-bg);}
       .nav-link{padding:.9rem 1.2rem;width:100%;text-align:center;}
       nav.open .nav-list{display:flex;}
@@ -247,27 +250,28 @@
 <body>
   <canvas id="matrix-bg"></canvas>
   <div id="spotlight" aria-hidden="true"></div>
-  <div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="cmdk-overlay" id="cmdkOverlay" role="dialog" aria-modal="true" aria-label="Command palette" data-i18n-aria="cmdk.div1@aria">
     <div class="cmdk">
-      <input id="cmdkInput" type="text" placeholder="Jump to a section or action…  (Esc to close)" aria-label="Search sections and actions" autocomplete="off" />
+      <input id="cmdkInput" type="text" placeholder="Jump to a section or action…  (Esc to close)" aria-label="Search sections and actions" autocomplete="off"  data-i18n-aria="cmdk.input1@aria" data-i18n-placeholder="cmdk.input1@placeholder"/>
       <ul id="cmdkList"></ul>
-      <div class="cmdk-hint">↑↓ navigate · Enter select · Esc close · ⌘/Ctrl K</div>
+      <div class="cmdk-hint" data-i18n="cmdk.div2">↑↓ navigate · Enter select · Esc close · ⌘/Ctrl K</div>
     </div>
   </div>
   <nav>
     <div class="burger" id="burger"><div></div><div></div><div></div></div>
     <ul class="nav-list" id="navList">
-      <li class="nav-item"><a class="nav-link" href="#ai-method">AI Method</a></li>
-      <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-      <li class="nav-item"><a class="nav-link" href="#featured-projects">Projects</a></li>
-      <li class="nav-item"><a class="nav-link" href="#writing">Writing</a></li>
-      <li class="nav-item"><a class="nav-link" href="#hard-skills">Skills</a></li>
-      <li class="nav-item"><a class="nav-link" href="#languages">Languages</a></li>
-      <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      <li class="nav-item"><a class="nav-link" href="#terminal">Terminal</a></li>
-      <li class="nav-item nav-theme"><button id="theme-btn" type="button" aria-label="Toggle light/dark theme" title="Light / dark theme">🌙</button></li>
+      <li class="nav-item"><a class="nav-link" href="#ai-method" data-i18n="nav.a1">AI Method</a></li>
+      <li class="nav-item"><a class="nav-link" href="#experience" data-i18n="nav.a2">Experience</a></li>
+      <li class="nav-item"><a class="nav-link" href="#featured-projects" data-i18n="nav.a3">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#writing" data-i18n="nav.a4">Writing</a></li>
+      <li class="nav-item"><a class="nav-link" href="#hard-skills" data-i18n="nav.a5">Skills</a></li>
+      <li class="nav-item"><a class="nav-link" href="#languages" data-i18n="nav.a6">Languages</a></li>
+      <li class="nav-item"><a class="nav-link" href="#education" data-i18n="nav.a7">Education</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav.a8">Contact</a></li>
+      <li class="nav-item"><a class="nav-link" href="#terminal" data-i18n="nav.a9">Terminal</a></li>
+      <li class="nav-item nav-theme"><button id="theme-btn" type="button" aria-label="Toggle light/dark theme" title="Light / dark theme" data-i18n-aria="nav.button1@aria" data-i18n-title="nav.button1@title">🌙</button></li>
     </ul>
+    <button id="lang-btn" type="button" aria-label="Cambiar idioma / Switch language" title="Español / English" lang="es">ES</button>
   </nav>
   <script>
     const burger=document.getElementById('burger');
@@ -288,29 +292,29 @@
     <header>
       <h1>Juan Valentin Alducin Vázquez<span class="cursor-blink" aria-hidden="true"></span></h1>
       <h3>Senior Backend Engineer &nbsp;|&nbsp; Tech Lead · SRE &amp; Automation &nbsp;|&nbsp; Agentic AI</h3>
-      <p class="tl-location">CDMX, Mexico &nbsp;·&nbsp; English B1 · B2 technical reading/writing</p>
-      <p>
+      <p class="tl-location" data-i18n="hdr.p1">CDMX, Mexico &nbsp;·&nbsp; English B1 · B2 technical reading/writing</p>
+      <p data-i18n="hdr.p2">
         Senior Backend Engineer and Tech Lead with 10+ years in backend development and distributed systems. Today my signature is <strong>reliability and automation as a product</strong>: a blameless post-mortem system, a monthly uptime methodology (99.95% in July 2026), runbooks, and n8n / spec-driven pipelines that replace manual operations. Generative AI (Claude, Gemini, OpenAI) is the copilot of my SDLC through <strong>Spec-Driven Development</strong> — ~40% less code review time and 80% autonomous N1 resolution — on Python · PostgreSQL · AWS, with technical leadership of international GK POS rollouts across Latin America.
       </p>
       <div class="metric-badges">
-        <span class="metric"><strong>~40%</strong> less code review time</span>
-        <span class="metric"><strong>80%</strong> N1 self-resolution</span>
-        <span class="metric"><strong>&lt;10 min</strong> first response</span>
-        <span class="metric"><strong>99.95%</strong> monthly uptime</span>
+        <span class="metric" data-i18n="hdr.span1"><strong>~40%</strong> less code review time</span>
+        <span class="metric" data-i18n="hdr.span2"><strong>80%</strong> N1 self-resolution</span>
+        <span class="metric" data-i18n="hdr.span3"><strong>&lt;10 min</strong> first response</span>
+        <span class="metric" data-i18n="hdr.span4"><strong>99.95%</strong> monthly uptime</span>
       </div>
       <div class="header-links">
-        <a href="#contact" id="heroEmail" title="Send me a message (contact form)" aria-label="Go to contact form">
+        <a href="#contact" id="heroEmail" title="Send me a message (contact form)" aria-label="Go to contact form" data-i18n-aria="hdr.a1@aria" data-i18n-title="hdr.a1@title">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path fill="currentColor" d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v.01L12 13 20 6.01V6H4zm0 12h16V8l-8 6L4 8v10z"/>
           </svg>
         </a>
-        <a href="https://github.com/jalducin" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
+        <a href="https://github.com/jalducin" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub" data-i18n-aria="hdr.a2@aria" data-i18n-title="hdr.a2@title">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
         </a>
-        <a href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+        <a href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn" data-i18n-aria="hdr.a3@aria" data-i18n-title="hdr.a3@title">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp">
+        <a href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp" data-i18n-aria="hdr.a4@aria" data-i18n-title="hdr.a4@title">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40">
             <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
           </svg>
@@ -328,113 +332,113 @@
 
     <!-- AI METHOD -->
     <section id="ai-method" class="fade-in">
-      <h2>How I Build with AI</h2>
+      <h2 data-i18n="aim.h21">How I Build with AI</h2>
       <div class="now-card">
-        <span class="now-dot">●</span> <strong>Now</strong>
+        <span class="now-dot">●</span> <strong data-i18n="aim.strong1">Now</strong>
         <ul>
-          <li>Leading <strong>Service Support</strong> engineering at <strong>Podemos Progresar</strong> (fintech): AI-native incident resolution with SDD.</li>
-          <li>Running my projects locally with <strong>Docker</strong>; observability via <strong>Grafana</strong>.</li>
-          <li>Pushing my English toward <strong>B2</strong> (Quick Learning, in progress).</li>
+          <li data-i18n="aim.li1">Leading <strong>Service Support</strong> engineering at <strong>Podemos Progresar</strong> (fintech): AI-native incident resolution with SDD.</li>
+          <li data-i18n="aim.li2">Running my projects locally with <strong>Docker</strong>; observability via <strong>Grafana</strong>.</li>
+          <li data-i18n="aim.li3">Pushing my English toward <strong>B2</strong> (Quick Learning, in progress).</li>
         </ul>
       </div>
-      <p style="color:var(--muted);">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
+      <p style="color:var(--muted);" data-i18n="aim.p1">I work AI-native: Generative AI is the central copilot of my SDLC, not an afterthought. My practice is <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — the spec is the source of truth, and every change flows through versioned artifacts before a line of code is written.</p>
       <div class="sdd-flow">
         <span>proposal</span><em>→</em><span>specs</span><em>→</em><span>design</span><em>→</em><span>tasks</span><em>→</em><span>apply</span><em>→</em><span>archive</span>
       </div>
       <div class="now-card principles">
-        <strong>How I work</strong>
+        <strong data-i18n="aim.strong2">How I work</strong>
         <ul>
-          <li><strong>Automate &gt; operate.</strong> Rule of two: any manual report or task done more than twice becomes a spec-driven pipeline.</li>
-          <li><strong>Reliability as a product.</strong> Downtime is measured by real user impact, not by ticket closure; blameless post-mortems; least-privilege runbooks.</li>
-          <li><strong>State outside the code.</strong> IDs, cut-offs and thresholds live in configuration (JSON / Notion) read alike by the workflow and the dashboard — the spec is the contract.</li>
-          <li><strong>Cursor over ingestion, not the clock.</strong> Designed for failure (missed runs, late data), not for the happy path.</li>
+          <li data-i18n="aim.li4"><strong>Automate &gt; operate.</strong> Rule of two: any manual report or task done more than twice becomes a spec-driven pipeline.</li>
+          <li data-i18n="aim.li5"><strong>Reliability as a product.</strong> Downtime is measured by real user impact, not by ticket closure; blameless post-mortems; least-privilege runbooks.</li>
+          <li data-i18n="aim.li6"><strong>State outside the code.</strong> IDs, cut-offs and thresholds live in configuration (JSON / Notion) read alike by the workflow and the dashboard — the spec is the contract.</li>
+          <li data-i18n="aim.li7"><strong>Cursor over ingestion, not the clock.</strong> Designed for failure (missed runs, late data), not for the happy path.</li>
         </ul>
       </div>
       <div class="ai-method-grid">
         <div class="ai-card">
-          <h3>Spec-Driven Development</h3>
-          <p>Requirements and verifiable scenarios drive the work. AI generates specs, analyzes code statically and proposes implementations against the contract — cutting review cycles by ~40%.</p>
+          <h3 data-i18n="aim.h31">Spec-Driven Development</h3>
+          <p data-i18n="aim.p2">Requirements and verifiable scenarios drive the work. AI generates specs, analyzes code statically and proposes implementations against the contract — cutting review cycles by ~40%.</p>
         </div>
         <div class="ai-card">
-          <h3>AI as SDLC copilot</h3>
-          <p>Claude (Anthropic), Gemini, OpenAI and Bedrock across the loop: spec generation, automated debugging, RCA &amp; post-mortems, technical documentation, and an AI Skill for automatic ticket routing with human review on low confidence — driving team adoption.</p>
+          <h3 data-i18n="aim.h32">AI as SDLC copilot</h3>
+          <p data-i18n="aim.p3">Claude (Anthropic), Gemini, OpenAI and Bedrock across the loop: spec generation, automated debugging, RCA &amp; post-mortems, technical documentation, and an AI Skill for automatic ticket routing with human review on low confidence — driving team adoption.</p>
         </div>
         <div class="ai-card">
-          <h3>Measurable impact</h3>
+          <h3 data-i18n="aim.h33">Measurable impact</h3>
           <ul>
-            <li>~40% less code review time</li>
-            <li>80% autonomous N1 incident resolution</li>
-            <li>&lt;10 min first response · &lt;2 h resolution</li>
-            <li>99.95% monthly uptime (July 2026)</li>
+            <li data-i18n="aim.li8">~40% less code review time</li>
+            <li data-i18n="aim.li9">80% autonomous N1 incident resolution</li>
+            <li data-i18n="aim.li10">&lt;10 min first response · &lt;2 h resolution</li>
+            <li data-i18n="aim.li11">99.95% monthly uptime (July 2026)</li>
           </ul>
         </div>
         <div class="ai-card">
-          <h3>Agentic &amp; machine-readable</h3>
-          <p>Agentic workflows with RAG and AI agents. This very site ships structured <strong>JSON-LD</strong> and a <strong>/llms.txt</strong> so agents and LLMs can read my profile directly.</p>
+          <h3 data-i18n="aim.h34">Agentic &amp; machine-readable</h3>
+          <p data-i18n="aim.p4">Agentic workflows with RAG and AI agents. This very site ships structured <strong>JSON-LD</strong> and a <strong>/llms.txt</strong> so agents and LLMs can read my profile directly.</p>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
     <section id="experience" class="fade-in">
-      <h2>Experience</h2>
+      <h2 data-i18n="exp.h21">Experience</h2>
       <div class="timeline">
 
         <!-- Podemos Progresar — current role -->
         <div class="timeline-item left">
-          <span class="tl-date">Jul 2026 – Present</span>
-          <span class="tl-badge">Current</span>
-          <h3>Service Support Tech Lead &amp; AI Specialist</h3>
+          <span class="tl-date" data-i18n="exp.span1">Jul 2026 – Present</span>
+          <span class="tl-badge" data-i18n="exp.span2">Current</span>
+          <h3 data-i18n="exp.h31">Service Support Tech Lead &amp; AI Specialist</h3>
           <div class="tl-company">Podemos Progresar · Fintech</div>
           <ul>
-            <li>Lead the Service Support team end-to-end (bugs, critical incidents, technical debt) with <strong>Spec-Driven Development (SDD)</strong> and the <strong>Claude API</strong> — cut code review time by <strong>~40%</strong> by redesigning the diagnose-to-implement cycle.</li>
-            <li>Built the <strong>post-mortem system</strong> (P0–P3 severity, 5 Whys, blameless, self-assessment rubric) with a <strong>live governance dashboard</strong> — delays, open subtasks, N3/N4 escalations and the KPI traffic light against target — plus management status reports for leadership.</li>
-            <li>Defined the <strong>monthly uptime/downtime methodology</strong> (fleet × real minutes; downtime = real user impact): <strong>99.95% in July 2026</strong>. Standardized runbooks and a least-privilege access model.</li>
-            <li>Automate operations with <strong>n8n (workflow SDK)</strong>: Freshdesk → Notion → Slack with an ingestion cursor, post-mortem delay watcher, ticket-spike alerts; <strong>spec-driven pipelines</strong> (n8n orchestrates, Python computes, FastAPI endpoint, Notion sink).</li>
-            <li>Architect AI flows (<strong>Claude, OpenAI, Gemini, Bedrock</strong>) across the SDLC — specs, static analysis, automated debugging, documentation — and design an <strong>AI Skill for automatic ticket routing</strong> (multi-dimension classification, squad routing, human review on low confidence).</li>
-            <li>Take part in the weekly <strong>release trains</strong>, coordinating validation and deployment across core banking, origination and field-app platforms; internal <strong>serverless tooling</strong> (Enkoth — AWS Lambda · Step Functions · EventBridge) for webhooks and integrations.</li>
-            <li>Diagnose and operate AWS (<strong>Step Functions, Lambda, CloudWatch Logs Insights, RDS</strong>) and audit error tracking (Sentry) — SLAs: <strong>first response under 10 minutes</strong>, critical resolution under 2 hours.</li>
-            <li><strong>Stack:</strong> Python · SQL · PostgreSQL · Django · FastAPI · AWS (Lambda, Step Functions, CloudWatch, RDS) · n8n · Grafana · Sentry · Claude API · Docker · Freshdesk / Notion / Asana APIs</li>
+            <li data-i18n="exp.li1">Lead the Service Support team end-to-end (bugs, critical incidents, technical debt) with <strong>Spec-Driven Development (SDD)</strong> and the <strong>Claude API</strong> — cut code review time by <strong>~40%</strong> by redesigning the diagnose-to-implement cycle.</li>
+            <li data-i18n="exp.li2">Built the <strong>post-mortem system</strong> (P0–P3 severity, 5 Whys, blameless, self-assessment rubric) with a <strong>live governance dashboard</strong> — delays, open subtasks, N3/N4 escalations and the KPI traffic light against target — plus management status reports for leadership.</li>
+            <li data-i18n="exp.li3">Defined the <strong>monthly uptime/downtime methodology</strong> (fleet × real minutes; downtime = real user impact): <strong>99.95% in July 2026</strong>. Standardized runbooks and a least-privilege access model.</li>
+            <li data-i18n="exp.li4">Automate operations with <strong>n8n (workflow SDK)</strong>: Freshdesk → Notion → Slack with an ingestion cursor, post-mortem delay watcher, ticket-spike alerts; <strong>spec-driven pipelines</strong> (n8n orchestrates, Python computes, FastAPI endpoint, Notion sink).</li>
+            <li data-i18n="exp.li5">Architect AI flows (<strong>Claude, OpenAI, Gemini, Bedrock</strong>) across the SDLC — specs, static analysis, automated debugging, documentation — and design an <strong>AI Skill for automatic ticket routing</strong> (multi-dimension classification, squad routing, human review on low confidence).</li>
+            <li data-i18n="exp.li6">Take part in the weekly <strong>release trains</strong>, coordinating validation and deployment across core banking, origination and field-app platforms; internal <strong>serverless tooling</strong> (Enkoth — AWS Lambda · Step Functions · EventBridge) for webhooks and integrations.</li>
+            <li data-i18n="exp.li7">Diagnose and operate AWS (<strong>Step Functions, Lambda, CloudWatch Logs Insights, RDS</strong>) and audit error tracking (Sentry) — SLAs: <strong>first response under 10 minutes</strong>, critical resolution under 2 hours.</li>
+            <li data-i18n="exp.li8"><strong>Stack:</strong> Python · SQL · PostgreSQL · Django · FastAPI · AWS (Lambda, Step Functions, CloudWatch, RDS) · n8n · Grafana · Sentry · Claude API · Docker · Freshdesk / Notion / Asana APIs</li>
           </ul>
         </div>
 
         <!-- Podemos Progresar — previous role -->
         <div class="timeline-item right">
-          <span class="tl-date">Sept 2025 – Jun 2026</span>
-          <h3>Backend Support Specialist</h3>
+          <span class="tl-date" data-i18n="exp.span3">Sept 2025 – Jun 2026</span>
+          <h3 data-i18n="exp.h32">Backend Support Specialist</h3>
           <div class="tl-company">Podemos Progresar · Fintech</div>
           <ul>
-            <li>Led N2 incident management, producing <strong>RCAs</strong> and AI-assisted technical post-mortems that prevented recurring failures; enabled <strong>80% autonomous resolution</strong> in the N1 team through knowledge transfer.</li>
-            <li>Own the <strong>weekly idempotent cleanup ETL on PostgreSQL</strong> (backup → delete → update → audit log, pre-validated against expected counts) and identity deduplication in production; schema changes versioned with Liquibase.</li>
-            <li>Central technical liaison in operational coordination, accelerating incident resolution across <strong>Python, Django, FastAPI and PostgreSQL</strong> systems.</li>
-            <li><strong>Stack:</strong> Python · SQL · PostgreSQL · MySQL · Liquibase · Django · FastAPI · AWS · Docker · Grafana</li>
+            <li data-i18n="exp.li9">Led N2 incident management, producing <strong>RCAs</strong> and AI-assisted technical post-mortems that prevented recurring failures; enabled <strong>80% autonomous resolution</strong> in the N1 team through knowledge transfer.</li>
+            <li data-i18n="exp.li10">Own the <strong>weekly idempotent cleanup ETL on PostgreSQL</strong> (backup → delete → update → audit log, pre-validated against expected counts) and identity deduplication in production; schema changes versioned with Liquibase.</li>
+            <li data-i18n="exp.li11">Central technical liaison in operational coordination, accelerating incident resolution across <strong>Python, Django, FastAPI and PostgreSQL</strong> systems.</li>
+            <li data-i18n="exp.li12"><strong>Stack:</strong> Python · SQL · PostgreSQL · MySQL · Liquibase · Django · FastAPI · AWS · Docker · Grafana</li>
           </ul>
         </div>
 
         <!-- Redsis -->
         <div class="timeline-item left">
-          <span class="tl-date">Jan 2022 – Sept 2025</span>
-          <h3>Software Engineer → Tech Lead</h3>
+          <span class="tl-date" data-i18n="exp.span4">Jan 2022 – Sept 2025</span>
+          <h3 data-i18n="exp.h33">Software Engineer → Tech Lead</h3>
           <div class="tl-company">Redsis – Redes y Sistemas Integrados</div>
           <ul>
-            <li>Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML/SFTP automation for retail across 3 LATAM countries, adapting solutions to distinct cultural and regulatory contexts.</li>
-            <li>Technical lead for the cloud GK POS Go-Live (Peru, Colombia, Bolivia): coordinated timelines, managed business and IT stakeholders, ran technical pre-sales demos and trained local teams.</li>
-            <li>Designed the promotions ETL pipeline for GK OmniPOS, enabling real-time commercial analysis for decision-making.</li>
-            <li>Led the functional-technical GK POS team: defined the testing strategy (unit, regression, integration) and ensured end-to-end quality on every release.</li>
-            <li><strong>Stack:</strong> Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL</li>
+            <li data-i18n="exp.li13">Developed REST APIs (Python, Java, PHP) integrating GK POS with ERPs/CRMs through XML/SFTP automation for retail across 3 LATAM countries, adapting solutions to distinct cultural and regulatory contexts.</li>
+            <li data-i18n="exp.li14">Technical lead for the cloud GK POS Go-Live (Peru, Colombia, Bolivia): coordinated timelines, managed business and IT stakeholders, ran technical pre-sales demos and trained local teams.</li>
+            <li data-i18n="exp.li15">Designed the promotions ETL pipeline for GK OmniPOS, enabling real-time commercial analysis for decision-making.</li>
+            <li data-i18n="exp.li16">Led the functional-technical GK POS team: defined the testing strategy (unit, regression, integration) and ensured end-to-end quality on every release.</li>
+            <li data-i18n="exp.li17"><strong>Stack:</strong> Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL</li>
           </ul>
         </div>
 
         <!-- Softtek -->
         <div class="timeline-item right">
-          <span class="tl-date">Mar 2017 – Jan 2022</span>
-          <h3>Software Engineer</h3>
+          <span class="tl-date" data-i18n="exp.span5">Mar 2017 – Jan 2022</span>
+          <h3 data-i18n="exp.h34">Software Engineer</h3>
           <div class="tl-company">Softtek</div>
           <ul>
-            <li>Implemented billing systems, customer portals and ETLs integrated with SAP ERP/HANA; built executive dashboards in SAP BO communicating key metrics to business leadership.</li>
-            <li>Provided AMS support to Retail GK solutions: help desk, corrective and evolutive maintenance of applications and ETL flows.</li>
-            <li>Collaborated in cross-functional teams under Scrum, maintaining a 98% SLA.</li>
-            <li><strong>Stack:</strong> Python · PHP · .NET · SAP ERP/HANA · SAP BO · ETL · Web Services · Scrum</li>
+            <li data-i18n="exp.li18">Implemented billing systems, customer portals and ETLs integrated with SAP ERP/HANA; built executive dashboards in SAP BO communicating key metrics to business leadership.</li>
+            <li data-i18n="exp.li19">Provided AMS support to Retail GK solutions: help desk, corrective and evolutive maintenance of applications and ETL flows.</li>
+            <li data-i18n="exp.li20">Collaborated in cross-functional teams under Scrum, maintaining a 98% SLA.</li>
+            <li data-i18n="exp.li21"><strong>Stack:</strong> Python · PHP · .NET · SAP ERP/HANA · SAP BO · ETL · Web Services · Scrum</li>
           </ul>
         </div>
 
@@ -443,75 +447,75 @@
 
     <!-- FEATURED PROJECTS -->
     <section id="featured-projects" class="featured-section fade-in">
-      <h2><span>★</span>Featured Projects</h2>
-      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;">★ <strong style="color:var(--primary);">100% built with Spec-Driven Development</strong> (SDD/OpenSpec) — the spec is the source of truth in every project.</p>
+      <h2 data-i18n="proj.h21"><span>★</span>Featured Projects</h2>
+      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;" data-i18n="proj.p1">★ <strong style="color:var(--primary);">100% built with Spec-Driven Development</strong> (SDD/OpenSpec) — the spec is the source of truth in every project.</p>
       <div class="projects">
 
         <div class="card">
-          <div class="card-badge">★ AI-native · 100% SDD</div>
-          <div class="card-badge">🧪 Pilot · cloud beta</div>
-          <h3>Fidello — Loyalty Card System</h3>
-          <p>Multi-business digital loyalty platform: customers collect stamps via QR with nothing to install. Five actors (guest, registered customer, cashier, owner/manager, platform admin), multi-business wallet, tiers and redemptions, self-service business onboarding, KPIs/analytics, satisfaction surveys and a scheduled monthly platform report (<strong>pg_cron</strong>). All business rules live in PostgreSQL: <strong>multi-tenant RLS</strong>, RPC in <strong>PL/pgSQL <code>SECURITY DEFINER</code></strong>, QR tokens with TTL + SHA-256 fingerprint against replay, rate limiting on anonymous functions, PII-free audit log and <strong>feature flags</strong> (global + per-business override). Core journeys validated by product in real coffee shops. Ships with an architecture review package (pieces, where each rule lives, deployment, scale limits) for external reviewers. <strong>100% SDD/OpenSpec</strong> with 5 specialized AI agents and 28 journeys with twin runbooks.</p>
+          <div class="card-badge" data-i18n="proj.div1">★ AI-native · 100% SDD</div>
+          <div class="card-badge" data-i18n="proj.div2">🧪 Pilot · cloud beta</div>
+          <h3 data-i18n="proj.h31">Fidello — Loyalty Card System</h3>
+          <p data-i18n="proj.p2">Multi-business digital loyalty platform: customers collect stamps via QR with nothing to install. Five actors (guest, registered customer, cashier, owner/manager, platform admin), multi-business wallet, tiers and redemptions, self-service business onboarding, KPIs/analytics, satisfaction surveys and a scheduled monthly platform report (<strong>pg_cron</strong>). All business rules live in PostgreSQL: <strong>multi-tenant RLS</strong>, RPC in <strong>PL/pgSQL <code>SECURITY DEFINER</code></strong>, QR tokens with TTL + SHA-256 fingerprint against replay, rate limiting on anonymous functions, PII-free audit log and <strong>feature flags</strong> (global + per-business override). Core journeys validated by product in real coffee shops. Ships with an architecture review package (pieces, where each rule lives, deployment, scale limits) for external reviewers. <strong>100% SDD/OpenSpec</strong> with 5 specialized AI agents and 28 journeys with twin runbooks.</p>
           <div class="card-metrics">
-            <span class="card-badge">793 tests · 337 DB + 456 UI</span>
-            <span class="card-badge">91 migrations · 22 tables</span>
-            <span class="card-badge">7 Edge Functions · 5 cron jobs</span>
-            <span class="card-badge">97 OpenSpec changes</span>
-            <span class="card-badge">28 journeys + runbooks</span>
-            <span class="card-badge">CI: 2 blocking jobs · QAS/PROD</span>
+            <span class="card-badge" data-i18n="proj.span1">793 tests · 337 DB + 456 UI</span>
+            <span class="card-badge" data-i18n="proj.span2">91 migrations · 22 tables</span>
+            <span class="card-badge" data-i18n="proj.span3">7 Edge Functions · 5 cron jobs</span>
+            <span class="card-badge" data-i18n="proj.span4">97 OpenSpec changes</span>
+            <span class="card-badge" data-i18n="proj.span5">28 journeys + runbooks</span>
+            <span class="card-badge" data-i18n="proj.span6">CI: 2 blocking jobs · QAS/PROD</span>
           </div>
           <div class="tech">React 18 · TypeScript · Vite 5 · Tailwind 3 · React Router 7 · PWA (Workbox, code-splitting) · WCAG AA · html5-qrcode · Supabase (PostgreSQL 15 + Auth + PostgREST + Realtime) · RLS · PL/pgSQL SECURITY DEFINER · Edge Functions (Deno) · pg_cron · Vitest + Testing Library + msw + pg harness · ESLint · GitHub Actions · Vercel (QAS/PROD) · Supabase CLI + Docker</div>
         </div>
 
         <div class="card">
-          <div class="card-badge">📊 Observability · multi-source</div>
-          <h3>Monitoreo-Cloud — Observability Stack</h3>
-          <p>Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. <strong>100% SDD/OpenSpec</strong>.</p>
+          <div class="card-badge" data-i18n="proj.div3">📊 Observability · multi-source</div>
+          <h3 data-i18n="proj.h32">Monitoreo-Cloud — Observability Stack</h3>
+          <p data-i18n="proj.p3">Self-hosted <strong>observability stack</strong> (Grafana + Docker) with a single pane over three sources: <strong>AWS serverless</strong> (Lambda invocations/errors/duration + S3) via <strong>CloudWatch</strong>, <strong>local Docker containers</strong> (CPU/memory/health), and <strong>Trackion's tickets &amp; SLA</strong>. Automated collection with <strong>n8n</strong> + a read-only <strong>IAM</strong> role. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
-          <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener">View Code ↗</a>
+          <a class="btn" href="https://github.com/jalducin/monitoreo-cloud" target="_blank" rel="noopener" data-i18n="proj.a1">View Code ↗</a>
         </div>
 
         <div class="card">
-          <div class="card-badge">★ Multi-tenant · SDD</div>
-          <h3>VoltGrid — EV Charging Platform</h3>
-          <p>Multi-tenant, white-label <strong>SaaS</strong> for EV charging-station operators: live station status over <strong>WebSocket</strong> (polling fallback), tenant isolation via PostgreSQL <strong>Row-Level Security (RLS)</strong>, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analytics (uptime, kWh, CSV export), an auditable state <strong>scheduler</strong> and an installable <strong>PWA</strong>. <strong>100% SDD/OpenSpec</strong>.</p>
+          <div class="card-badge" data-i18n="proj.div4">★ Multi-tenant · SDD</div>
+          <h3 data-i18n="proj.h33">VoltGrid — EV Charging Platform</h3>
+          <p data-i18n="proj.p4">Multi-tenant, white-label <strong>SaaS</strong> for EV charging-station operators: live station status over <strong>WebSocket</strong> (polling fallback), tenant isolation via PostgreSQL <strong>Row-Level Security (RLS)</strong>, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analytics (uptime, kWh, CSV export), an auditable state <strong>scheduler</strong> and an installable <strong>PWA</strong>. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">FastAPI · SQLAlchemy 2.0 async · asyncpg · Alembic · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) · GitHub Actions</div>
-          <a class="btn" href="https://github.com/jalducin/voltgrid" target="_blank" rel="noopener">View Code ↗</a>
+          <a class="btn" href="https://github.com/jalducin/voltgrid" target="_blank" rel="noopener" data-i18n="proj.a2">View Code ↗</a>
         </div>
 
         <div class="card">
-          <div class="card-badge">★ Serverless · SDD</div>
-          <h3>Trackion — Serverless Help Desk</h3>
-          <p>White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana tickets &amp; SLA</strong> dashboards. <strong>100% SDD/OpenSpec</strong>; runs locally via Docker.</p>
+          <div class="card-badge" data-i18n="proj.div5">★ Serverless · SDD</div>
+          <h3 data-i18n="proj.h34">Trackion — Serverless Help Desk</h3>
+          <p data-i18n="proj.p5">White-label <strong>serverless help desk</strong>: end-to-end ticketing (categorize, prioritize, assign, history; <code>open→in_progress→resolved→closed</code>), admin-managed catalogs, and an <strong>open API-integration module</strong> (generic inbound webhooks + outbound domain-event dispatch) to plug any external system without touching the core. <strong>Grafana tickets &amp; SLA</strong> dashboards. <strong>100% SDD/OpenSpec</strong>; runs locally via Docker.</p>
           <div class="tech">Python 3.12 · AWS Lambda · API Gateway (HTTP API) · Serverless Framework · PostgreSQL (pg8000) · JWT (PyJWT) · SSM Parameter Store · Grafana · vanilla JS</div>
-          <a class="btn" href="https://github.com/jalducin/Trackion" target="_blank" rel="noopener">View Code ↗</a>
+          <a class="btn" href="https://github.com/jalducin/Trackion" target="_blank" rel="noopener" data-i18n="proj.a3">View Code ↗</a>
         </div>
 
         <div class="card">
-          <div class="card-badge">🍕 Live on AWS · 100% SDD</div>
-          <h3>Pyzzeria — Serverless Pizza Ordering</h3>
-          <p>Serverless pizza-ordering demo with <strong>live order tracking</strong>: build your pizza, place the order and watch it move <code>recibido→preparando→horno→listo→entregado</code> in ~70s over <strong>WebSocket</strong>, driven by a <strong>Step Functions Express</strong> workflow. Orders in <strong>DynamoDB</strong>, fully documented <strong>OpenAPI/Swagger</strong>, frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>. Demo only — no real payments.</p>
+          <div class="card-badge" data-i18n="proj.div6">🍕 Live on AWS · 100% SDD</div>
+          <h3 data-i18n="proj.h35">Pyzzeria — Serverless Pizza Ordering</h3>
+          <p data-i18n="proj.p6">Serverless pizza-ordering demo with <strong>live order tracking</strong>: build your pizza, place the order and watch it move <code>recibido→preparando→horno→listo→entregado</code> in ~70s over <strong>WebSocket</strong>, driven by a <strong>Step Functions Express</strong> workflow. Orders in <strong>DynamoDB</strong>, fully documented <strong>OpenAPI/Swagger</strong>, frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>. Demo only — no real payments.</p>
           <div class="tech">Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3 · CloudFront</div>
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-            <a class="btn" href="https://d3ni8wwgux3wy8.cloudfront.net/" target="_blank" rel="noopener">Live Demo ↗</a>
-            <a class="btn" href="https://github.com/jalducin/pyzzeria" target="_blank" rel="noopener">View Code ↗</a>
+            <a class="btn" href="https://d3ni8wwgux3wy8.cloudfront.net/" target="_blank" rel="noopener" data-i18n="proj.a4">Live Demo ↗</a>
+            <a class="btn" href="https://github.com/jalducin/pyzzeria" target="_blank" rel="noopener" data-i18n="proj.a5">View Code ↗</a>
           </div>
         </div>
 
         <div class="card">
-          <div class="card-badge">★ E-commerce · SDD</div>
-          <h3>JV Market</h3>
-          <p>Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>.</p>
+          <div class="card-badge" data-i18n="proj.div7">★ E-commerce · SDD</div>
+          <h3 data-i18n="proj.h36">JV Market</h3>
+          <p data-i18n="proj.p7">Full-stack <strong>streetwear/sneakers e-commerce</strong> <strong>deployed on AWS</strong>: JWT auth, product catalog, cart, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> and an admin dashboard. API on API Gateway + Lambda; frontend on S3 + CloudFront. <strong>100% SDD/OpenSpec</strong>.</p>
           <div class="tech">Python · FastAPI · JWT · SQLite/PostgreSQL · AWS Lambda · API Gateway · S3 · CloudFront · vanilla JS</div>
-          <a class="btn" href="https://github.com/jalducin/EcommerceJVAV" target="_blank" rel="noopener">View Code ↗</a>
+          <a class="btn" href="https://github.com/jalducin/EcommerceJVAV" target="_blank" rel="noopener" data-i18n="proj.a6">View Code ↗</a>
         </div>
 
         <div class="card">
-          <div class="card-badge">★ Re-engineered · SDD</div>
-          <h3>dataMasterGK — Retail ETL Middleware</h3>
-          <p>ETL middleware that automates master-data integration into <strong>GK Software</strong> retail systems: watches directories, transforms <strong>Excel → GK XML</strong> across four interfaces (stores, operators, promotions) and transmits via <strong>SFTP/FTP</strong> — with a Flask web panel (config, operation, audit), a scheduler and SQLite auditing. Re-engineered under <strong>SDD/OpenSpec</strong>: idempotent single-pass pipeline, pooled SFTP/SQLite connections, and security hardening (parameterized/whitelisted SQL, secrets out of the repo).</p>
+          <div class="card-badge" data-i18n="proj.div8">★ Re-engineered · SDD</div>
+          <h3 data-i18n="proj.h37">dataMasterGK — Retail ETL Middleware</h3>
+          <p data-i18n="proj.p8">ETL middleware that automates master-data integration into <strong>GK Software</strong> retail systems: watches directories, transforms <strong>Excel → GK XML</strong> across four interfaces (stores, operators, promotions) and transmits via <strong>SFTP/FTP</strong> — with a Flask web panel (config, operation, audit), a scheduler and SQLite auditing. Re-engineered under <strong>SDD/OpenSpec</strong>: idempotent single-pass pipeline, pooled SFTP/SQLite connections, and security hardening (parameterized/whitelisted SQL, secrets out of the repo).</p>
           <div class="tech">Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 · Tailwind</div>
-          <a class="btn" href="https://github.com/jalducin/dataMasterGK" target="_blank" rel="noopener">View Code ↗</a>
+          <a class="btn" href="https://github.com/jalducin/dataMasterGK" target="_blank" rel="noopener" data-i18n="proj.a7">View Code ↗</a>
         </div>
 
       </div>
@@ -519,32 +523,32 @@
 
     <!-- WRITING / BLOG -->
     <section id="writing" class="fade-in">
-      <h2><span>✎</span>Writing</h2>
-      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;">Notes from building AI-native: Spec-Driven Development, Docker and observability — drawn from real projects.</p>
+      <h2 data-i18n="wri.h21"><span>✎</span>Writing</h2>
+      <p style="margin:-.5rem 0 1.4rem;color:var(--muted);font-size:.92rem;" data-i18n="wri.p1">Notes from building AI-native: Spec-Driven Development, Docker and observability — drawn from real projects.</p>
       <div class="projects">
 
         <a class="card post-card" href="blog/sdd-openspec.html">
-          <div class="card-badge">★ SDD</div>
-          <h3>Spec-Driven Development: the spec is the source of truth</h3>
-          <p>Why I treat the spec as the contract and code as its current implementation — the artifact flow (proposal → specs → design → tasks → apply → archive), and why it cut my review cycles ~40%.</p>
+          <div class="card-badge" data-i18n="wri.div1">★ SDD</div>
+          <h3 data-i18n="wri.h31">Spec-Driven Development: the spec is the source of truth</h3>
+          <p data-i18n="wri.p2">Why I treat the spec as the contract and code as its current implementation — the artifact flow (proposal → specs → design → tasks → apply → archive), and why it cut my review cycles ~40%.</p>
           <div class="post-meta">2026-06-14 · 5 min read · <span class="tag-mini">SDD</span> <span class="tag-mini">OpenSpec</span> <span class="tag-mini">AI-native</span></div>
-          <span class="btn">Read ↗</span>
+          <span class="btn" data-i18n="wri.span1">Read ↗</span>
         </a>
 
         <a class="card post-card" href="blog/docker-observability-local.html">
-          <div class="card-badge">★ Docker</div>
-          <h3>A zero-cost local observability stack with Docker Compose</h3>
-          <p>From an always-on EC2 to a reproducible local stack (Grafana + PostgreSQL + n8n): $0 idle, idempotent, and still cloud-aware over a read-only IAM role.</p>
+          <div class="card-badge" data-i18n="wri.div2">★ Docker</div>
+          <h3 data-i18n="wri.h32">A zero-cost local observability stack with Docker Compose</h3>
+          <p data-i18n="wri.p3">From an always-on EC2 to a reproducible local stack (Grafana + PostgreSQL + n8n): $0 idle, idempotent, and still cloud-aware over a read-only IAM role.</p>
           <div class="post-meta">2026-06-14 · 4 min read · <span class="tag-mini">Docker</span> <span class="tag-mini">Observability</span> <span class="tag-mini">Cost</span></div>
-          <span class="btn">Read ↗</span>
+          <span class="btn" data-i18n="wri.span2">Read ↗</span>
         </a>
 
         <a class="card post-card" href="blog/grafana-multi-source.html">
-          <div class="card-badge">★ Grafana</div>
-          <h3>Multi-source observability with Grafana</h3>
-          <p>One pane over three sources: AWS serverless (CloudWatch), local Docker containers, and application data (tickets &amp; SLA) — correlating infra and business signals.</p>
+          <div class="card-badge" data-i18n="wri.div3">★ Grafana</div>
+          <h3 data-i18n="wri.h33">Multi-source observability with Grafana</h3>
+          <p data-i18n="wri.p4">One pane over three sources: AWS serverless (CloudWatch), local Docker containers, and application data (tickets &amp; SLA) — correlating infra and business signals.</p>
           <div class="post-meta">2026-06-14 · 4 min read · <span class="tag-mini">Grafana</span> <span class="tag-mini">CloudWatch</span> <span class="tag-mini">Observability</span></div>
-          <span class="btn">Read ↗</span>
+          <span class="btn" data-i18n="wri.span3">Read ↗</span>
         </a>
 
       </div>
@@ -552,7 +556,7 @@
 
     <!-- HARD SKILLS -->
     <section id="hard-skills" class="fade-in">
-      <h2>Hard Skills</h2>
+      <h2 data-i18n="skl.h21">Hard Skills</h2>
       <div class="icons-grid">
         <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/python-original.svg" alt="Python" title="Python" />
         <img loading="lazy" decoding="async" width="38" height="38" src="assets/img/icons/php-original.svg" alt="PHP" title="PHP" />
@@ -575,35 +579,35 @@
       </div>
 
       <div style="margin-top:2rem;">
-        <h3 style="color:var(--primary);font-size:1.05rem;margin-bottom:.5rem;font-family:'Courier New',monospace;letter-spacing:.05em;">Tech Stack by level of mastery</h3>
-        <p class="level-legend">An honest inventory, not a keyword list. <strong>Own</strong> = built end-to-end and operationally owned · <strong>Build</strong> = solutions I assemble recurrently · <strong>Operate</strong> = fluent for diagnosis and operations, not building the platform · <strong>Learning</strong> = directed study, no operational depth yet.</p>
+        <h3 style="color:var(--primary);font-size:1.05rem;margin-bottom:.5rem;font-family:'Courier New',monospace;letter-spacing:.05em;" data-i18n="skl.h31">Tech Stack by level of mastery</h3>
+        <p class="level-legend" data-i18n="skl.p1">An honest inventory, not a keyword list. <strong>Own</strong> = built end-to-end and operationally owned · <strong>Build</strong> = solutions I assemble recurrently · <strong>Operate</strong> = fluent for diagnosis and operations, not building the platform · <strong>Learning</strong> = directed study, no operational depth yet.</p>
         <div class="level-grid">
           <div class="level level-own">
-            <h3 class="level-title"><span class="level-dot" aria-hidden="true"></span>Own</h3>
-            <p class="level-def">Built it end-to-end; if it breaks, they call me.</p>
+            <h3 class="level-title" data-i18n="skl.h32"><span class="level-dot" aria-hidden="true"></span>Own</h3>
+            <p class="level-def" data-i18n="skl.p2">Built it end-to-end; if it breaks, they call me.</p>
             <ul class="soft-list">
-              <li>PostgreSQL &amp; advanced SQL</li><li>Idempotent production ETL</li><li>Post-mortem system (P0–P3, blameless)</li><li>Uptime / downtime methodology</li><li>Runbooks &amp; least-privilege access</li><li>Notion as knowledge system</li><li>Spec-Driven Development (OpenSpec)</li>
+              <li data-i18n="skl.li1">PostgreSQL &amp; advanced SQL</li><li data-i18n="skl.li2">Idempotent production ETL</li><li data-i18n="skl.li3">Post-mortem system (P0–P3, blameless)</li><li data-i18n="skl.li4">Uptime / downtime methodology</li><li data-i18n="skl.li5">Runbooks &amp; least-privilege access</li><li data-i18n="skl.li6">Notion as knowledge system</li><li data-i18n="skl.li7">Spec-Driven Development (OpenSpec)</li>
             </ul>
           </div>
           <div class="level level-build">
-            <h3 class="level-title"><span class="level-dot" aria-hidden="true"></span>Build</h3>
-            <p class="level-def">I assemble solutions with these on a recurring basis.</p>
+            <h3 class="level-title" data-i18n="skl.h33"><span class="level-dot" aria-hidden="true"></span>Build</h3>
+            <p class="level-def" data-i18n="skl.p3">I assemble solutions with these on a recurring basis.</p>
             <ul class="soft-list">
               <li>Python</li><li>FastAPI</li><li>Django</li><li>Flask</li><li>pytest (mocks)</li><li>SQL</li><li>Liquibase</li><li>n8n (workflow SDK)</li><li>Freshdesk / Notion / Asana / Slack APIs</li><li>Webhooks · serverless tooling</li><li>Spec-driven pipelines</li><li>Grafana dashboards &amp; alerting</li><li>Chart.js dashboards</li><li>Claude API / Claude Code</li><li>OpenAI API</li><li>Gemini API</li><li>Amazon Bedrock</li><li>Prompt Engineering</li><li>LLM Integration</li><li>AI Agents / Skills</li><li>Agentic Workflows</li><li>RAG</li><li>SonarQube</li><li>GitHub Actions (CI/CD)</li><li>Docker</li><li>Serverless Framework</li><li>Supabase (PL/pgSQL, RLS, Edge Functions)</li><li>React</li><li>TypeScript</li><li>Next.js</li><li>Node.js</li><li>Vitest / Jest</li><li>SQLAlchemy 2.0 async · Alembic · Pydantic v2</li><li>Pandas · openpyxl · SFTP / Paramiko</li><li>OpenAPI · REST · WebSocket · SSO / OIDC</li>
             </ul>
           </div>
           <div class="level level-operate">
-            <h3 class="level-title"><span class="level-dot" aria-hidden="true"></span>Operate</h3>
-            <p class="level-def">Fluent for diagnosis and operations; I don't build the platform.</p>
+            <h3 class="level-title" data-i18n="skl.h34"><span class="level-dot" aria-hidden="true"></span>Operate</h3>
+            <p class="level-def" data-i18n="skl.p4">Fluent for diagnosis and operations; I don't build the platform.</p>
             <ul class="soft-list">
               <li>AWS Lambda</li><li>Step Functions</li><li>CloudWatch Logs Insights</li><li>RDS</li><li>S3</li><li>EventBridge</li><li>EC2</li><li>AWS SSO / Identity Center</li><li>Sentry</li><li>MySQL</li><li>SQL Server</li><li>MongoDB</li><li>DynamoDB</li><li>SAP ERP / HANA · SAP BO · SAP CAR</li><li>GK POS · GK OmniPOS</li><li>Core banking / credit-bureau integrations</li><li>Scrum · Jira · Asana · Postman</li><li>Azure (base)</li><li>GCP (base)</li>
             </ul>
           </div>
           <div class="level level-learning">
-            <h3 class="level-title"><span class="level-dot" aria-hidden="true"></span>Learning</h3>
-            <p class="level-def">Directed study; no operational depth yet.</p>
+            <h3 class="level-title" data-i18n="skl.h35"><span class="level-dot" aria-hidden="true"></span>Learning</h3>
+            <p class="level-def" data-i18n="skl.p5">Directed study; no operational depth yet.</p>
             <ul class="soft-list">
-              <li>IaC: Terraform / AWS CDK</li><li>Amazon QuickSight</li><li>Synthetic checks &amp; proactive observability</li><li>AWS Glue at scale</li>
+              <li data-i18n="skl.li8">IaC: Terraform / AWS CDK</li><li data-i18n="skl.li9">Amazon QuickSight</li><li data-i18n="skl.li10">Synthetic checks &amp; proactive observability</li><li data-i18n="skl.li11">AWS Glue at scale</li>
             </ul>
           </div>
         </div>
@@ -612,58 +616,58 @@
 
     <!-- SOFT SKILLS -->
     <section id="soft-skills" class="fade-in">
-      <h2>Soft Skills</h2>
+      <h2 data-i18n="soft.h21">Soft Skills</h2>
       <ul class="soft-list">
-        <li>Leadership</li>
-        <li>Effective Communication</li>
-        <li>Teamwork</li>
-        <li>Requirements Analysis</li>
-        <li>Analytical Thinking</li>
-        <li>Adaptability</li>
-        <li>Problem Solving</li>
-        <li>AI-native Workflow</li>
+        <li data-i18n="soft.li1">Leadership</li>
+        <li data-i18n="soft.li2">Effective Communication</li>
+        <li data-i18n="soft.li3">Teamwork</li>
+        <li data-i18n="soft.li4">Requirements Analysis</li>
+        <li data-i18n="soft.li5">Analytical Thinking</li>
+        <li data-i18n="soft.li6">Adaptability</li>
+        <li data-i18n="soft.li7">Problem Solving</li>
+        <li data-i18n="soft.li8">AI-native Workflow</li>
       </ul>
     </section>
 
     <!-- LANGUAGES -->
     <section id="languages" class="fade-in">
-      <h2>Languages</h2>
+      <h2 data-i18n="lang.h21">Languages</h2>
       <table class="lang-table">
-        <tr><td>Spanish</td><td>Native</td></tr>
-        <tr><td>English</td><td>B1 — Intermediate (reading, writing &amp; technical communication)</td></tr>
+        <tr><td data-i18n="lang.td1">Spanish</td><td data-i18n="lang.td2">Native</td></tr>
+        <tr><td data-i18n="lang.td3">English</td><td data-i18n="lang.td4">B1 — Intermediate (reading, writing &amp; technical communication)</td></tr>
       </table>
     </section>
 
     <!-- EDUCATION & CERTIFICATIONS -->
     <section id="education" class="fade-in">
-      <h2>Education &amp; Certifications</h2>
+      <h2 data-i18n="edu.h21">Education &amp; Certifications</h2>
       <div style="display:grid;gap:1.5rem;">
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
-          <h3 style="color:var(--primary);margin-bottom:0.3rem;">Computer Systems Engineering</h3>
-          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;">Instituto Tecnológico de Orizaba · 2006 – 2011</p>
-          <p style="font-size:0.85rem;color:var(--muted);">Orizaba, Veracruz, Mexico</p>
+          <h3 style="color:var(--primary);margin-bottom:0.3rem;" data-i18n="edu.h31">Computer Systems Engineering</h3>
+          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;" data-i18n="edu.p1">Instituto Tecnológico de Orizaba · 2006 – 2011</p>
+          <p style="font-size:0.85rem;color:var(--muted);" data-i18n="edu.p2">Orizaba, Veracruz, Mexico</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;border-left:3px solid var(--primary);">
-          <h3 style="color:var(--primary);margin-bottom:0.3rem;">Advanced English</h3>
-          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;">Quick Learning · In progress</p>
-          <p style="font-size:0.85rem;color:var(--muted);">Online</p>
+          <h3 style="color:var(--primary);margin-bottom:0.3rem;" data-i18n="edu.h32">Advanced English</h3>
+          <p style="font-weight:600;color:var(--muted);font-size:0.9rem;" data-i18n="edu.p3">Quick Learning · In progress</p>
+          <p style="font-size:0.85rem;color:var(--muted);" data-i18n="edu.p4">Online</p>
         </div>
         <div style="background:var(--card-bg);padding:1.2rem;border-radius:8px;">
-          <h3 style="color:var(--primary);margin-bottom:0.8rem;">Certifications &amp; Courses</h3>
+          <h3 style="color:var(--primary);margin-bottom:0.8rem;" data-i18n="edu.h33">Certifications &amp; Courses</h3>
           <ul style="list-style:none;padding:0;display:grid;gap:0.5rem;">
-            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--primary);border-radius:4px;font-size:0.9rem;">
+            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--primary);border-radius:4px;font-size:0.9rem;" data-i18n="edu.li1">
               <strong>Generative AI with Amazon Bedrock</strong> · Coursera · 2026
             </li>
-            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--primary);border-radius:4px;font-size:0.9rem;">
+            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--primary);border-radius:4px;font-size:0.9rem;" data-i18n="edu.li2">
               <strong>Claude Code: SE with Gen AI Agents</strong> · Vanderbilt University · 2026
             </li>
-            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;">
+            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;" data-i18n="edu.li3">
               <strong>Developing Applications in Python on AWS</strong> · Coursera · 2025
             </li>
-            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;">
+            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;" data-i18n="edu.li4">
               <strong>GitHub Actions Bootcamp</strong> · Código Facilito · 2025
             </li>
-            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;">
+            <li style="padding:0.5rem 0.8rem;background:var(--badge-bg);border-left:2px solid var(--border);border-radius:4px;font-size:0.9rem;" data-i18n="edu.li5">
               <strong>Understanding the World Through Data</strong> · edX · 2024
             </li>
           </ul>
@@ -673,36 +677,36 @@
 
     <!-- CONTACT -->
     <section id="contact" class="fade-in">
-      <h2>Contact</h2>
-      <p>Looking for job opportunities? Let's talk!</p>
+      <h2 data-i18n="con.h21">Contact</h2>
+      <p data-i18n="con.p1">Looking for job opportunities? Let's talk!</p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0 1.5rem;">
-        <a class="btn" href="mailto:valentin.alducin88@gmail.com">Send Email</a>
-        <button class="btn" type="button" id="copyEmail" aria-label="Copy email address">Copy Email</button>
-        <a class="btn" href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn" href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es">Download CV · ES (PDF)</a>
-        <a class="btn" href="cv/CV_JuanValentinAlducin_EN.pdf" download data-cv="en">Download CV · EN (PDF)</a>
+        <a class="btn" href="mailto:valentin.alducin88@gmail.com" data-i18n="con.a1">Send Email</a>
+        <button class="btn" type="button" id="copyEmail" aria-label="Copy email address" data-i18n-aria="con.button1@aria" data-i18n="con.button2">Copy Email</button>
+        <a class="btn" href="https://api.whatsapp.com/send?phone=525640800494" target="_blank" rel="noopener" data-i18n="con.a2">WhatsApp</a>
+        <a class="btn" href="https://linkedin.com/in/juanvalducinv" target="_blank" rel="noopener" data-i18n="con.a3">LinkedIn</a>
+        <a class="btn" href="cv/CV_JuanValentinAlducin.pdf" download data-cv="es" data-i18n="con.a4">Download CV · ES (PDF)</a>
+        <a class="btn" href="cv/CV_JuanValentinAlducin_EN.pdf" download data-cv="en" data-i18n="con.a5">Download CV · EN (PDF)</a>
       </div>
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.6rem;">Or send me a message:</p>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.6rem;" data-i18n="con.p2">Or send me a message:</p>
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <input id="cf-name"  type="text"  name="name"  placeholder="Your name"  aria-label="Your name"  required />
-          <input id="cf-email" type="email" name="email" placeholder="Your email" aria-label="Your email" required />
+          <input id="cf-name"  type="text"  name="name"  placeholder="Your name"  aria-label="Your name"  required  data-i18n-aria="con.input1@aria" data-i18n-placeholder="con.input1@placeholder"/>
+          <input id="cf-email" type="email" name="email" placeholder="Your email" aria-label="Your email" required  data-i18n-aria="con.input2@aria" data-i18n-placeholder="con.input2@placeholder"/>
         </div>
-        <input id="cf-subject" type="text" name="subject" placeholder="Subject" aria-label="Subject" required />
-        <textarea id="cf-message" name="message" placeholder="Your message..." aria-label="Your message" required></textarea>
+        <input id="cf-subject" type="text" name="subject" placeholder="Subject" aria-label="Subject" required  data-i18n-aria="con.input3@aria" data-i18n-placeholder="con.input3@placeholder"/>
+        <textarea id="cf-message" name="message" placeholder="Your message..." aria-label="Your message" required data-i18n-aria="con.textarea1@aria" data-i18n-placeholder="con.textarea1@placeholder"></textarea>
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
         <div>
-          <button class="btn" type="submit">Send Message</button>
+          <button class="btn" type="submit" data-i18n="con.button3">Send Message</button>
         </div>
-        <div class="form-success" id="formSuccess">✓ Opening your email app… I also copied my address to your clipboard: valentin.alducin88@gmail.com</div>
+        <div class="form-success" id="formSuccess" data-i18n="con.div1">✓ Opening your email app… I also copied my address to your clipboard: valentin.alducin88@gmail.com</div>
       </form>
     </section>
 
     <!-- TERMINAL -->
     <section id="terminal" class="fade-in">
-      <h2>Terminal</h2>
-      <p style="color:var(--muted);margin-bottom:.8rem;">Una mini-terminal real. Escribe <code style="color:var(--accent2)">help</code> y Enter. 😉</p>
+      <h2 data-i18n="term.h21">Terminal</h2>
+      <p style="color:var(--muted);margin-bottom:.8rem;" data-i18n="term.p1">A real mini-terminal. Type <code style="color:var(--accent2)">help</code> and press Enter. 😉</p>
       <div class="term">
         <div class="term-bar">
           <span class="term-dot" style="background:#e06c5e"></span>
@@ -713,26 +717,27 @@
         <div class="term-out" id="term-out" aria-live="polite"></div>
         <div class="term-line">
           <span class="ps1">$</span>
-          <input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Comando de terminal" placeholder="type 'help' and press Enter" />
+          <input id="term-input" type="text" autocomplete="off" spellcheck="false" aria-label="Terminal command" placeholder="type 'help' and press Enter"  data-i18n-aria="term.input1@aria" data-i18n-placeholder="term.input1@placeholder"/>
         </div>
       </div>
     </section>
 
-    <footer>© 2026 Juan Valentin Alducin Vázquez. All rights reserved.</footer>
+    <footer data-i18n="ftr.footer1">© 2026 Juan Valentin Alducin Vázquez. All rights reserved.</footer>
   </div>
 
   <!-- Ask my portfolio — AI assistant -->
-  <button id="ai-fab" aria-label="Open AI assistant">🤖 Ask my portfolio</button>
-  <div class="ai-panel" id="ai-panel" role="dialog" aria-modal="false" aria-label="AI assistant">
-    <div class="ai-head"><b>Ask my portfolio</b><button class="ai-x" id="ai-x" aria-label="Close">×</button></div>
+  <button id="ai-fab" aria-label="Open AI assistant" data-i18n-aria="ai.button1@aria" data-i18n="ai.button2">🤖 Ask my portfolio</button>
+  <div class="ai-panel" id="ai-panel" role="dialog" aria-modal="false" aria-label="AI assistant" data-i18n-aria="ai.div1@aria">
+    <div class="ai-head"><b data-i18n="ai.b1">Ask my portfolio</b><button class="ai-x" id="ai-x" aria-label="Close" data-i18n-aria="ai.button3@aria">×</button></div>
     <div class="ai-msgs" id="ai-msgs" aria-live="polite"></div>
     <div class="ai-chips" id="ai-chips"></div>
     <form class="ai-form" id="ai-form">
-      <input id="ai-input" type="text" placeholder="Ask about Juan…" autocomplete="off" aria-label="Your question" />
+      <input id="ai-input" type="text" placeholder="Ask about Juan…" autocomplete="off" aria-label="Your question"  data-i18n-aria="ai.input1@aria" data-i18n-placeholder="ai.input1@placeholder"/>
       <button type="submit" id="ai-send">↩</button>
     </form>
   </div>
 
+  <script type="application/json" id="i18n-es">{"cmdk.div2":"↑↓ navegar · Enter seleccionar · Esc cerrar · ⌘/Ctrl K","cmdk.div1@aria":"Paleta de comandos","cmdk.input1@aria":"Buscar secciones y acciones","cmdk.input1@placeholder":"Ir a una sección o acción…  (Esc para cerrar)","nav.a1":"Método IA","nav.a2":"Experiencia","nav.a3":"Proyectos","nav.a4":"Blog","nav.a5":"Habilidades","nav.a6":"Idiomas","nav.a7":"Educación","nav.a8":"Contacto","nav.a9":"Terminal","nav.button1@aria":"Cambiar tema claro/oscuro","nav.button1@title":"Tema claro / oscuro","hdr.p1":"CDMX, México &nbsp;·&nbsp; Inglés B1 · B2 lectura/escritura técnica","hdr.p2":"Senior Backend Engineer y Tech Lead con +10 años en backend y sistemas distribuidos. Hoy mi firma es la <strong>confiabilidad y la automatización como producto</strong>: un sistema de post-mortems blameless, una metodología de uptime mensual (99.95 % en julio 2026), runbooks y pipelines n8n / spec-driven que sustituyen operación manual. La IA generativa (Claude, Gemini, OpenAI) es el copiloto de mi SDLC mediante <strong>Spec-Driven Development</strong> — ~40 % menos tiempo de revisión de código y 80 % de autoresolución N1 — sobre Python · PostgreSQL · AWS, con liderazgo técnico de despliegues internacionales de GK POS en Latinoamérica.","hdr.span1":"<strong>~40%</strong> menos tiempo de revisión","hdr.span2":"<strong>80%</strong> autoresolución N1","hdr.span3":"<strong>&lt;10 min</strong> primera respuesta","hdr.span4":"<strong>99.95%</strong> uptime mensual","hdr.a1@aria":"Ir al formulario de contacto","hdr.a1@title":"Envíame un mensaje (formulario de contacto)","aim.h21":"Cómo construyo con IA","aim.strong1":"Ahora","aim.li1":"Lidero la ingeniería de <strong>Service Support</strong> en <strong>Podemos Progresar</strong> (fintech): resolución de incidentes AI-native con SDD.","aim.li2":"Corro mis proyectos en local con <strong>Docker</strong>; observabilidad con <strong>Grafana</strong>.","aim.li3":"Empujando mi inglés hacia <strong>B2</strong> (Quick Learning, en curso).","aim.p1":"Trabajo AI-native: la IA generativa es el copiloto central de mi SDLC, no un añadido. Mi práctica es <strong>Spec-Driven Development (SDD/OpenSpec)</strong> — la spec es la fuente de verdad y cada cambio pasa por artefactos versionados antes de escribir una línea de código.","aim.strong2":"Cómo trabajo","aim.li4":"<strong>Automatizar &gt; operar.</strong> Regla de las dos veces: todo reporte o tarea manual hecha más de dos veces se convierte en un pipeline spec-driven.","aim.li5":"<strong>Confiabilidad como producto.</strong> El downtime se mide por impacto real al usuario, no por cierre de ticket; post-mortems blameless; runbooks de mínimo privilegio.","aim.li6":"<strong>Estado fuera del código.</strong> IDs, cortes y umbrales viven en configuración (JSON / Notion) que leen por igual el workflow y el tablero — la spec es el contrato.","aim.li7":"<strong>Cursor sobre ingesta, no sobre reloj.</strong> Diseñado para el fallo (corridas caídas, datos tardíos), no para el camino feliz.","aim.p2":"Requisitos y escenarios verificables dirigen el trabajo. La IA genera specs, analiza el código estáticamente y propone implementaciones contra el contrato — recortando los ciclos de revisión ~40 %.","aim.h32":"IA como copiloto del SDLC","aim.p3":"Claude (Anthropic), Gemini, OpenAI y Bedrock en todo el ciclo: generación de specs, debugging automatizado, RCA y post-mortems, documentación técnica, y un Skill de IA para el ruteo automático de tickets con revisión humana en baja confianza — impulsando la adopción del equipo.","aim.h33":"Impacto medible","aim.li8":"~40 % menos tiempo de revisión de código","aim.li9":"80 % de resolución autónoma de incidentes N1","aim.li10":"&lt;10 min primera respuesta · &lt;2 h resolución","aim.li11":"99.95 % de uptime mensual (julio 2026)","aim.h34":"Agéntico y legible por máquinas","aim.p4":"Flujos agénticos con RAG y agentes de IA. Este mismo sitio publica <strong>JSON-LD</strong> estructurado y un <strong>/llms.txt</strong> para que agentes y LLMs lean mi perfil directamente.","exp.h21":"Experiencia","exp.span1":"Jul 2026 – Presente","exp.span2":"Actual","exp.h31":"Service Support Tech Lead &amp; IA Specialist","exp.li1":"Lidero el equipo de Service Support de punta a punta (bugs, incidentes críticos, deuda técnica) con <strong>Spec-Driven Development (SDD)</strong> y <strong>Claude API</strong> — reduje el tiempo de revisión de código <strong>~40 %</strong> al rediseñar el ciclo diagnóstico → implementación.","exp.li2":"Construí el <strong>sistema de post-mortems</strong> (severidad P0–P3, 5 Whys, blameless, rúbrica de autoevaluación) con un <strong>tablero de gobierno en vivo</strong> — atrasos, subtareas abiertas, escalaciones N3/N4 y semáforo del indicador vs. meta — más reportes gerenciales de estatus para dirección.","exp.li3":"Definí la <strong>metodología de uptime/downtime mensual</strong> (flota × minutos reales; downtime = impacto real al usuario): <strong>99.95 % en julio 2026</strong>. Estandaricé runbooks y un modelo de acceso de mínimo privilegio.","exp.li4":"Automatizo la operación con <strong>n8n (workflow SDK)</strong>: Freshdesk → Notion → Slack con cursor de ingesta, vigilante de atrasos de post-mortems, alertas por picos de tickets; <strong>pipelines spec-driven</strong> (n8n orquesta, Python calcula, endpoint FastAPI, Notion registra).","exp.li5":"Arquitecto flujos de IA (<strong>Claude, OpenAI, Gemini, Bedrock</strong>) en todo el SDLC — specs, análisis estático, debugging automatizado, documentación — y diseño un <strong>Skill de IA para el ruteo automático de tickets</strong> (clasificación multidimensional, ruteo por squad, revisión humana en baja confianza).","exp.li6":"Participo en los <strong>trenes de liberación</strong> semanales coordinando validación y despliegue entre plataformas de core banking, originación y app de campo; <strong>tooling serverless</strong> interno (Enkoth — AWS Lambda · Step Functions · EventBridge) para webhooks e integraciones.","exp.li7":"Diagnostico y opero AWS (<strong>Step Functions, Lambda, CloudWatch Logs Insights, RDS</strong>) y audito el error tracking (Sentry) — SLAs: <strong>primera respuesta en menos de 10 minutos</strong>, resolución crítica en menos de 2 horas.","exp.span3":"Sept 2025 – Jun 2026","exp.h32":"Backend Support Specialist","exp.li9":"Lideré la gestión de incidentes N2 generando <strong>RCAs</strong> y post-mortems técnicos asistidos por IA que previnieron fallos recurrentes; habilité <strong>80 % de resolución autónoma</strong> en el equipo N1 mediante transferencia de conocimiento.","exp.li10":"Dueño del <strong>ETL semanal idempotente en PostgreSQL</strong> (respaldo → limpieza → actualización → bitácora, pre-validado contra conteos esperados) y de la deduplicación de identidades en producción; cambios de esquema versionados con Liquibase.","exp.li11":"Enlace técnico central en la coordinación operativa, acelerando la resolución de incidentes en sistemas <strong>Python, Django, FastAPI y PostgreSQL</strong>.","exp.span4":"Ene 2022 – Sept 2025","exp.h33":"Software Engineer → Tech Lead","exp.li13":"Desarrollé APIs REST (Python, Java, PHP) integrando GK POS con ERPs/CRMs vía automatización XML/SFTP para retail en 3 países de LATAM, adaptando soluciones a contextos culturales y regulatorios distintos.","exp.li14":"Líder técnico del Go-Live cloud de GK POS (Perú, Colombia, Bolivia): coordiné cronogramas, gestioné stakeholders de negocio y TI, hice demos técnicas de preventa y capacité a los equipos locales.","exp.li15":"Diseñé el pipeline ETL de promociones para GK OmniPOS, habilitando análisis comercial en tiempo real para la toma de decisiones.","exp.li16":"Dirigí el equipo funcional-técnico de GK POS: definí la estrategia de pruebas (unitarias, regresión, integración) y aseguré la calidad end-to-end en cada release.","exp.span5":"Mar 2017 – Ene 2022","exp.h34":"Software Engineer","exp.li18":"Implementé sistemas de facturación, portales de cliente y ETLs integrados con SAP ERP/HANA; construí dashboards ejecutivos en SAP BO que comunican métricas clave a la dirección del negocio.","exp.li19":"Soporte AMS a soluciones Retail GK: mesa de ayuda, mantenimiento correctivo y evolutivo de aplicaciones y flujos ETL.","exp.li20":"Colaboré en equipos multifuncionales bajo Scrum, manteniendo un SLA del 98 %.","proj.h21":"<span>★</span>Proyectos destacados","proj.p1":"★ <strong style=\"color:var(--primary);\">100 % construidos con Spec-Driven Development</strong> (SDD/OpenSpec) — la spec es la fuente de verdad en cada proyecto.","proj.div1":"★ AI-native · 100% SDD","proj.div2":"🧪 Piloto · beta cloud","proj.h31":"Fidello — Sistema de tarjetas de lealtad","proj.p2":"Plataforma multi-negocio de fidelidad digital: los clientes acumulan sellos vía QR sin instalar nada. Cinco actores (invitado, cliente registrado, caja, dueño/manager, admin de plataforma), billetera multi-negocio, niveles y canjes, alta self-service de negocios, KPIs/analítica, encuestas de satisfacción y un reporte mensual programado de la plataforma (<strong>pg_cron</strong>). Todas las reglas de negocio viven en PostgreSQL: <strong>RLS multi-tenant</strong>, RPC en <strong>PL/pgSQL <code>SECURITY DEFINER</code></strong>, tokens QR con TTL + huella SHA-256 contra replay, rate limiting en funciones anónimas, bitácora sin PII y <strong>feature flags</strong> (global + override por negocio). Flujos principales validados por producto en cafeterías reales. Incluye un paquete de revisión de arquitectura (piezas, dónde vive cada regla, despliegue, límites de escala) para revisores externos. <strong>100 % SDD/OpenSpec</strong> con 5 agentes de IA especializados y 28 journeys con runbook gemelo.","proj.span1":"793 pruebas · 337 BD + 456 UI","proj.span2":"91 migraciones · 22 tablas","proj.span3":"7 Edge Functions · 5 tareas cron","proj.span5":"28 journeys + runbooks","proj.span6":"CI: 2 jobs bloqueantes · QAS/PROD","proj.div3":"📊 Observabilidad · multi-fuente","proj.h32":"Monitoreo-Cloud — Stack de observabilidad","proj.p3":"<strong>Stack de observabilidad</strong> self-hosted (Grafana + Docker) con una sola vista sobre tres fuentes: <strong>AWS serverless</strong> (invocaciones/errores/duración de Lambda + S3) vía <strong>CloudWatch</strong>, <strong>contenedores Docker locales</strong> (CPU/memoria/salud) y <strong>tickets y SLA de Trackion</strong>. Recolección automatizada con <strong>n8n</strong> + un rol <strong>IAM</strong> de solo lectura. <strong>100 % SDD/OpenSpec</strong>.","proj.a1":"Ver código ↗","proj.div4":"★ Multi-tenant · SDD","proj.h33":"VoltGrid — Plataforma de carga EV","proj.p4":"<strong>SaaS</strong> multi-tenant white-label para operadores de estaciones de carga EV: estado en vivo por <strong>WebSocket</strong> (fallback a polling), aislamiento por tenant con <strong>Row-Level Security (RLS)</strong> de PostgreSQL, <strong>RBAC</strong> (superadmin/org_admin/operator/viewer) + <strong>SSO (OIDC)</strong>, analítica (uptime, kWh, export CSV), un <strong>scheduler</strong> de estados auditable y una <strong>PWA</strong> instalable. <strong>100 % SDD/OpenSpec</strong>.","proj.a2":"Ver código ↗","proj.div5":"★ Serverless · SDD","proj.h34":"Trackion — Mesa de ayuda serverless","proj.p5":"<strong>Mesa de ayuda serverless</strong> white-label: ticketing end-to-end (categorizar, priorizar, asignar, historial; <code>open→in_progress→resolved→closed</code>), catálogos administrables y un <strong>módulo abierto de integración de APIs</strong> (webhooks entrantes genéricos + despacho saliente de eventos de dominio) para conectar cualquier sistema externo sin tocar el núcleo. Dashboards de <strong>tickets y SLA en Grafana</strong>. <strong>100 % SDD/OpenSpec</strong>; corre en local con Docker.","proj.a3":"Ver código ↗","proj.div6":"🍕 En vivo en AWS · 100% SDD","proj.h35":"Pyzzeria — Pedidos de pizza serverless","proj.p6":"Demo serverless de pedidos de pizza con <strong>seguimiento en vivo</strong>: arma tu pizza, haz el pedido y míralo avanzar <code>recibido→preparando→horno→listo→entregado</code> en ~70 s por <strong>WebSocket</strong>, orquestado por un workflow <strong>Step Functions Express</strong>. Pedidos en <strong>DynamoDB</strong>, <strong>OpenAPI/Swagger</strong> completamente documentado, frontend en S3 + CloudFront. <strong>100 % SDD/OpenSpec</strong>. Solo demo — sin pagos reales.","proj.a4":"Demo en vivo ↗","proj.a5":"Ver código ↗","proj.div7":"★ E-commerce · SDD","proj.h36":"JV Market","proj.p7":"<strong>E-commerce de streetwear/sneakers</strong> full-stack <strong>desplegado en AWS</strong>: auth JWT, catálogo de productos, carrito, checkout, <strong>Click &amp; Collect</strong>, <strong>wishlist</strong> y panel de administración. API en API Gateway + Lambda; frontend en S3 + CloudFront. <strong>100 % SDD/OpenSpec</strong>.","proj.a6":"Ver código ↗","proj.div8":"★ Rediseñado · SDD","proj.h37":"dataMasterGK — Middleware ETL retail","proj.p8":"Middleware ETL que automatiza la integración de datos maestros en sistemas retail de <strong>GK Software</strong>: vigila directorios, transforma <strong>Excel → XML de GK</strong> en cuatro interfaces (tiendas, operadores, promociones) y transmite vía <strong>SFTP/FTP</strong> — con panel web Flask (configuración, operación, auditoría), scheduler y auditoría en SQLite. Rediseñado bajo <strong>SDD/OpenSpec</strong>: pipeline idempotente de una sola pasada, conexiones SFTP/SQLite en pool y endurecimiento de seguridad (SQL parametrizado/whitelist, secretos fuera del repo).","proj.a7":"Ver código ↗","wri.h21":"<span>✎</span>Blog","wri.p1":"Notas de construir AI-native: Spec-Driven Development, Docker y observabilidad — desde proyectos reales. (Artículos en inglés.)","wri.h31":"Spec-Driven Development: la spec es la fuente de verdad","wri.p2":"Por qué trato la spec como el contrato y el código como su implementación vigente — el flujo de artefactos (proposal → specs → design → tasks → apply → archive) y por qué recortó mis ciclos de revisión ~40 %.","wri.span1":"Leer ↗","wri.h32":"Un stack de observabilidad local a costo cero con Docker Compose","wri.p3":"De un EC2 siempre encendido a un stack local reproducible (Grafana + PostgreSQL + n8n): $0 en reposo, idempotente y aún consciente de la nube con un rol IAM de solo lectura.","wri.span2":"Leer ↗","wri.h33":"Observabilidad multi-fuente con Grafana","wri.p4":"Una sola vista sobre tres fuentes: AWS serverless (CloudWatch), contenedores Docker locales y datos de aplicación (tickets y SLA) — correlacionando señales de infraestructura y negocio.","wri.span3":"Leer ↗","skl.h21":"Habilidades técnicas","skl.h31":"Stack por nivel de dominio","skl.p1":"Un inventario honesto, no una lista de palabras clave. <strong>Dueño</strong> = construido de punta a punta y con propiedad operativa · <strong>Construyo</strong> = soluciones que armo de forma recurrente · <strong>Opero</strong> = soltura para diagnosticar y operar, sin construir la plataforma · <strong>Aprendiendo</strong> = estudio dirigido, sin profundidad operativa todavía.","skl.h32":"<span class=\"level-dot\" aria-hidden=\"true\"></span>Dueño","skl.p2":"Lo construí de punta a punta; si se rompe, me buscan a mí.","skl.li1":"PostgreSQL y SQL avanzado","skl.li2":"ETL idempotente en producción","skl.li3":"Sistema de post-mortems (P0–P3, blameless)","skl.li4":"Metodología de uptime / downtime","skl.li5":"Runbooks y acceso de mínimo privilegio","skl.li6":"Notion como sistema de conocimiento","skl.h33":"<span class=\"level-dot\" aria-hidden=\"true\"></span>Construyo","skl.p3":"Armo soluciones con esto de forma recurrente.","skl.h34":"<span class=\"level-dot\" aria-hidden=\"true\"></span>Opero","skl.p4":"Soltura para diagnosticar y operar; no construyo la plataforma.","skl.h35":"<span class=\"level-dot\" aria-hidden=\"true\"></span>Aprendiendo","skl.p5":"Estudio dirigido; todavía sin profundidad operativa.","skl.li10":"Synthetic checks y observabilidad proactiva","skl.li11":"AWS Glue a escala","soft.h21":"Habilidades blandas","soft.li1":"Liderazgo","soft.li2":"Comunicación efectiva","soft.li3":"Trabajo en equipo","soft.li4":"Análisis de requerimientos","soft.li5":"Pensamiento analítico","soft.li6":"Adaptabilidad","soft.li7":"Resolución de problemas","soft.li8":"Flujo de trabajo AI-native","lang.h21":"Idiomas","lang.td1":"Español","lang.td2":"Nativo","lang.td3":"Inglés","lang.td4":"B1 — Intermedio (lectura, escritura y comunicación técnica)","edu.h21":"Educación y certificaciones","edu.h31":"Ingeniería en Sistemas Computacionales","edu.p1":"Instituto Tecnológico de Orizaba · 2006 – 2011","edu.p2":"Orizaba, Veracruz, México","edu.h32":"Inglés avanzado","edu.p3":"Quick Learning · En curso","edu.h33":"Certificaciones y cursos","edu.li1":"<strong>Generative AI with Amazon Bedrock</strong> · Coursera · 2026","edu.li2":"<strong>Claude Code: SE with Gen AI Agents</strong> · Vanderbilt University · 2026","edu.li3":"<strong>Developing Applications in Python on AWS</strong> · Coursera · 2025","edu.li4":"<strong>GitHub Actions Bootcamp</strong> · Código Facilito · 2025","edu.li5":"<strong>Understanding the World Through Data</strong> · edX · 2024","con.h21":"Contacto","con.p1":"¿Buscas talento? ¡Hablemos!","con.a1":"Enviar email","con.button2":"Copiar email","con.button1@aria":"Copiar dirección de correo","con.a4":"Descargar CV · ES (PDF)","con.a5":"Descargar CV · EN (PDF)","con.p2":"O envíame un mensaje:","con.button3":"Enviar mensaje","con.div1":"✓ Abriendo tu app de correo… También copié mi dirección a tu portapapeles: valentin.alducin88@gmail.com","con.input1@aria":"Tu nombre","con.input1@placeholder":"Tu nombre","con.input2@aria":"Tu correo","con.input2@placeholder":"Tu correo","con.input3@aria":"Asunto","con.input3@placeholder":"Asunto","con.textarea1@aria":"Tu mensaje","con.textarea1@placeholder":"Tu mensaje...","term.p1":"Una mini-terminal real. Escribe <code style=\"color:var(--accent2)\">help</code> y Enter. 😉","term.input1@aria":"Comando de terminal","term.input1@placeholder":"escribe 'help' y presiona Enter","ftr.footer1":"© 2026 Juan Valentin Alducin Vázquez. Todos los derechos reservados.","ai.button2":"🤖 Pregúntale a mi portafolio","ai.b1":"Pregúntale a mi portafolio","ai.button1@aria":"Abrir asistente de IA","ai.div1@aria":"Asistente de IA","ai.button3@aria":"Cerrar","ai.input1@aria":"Tu pregunta","ai.input1@placeholder":"Pregunta sobre Juan…"}</script>
   <script>
     (function(){
       const cv=document.getElementById('matrix-bg');
@@ -842,7 +847,8 @@
         {label:'Copy email',tag:'action',run:()=>{window.__copyEmail?window.__copyEmail():(navigator.clipboard&&navigator.clipboard.writeText(EMAIL));}},
         {label:'GitHub',tag:'link',run:()=>window.open('https://github.com/jalducin','_blank')},
         {label:'LinkedIn',tag:'link',run:()=>window.open('https://linkedin.com/in/juanvalducinv','_blank')},
-        {label:'Toggle theme',tag:'action',run:()=>{const l=document.documentElement.classList.toggle('light');localStorage.setItem('theme',l?'light':'dark');}}
+        {label:'Toggle theme',tag:'action',run:()=>{const l=document.documentElement.classList.toggle('light');localStorage.setItem('theme',l?'light':'dark');}},
+        {label:'Español / English',tag:'action',run:()=>window.__setLang&&window.__setLang(window.__getLang()==='es'?'en':'es')}
       ];
       let filtered=cmds.slice(),active=0;
       function render(){
@@ -912,6 +918,29 @@
       form.addEventListener('submit',(e)=>{e.preventDefault();ask(input.value);});
       document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&panel.classList.contains('open'))closePanel();});
     })();
+    /* i18n ES/EN — el inglés vive en el DOM (fuente de verdad); el español en #i18n-es (design.md D3) */
+    (function(){
+      var ES={}; try{ES=JSON.parse(document.getElementById('i18n-es').textContent);}catch(e){}
+      var TITLES={"en": "Juan Valentin Alducin Vázquez — Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI", "es": "Juan Valentin Alducin Vázquez — Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI"};
+      var ATTRS={title:'title',aria:'aria-label',placeholder:'placeholder'};
+      var EN={}; document.querySelectorAll('[data-i18n]').forEach(function(el){EN[el.dataset.i18n]=el.innerHTML;});
+      Object.keys(ATTRS).forEach(function(k){document.querySelectorAll('[data-i18n-'+k+']').forEach(function(el){EN[el.getAttribute('data-i18n-'+k)]=el.getAttribute(ATTRS[k])||'';});});
+      var store={get:function(){try{return localStorage.getItem('lang');}catch(e){return null;}},set:function(v){try{localStorage.setItem('lang',v);}catch(e){}}};
+      var current='en';
+      function applyLang(lang){
+        lang=(lang==='es')?'es':'en'; current=lang;
+        document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.dataset.i18n; var v=(lang==='es'&&ES[k]!==undefined)?ES[k]:EN[k]; if(v!==undefined&&el.innerHTML!==v)el.innerHTML=v;});
+        Object.keys(ATTRS).forEach(function(k){document.querySelectorAll('[data-i18n-'+k+']').forEach(function(el){var key=el.getAttribute('data-i18n-'+k); var v=(lang==='es'&&ES[key]!==undefined)?ES[key]:EN[key]; if(v!==undefined)el.setAttribute(ATTRS[k],v);});});
+        document.documentElement.lang=lang; document.title=TITLES[lang]||document.title;
+        var b=document.getElementById('lang-btn'); if(b){b.textContent=lang==='es'?'EN':'ES'; b.setAttribute('lang',lang==='es'?'en':'es');}
+        store.set(lang);
+      }
+      var q=null; try{q=new URLSearchParams(location.search).get('lang');}catch(e){}
+      var initial=(q==='es'||q==='en')?q:(store.get()||((navigator.language||'').toLowerCase().indexOf('es')===0?'es':'en'));
+      applyLang(initial);
+      window.__setLang=applyLang; window.__getLang=function(){return current;};
+      var btn=document.getElementById('lang-btn'); if(btn)btn.addEventListener('click',function(){applyLang(current==='es'?'en':'es');});
+    })();
     /* Tabs (una sección a la vez) + Terminal interactiva */
     (function(){
       const GROUPS={'ai-method':['ai-method'],'experience':['experience'],'featured-projects':['featured-projects'],'writing':['writing'],'hard-skills':['hard-skills','soft-skills'],'languages':['languages'],'education':['education'],'contact':['contact'],'terminal':['terminal']};
@@ -938,7 +967,11 @@
         const hist=[]; let hi=-1;
         function line(text,cls){const d=document.createElement('div'); d.className=cls; d.textContent=text; out.appendChild(d); out.scrollTop=out.scrollHeight;}
         const CMDS={
-          help:()=>"Comandos: whoami · ls projects · writing · cat cv · skills · contact · sdd · clear · help\nTip: hay un par de secretos por ahí… (prueba 'mundial')",
+          help:()=>"Comandos: whoami · ls projects · writing · cat cv · skills · contact · sdd · lang es|en · clear · help\nTip: hay un par de secretos por ahí… (prueba 'mundial')",
+          lang:()=>"Idioma / language: "+(window.__getLang&&window.__getLang()==='es'?'español':'english')+"   (usa 'lang es' o 'lang en')",
+          'lang es':()=>{window.__setLang&&window.__setLang('es'); return "Idioma: español 🇲🇽";},
+          'lang en':()=>{window.__setLang&&window.__setLang('en'); return "Language: english 🇺🇸";},
+          idioma:()=>CMDS.lang(), 'idioma es':()=>CMDS['lang es'](), 'idioma en':()=>CMDS['lang en'](),
           whoami:()=>"Juan Valentin Alducin Vázquez — Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI (CDMX, México).",
           skills:()=>"Python · FastAPI · Django · AWS Serverless (Lambda, Step Functions) · PostgreSQL · Docker · LLMs (Claude/Gemini/OpenAI) · SDD/OpenSpec.",
           sdd:()=>"Spec-Driven Development: la spec es la fuente de verdad.\nproposal → specs → design → tasks → apply → archive\n(~40% menos ciclo de revisión, 80% autoresolución N1, <10 min primera respuesta).",
@@ -959,6 +992,7 @@
           line(cmd,'cmd'); hist.unshift(cmd); hi=-1;
           const fn=CMDS[cmd.toLowerCase()];
           if(fn){const r=fn(); if(r!==null)line(r,'resp');}
+          else if(/^(lang|idioma)\s/.test(cmd.toLowerCase())) line("Idioma no soportado: "+cmd.split(/\s+/)[1]+"   (usa 'lang es' o 'lang en')",'resp');
           else line("command not found: "+cmd+"   (prueba 'help')",'resp');
         }
         line("Bienvenido a la terminal de Juan. Escribe 'help' y Enter.",'resp');
