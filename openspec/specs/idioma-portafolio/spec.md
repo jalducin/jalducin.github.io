@@ -1,5 +1,10 @@
 # Capability: idioma-portafolio
 
+## Purpose
+
+Garantiza que el portafolio ofrezca contenido bilingüe ES/EN completo, consistente y persistente entre
+visitas, sin pérdida de estado (sección activa, tema), para visitantes hispanohablantes y angloparlantes.
+
 ## Requirements
 
 ### Requirement: Selector de idioma ES/EN

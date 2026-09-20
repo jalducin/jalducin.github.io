@@ -1,5 +1,10 @@
 # Capability: navegacion-por-secciones
 
+## Purpose
+
+Garantiza que el visitante pueda moverse entre las secciones del portafolio (una a la vez, tipo tabs) de
+forma accesible, responsive y con enlaces profundos, sin perder el idioma ni el tema activos.
+
 ## Requirements
 
 ### Requirement: Navegación por secciones (una a la vez)

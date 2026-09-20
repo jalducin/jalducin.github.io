@@ -1,5 +1,10 @@
 # Capability: skills-y-formacion
 
+## Purpose
+
+Garantiza que las secciones de skills, educación y certificaciones del portafolio reflejen, con evidencia
+real, la misma información que el CV vigente, sin listar tecnologías o títulos sin respaldo.
+
 ## Requirements
 
 ### Requirement: Taxonomía de skills alineada al CV

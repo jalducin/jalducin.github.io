@@ -1,5 +1,10 @@
 # Capability: stack-por-niveles
 
+## Purpose
+
+Garantiza que las skills del portafolio se organicen por nivel de dominio (Own/Build/Operate/Learning) de
+forma coherente con el CV y `llms.txt`, y se muestren en el idioma activo del sitio.
+
 ## Requirements
 
 ### Requirement: Skills organizadas por nivel de dominio

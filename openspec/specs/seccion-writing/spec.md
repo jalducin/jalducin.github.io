@@ -1,9 +1,15 @@
 # Capability: seccion-writing (y mejoras de UX)
 
-## ADDED Requirements
+## Purpose
+
+Garantiza que el portafolio ofrezca una sección de blog (Writing) con páginas dedicadas y mejoras de UX
+(spotlight de cursor, bloque Now), autoalojadas y libres de contenido problemático, para visitantes que
+quieren profundizar en el trabajo del candidato.
+
+## Requirements
 
 ### Requirement: Sección Writing con páginas de blog dedicadas
-El portafolio DEBE incluir una sección/tab **Writing** que liste posts (título, fecha, tags, tiempo de
+El portafolio SHALL incluir una sección/tab **Writing** que liste posts (título, fecha, tags, tiempo de
 lectura, extracto) y enlace a **páginas dedicadas** `/blog/<slug>.html`, cada una con el tema azul metálico,
 contenido legible y **OG tags** propios. Mantiene el stack vanilla (sin frameworks ni build step).
 
@@ -19,7 +25,7 @@ contenido legible y **OG tags** propios. Mantiene el stack vanilla (sin framewor
 - **AND** existen al menos 3 posts: SDD/OpenSpec, Docker (observabilidad local) y Grafana multi-fuente
 
 ### Requirement: Mejoras de UX (spotlight, Now) accesibles
-El sitio DEBE incluir un **spotlight** de cursor sutil y un bloque **"Now"**, sin perjudicar accesibilidad.
+El sitio SHALL incluir un **spotlight** de cursor sutil y un bloque **"Now"**, sin perjudicar accesibilidad.
 
 #### Scenario: Spotlight de cursor
 - **WHEN** el visitante mueve el cursor (dispositivo con hover, sin reduced-motion)
@@ -31,14 +37,14 @@ El sitio DEBE incluir un **spotlight** de cursor sutil y un bloque **"Now"**, si
 - **THEN** se muestra un bloque "Now" con la actividad actual (trabajo, proyectos locales, estudios)
 
 ### Requirement: Dependencias self-host (sin CDN de íconos)
-Los íconos de tecnología DEBEN servirse localmente, sin depender de `cdn.jsdelivr.net`.
+Los íconos de tecnología SHALL servirse localmente, sin depender de `cdn.jsdelivr.net`.
 
 #### Scenario: Íconos locales
 - **WHEN** se carga Hard Skills
 - **THEN** los SVGs provienen de `assets/img/icons/` (no de jsdelivr) y no existe preconnect/dns-prefetch a jsdelivr
 
 ### Requirement: CV con doble QR (portafolio + LinkedIn)
-El CV (ES y EN) DEBE mostrar dos mini-QR: portafolio y **LinkedIn**, ambos escaneables, manteniendo 1 página Oficio.
+El CV (ES y EN) SHALL mostrar dos mini-QR: portafolio y **LinkedIn**, ambos escaneables, manteniendo 1 página Oficio.
 
 #### Scenario: QR de LinkedIn
 - **WHEN** se revisa el encabezado del CV
@@ -46,7 +52,7 @@ El CV (ES y EN) DEBE mostrar dos mini-QR: portafolio y **LinkedIn**, ambos escan
 - **AND** el CV se mantiene en 1 página
 
 ### Requirement: Validación de contenido (no problemático)
-El contenido publicado DEBE estar libre de secretos/credenciales, claims falsos y usos de marca riesgosos.
+El contenido publicado SHALL estar libre de secretos/credenciales, claims falsos y usos de marca riesgosos.
 
 #### Scenario: Revisión final
 - **WHEN** se concluye el cambio

@@ -1,5 +1,10 @@
 # Capability: principios-de-trabajo
 
+## Purpose
+
+Garantiza que el portafolio comunique los principios de ingeniería del candidato ("How I work") en lenguaje
+genérico y consistente con `llms.txt`, sin exponer información interna del empleador.
+
 ## Requirements
 
 ### Requirement: Bloque de principios de ingeniería

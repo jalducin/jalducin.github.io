@@ -1,5 +1,10 @@
 # Capability: paleta-azul-metalico
 
+## Purpose
+
+Garantiza que la identidad visual del sitio y del CV use consistentemente la paleta azul metálico profesional
+(con el efecto matrix recoloreado) como fuente única de verdad de color, en tema oscuro y claro.
+
 > Sustituye a la anterior `paleta-cafe-elegante`. La identidad pasó de café/dorado a **azul metálico profesional**.
 
 ## Requirements

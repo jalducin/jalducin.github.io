@@ -1,9 +1,14 @@
 # Capability: cv-descarga-multidioma
 
+## Purpose
+
+Garantiza que la descarga del CV (ES/EN) desde el portafolio entregue siempre el artefacto PDF vigente, con
+un nombre de archivo versionado por mes-año y sin generación del PDF en el navegador del visitante.
+
 ## Requirements
 
 ### Requirement: Descarga del CV con sufijo mes-año dinámico
-Al descargar el CV desde el portafolio, el nombre de archivo DEBE incluir un sufijo **mes-año** calculado
+Al descargar el CV desde el portafolio, el nombre de archivo SHALL incluir un sufijo **mes-año** calculado
 al vuelo con la fecha actual (formato `AAAA-MM`), sin build step ni generación del PDF en el navegador.
 
 #### Scenario: Descarga del CV en español
@@ -16,7 +21,7 @@ al vuelo con la fecha actual (formato `AAAA-MM`), sin build step ni generación 
 - **THEN** el sufijo del nombre de descarga refleja el mes-año actual sin cambios de código
 
 ### Requirement: Versión del CV en inglés descargable
-El portafolio DEBE ofrecer la descarga del CV en **inglés** donde aplique (sección Contact, command palette
+El portafolio SHALL ofrecer la descarga del CV en **inglés** donde aplique (sección Contact, command palette
 y terminal), sirviendo `cv/CV_JuanValentinAlducin_EN.pdf`.
 
 #### Scenario: Botón/acción EN
@@ -30,7 +35,7 @@ y terminal), sirviendo `cv/CV_JuanValentinAlducin_EN.pdf`.
   `CV_JuanValentinAlducin_EN.pdf` (desde cv-en.html), ambos de 1 página
 
 ### Requirement: Ícono representativo de CV/résumé en los botones de descarga
-Los botones de descarga del CV en el hero (ES y EN) DEBEN usar un ícono **de currículum/résumé**
+Los botones de descarga del CV en el hero (ES y EN) SHALL usar un ícono **de currículum/résumé**
 (una hoja con un busto de persona — cabeza y hombros — y líneas de texto), NO una flecha de "subir/upload".
 
 #### Scenario: Ícono del botón de CV

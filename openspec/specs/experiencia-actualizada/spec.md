@@ -1,5 +1,11 @@
 # Capability: experiencia-actualizada
 
+## Purpose
+
+Garantiza que la timeline de experiencia del portafolio (Podemos Progresar, Redsis, Softtek) presente, con
+evidencia y en lenguaje genérico, los mismos hechos y fechas que el CV vigente, para reclutadores que evalúan
+la trayectoria del candidato.
+
 ## Requirements
 
 ### Requirement: Rol Podemos Progresar alineado al CV

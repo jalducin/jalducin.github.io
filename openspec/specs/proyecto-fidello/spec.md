@@ -1,5 +1,11 @@
 # Capability: proyecto-fidello
 
+## Purpose
+
+Garantiza que Fidello se presente como el proyecto estrella del portafolio, con cifras de ingeniería reales
+y verificables y el stack completo, para reclutadores técnicos que evalúan la profundidad del trabajo
+AI-native del candidato.
+
 ## Requirements
 
 ### Requirement: Card de proyecto estrella Fidello

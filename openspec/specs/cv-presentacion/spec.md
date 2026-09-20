@@ -1,6 +1,12 @@
-# Capability: cv-presentacion (delta)
+# Capability: cv-presentacion
 
-## MODIFIED Requirements
+## Purpose
+
+Garantiza que el CV en PDF (`cv/cv.html`, `cv/cv-en.html`) sea legible al imprimir, quepa en 1 página Oficio,
+sea parseable por sistemas ATS y se genere con un build determinista y sin dependencias de red, para
+reclutadores humanos y sistemas de selección automatizada.
+
+## Requirements
 
 ### Requirement: Tipografía legible al imprimir (mínimo 8.5pt) en 1 página
 El CV (`cv/cv.html`, `cv/cv-en.html`) SHALL usar una tipografía legible al imprimir: **ningún texto por debajo
@@ -24,7 +30,7 @@ Oficio**. El interlineado de listas de bullets (`ul.b li`) MAY reducirse hasta 1
   conteo real de páginas del PDF es la comprobación final
 
 ### Requirement: Header con QR y etiqueta alineados
-El header DEBE alinear arriba (`align-items:flex-start`) de modo que cada QR (LinkedIn arriba-izquierda,
+El header SHALL alinear arriba (`align-items:flex-start`) de modo que cada QR (LinkedIn arriba-izquierda,
 Portafolio arriba-derecha) tenga su etiqueta directamente debajo y alineada con el nombre.
 
 #### Scenario: QR + caption juntos
@@ -32,7 +38,7 @@ Portafolio arriba-derecha) tenga su etiqueta directamente debajo y alineada con 
 - **THEN** el QR y su `<figcaption>` forman un bloque alineado al tope, junto al nombre (sin desfase)
 
 ### Requirement: CV optimizado para ATS
-El CV DEBE ser parseable por ATS: PDF con capa de texto, datos de contacto como **texto** (no solo QR),
+El CV SHALL ser parseable por ATS: PDF con capa de texto, datos de contacto como **texto** (no solo QR),
 encabezados estándar y los QR marcados `aria-hidden` para que los parsers omitan sus captions.
 
 #### Scenario: Contacto y parseo

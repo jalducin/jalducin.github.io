@@ -1,5 +1,11 @@
 # Capability: posicionamiento-ai-native
 
+## Purpose
+
+Garantiza que el header, el resumen y los metadatos del portafolio comuniquen el posicionamiento híbrido
+(Senior Backend Engineer · Tech Lead · SRE & Automation · Agentic AI) alineado al CV vigente, para
+reclutadores, crawlers y redes sociales.
+
 ## Requirements
 
 ### Requirement: Header alineado al posicionamiento AI-native del CV

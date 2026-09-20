@@ -1,9 +1,14 @@
 # Capability: proyecto-voltgrid
 
-## ADDED Requirements
+## Purpose
+
+Garantiza que VoltGrid se presente en el portafolio y en las fuentes de verdad (CV, `llms.txt`) como
+plataforma SaaS multi-tenant para operadores de estaciones de carga de vehículos eléctricos, con datos reales.
+
+## Requirements
 
 ### Requirement: El portafolio y las fuentes de verdad presentan VoltGrid
-El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` DEBEN presentar **VoltGrid** como plataforma
+El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` SHALL presentar **VoltGrid** como plataforma
 SaaS **multi-tenant white-label** para operadores de estaciones de carga de autos eléctricos, con datos reales.
 
 #### Scenario: Card del portafolio

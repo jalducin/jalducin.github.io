@@ -1,5 +1,10 @@
 # Capability: terminal-interactiva
 
+## Purpose
+
+Garantiza que la terminal interactiva del portafolio responda a comandos básicos (incluido el cambio de
+idioma) de forma accesible y on-brand, como vía complementaria de navegación para visitantes técnicos.
+
 ## Requirements
 
 ### Requirement: Sección Terminal interactiva

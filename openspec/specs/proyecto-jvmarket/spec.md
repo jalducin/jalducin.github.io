@@ -1,5 +1,10 @@
 # Capability: proyecto-jvmarket
 
+## Purpose
+
+Garantiza que el proyecto JV Market (antes MetalShop) se presente en el portafolio y el CV con su nombre y
+despliegue en AWS actuales, sin referencias obsoletas ni encuadre de "solo práctica".
+
 ## Requirements
 
 ### Requirement: Proyecto JV Market (desplegado en AWS) en portafolio y CV
