@@ -116,6 +116,9 @@ Inglés:      B1 (Intermedio)
 
 - CSS embebido en `<style>` dentro del HTML (no archivos externos)
 - JavaScript inline o en `<script>` al final del body
+- **Bilingüe ES/EN**: el inglés es el DOM; el español es el diccionario `#i18n-es`. Todo texto visible nuevo lleva
+  `data-i18n` + entrada ES (detalle en `docs/frontend-standards.md §4b`). Selector en la nav (`#lang-btn`),
+  palette y terminal (`lang es|en`).
 
 ---
 
