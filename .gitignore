@@ -55,3 +55,4 @@ assistant.zip
 
 # Serverless Framework (contact-api) — artefactos de deploy
 **/.serverless/
+scripts/i18n/shots/
