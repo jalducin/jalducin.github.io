@@ -91,13 +91,14 @@ Inglés:      B1 (Intermedio)
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
 | Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio) | jalducin/pyzzeria |
-| JV Market (ex-MetalShop) | Python · FastAPI · JWT · SQLite/PostgreSQL · AWS (Lambda · API Gateway · S3/CloudFront) — e-commerce streetwear/sneakers (Click & Collect + wishlist), desplegado (sin enlace de demo en el portafolio; la demo destacada es Pyzzeria) | jalducin/EcommerceJVAV |
 | Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
 | dataMasterGK | Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 — middleware ETL retail (Excel→GK XML, 4 interfaces, SFTP/FTP), rediseñado con SDD (pipeline idempotente, seguridad) | jalducin/dataMasterGK |
 
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
-> ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios y socket-chat
-> se retiraron del portafolio por considerarse obsoletos para la narrativa AI-native / AWS serverless.
+> ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios, socket-chat y
+> JV Market (e-commerce) se retiraron del portafolio (los dos primeros por obsoletos; JV Market el 2026-09-20 por decisión
+> del propietario). Las métricas numéricas (~40 % revisión, 80 % autoresolución N1, 99.95 % uptime) también se
+> retiraron del CV y del sitio el 2026-09-20: solo quedan los SLAs (<10 min / <2 h).
 >
 > **Privacidad del empleador (regla dura, 2026-09-19):** la experiencia en Podemos se describe en lenguaje
 > genérico ("core banking", "app de campo", "buró de crédito", "sistema de tickets"). Nunca nombres propios de
