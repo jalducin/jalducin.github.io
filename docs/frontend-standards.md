@@ -94,7 +94,7 @@ No romper el diseño responsive.
   solo en hojas de contenido (h2/h3/p/li/badges/botones/td).
 - Resolución del idioma: `?lang=` → `localStorage.lang` → `navigator.language` (es→ES) → EN.
 - Verificación: `audit_i18n.py` (claves huérfanas / sin traducción) y `probe_i18n.py` (headless) en
-  `openspec/changes/archive/*portafolio-bilingue/scripts/`.
+  `openspec/changes/archive/2026-09-19-portafolio-bilingue/scripts/`.
 
 ## 5. Datos del propietario (fuente de verdad)
 

@@ -66,7 +66,7 @@ Agente ejecutor: `frontend-developer`. Bloques ≤ 2 h. El agente ejecuta todas 
 
 ## 8. Cierre
 
-- [ ] 8.1 Commit(s) conventional, merge `--no-ff` a `main`, push; workflows en success
-- [ ] 8.2 Verificar en vivo: `curl` de `index.html` contiene `id="i18n-es"` y `id="lang-btn"`; render headless
+- [x] 8.1 Commit(s) conventional, merge `--no-ff` a `main`, push; workflows en success
+- [x] 8.2 Verificar en vivo: `curl` de `index.html` contiene `id="i18n-es"` y `id="lang-btn"`; render headless
       de la URL de CloudFront con `?lang=es` muestra "Experiencia"
-- [ ] 8.3 `/opsx:verify` y archivar
+- [x] 8.3 `/opsx:verify` y archivar
