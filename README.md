@@ -47,6 +47,19 @@ El sitio se hospeda en **AWS (tier 0)**: **S3 privado + CloudFront** (HTTPS), co
   distribución CloudFront `EG4961CAMR9Z8`, rol `gh-actions-portfolio-deploy`.
 - GitHub Pages se mantiene en paralelo por ahora (rollback). Dominio propio (Route53) = opcional, fuera de tier 0.
 
+## Asistente IA ("Ask my portfolio")
+
+Widget de chat en `index.html` (burbuja `#ai-fab`) que responde preguntas sobre el perfil de Juan.
+
+- **Backend:** `backend/assistant/` — AWS Lambda (`jalducin-assistant`, Python 3.12) detrás de API Gateway
+  HTTP API, que invoca **Amazon Bedrock (Claude Haiku)** por IAM (sin API key). Grounding con `llms.txt`
+  (sin RAG), caché de respuestas y rate limiting por IP + tope global diario en DynamoDB (on-demand + TTL).
+- **CI/CD:** push a `main` con cambios en `backend/assistant/**` o `llms.txt` →
+  `.github/workflows/deploy-assistant.yml` (OIDC) actualiza el código del Lambda.
+- **Costo/abuso:** modelo económico + `max_tokens` bajo + caché + límites por IP/día/global; AWS Budgets
+  avisan por correo. Detalle: `backend/assistant/README.md` y
+  `openspec/changes/asistente-ia-portafolio/`.
+
 ## 🔄 Cómo contribuir (SDD / OpenSpec)
 
 El proyecto sigue **Spec-Driven Development**: la especificación es la fuente de verdad y cada cambio

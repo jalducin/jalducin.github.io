@@ -136,6 +136,26 @@ Para diseño/fidelidad usar el agente `design-specialist` (`ai-specs/agents/`).
 
 ---
 
+## Asistente IA ("Ask my portfolio")
+
+Widget de chat vanilla en `index.html` (`#ai-fab` / `#ai-panel` / `#ai-form`) que responde preguntas sobre
+el perfil de Juan, respaldado por un backend serverless. La credencial del LLM vive **solo en el backend**
+(IAM/Bedrock), nunca en el front ni en el repo.
+
+- **Backend:** `backend/assistant/app.py` — AWS Lambda (`jalducin-assistant`) detrás de API Gateway HTTP
+  API, invoca **Amazon Bedrock (Claude Haiku)** por rol de ejecución IAM. Grounding sin RAG: el system
+  prompt embebe `profile.txt` (copia de `llms.txt` generada en el deploy). Caché de respuestas + rate
+  limiting (por IP y tope global diario) en DynamoDB on-demand con TTL.
+- **CI/CD:** `.github/workflows/deploy-assistant.yml` — push a `main` que toque `backend/assistant/**` o
+  `llms.txt` empaqueta y hace `aws lambda update-function-code` vía OIDC (mismo principio git → AWS del
+  resto del sitio).
+- **Costo/abuso:** modelo económico + `max_tokens` bajo + caché + límites por IP/día/global; AWS Budgets
+  de la cuenta avisan por correo ante consumo. Detalle y variables de entorno: `backend/assistant/README.md`.
+- Editar el prompt/grounding **solo vía `llms.txt`** (fuente de verdad del perfil); nunca hardcodear datos
+  del propietario dentro de `app.py`.
+
+---
+
 ## Nunca hacer
 
 - Agregar dependencias npm o CDN de frameworks pesados
