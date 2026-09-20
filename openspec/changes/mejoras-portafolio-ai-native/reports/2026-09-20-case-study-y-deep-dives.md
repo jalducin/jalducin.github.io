@@ -18,7 +18,8 @@
 - `python <scratchpad>/probe_dom.py blog/... index.html?lang=en index.html?lang=es` — Chrome `--headless=new --dump-dom`
   con script inyectado en copia temporal (`_probe_*.html`, borrada al terminar): `scrollWidth <= innerWidth` en 480/768/1280,
   presencia de botones "Deep dive", card del caso de estudio y `<svg>` de arquitectura, título traducido en ES
-- `python <scratchpad>/shot.py <out> anatomia=... fidello=... pyzzeria=... index-writing=index.html#writing index-projects=index.html#featured-projects index-writing-es=index.html?lang=es#writing ...`
+- `python <scratchpad>/shot.py <out> anatomia=... fidello=... pyzzeria=... index-writing=index.html?lang=en#writing index-projects=index.html?lang=en#featured-projects index-writing-es=index.html?lang=es#writing`
+  (la máquina tiene `navigator.language` es-MX: sin `?lang=en` las capturas de `index.html` salen en ES — primera tanda repetida con `?lang=en`)
   — Chrome `--headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=5000 --user-data-dir=<tmp único> --window-size=W,H --screenshot=<png>` en 1280/768/480
 - `python -c "import xml.dom.minidom; xml.dom.minidom.parse('sitemap.xml')"` — sitemap válido tras añadir las 6 páginas del blog
 - `Get-Command lighthouse; npx --no-install lighthouse --version` — **no hay CLI de Lighthouse** en la máquina
@@ -57,7 +58,7 @@ Capturas en `reports/shots/`: `{anatomia,fidello,pyzzeria,index-writing,index-pr
 | Deep dive Fidello (`fidello_*.png`) | Diagrama SVG: 5 actores → PWA → Supabase (Auth/PostgREST/Realtime/7 Edge Functions) → PostgreSQL (RLS, RPC SECURITY DEFINER, pg_cron) + CI; franja "built, flag off" (Wallet/OAuth/Resend/WhatsApp) — no se presentan como activos; sin botón de código, CTA "Request a demo" |
 | Deep dive Pyzzeria (`pyzzeria_*.png`) | Primera versión del SVG tenía etiquetas solapadas y ruta WS recortada → rediseñado por filas (request path sólido, push WS punteado); 0 cruces de etiquetas; CTAs Live demo + View code |
 | Diagramas a 480 px | `.diagram{overflow-x:auto}` + `svg{min-width:600px}`: se desplaza el diagrama, no la página (`scrollW 489 <= innerW 504`) |
-| `index.html#writing` EN/ES (`index-writing*.png`) | Card nueva en primera posición con badge, meta y botón; ES: "Anatomía de un cambio…", "★ Caso de estudio", "Leer ↗"; intro con enlaces Fidello · Pyzzeria |
+| `index.html?lang=en#writing` / `?lang=es#writing` (`index-writing*.png`, `index-writing-es*.png`) | Card nueva en primera posición con badge, meta y botón; ES: "Anatomía de un cambio…", "★ Caso de estudio", "Leer ↗"; intro con enlaces Fidello · Pyzzeria |
 | `index.html#featured-projects` (`index-projects_*.png`) | Fidello: botón "Deep dive ↗" tras `.tech` (sin "View Code"); Pyzzeria: Live Demo · View Code · Deep dive en fila con wrap; grilla intacta en 1280/768/480 |
 | Responsive 992/768/480 | Sin overflow horizontal en las 15 combinaciones probadas (probe DOM); paleta y CSS embebido sin cambios; 0 CDN |
 | Casos de error | Enlace a una página inexistente inyectado en copia temporal → `verify_pages.py` reporta FAIL (luego se borró la copia); `index.html#seccion-inexistente` sigue cayendo en `ai-method` (comportamiento previo, sin cambios) |
