@@ -61,7 +61,7 @@ runtime = """    /* i18n ES/EN — el inglés vive en el DOM (fuente de verdad);
         document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.dataset.i18n; var v=(lang==='es'&&ES[k]!==undefined)?ES[k]:EN[k]; if(v!==undefined&&el.innerHTML!==v)el.innerHTML=v;});
         Object.keys(ATTRS).forEach(function(k){document.querySelectorAll('[data-i18n-'+k+']').forEach(function(el){var key=el.getAttribute('data-i18n-'+k); var v=(lang==='es'&&ES[key]!==undefined)?ES[key]:EN[key]; if(v!==undefined)el.setAttribute(ATTRS[k],v);});});
         document.documentElement.lang=lang; document.title=TITLES[lang]||document.title;
-        var b=document.getElementById('lang-btn'); if(b){b.textContent=lang==='es'?'EN':'ES'; b.setAttribute('lang',lang==='es'?'en':'es');}
+        var b=document.getElementById('lang-btn'); if(b){var t=lang==='es'?'EN':'ES'; b.textContent=t; b.setAttribute('lang',lang==='es'?'en':'es'); b.setAttribute('aria-label',t+' — '+(lang==='es'?'Switch to English':'Cambiar a español'));}
         store.set(lang);
       }
       var q=null; try{q=new URLSearchParams(location.search).get('lang');}catch(e){}

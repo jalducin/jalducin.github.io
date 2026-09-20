@@ -195,7 +195,7 @@ ES = {
     "ftr.footer1": "© 2026 Juan Valentin Alducin Vázquez. Todos los derechos reservados.",
     "ai.button2": "🤖 Pregúntale a mi portafolio",
     "ai.b1": "Pregúntale a mi portafolio",
-    "ai.button1@aria": "Abrir asistente de IA",
+    "ai.button1@aria": "Pregúntale a mi portafolio — abrir asistente de IA",
     "ai.div1@aria": "Asistente de IA",
     "ai.button3@aria": "Cerrar",
     "ai.input1@aria": "Tu pregunta",

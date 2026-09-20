@@ -27,12 +27,12 @@ conserva como mención ligera de tooling serverless interno (Lambda · Step Func
 #### Scenario: Bullets del rol actual reflejan liderazgo, confiabilidad, automatización e IA
 - **WHEN** se revisan los bullets del rol actual de Podemos
 - **THEN** un bullet describe el liderazgo del equipo de Service Support resolviendo bugs, incidentes
-  críticos y deuda técnica end-to-end con SDD + Claude API, con ~40 % menos tiempo de revisión de código
+  críticos y deuda técnica end-to-end con SDD + Claude API, acortando el ciclo de revisión (sin porcentaje)
 - **AND** un bullet describe el **sistema de post-mortems** (severidad P0–P3, 5 Whys, blameless, rúbrica de
   auto-evaluación) con seguimiento de compromisos y tablero de gobierno en vivo (atrasos, subtareas abiertas,
   escalaciones N3/N4, semáforo de indicador vs. meta) con visibilidad ejecutiva
 - **AND** un bullet describe la **metodología de uptime/downtime mensual** (flota de sistemas × minutos
-  reales; downtime = impacto real al usuario) con el resultado 99.95 % en julio 2026
+  reales; downtime = impacto real al usuario), sin publicar la cifra de uptime
 - **AND** un bullet describe **automatización con n8n (workflow SDK)** e integraciones Freshdesk → Notion →
   Slack / Asana (cursor sobre ingesta, alertas de atrasos y picos de tickets) y pipelines spec-driven
 - **AND** un bullet describe la **arquitectura de flujos de IA** (Claude, OpenAI, Gemini, Bedrock) en el SDLC
@@ -49,8 +49,8 @@ conserva como mención ligera de tooling serverless interno (Lambda · Step Func
 - **WHEN** un visitante recorre la timeline por debajo del rol actual
 - **THEN** existe una entrada "Backend Support Specialist" en Podemos Progresar con el rango
   "Sept 2025 – Jun 2026"
-- **AND** sus bullets incluyen: gestión de incidentes N2 con RCA/post-mortems asistidos por IA; 80 % de
-  autoresolución N1 vía transferencia de conocimiento; **ETL semanal idempotente en PostgreSQL** (backup →
+- **AND** sus bullets incluyen: gestión de incidentes N2 con RCA/post-mortems asistidos por IA; autoresolución
+  N1 habilitada vía transferencia de conocimiento (sin porcentaje); **ETL semanal idempotente en PostgreSQL** (backup →
   limpieza → actualización → bitácora, con pre-validación) y deduplicación de identidades; enlace técnico
   central (Python, Django, FastAPI, PostgreSQL)
 - **AND** no se mencionan nombres de bases de datos, bancos, ni conteos de registros de clientes

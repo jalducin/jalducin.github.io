@@ -27,7 +27,7 @@
 
 - [x] 4.1 `aria-label` en iconos-enlace; foco visible (`:focus-visible`); `alt` en imágenes
 - [x] 4.2 Respetar `prefers-reduced-motion` (matrix sin animar + media query global)
-- [ ] 4.3 Correr Lighthouse y cerrar gaps restantes (objetivo ~100) — pendiente: sin CLI `lighthouse` en la máquina (ver reporte 2026-09-20)
+- [x] 4.3 Lighthouse (npx lighthouse@12, 2026-09-20, contra CloudFront): performance 95 · accessibility 98 · best-practices 100 · SEO 100. Hallazgos a11y corregidos: orden de encabezados (tagline h3 → p.tagline) y nombres accesibles de `#lang-btn` y `#ai-fab` (incluyen el texto visible). TBT 270 ms / LCP 1.3 s (matrix canvas + fuentes; aceptado)
 
 ## 5. command-palette ✅
 
@@ -60,7 +60,7 @@
 ## 9. Verificación y reporte (OBLIGATORIO — EL AGENTE EJECUTA, por capability)
 
 - [x] 9.1 Render headless (Chrome) de las 3 páginas nuevas y de Writing/Projects en 1280/768/480; capturas revisadas (case-study-sdd y project-deep-dives)
-- [ ] 9.2 Lighthouse donde aplique (omitido: sin CLI; documentado en el reporte); el asistente IA se prueba contra su endpoint antes de exponerlo (superseded, cambio `asistente-ia-portafolio`)
+- [x] 9.2 Lighthouse ejecutado (ver 4.3); el asistente IA fue probado contra su endpoint en el cambio `asistente-ia-portafolio` (archivado 2026-09-20)
 - [x] 9.3 Reporte `openspec/changes/mejoras-portafolio-ai-native/reports/2026-09-20-case-study-y-deep-dives.md` (audit i18n 57/57, probes 18/18, enlaces, balance de tags, capturas)
 
 ## 10. Documentación (OBLIGATORIO — consistencia documental)
@@ -70,5 +70,5 @@
 
 ## 11. Cierre
 
-- [ ] 11.1 Merge incremental a `main` y verificar en GitHub Pages
-- [ ] 11.2 Archivar el cambio cuando todas las capabilities estén implementadas
+- [x] 11.1 Merge incremental a `main` y verificar en GitHub Pages
+- [x] 11.2 Archivar el cambio cuando todas las capabilities estén implementadas

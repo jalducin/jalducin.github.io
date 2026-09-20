@@ -16,7 +16,7 @@ coincidir con la fuente de verdad (`cv/cv.html`, `cv/cv-en.html`, `CLAUDE.md`, `
 
 #### Scenario: Tagline del header refleja el posicionamiento híbrido
 - **WHEN** un visitante carga `index.html`
-- **THEN** el subtítulo (`header h3`) presenta exactamente los tres ejes: "Senior Backend Engineer",
+- **THEN** el subtítulo (`header p.tagline`; no es un encabezado para conservar el orden h1 → h2) presenta exactamente los tres ejes: "Senior Backend Engineer",
   "Tech Lead · SRE & Automation" y "Agentic AI"
 - **AND** la línea de ubicación muestra "CDMX, Mexico" y nivel de inglés "B1"
 - **AND** el tagline del CV (`.tagline`) en ES y EN usa el mismo texto:
@@ -33,16 +33,15 @@ coincidir con la fuente de verdad (`cv/cv.html`, `cv/cv-en.html`, `CLAUDE.md`, `
 
 El párrafo de resumen SHALL comunicar el mensaje del CV: +10 años en backend y sistemas distribuidos;
 **confiabilidad y automatización** como firma actual (post-mortems, uptime, runbooks, pipelines n8n /
-spec-driven); IA generativa (Claude, Gemini, OpenAI) como copiloto del SDLC con Spec-Driven Development; y
-métricas de impacto verificables.
+spec-driven); IA generativa (Claude, Gemini, OpenAI) como copiloto del SDLC con Spec-Driven Development; sin
+porcentajes de mejora.
 
 #### Scenario: Resumen comunica confiabilidad, automatización, IA y métricas
 - **WHEN** un visitante lee el resumen del header
 - **THEN** el texto menciona +10 años de experiencia backend
 - **AND** menciona confiabilidad/SRE (post-mortems, uptime) y automatización (n8n, pipelines spec-driven)
 - **AND** referencia la integración de IA generativa (Claude, Gemini, OpenAI) y Spec-Driven Development (SDD)
-- **AND** incluye al menos dos métricas de impacto entre: ~40 % menos tiempo de revisión, 80 % de
-  autoresolución N1, primera respuesta <10 min, uptime mensual 99.95 %
+- **AND** NO incluye porcentajes de mejora (~40 %, 80 %, 99.95 %); puede citar los SLAs (<10 min / <2 h)
 - **AND** no menciona programas académicos en curso (la Maestría en DevOps fue retirada)
 
 ### Requirement: Metadatos sociales y de pestaña consistentes

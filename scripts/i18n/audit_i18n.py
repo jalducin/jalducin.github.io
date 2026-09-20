@@ -51,9 +51,9 @@ for p, s in files.items():
     check("sin contenido obsoleto (Kendra/Kiro/maestría/headline viejo): " + p, not hits, ", ".join(hits))
 
 # (b) headline idéntico en todas las superficies
-h3 = re.search(r"<header[^>]*>.*?<h3>(.*?)</h3>", idx, re.S)
+h3 = re.search(r"<header[^>]*>.*?<p class=\"tagline\">(.*?)</p>", idx, re.S)
 h3txt = re.sub(r"\s+", " ", h3.group(1).replace("&nbsp;", " ")).strip() if h3 else ""
-check("header h3 = headline híbrido", h3txt == "Senior Backend Engineer | Tech Lead · SRE &amp; Automation | Agentic AI", h3txt)
+check("header .tagline = headline híbrido", h3txt == "Senior Backend Engineer | Tech Lead · SRE &amp; Automation | Agentic AI", h3txt)
 title = re.search(r"<title>(.*?)</title>", idx, re.S).group(1)
 check("<title> contiene headline", HEADLINE_SITE in title, title)
 for meta in ("og:title", "twitter:title"):

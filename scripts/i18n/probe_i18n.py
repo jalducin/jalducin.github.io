@@ -35,7 +35,7 @@ r = run(probe_js="""
  var r={lang:document.documentElement.lang, nav:[].map.call(document.querySelectorAll('.nav-link'),function(a){return a.textContent}),
   h2:document.querySelector('#ai-method h2').textContent, levels:[].map.call(document.querySelectorAll('.level-title'),function(h){return h.textContent.trim()}),
   btn:document.getElementById('lang-btn').textContent, current:document.querySelector('.tl-badge').textContent, title:document.title,
-  placeholder:document.getElementById('cf-name').getAttribute('placeholder'), headline:document.querySelector('header h3').textContent};
+  placeholder:document.getElementById('cf-name').getAttribute('placeholder'), headline:document.querySelector('header .tagline').textContent};
  document.title='PROBE '+JSON.stringify(r);""", url_suffix="?lang=es#experience")
 check("?lang=es -> html.lang=es", r.get("lang") == "es", r)
 check("nav en español", r.get("nav", [None])[1] == "Experiencia", r.get("nav"))
