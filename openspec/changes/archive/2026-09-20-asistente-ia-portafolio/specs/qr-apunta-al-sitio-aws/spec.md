@@ -23,8 +23,12 @@ repositorio. MUST conservar el **mismo estilo visual** del QR actual (módulos n
 
 #### Scenario: URL única de verdad
 - **WHEN** se decide la URL destino del QR
-- **THEN** coincide con la URL canónica del sitio usada en el resto (JSON-LD, og, sitemap); si más adelante
-  se adopta dominio propio, el QR se regenera para apuntar a ese dominio
+- **THEN** el QR apunta al despliegue en AWS (`https://d3r3bnavnwzqaw.cloudfront.net`) porque el sitio se sirve
+  desde ahí, mientras que la **URL canónica pública** (JSON-LD, `og:url`, `canonical`, `sitemap.xml`, CV y
+  LinkedIn) se mantiene en `https://jalducin.github.io` por ser la marca del candidato y seguir GitHub Pages en
+  paralelo (decisión del propietario, 2026-09-20)
+- **AND** ambas URLs sirven el mismo `index.html` (mismo commit de `main`); si más adelante se adopta dominio
+  propio, QR y canónica convergen en ese dominio y el QR se regenera
 
 ### Requirement: El QR DEBE ser escaneable de forma fiable (verificado)
 

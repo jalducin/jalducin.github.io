@@ -154,3 +154,8 @@ i18n, pero se corrió igual como control.
   producción y están verificados con evidencia en vivo.
 - Bloqueos para archivar: (1) reserved concurrency, (2) desalineación QR/URL canónica, (3) sync/dedup de
   specs contra `mejoras-portafolio-ai-native` y `openspec/specs/`.
+
+## Addendum 2026-09-20 (cierre de gaps, ejecutado por el agente principal)
+- Reserved concurrency: no aplicable en esta cuenta (`ConcurrentExecutions=10`, AWS exige ≥10 no reservadas → `InvalidParameterValueException`). Control equivalente aplicado: throttling del stage `$default` del HTTP API `vd4c00py15` → `ThrottlingRateLimit=2`, `ThrottlingBurstLimit=5` (`aws apigatewayv2 update-stage`), verificado con `get-stages`; preflight OPTIONS sigue 204.
+- URL canónica: decisión del propietario — QR → CloudFront (donde se sirve), canónica pública → `https://jalducin.github.io`; scenario "URL única de verdad" actualizado en la spec.
+- Specs sincronizadas a `openspec/specs/` (4 capabilities, `validate --specs` 24/24).
