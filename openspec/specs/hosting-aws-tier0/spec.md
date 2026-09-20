@@ -1,5 +1,10 @@
 # Capability: hosting-aws-tier0
 
+## Purpose
+
+Garantiza que el portafolio se sirva por HTTPS desde AWS (S3 + CloudFront) de forma segura, dentro del free
+tier ($0) y con un despliegue reproducible, para que el sitio esté disponible sin costo recurrente.
+
 ## Requirements
 
 ### Requirement: Hosting estático en AWS dentro de free tier ($0)

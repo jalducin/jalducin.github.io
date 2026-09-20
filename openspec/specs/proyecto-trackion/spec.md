@@ -1,9 +1,14 @@
 # Capability: proyecto-trackion
 
-## ADDED Requirements
+## Purpose
+
+Garantiza que Trackion se presente en el portafolio y en las fuentes de verdad (CV, `llms.txt`) como mesa de
+ayuda serverless white-label con datos y enlace en vivo reales.
+
+## Requirements
 
 ### Requirement: El portafolio y las fuentes de verdad presentan Trackion
-El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` DEBEN presentar **Trackion** como mesa de ayuda
+El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` SHALL presentar **Trackion** como mesa de ayuda
 **serverless white-label** con módulo de integración de APIs abierto, con datos reales y enlace en vivo.
 
 #### Scenario: Card del portafolio

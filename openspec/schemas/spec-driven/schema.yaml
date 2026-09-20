@@ -59,6 +59,15 @@ artifacts:
       specs/<capability>/spec.md.
 
 
+      New capabilities: start the delta file with a `## Purpose` section (1-3
+      lines, in the project's documentation language) before the delta
+      operations below. It is copied as-is into the main
+      openspec/specs/<capability>/spec.md on archive. `openspec validate
+      --specs` requires every main spec to have `## Purpose` and `##
+      Requirements` — a capability delta with no Purpose produces a main spec
+      that fails validation.
+
+
       Delta operations (use ## headers):
 
       - **ADDED Requirements**: New capabilities
@@ -76,7 +85,9 @@ artifacts:
 
       - Each requirement: `### Requirement: <name>` followed by description
 
-      - Use SHALL/MUST for normative requirements (avoid should/may)
+      - Use SHALL/MUST for normative requirements (avoid should/may, and avoid
+      only the Spanish "debe/deben" without SHALL/MUST — the validator checks
+      for the literal English keyword even in Spanish-language specs)
 
       - Each scenario: `#### Scenario: <name>` with WHEN/THEN format
 

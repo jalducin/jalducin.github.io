@@ -1,9 +1,14 @@
 # Capability: proyecto-monitoreo-cloud
 
-## ADDED Requirements
+## Purpose
+
+Garantiza que Monitoreo-Cloud se presente en el portafolio y en las fuentes de verdad (CV, `llms.txt`) como
+pipeline de observabilidad self-hosted sobre AWS Free Tier, con datos reales.
+
+## Requirements
 
 ### Requirement: El portafolio y las fuentes de verdad presentan Monitoreo-Cloud
-El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` DEBEN presentar **Monitoreo-Cloud** como pipeline
+El sitio (`index.html`), el CV (`cv/cv.html`) y `llms.txt` SHALL presentar **Monitoreo-Cloud** como pipeline
 de **observabilidad** sobre AWS Free Tier, con datos reales.
 
 #### Scenario: Card del portafolio

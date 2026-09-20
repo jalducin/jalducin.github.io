@@ -19,6 +19,12 @@ planificar y codificar: acuerdos de equipo, estándares y convenciones.
   de código siguen la convención del lenguaje.
 - La documentación debe ser precisa, estar formateada de forma consistente y reflejar el estado real del código.
 
+## Artefactos OpenSpec
+
+- Cada `openspec/specs/<capability>/spec.md` lleva `## Purpose` (1-3 líneas, español, describe qué garantiza
+  la capability y para quién) seguido de `## Requirements`; se valida con `openspec validate --specs`. Los
+  requirements usan SHALL/MUST (no solo "debe/deben") y cada scenario usa exactamente `####`.
+
 ## Documentación técnica
 
 Antes de cualquier commit o push —o cuando se pida documentar un cambio— SIEMPRE revisar qué documentación

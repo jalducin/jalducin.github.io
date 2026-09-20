@@ -1,5 +1,10 @@
 # Capability: rendimiento-portafolio
 
+## Purpose
+
+Garantiza que el portafolio aplique mejoras de rendimiento (preconnect, carga diferida de imágenes,
+animación pausada en segundo plano) sin afectar la estética ni la funcionalidad existente.
+
 ## Requirements
 
 ### Requirement: Mejoras de rendimiento del portafolio

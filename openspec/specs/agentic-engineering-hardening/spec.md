@@ -1,5 +1,11 @@
 # Capability: agentic-engineering-hardening
 
+## Purpose
+
+Garantiza que el portafolio comunique el método de trabajo AI-native/agentic del candidato (SDD, datos
+estructurados para agentes/LLMs, métricas verificables) tanto a reclutadores humanos como a crawlers y
+asistentes de IA que evalúan el perfil.
+
 ## Requirements
 
 ### Requirement: Sección "How I build with AI" (metodología agentic)
