@@ -86,3 +86,19 @@ Rollback: ocultar el widget (el sitio sigue), deshabilitar el Function URL.
 - ¿Umbrales finales de rate-limit (por IP y global/día) y de turnos por sesión?
 - ¿El widget en todas las páginas o solo en una sección/CTA?
 - ¿Activamos logging anónimo de preguntas desde el día 1 o después?
+
+## Nota de implementación (2026-09-20, verificación post-deploy)
+
+Auditoría contra el despliegue real (`openspec/changes/asistente-ia-portafolio/reports/`):
+
+- **Cómputo: API Gateway HTTP API, no Function URL.** La decisión original ("Lambda + Function URL, no
+  API Gateway") no es lo que se implementó: el endpoint real (`ASSISTANT_URL` en `index.html`,
+  `backend/assistant/README.md`) es un API Gateway HTTP API (`vd4c00py15.execute-api.us-east-2.amazonaws.com`)
+  delante del Lambda. Funcionalmente equivalente para este caso (HTTPS + CORS), documentado aquí para que
+  el registro de decisiones no contradiga lo desplegado.
+- **Reserved concurrency: pendiente.** `aws lambda get-function-concurrency` en producción no devuelve
+  `ReservedConcurrentExecutions` — el control de "reserved concurrency baja" de la sección de Decisions
+  y del Requirement "Controles de costo y abuso" **no está aplicado** todavía. Gap real, no solo documental.
+- Resto de las decisiones (Bedrock + Haiku por IAM, sin RAG, caché DynamoDB, rate limit por IP + tope
+  global, CI/CD OIDC git→AWS, grounding con `llms.txt`/`profile.txt`) coinciden con lo desplegado y
+  verificado en vivo (ver reporte de verificación).

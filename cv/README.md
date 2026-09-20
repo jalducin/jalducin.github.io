@@ -34,6 +34,8 @@ O manual:
   (mejor para ATS que los Type3 que genera Chrome con web fonts).
 - **Tamaño Oficio (México): 216 × 340 mm** (definido en `@page` de `cv.html`).
 - **ATS-friendly**: texto real (no imágenes), encabezados estándar, orden de lectura limpio, fuentes
-  embebidas. El QR usa `assets/img/QR.png` y vincula al repositorio del portafolio.
+  embebidas. El QR usa `assets/img/QR.png` y apunta al sitio en AWS (CloudFront,
+  `https://d3r3bnavnwzqaw.cloudfront.net`) — corrección de errores H, ícono JVAV centrado, verificado con
+  decodificador (ver `openspec/changes/asistente-ia-portafolio/specs/qr-apunta-al-sitio-aws/`).
 - Diseño y fidelidad: ver el agente `design-specialist` en `ai-specs/agents/`.
 - Datos del propietario (fuente de verdad): `CLAUDE.md` y `docs/frontend-standards.md`.
