@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://jalducin.github.io/blog/sdd-openspec.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Spec-Driven Development: the spec is the source of truth" />
-<meta property="og:description" content="The artifact flow (proposal → specs → design → tasks → apply → archive), why it cuts review cycles ~40%, and how I run it with Claude." />
+<meta property="og:description" content="The artifact flow (proposal → specs → design → tasks → apply → archive), why it shortens review cycles, and how I run it with Claude." />
 <meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
 <meta property="og:url" content="https://jalducin.github.io/blog/sdd-openspec.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -59,11 +59,11 @@
       </ul>
 
       <h2>Why it works</h2>
-      <p>When the spec is explicit, the model isn't guessing intent — it's executing a contract. Reviews stop being "is this what we meant?" and become "does this satisfy the spec?". In practice that cut my review cycles by <strong>~40%</strong> and let N1 resolve <strong>80%</strong> of incidents autonomously, because the expected behavior is written down, not tribal.</p>
+      <p>When the spec is explicit, the model isn't guessing intent — it's executing a contract. Reviews stop being "is this what we meant?" and become "does this satisfy the spec?". In practice that <strong>shortened my review cycles</strong> and let the N1 team resolve incidents <strong>autonomously</strong>, because the expected behavior is written down, not tribal.</p>
       <blockquote>If a change can't be expressed as a spec, it isn't understood well enough to build yet.</blockquote>
 
       <h2>How I run it with Claude</h2>
-      <p>I keep the specs in the repo (OpenSpec) and feed them as grounding. The model generates the proposal and spec deltas, I review the <em>spec</em> (not the diff), and only then we implement. Documentation is part of the same change — a change is incomplete if it leaves docs stale. Every project in my portfolio — Fidello, VoltGrid, Trackion, JV Market, Monitoreo-Cloud, dataMasterGK — is built this way, 100% SDD/OpenSpec.</p>
+      <p>I keep the specs in the repo (OpenSpec) and feed them as grounding. The model generates the proposal and spec deltas, I review the <em>spec</em> (not the diff), and only then we implement. Documentation is part of the same change — a change is incomplete if it leaves docs stale. Every project in my portfolio — Fidello, VoltGrid, Trackion, Pyzzeria, Monitoreo-Cloud, dataMasterGK — is built this way, 100% SDD/OpenSpec.</p>
 
       <h2>Takeaway</h2>
       <p>Spec-Driven Development isn't ceremony; it's leverage. Write the contract first, let AI execute it, and verify against it. The spec is what survives — the code is replaceable.</p>

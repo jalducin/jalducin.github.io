@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anatomy of a change: one real SDD/OpenSpec change, artifact by artifact — Juan Valentin Alducin</title>
+<meta name="description" content="A case study of Spec-Driven Development on this very repository: proposal → specs → design → tasks → apply → verify → archive, told with the real artifacts of the change cv-portafolio-sre-automation." />
+<link rel="canonical" href="https://jalducin.github.io/blog/anatomia-de-un-cambio.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Anatomy of a change: one real SDD/OpenSpec change, artifact by artifact" />
+<meta property="og:description" content="The full OpenSpec flow on a real change of this portfolio: 8 specs, 8 design decisions, 47/47 automated checks and a CV calibrated to exactly one page." />
+<meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+<meta property="og:url" content="https://jalducin.github.io/blog/anatomia-de-un-cambio.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--accent2:#a9c5dd;--muted:#8b949e;--card-bg:#161d26;--border:#2a3744;--badge-bg:#1b232d;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:760px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  a{color:var(--primary);text-decoration:none;} a:hover{text-decoration:underline;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;font-family:'Courier New',monospace;font-size:.9rem;}
+  .top .brand{color:var(--primary);font-weight:700;}
+  h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .6rem;color:var(--fg);}
+  h2{font-size:1.3rem;margin:2.2rem 0 .7rem;color:var(--primary);}
+  h3{font-size:1.05rem;margin:1.4rem 0 .4rem;color:var(--accent2);}
+  p{margin:.9rem 0;color:#c6d2df;}
+  ul,ol{margin:.6rem 0 .6rem 1.3rem;color:#c6d2df;} li{margin:.35rem 0;}
+  .meta{color:var(--muted);font-size:.85rem;font-family:'Courier New',monospace;margin-bottom:1.6rem;}
+  .tag{display:inline-block;background:rgba(127,168,201,.14);border:1px solid rgba(127,168,201,.4);color:var(--primary);border-radius:999px;padding:.1rem .55rem;font-size:.72rem;margin-right:.3rem;}
+  code{background:var(--card-bg);border:1px solid var(--border);border-radius:5px;padding:.1rem .4rem;font-family:'Courier New',monospace;font-size:.88em;color:var(--primary);}
+  pre{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;margin:1rem 0;font-size:.86rem;line-height:1.55;}
+  pre code{background:none;border:none;padding:0;color:#c6d2df;font-size:1em;}
+  blockquote{border-left:3px solid var(--primary);margin:1.2rem 0;padding:.3rem 0 .3rem 1rem;color:#aebccb;font-style:italic;}
+  .foot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+  /* Case-study additions (palette tokens only) */
+  .flow{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 1.4rem;font-family:'Courier New',monospace;font-size:.82rem;}
+  .flow span{background:var(--badge-bg);border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;color:var(--accent2);}
+  .flow span.on{border-color:var(--primary);color:var(--primary);}
+  .stage{border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:8px;background:var(--card-bg);padding:1rem 1.1rem;margin:1.2rem 0;}
+  .stage h2{margin:.1rem 0 .4rem;font-size:1.15rem;}
+  .stage .src{font-family:'Courier New',monospace;font-size:.78rem;color:var(--muted);margin:0 0 .6rem;word-break:break-all;}
+  .stage pre{margin:.7rem 0;}
+  table{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.86rem;}
+  th,td{border:1px solid var(--border);padding:.4rem .6rem;text-align:left;vertical-align:top;color:#c6d2df;}
+  th{background:var(--badge-bg);color:var(--accent2);font-weight:600;}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:1rem 0;}
+  .kpi{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem .6rem;text-align:center;}
+  .kpi b{display:block;font-size:1.35rem;color:var(--primary);font-family:'Courier New',monospace;line-height:1.2;}
+  .kpi small{color:var(--muted);font-size:.74rem;line-height:1.3;display:block;margin-top:.2rem;}
+  @media (max-width:768px){.kpis{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){h1{font-size:1.6rem;} .wrap{padding:1.8rem 1rem 3rem;} pre{font-size:.78rem;} table{font-size:.78rem;} th,td{padding:.3rem .4rem;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../index.html">‹ Juan Valentin Alducin</a>
+      <a href="../index.html#writing">Writing</a>
+    </div>
+    <article>
+      <span class="tag">SDD</span><span class="tag">OpenSpec</span><span class="tag">Case study</span>
+      <h1>Anatomy of a change: one real SDD/OpenSpec change, artifact by artifact</h1>
+      <div class="meta">2026-09-20 · 9 min read</div>
+
+      <p>In <a href="sdd-openspec.html">Spec-Driven Development: the spec is the source of truth</a> I described the flow. This post shows it <strong>running on a real change of this very repository</strong>: <code>cv-portafolio-sre-automation</code>, archived on 2026-09-19. Every fragment below is quoted from the artifacts as they sit in <code>openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/</code> — nothing was written for the post. The only edits are the <code>&lt;redacted&gt;</code> placeholders where an artifact lists my employer's internal system names: the whole point of decision D2 is that those never reach a public page.</p>
+
+      <div class="flow">
+        <span class="on">proposal</span><span>→</span><span class="on">specs</span><span>→</span><span class="on">design</span><span>→</span><span class="on">tasks</span><span>→</span><span class="on">apply</span><span>→</span><span class="on">verify</span><span>→</span><span class="on">archive</span>
+      </div>
+
+      <p><strong>The change in one line:</strong> re-align the CV (ES/EN, one page), the portfolio, <code>llms.txt</code> and the JSON-LD from a generic "Backend + Agentic AI" pitch to what the last year actually looked like — reliability/SRE, automation and applied AI — using honest, evidence-based skill levels and no internal names from my employer.</p>
+
+      <div class="kpis">
+        <div class="kpi"><b>8</b><small>capability specs (2 new, 6 modified)</small></div>
+        <div class="kpi"><b>D1–D8</b><small>design decisions with alternatives</small></div>
+        <div class="kpi"><b>47/47</b><small>automated checks PASS at close</small></div>
+        <div class="kpi"><b>339.3 mm</b><small>CV sheet height — 1 page (limit 340)</small></div>
+      </div>
+
+      <!-- 1. PROPOSAL -->
+      <div class="stage">
+        <h2>1. proposal — <em>why</em> does this change exist?</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/blob/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/proposal.md" target="_blank" rel="noopener">proposal.md ↗</a></p>
+        <p>The proposal is written first and it is deliberately opinionated: it names the gap between what the CV <em>says</em> and what the evidence <em>shows</em>.</p>
+        <pre><code>## Why
+El CV y el portafolio venden un perfil "Backend + Agentic AI" genérico, mientras que la evidencia real del
+último año en Podemos Progresar (sep 2025 → sep 2026) es otra: **confiabilidad/SRE** (sistema de
+post-mortems, metodología de uptime mensual, runbooks), **automatización** (n8n con SDK, pipelines spec-driven,
+integraciones Freshdesk/Notion/Asana/Slack), **SQL/ETL crítico en producción** e **IA aplicada** …</code></pre>
+        <p><strong>What it decided:</strong> the scope. It lists the capabilities it will <em>add</em> (<code>stack-por-niveles</code>, <code>principios-de-trabajo</code>) and the ones it will <em>modify</em> (positioning, experience, skills, Fidello, AI-readable layer, CV presentation), plus the impact surface (<code>index.html</code>, <code>cv/*.html</code> → PDFs, <code>llms.txt</code>, <code>CLAUDE.md</code>, docs). No code yet.</p>
+      </div>
+
+      <!-- 2. SPECS -->
+      <div class="stage">
+        <h2>2. specs — <em>what</em> must be true when we are done?</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/tree/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/specs" target="_blank" rel="noopener">specs/ (8 capabilities) ↗</a></p>
+        <p>Each capability gets a delta spec with requirements and <strong>verifiable scenarios</strong> (WHEN / THEN / AND). This is the acceptance test the implementation will be checked against. From <code>specs/proyecto-fidello/spec.md</code>:</p>
+        <pre><code>#### Scenario: Cifras de ingeniería verificables
+- **WHEN** se lee la card de Fidello
+- **THEN** muestra, como texto o mini-badges, al menos: 793 pruebas (337 de base de datos contra Postgres real
+  + 456 de pantalla), 91 migraciones SQL, 22 tablas, 7 Edge Functions, 5 tareas `pg_cron`, 97 cambios
+  OpenSpec (85 archivados), 28 journeys con runbook gemelo, CI con 2 jobs bloqueantes (frontend + BD) …</code></pre>
+        <p>And the new capability <code>stack-por-niveles</code> fixes the rubric that the skills section must follow — including what must <em>not</em> appear:</p>
+        <pre><code>| Nivel | Etiqueta (EN, sitio) | Significado |
+|---|---|---|
+| 1 | **Own**      | Lo construyó de punta a punta y es el dueño operativo |
+| 2 | **Build**    | Arma soluciones con ello de forma recurrente |
+| 3 | **Operate**  | Lo usa con soltura para diagnosticar y operar; no construye la plataforma |
+| 4 | **Learning** | Estudio dirigido; sin profundidad operativa todavía |
+…
+- **AND** NO aparecen Amazon Kendra ni AWS Kiro en ninguna categoría</code></pre>
+        <p><strong>What it decided:</strong> the contract. Numbers, labels, exclusions. Later, the audit script is literally a translation of these scenarios into <code>PASS</code>/<code>FAIL</code> lines.</p>
+      </div>
+
+      <!-- 3. DESIGN -->
+      <div class="stage">
+        <h2>3. design — <em>how</em>, with alternatives and trade-offs</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/blob/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/design.md" target="_blank" rel="noopener">design.md ↗</a></p>
+        <p>The design records eight numbered decisions (D1–D8). Each one says what was chosen <em>and what was rejected</em>. D1 fixes the exact headline string across every surface:</p>
+        <pre><code>### D1. Headline híbrido y su forma exacta
+- Sitio (`header h3`, `&lt;title&gt;`, OG, JSON-LD `jobTitle`, `whoami`):
+  `Senior Backend Engineer · Tech Lead · SRE &amp; Automation · Agentic AI`
+- Alternativas: "SRE first" (descartada: saca de búsquedas backend) y mantener el actual (descartada: no
+  refleja la evidencia).</code></pre>
+        <p>D2 is the one I care most about: a <strong>mapping from internal system names to public language</strong>, so the CV never leaks my employer's internals — and a note that the rule is enforced by a script, not by memory:</p>
+        <pre><code>### D2. Mapa de lenguaje genérico (interno → público)
+| Interno (NO usar) | Público |
+| &lt;redacted: internal platform names&gt; | "plataforma de ciclo de crédito / integración con core banking (Step Functions)" |
+| &lt;redacted: internal app name&gt;        | "app de campo (Android) para formalización y KYC" |
+…
+Se implementa una verificación automática (grep) en tasks para que la regla no dependa de memoria.</code></pre>
+        <p>D7 is the space budget for a one-page CV — and it was <em>corrected during implementation</em>, which is exactly what a design is for (see step 6):</p>
+        <pre><code>### D7. Estrategia de espacio en el CV (1 página)
+… **Techo real calibrado en implementación: `.sheet` ≤ 340 mm** (343.6 mm ya produce 2 páginas: Chrome
+mueve el flex `.cols` completo a la página 2). Resultado final: sheet 339.3 mm (izq 298.5 / der 292.2)</code></pre>
+        <p><strong>What it decided:</strong> D1 headline · D2 language map · D3 experience bullets (≤120 chars for the CV) · D4 skills-by-level markup/CSS · D5 where the principles block lives · D6 Fidello as a pilot with real numbers · D7 one-page space budget · D8 the edit order across the five sources of truth.</p>
+      </div>
+
+      <!-- 4. TASKS -->
+      <div class="stage">
+        <h2>4. tasks — ordered, ≤2 h blocks, with mandatory steps</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/blob/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/tasks.md" target="_blank" rel="noopener">tasks.md ↗</a></p>
+        <p>Tasks always start with the feature branch and always end with testing, manual verification and documentation — the project has a rule file that makes these steps non-negotiable. Task 0.3 turns the specs into a script <em>before</em> any content is touched:</p>
+        <pre><code>- [x] 0.3 Crear `…/scripts/audit.py` con las comprobaciones automáticas reutilizables:
+      (a) grep de nombres internos prohibidos (D2) en `index.html`, `cv/*.html`, `llms.txt` …;
+      (b) headline idéntico en `header h3`, `&lt;title&gt;`, OG, JSON-LD, `whoami`, `.tagline` ES/EN;
+      (c) fechas/títulos de los 4 roles iguales en CV ES, CV EN, `index.html`, `llms.txt`;
+      (d) ausencia de "Kendra", "Kiro", "Master", "IEU"; (e) conteo de páginas y fuentes de los PDF (pypdf)</code></pre>
+        <pre><code>## 5. Ejecutar pruebas y verificar estado (OBLIGATORIO) — EL AGENTE EJECUTA
+- [x] 5.1 Capturar estado previo: `git rev-parse HEAD`, tamaño y páginas de los PDF actuales, salida de
+      `audit.py` antes de los cambios (se espera FAIL en los checks nuevos)
+- [x] 5.2 Ejecutar `python …/scripts/audit.py` tras los cambios: todos los checks en PASS</code></pre>
+        <p><strong>What it decided:</strong> the order of work (D8: <code>index.html</code> → <code>llms.txt</code> → CV ES → CV EN → build → docs) and the definition of done: audit green, headless screenshots at 1280/992/768/480, a report file, docs in sync.</p>
+      </div>
+
+      <!-- 5. APPLY -->
+      <div class="stage">
+        <h2>5. apply — implement against the contract</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/tree/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/scripts" target="_blank" rel="noopener">scripts/ (audit.py, measure_cv.py, patch_*.py, shots.py) ↗</a></p>
+        <p>Implementation is where the AI agent does most of the typing — but against the artifacts, not against a chat prompt. The audit script is the spec made executable. Its core is a list of forbidden patterns and a one-line <code>check()</code>:</p>
+        <pre><code># Nombres internos del empleador y datos privados (design.md D2)
+FORBIDDEN = [ &lt;redacted: regexes for internal system names, incident IDs, database names, people&gt; ]
+STALE = [r"Kendra", r"\bKiro\b", r"Master'?s in DevOps", r"Maestr[ií]a en DevOps", r"\bIEU\b", r"Agentic AI Systems"]
+
+def check(name, ok, detail=""):
+    results.append((name, ok, detail))
+    print(("PASS  " if ok else "FAIL  ") + name + (("  -> " + detail) if detail and not ok else ""))</code></pre>
+        <p>The edits to <code>index.html</code> and the CV were applied by small idempotent patch scripts (<code>patch_index.py</code>, <code>patch_cv.py</code>) rather than by hand, so a re-run produces the same file. Running the audit <em>before</em> the change gave the expected picture: <strong>18 PASS · 29 FAIL</strong> (old headline, internal names, Kendra/Kiro, no levels, no Fidello numbers). That "expected red" is the TDD moment of the flow.</p>
+      </div>
+
+      <!-- 6. VERIFY -->
+      <div class="stage">
+        <h2>6. verify — the agent runs the checks, then writes the report</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/blob/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation/reports/2026-09-19-step-5-pruebas-y-verificacion.md" target="_blank" rel="noopener">reports/2026-09-19-step-5-pruebas-y-verificacion.md ↗</a></p>
+        <p>Verification is not delegated to a human "please check it". The report lists the commands, the numbers before/after and the incidents found along the way:</p>
+        <pre><code>## Resultados de pruebas (audit.py = suite del proyecto, no hay pruebas unitarias)
+- Antes de los cambios: 47 checks · 18 PASS · 29 FAIL (esperado …)
+- Después: **47 checks · 47 PASS · 0 FAIL** (exit 0)
+…
+Incidencia de implementación: con el contenido nuevo el CV saltó a 2 páginas (Chrome mueve el flex `.cols`
+completo a la página 2 cuando `.sheet` &gt; 340 mm). Se movió Idiomas a la columna izquierda, se acortó el
+resumen a 4 líneas y se bajó `line-height` 1.28 → 1.25; regla calibrada documentada en `design.md` D7</code></pre>
+        <h3>The one-page calibration</h3>
+        <p>The interesting bug: with the new bullets the PDF jumped to two pages. Instead of eyeballing it, a tiny script (<code>measure_cv.py</code>) renders the HTML in headless Chrome and reads the sheet and column heights in millimetres:</p>
+        <pre><code>"""Mide en Chrome headless la altura (mm) del sheet y de cada columna del CV.
+Regla empírica calibrada 2026-09-19 (design.md D7): el PDF cabe en 1 página si sheet &lt;= 340 mm
+(sheet = 20 mm de padding + header + max(col)); con sheet 343.6 ya salta a 2 páginas."""</code></pre>
+        <p>Three build iterations later: <strong>339.3 mm</strong> (left column 298.5 / right 292.2), one page in ES and EN, only <code>SegoeUI*</code> TrueType fonts embedded, text layer extractable for ATS. The threshold went back into <code>design.md</code> D7 and into the <code>cv-presentacion</code> spec — a bug found in <em>apply</em> updates the <em>design</em>, not just the code.</p>
+        <table>
+          <tr><th>Check</th><th>Result</th></tr>
+          <tr><td>Horizontal overflow at 480 px (4 views)</td><td><code>scrollW == innerW</code> — a pre-existing 12 px overflow in the timeline was found and fixed</td></tr>
+          <tr><td>Skills by level</td><td>4 levels, legend visible, 2 columns ≥ 992 px / 1 column ≤ 768 px</td></tr>
+          <tr><td>Fidello pilot</td><td>6 metric badges, no Google Wallet presented as active</td></tr>
+          <tr><td>Error case: forbidden name injected</td><td><code>audit.py</code> reports FAIL (then the temp file is removed)</td></tr>
+          <tr><td>PDF text (ATS)</td><td>name, phone, email, roles, dates present; no internal names</td></tr>
+        </table>
+      </div>
+
+      <!-- 7. ARCHIVE -->
+      <div class="stage">
+        <h2>7. archive — promote the deltas into the living specs</h2>
+        <p class="src"><a href="https://github.com/jalducin/jalducin.github.io/tree/main/openspec/specs" target="_blank" rel="noopener">openspec/specs/ (living capabilities) ↗</a></p>
+        <p>Archiving does two things: the delta specs are merged into <code>openspec/specs/&lt;capability&gt;/spec.md</code> (two new capabilities are created, six are updated), and the change folder moves to <code>openspec/changes/archive/2026-09-19-…</code> with its reports and scripts. The last tasks close the loop in production:</p>
+        <pre><code>- [x] 8.2 Verificar en vivo: headline híbrido presente, PDF ES/EN HTTP 200 con el mismo tamaño en bytes
+      que los locales, `llms.txt` con "How I work"; `gh run list` con los 3 workflows en success
+- [x] 8.3 … ejecutar `/opsx:verify` antes de archivar</code></pre>
+        <p><strong>What it decided:</strong> nothing new — and that is the point. By the time we archive, every decision is already written down somewhere that outlives the conversation with the model.</p>
+      </div>
+
+      <h2>What this buys me</h2>
+      <ul>
+        <li><strong>Review the spec, not the diff.</strong> The diff of this change touched five files with hundreds of lines; the review happened on eight short scenario lists and eight decisions.</li>
+        <li><strong>Rules that don't depend on memory.</strong> "Never leak internal names" is a regex in a script that runs on every change, not a reminder.</li>
+        <li><strong>Bugs improve the design.</strong> The 340 mm threshold is now a documented, calibrated fact — the next CV change starts from it.</li>
+        <li><strong>The agent verifies its own work</strong> and leaves a report with commands and numbers, so the human decision is "merge?" instead of "did it work?".</li>
+      </ul>
+      <blockquote>A change is complete when the specs, the code, the docs and the report agree — and the only way to know is to check it, not to remember it.</blockquote>
+      <p>Browse the whole archived change here: <a href="https://github.com/jalducin/jalducin.github.io/tree/main/openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation" target="_blank" rel="noopener">openspec/changes/archive/2026-09-19-cv-portafolio-sre-automation ↗</a>. Other posts: <a href="deep-dive-fidello.html">Fidello deep dive</a> · <a href="deep-dive-pyzzeria.html">Pyzzeria deep dive</a>.</p>
+
+      <div class="foot">
+        Written by Juan Valentin Alducin Vázquez · <a href="../index.html#contact">Get in touch ›</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

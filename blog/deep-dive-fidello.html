@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep dive — Fidello: a multi-tenant loyalty platform where the database is the backend — Juan Valentin Alducin</title>
+<meta name="description" content="Fidello deep dive: problem, approach, architecture (Supabase + multi-tenant RLS + PL/pgSQL RPC), key decisions and results of a cloud-beta pilot built 100% with Spec-Driven Development." />
+<link rel="canonical" href="https://jalducin.github.io/blog/deep-dive-fidello.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Deep dive — Fidello: a multi-tenant loyalty platform where the database is the backend" />
+<meta property="og:description" content="Problem → approach → architecture → decisions → result. 793 tests, 91 migrations, 97 OpenSpec changes, RLS multi-tenant, PL/pgSQL SECURITY DEFINER, QR tokens with TTL + SHA-256." />
+<meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
+<meta property="og:url" content="https://jalducin.github.io/blog/deep-dive-fidello.html" />
+<meta name="twitter:card" content="summary_large_image" />
+<style>
+  :root{--bg:#0f141a;--fg:#dde6ef;--primary:#7fa8c9;--accent2:#a9c5dd;--muted:#8b949e;--card-bg:#161d26;--border:#2a3744;--badge-bg:#1b232d;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--fg);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.75;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:800px;margin:0 auto;padding:2.5rem 1.25rem 4rem;}
+  a{color:var(--primary);text-decoration:none;} a:hover{text-decoration:underline;}
+  .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;font-family:'Courier New',monospace;font-size:.9rem;}
+  .top .brand{color:var(--primary);font-weight:700;}
+  h1{font-size:2rem;line-height:1.2;margin:.2rem 0 .6rem;color:var(--fg);}
+  h2{font-size:1.3rem;margin:2.2rem 0 .7rem;color:var(--primary);}
+  h3{font-size:1.05rem;margin:1.4rem 0 .4rem;color:var(--accent2);}
+  p{margin:.9rem 0;color:#c6d2df;}
+  ul,ol{margin:.6rem 0 .6rem 1.3rem;color:#c6d2df;} li{margin:.35rem 0;}
+  .meta{color:var(--muted);font-size:.85rem;font-family:'Courier New',monospace;margin-bottom:1.6rem;}
+  .tag{display:inline-block;background:rgba(127,168,201,.14);border:1px solid rgba(127,168,201,.4);color:var(--primary);border-radius:999px;padding:.1rem .55rem;font-size:.72rem;margin-right:.3rem;}
+  code{background:var(--card-bg);border:1px solid var(--border);border-radius:5px;padding:.1rem .4rem;font-family:'Courier New',monospace;font-size:.88em;color:var(--primary);}
+  pre{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem;overflow:auto;margin:1rem 0;font-size:.86rem;line-height:1.55;}
+  pre code{background:none;border:none;padding:0;color:#c6d2df;font-size:1em;}
+  blockquote{border-left:3px solid var(--primary);margin:1.2rem 0;padding:.3rem 0 .3rem 1rem;color:#aebccb;font-style:italic;}
+  .foot{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:.9rem;}
+  /* Deep-dive additions (palette tokens only) */
+  .status{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.2rem;}
+  .status span{background:var(--badge-bg);border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;font-family:'Courier New',monospace;font-size:.78rem;color:var(--accent2);}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:1rem 0;}
+  .kpi{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem .6rem;text-align:center;}
+  .kpi b{display:block;font-size:1.35rem;color:var(--primary);font-family:'Courier New',monospace;line-height:1.2;}
+  .kpi small{color:var(--muted);font-size:.74rem;line-height:1.3;display:block;margin-top:.2rem;}
+  .diagram{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:.8rem;margin:1rem 0;overflow-x:auto;}
+  .diagram svg{display:block;width:100%;min-width:600px;height:auto;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+  .diagram .box{fill:var(--badge-bg);stroke:var(--border);stroke-width:1.2;}
+  .diagram .box.hi{stroke:var(--primary);}
+  .diagram .box.off{stroke:var(--muted);stroke-dasharray:4 3;}
+  .diagram .grp{fill:none;stroke:var(--primary);stroke-width:1.2;stroke-dasharray:5 4;}
+  .diagram .t{fill:var(--fg);font-size:12px;}
+  .diagram .t.b{font-weight:700;fill:var(--primary);}
+  .diagram .t.s{font-size:10.5px;fill:var(--muted);}
+  .diagram .t.lbl{font-size:10.5px;fill:var(--accent2);font-family:'Courier New',monospace;}
+  .diagram .ln{stroke:var(--accent2);stroke-width:1.4;fill:none;}
+  .diagram .cap{color:var(--muted);font-size:.78rem;font-family:'Courier New',monospace;margin:.5rem 0 0;}
+  .dec{border:1px solid var(--border);border-left:3px solid var(--primary);border-radius:8px;background:var(--card-bg);padding:.8rem 1rem;margin:.9rem 0;}
+  .dec h3{margin:0 0 .3rem;}
+  .dec p{margin:.4rem 0;font-size:.94rem;}
+  .cta{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.2rem 0;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:.55rem 1.25rem;background:transparent;color:var(--primary);border:2px solid var(--primary);border-radius:6px;font-weight:600;font-family:'Courier New',Courier,monospace;letter-spacing:.03em;transition:background .3s,color .3s;}
+  .btn:hover{background:var(--primary);color:var(--bg);text-decoration:none;}
+  @media (max-width:768px){.kpis{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){h1{font-size:1.6rem;} .wrap{padding:1.8rem 1rem 3rem;} pre{font-size:.78rem;}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <a class="brand" href="../index.html">‹ Juan Valentin Alducin</a>
+      <a href="../index.html#featured-projects">Projects</a>
+    </div>
+    <article>
+      <span class="tag">Deep dive</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">SDD</span>
+      <h1>Fidello: a multi-tenant loyalty platform where the database <em>is</em> the backend</h1>
+      <div class="meta">2026-09-20 · 8 min read · Problem → Approach → Architecture → Decisions → Result</div>
+      <div class="status">
+        <span>🧪 Pilot · cloud beta</span><span>★ 100% SDD/OpenSpec</span><span>Private repository · demo on request</span>
+      </div>
+
+      <h2>Problem</h2>
+      <p>Small coffee shops run loyalty on paper cards: they get lost, they get forged, and the owner learns nothing from them. Existing digital alternatives ask the customer to <em>install an app</em>, which kills adoption at the counter, or lock the business into a single-brand wallet. I wanted a platform where:</p>
+      <ul>
+        <li>a customer collects a stamp by <strong>scanning a QR at the till — nothing to install</strong>, no account required to start;</li>
+        <li>several businesses coexist on the same platform with <strong>strict data isolation</strong> (a manager from shop A can never see shop B);</li>
+        <li>a business can onboard itself, run tiers and redemptions and read its own KPIs;</li>
+        <li>fraud vectors specific to stamps (replayed QR codes, cashier abuse) are closed by design, not by policy.</li>
+      </ul>
+
+      <h2>Approach</h2>
+      <p>Two deliberate bets. First, <strong>Spec-Driven Development end to end</strong>: every one of the 97 OpenSpec changes started as a proposal, a set of verifiable scenarios and a design before any code — with five specialised AI agents (backend, frontend, security-reviewer, solution-architect, product-strategy) working against those artifacts. Second, <strong>no application server</strong>: business rules live in PostgreSQL (RPC in PL/pgSQL) behind Supabase, and the React PWA is a thin client. That removed a whole tier to secure, deploy and test, and made the security model something a reviewer can read in SQL.</p>
+      <p>The pilot runs in real coffee shops: the core journeys were validated by product on site, and each of the 28 user journeys has a twin runbook that describes how to operate and troubleshoot it.</p>
+
+      <div class="kpis">
+        <div class="kpi"><b>793</b><small>tests (337 DB against real Postgres + 456 UI)</small></div>
+        <div class="kpi"><b>91</b><small>SQL migrations · 22 tables</small></div>
+        <div class="kpi"><b>97</b><small>OpenSpec changes · 28 journeys with runbooks</small></div>
+        <div class="kpi"><b>7 + 5</b><small>Edge Functions · pg_cron jobs</small></div>
+      </div>
+
+      <h2>Architecture</h2>
+      <div class="diagram">
+        <svg viewBox="0 0 760 470" role="img" aria-labelledby="fid-title fid-desc">
+          <title id="fid-title">Fidello architecture</title>
+          <desc id="fid-desc">Five actors use a React PWA hosted on Vercel. It talks over HTTPS to Supabase: Auth, PostgREST (REST and RPC), Realtime and seven Edge Functions. Below them, PostgreSQL holds 22 tables with multi-tenant RLS, business rules in PL/pgSQL SECURITY DEFINER RPC, five pg_cron jobs and 91 migrations. GitHub Actions runs two blocking jobs (UI and DB tests) before deploying to QAS and PROD. Google Wallet, Google OAuth, Resend and WhatsApp are built but switched off.</desc>
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#a9c5dd"/>
+            </marker>
+          </defs>
+
+          <!-- Actors -->
+          <text x="20" y="24" class="t lbl">actors</text>
+          <rect x="20" y="32" width="112" height="34" rx="6" class="box"/><text x="76" y="53" class="t" text-anchor="middle">Guest (QR)</text>
+          <rect x="142" y="32" width="112" height="34" rx="6" class="box"/><text x="198" y="53" class="t" text-anchor="middle">Customer</text>
+          <rect x="264" y="32" width="112" height="34" rx="6" class="box"/><text x="320" y="53" class="t" text-anchor="middle">Cashier</text>
+          <rect x="386" y="32" width="112" height="34" rx="6" class="box"/><text x="442" y="53" class="t" text-anchor="middle">Owner / Manager</text>
+          <rect x="508" y="32" width="112" height="34" rx="6" class="box"/><text x="564" y="53" class="t" text-anchor="middle">Platform admin</text>
+
+          <!-- Frontend -->
+          <path d="M320 66 V 92" class="ln" marker-end="url(#arr)"/>
+          <rect x="20" y="94" width="600" height="46" rx="6" class="box hi"/>
+          <text x="32" y="113" class="t b">React 18 PWA · TypeScript · Vite · Tailwind · React Router</text>
+          <text x="32" y="130" class="t s">Workbox offline shell · route code-splitting · WCAG AA · html5-qrcode · hosted on Vercel (QAS / PROD)</text>
+
+          <!-- CI (side) -->
+          <rect x="636" y="94" width="104" height="120" rx="6" class="box"/>
+          <text x="688" y="114" class="t b" text-anchor="middle">GitHub Actions</text>
+          <text x="688" y="134" class="t s" text-anchor="middle">2 blocking jobs</text>
+          <text x="688" y="152" class="t s" text-anchor="middle">UI · 456 tests</text>
+          <text x="688" y="168" class="t s" text-anchor="middle">DB · 337 tests</text>
+          <text x="688" y="184" class="t s" text-anchor="middle">(real Postgres)</text>
+          <text x="688" y="202" class="t s" text-anchor="middle">→ QAS → PROD</text>
+
+          <!-- HTTPS -->
+          <path d="M320 140 V 176" class="ln" marker-end="url(#arr)"/>
+          <text x="332" y="164" class="t lbl">HTTPS — REST · RPC · Auth · Realtime (WS)</text>
+
+          <!-- Supabase group -->
+          <rect x="20" y="180" width="600" height="252" rx="8" class="grp"/>
+          <text x="32" y="198" class="t lbl">Supabase Cloud (BaaS) — no application server</text>
+
+          <rect x="32" y="208" width="132" height="48" rx="6" class="box"/>
+          <text x="98" y="228" class="t b" text-anchor="middle">Auth</text>
+          <text x="98" y="246" class="t s" text-anchor="middle">customers · staff · admins</text>
+
+          <rect x="176" y="208" width="132" height="48" rx="6" class="box"/>
+          <text x="242" y="228" class="t b" text-anchor="middle">PostgREST</text>
+          <text x="242" y="246" class="t s" text-anchor="middle">REST + RPC calls</text>
+
+          <rect x="320" y="208" width="132" height="48" rx="6" class="box"/>
+          <text x="386" y="228" class="t b" text-anchor="middle">Realtime</text>
+          <text x="386" y="246" class="t s" text-anchor="middle">live stamps / redemptions</text>
+
+          <rect x="464" y="208" width="144" height="48" rx="6" class="box"/>
+          <text x="536" y="228" class="t b" text-anchor="middle">7 Edge Functions</text>
+          <text x="536" y="246" class="t s" text-anchor="middle">Deno · onboarding · reports</text>
+
+          <path d="M98 256 V 282" class="ln" marker-end="url(#arr)"/>
+          <path d="M242 256 V 282" class="ln" marker-end="url(#arr)"/>
+          <path d="M386 256 V 282" class="ln" marker-end="url(#arr)"/>
+          <path d="M536 256 V 282" class="ln" marker-end="url(#arr)"/>
+
+          <!-- PostgreSQL -->
+          <rect x="32" y="284" width="576" height="136" rx="6" class="box hi"/>
+          <text x="44" y="304" class="t b">PostgreSQL 15 — 22 tables · 91 immutable migrations (source of the schema)</text>
+          <rect x="44" y="316" width="176" height="44" rx="5" class="box"/>
+          <text x="132" y="334" class="t" text-anchor="middle">Multi-tenant RLS</text>
+          <text x="132" y="350" class="t s" text-anchor="middle">isolation per business</text>
+          <rect x="232" y="316" width="176" height="44" rx="5" class="box"/>
+          <text x="320" y="334" class="t" text-anchor="middle">RPC · PL/pgSQL</text>
+          <text x="320" y="350" class="t s" text-anchor="middle">SECURITY DEFINER = business rules</text>
+          <rect x="420" y="316" width="176" height="44" rx="5" class="box"/>
+          <text x="508" y="334" class="t" text-anchor="middle">5 pg_cron jobs</text>
+          <text x="508" y="350" class="t s" text-anchor="middle">monthly report · expiry · cleanup</text>
+          <text x="44" y="384" class="t s">QR tokens: TTL + SHA-256 device fingerprint (anti-replay) · rate limiting on anonymous functions</text>
+          <text x="44" y="402" class="t s">PII-free audit log · feature flags (global + per-business override) · tiers &amp; redemption rules</text>
+
+          <!-- Built but off -->
+          <rect x="20" y="440" width="600" height="24" rx="6" class="box off"/>
+          <text x="320" y="456" class="t s" text-anchor="middle">built, flag off (no credentials in the pilot): Google Wallet passes · Google OAuth · Resend e-mail · WhatsApp</text>
+        </svg>
+        <p class="cap">Figure 1 — Fidello runtime and delivery pipeline. Everything below the HTTPS line is Supabase; there is no custom server to run.</p>
+      </div>
+      <p>Reading the diagram top-down: five actor roles share one PWA (route-level code-splitting loads only the actor's screens). Every request hits Supabase's row-level security <em>before</em> any row is visible; anything that mutates state — registering a visit, adding stamps, redeeming a reward, onboarding a business — goes through a PL/pgSQL RPC that validates the caller's role and tenant, then writes to the tables. Edge Functions exist only for things Postgres cannot do (create auth users for onboarding, send the platform report). <code>pg_cron</code> schedules the monthly platform report and housekeeping jobs.</p>
+
+      <h2>Decisions</h2>
+      <div class="dec">
+        <h3>D1 · Business rules in PL/pgSQL <code>SECURITY DEFINER</code>, not in an API tier</h3>
+        <p><strong>Why:</strong> one place to enforce tenant and role checks, testable against a real Postgres, and the client can never bypass them because it only holds the anonymous key. <strong>Trade-off:</strong> PL/pgSQL is less ergonomic than TypeScript; mitigated with 337 DB tests that run the RPCs against a real database on every CI run.</p>
+      </div>
+      <div class="dec">
+        <h3>D2 · Multi-tenancy with Row-Level Security</h3>
+        <p><strong>Why:</strong> isolation is enforced by the database engine for every query path (REST, RPC, Realtime), not by remembering a <code>WHERE business_id = …</code>. <strong>Alternative rejected:</strong> a schema or database per tenant — operationally heavier for a pilot and it does not simplify the cross-tenant views the platform admin needs.</p>
+      </div>
+      <div class="dec">
+        <h3>D3 · Guest-first identity with QR tokens that expire</h3>
+        <p><strong>Why:</strong> adoption at the counter. A guest gets stamps with a device identity and can later link that progress to a registered account. The customer's QR is a short-lived token with a TTL and a SHA-256 fingerprint, so a screenshot cannot be replayed at another till; anonymous RPCs are rate-limited.</p>
+      </div>
+      <div class="dec">
+        <h3>D4 · Feature flags (global + per-business override) instead of branches</h3>
+        <p><strong>Why:</strong> the pilot needed to switch capabilities per coffee shop without a deploy. It is also how the "built but off" integrations (Wallet, OAuth, e-mail, WhatsApp) stay in the codebase without being sold as active: the flag is off and there are no credentials in the pilot.</p>
+      </div>
+      <div class="dec">
+        <h3>D5 · Immutable migrations + real-database tests as the contract</h3>
+        <p><strong>Why:</strong> with the database as the backend, the schema <em>is</em> the API. 91 sequential migrations are the only source of the schema; CI has two blocking jobs — UI tests (Vitest + Testing Library + msw) and DB tests against a real Postgres via a <code>pg</code> harness — and a deploy to QAS only happens when both are green.</p>
+      </div>
+      <div class="dec">
+        <h3>D6 · 100% SDD with an architecture review package</h3>
+        <p><strong>Why:</strong> 97 OpenSpec changes gave every feature a proposal, scenarios and a design before code; 28 journeys have a twin runbook. The repository also ships an architecture review package (pieces, where each rule lives, deployment, scale limits, recommendations) so an external reviewer can evaluate the system without reading the code.</p>
+      </div>
+
+      <h2>Result</h2>
+      <ul>
+        <li><strong>Pilot in cloud beta</strong> (Vercel QAS/PROD + Supabase Cloud), with the core journeys validated by product in real coffee shops.</li>
+        <li><strong>793 tests, 100% green</strong> — 337 database tests against real Postgres and 456 UI tests — on every push, as blocking CI jobs.</li>
+        <li><strong>Security that a reviewer can read:</strong> RLS policies, <code>SECURITY DEFINER</code> RPCs, expiring QR tokens, rate limiting and a PII-free audit log, all in SQL.</li>
+        <li><strong>Operable:</strong> 28 journeys with runbooks, 5 scheduled jobs, feature flags per business, and a review package for external audits.</li>
+      </ul>
+      <p>The repository is private (it belongs to the pilot). I am happy to walk through the code, the specs and the review package on a call.</p>
+      <div class="cta">
+        <a class="btn" href="../index.html#contact">Request a demo ›</a>
+        <a class="btn" href="anatomia-de-un-cambio.html">How I run SDD ›</a>
+        <a class="btn" href="deep-dive-pyzzeria.html">Next: Pyzzeria deep dive ›</a>
+      </div>
+
+      <div class="foot">
+        Written by Juan Valentin Alducin Vázquez · <a href="../index.html#contact">Get in touch ›</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

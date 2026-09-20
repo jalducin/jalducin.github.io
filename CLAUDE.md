@@ -87,18 +87,19 @@ Inglés:      B1 (Intermedio)
 
 | Proyecto | Stack | Repo |
 |---|---|---|
-| Fidello | **Piloto en beta cloud** (cafeterías reales). React 18 · TypeScript · Vite 5 · Tailwind 3 · PWA · Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron) · RLS · PL/pgSQL SECURITY DEFINER · Feature Flags · Vitest + pg harness · Vercel (QAS/PROD). Cifras (2026-09-17): 793 pruebas (337 DB + 456 UI), 91 migraciones, 22 tablas, 7 Edge Functions, 5 cron, 97 cambios OpenSpec, 28 journeys + runbooks. Google Wallet / Google OAuth / Resend / WhatsApp: construidos pero **apagados** (no presentarlos como activos) | privado/seed |
+| Fidello | **Piloto en beta cloud** (cafeterías reales). React 18 · TypeScript · Vite 5 · Tailwind 3 · PWA · Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron) · RLS · PL/pgSQL SECURITY DEFINER · Feature Flags · Vitest + pg harness · Vercel (QAS/PROD). Cifras (2026-09-17): 793 pruebas (337 DB + 456 UI), 91 migraciones, 22 tablas, 7 Edge Functions, 5 cron, 97 cambios OpenSpec, 28 journeys + runbooks. Google Wallet / Google OAuth / Resend / WhatsApp: construidos pero **apagados** (no presentarlos como activos). Deep dive: `blog/deep-dive-fidello.html` | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
-| Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio) | jalducin/pyzzeria |
+| Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio). Deep dive: `blog/deep-dive-pyzzeria.html` | jalducin/pyzzeria |
 | Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
 | dataMasterGK | Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 — middleware ETL retail (Excel→GK XML, 4 interfaces, SFTP/FTP), rediseñado con SDD (pipeline idempotente, seguridad) | jalducin/dataMasterGK |
 
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
-> ligera dentro de la experiencia actual, no como proyecto destacado independiente. Inventarios, socket-chat y
-> JV Market (e-commerce) se retiraron del portafolio (los dos primeros por obsoletos; JV Market el 2026-09-20 por decisión
-> del propietario). Las métricas numéricas (~40 % revisión, 80 % autoresolución N1, 99.95 % uptime) también se
-> retiraron del CV y del sitio el 2026-09-20: solo quedan los SLAs (<10 min / <2 h).
+> ligera dentro de la experiencia actual, no como proyecto destacado independiente ni con deep dive (sistema
+> interno del empleador: no se detalla). Inventarios, socket-chat y JV Market (e-commerce) se retiraron del
+> portafolio (los dos primeros por obsoletos; JV Market el 2026-09-20 por decisión del propietario). Las métricas
+> numéricas (~40 % revisión, 80 % autoresolución N1, 99.95 % uptime) también se retiraron del CV y del sitio el
+> 2026-09-20: solo quedan los SLAs (<10 min / <2 h).
 >
 > **Privacidad del empleador (regla dura, 2026-09-19):** la experiencia en Podemos se describe en lenguaje
 > genérico ("core banking", "app de campo", "buró de crédito", "sistema de tickets"). Nunca nombres propios de

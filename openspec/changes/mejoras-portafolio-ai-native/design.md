@@ -60,3 +60,23 @@ engineers, para implementarse de forma incremental. La única pieza que requiere
 - ¿Modelo para el asistente: Haiku (barato) por defecto, Sonnet para respuestas más ricas? (Default: Haiku.)
 - ¿Case study sobre un cambio archivado fijo o el último archivado dinámicamente? (Default: uno fijo curado.)
 - ¿Deep-dives como secciones en `index.html` o páginas separadas `/projects/<slug>.html`? (Default: páginas.)
+
+## Desviaciones (registradas al implementar case-study-sdd y project-deep-dives, 2026-09-20)
+
+- **Deep dive de Enkoth no se implementa (tarea 8.1 / spec `project-deep-dives`).** Enkoth es tooling serverless
+  interno del empleador; la regla del proyecto (`CLAUDE.md`, design D2 de `cv-portafolio-sre-automation`) prohíbe
+  detallar sistemas internos. Se sustituye por **Pyzzeria** (repo público, live demo en CloudFront, arquitectura
+  AWS serverless comparable: Lambda · Step Functions · API Gateway · DynamoDB), que cubre el mismo escenario de la
+  spec ("Lambda + Step Functions + …") sin exponer nada interno. Enkoth sigue mencionado de forma ligera en la
+  experiencia actual.
+- **Deep dives como páginas separadas** en `blog/deep-dive-<slug>.html` (resuelve la Open Question: páginas, no
+  secciones en `index.html`), reutilizando el esqueleto de los posts del blog. Los diagramas son **SVG inline**
+  escritos a mano con tokens de la paleta (no pre-renderizados desde Mermaid): 0 assets externos, 0 JS.
+- **Case study sobre un cambio fijo curado** (resuelve la Open Question): `2026-09-19-cv-portafolio-sre-automation`
+  (proposal, design D1–D8, 8 specs, tasks, reporte 47/47, scripts `audit.py`/`measure_cv.py`). Al citar D2 y
+  `audit.py` se redactan los nombres internos (`<redacted>`). En `index.html` la card usa `data-i18n` con
+  traducción ES (`scripts/i18n/es.py`).
+- **Asistente IA (tareas 6.x)**: implementado por el cambio independiente `asistente-ia-portafolio`
+  (widget `#ai-*` ya presente en `index.html`); las tareas 6.x se marcan como superseded, no se reimplementan.
+- **Lighthouse (4.3 / 9.2)**: no hay `lighthouse` CLI instalado en la máquina; se omite y se documenta en el reporte.
+

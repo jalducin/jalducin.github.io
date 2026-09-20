@@ -57,3 +57,4 @@ assistant.zip
 **/.serverless/
 scripts/i18n/shots/
 .claude/worktrees/
+scripts/i18n/__pycache__/

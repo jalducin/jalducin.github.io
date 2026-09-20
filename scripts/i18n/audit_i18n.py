@@ -91,7 +91,10 @@ check("leyenda de niveles en index.html", all(k in idx for k in ("level-grid", "
 check("Kubernetes solo en VoltGrid", idx.count("Kubernetes") >= 1 and "kubernetes-plain.svg" not in idx and
       all("VoltGrid" in idx[max(0, m.start() - 1500):m.start()] for m in re.finditer("Kubernetes", idx)))
 check("badges Fidello con cifras", all(k in idx for k in ("793", "91 migrations", "Pilot")))
-check("uptime en badges/impacto", idx.count("99.95%") >= 2)
+idx_nojson = re.sub(r'<script type="application/json" id="i18n-es">.*?</script>', "", idx, flags=re.S)
+check("sin cifras 40%/80%/99.95 (index, llms, CV ES/EN, es.py) — decisión 2026-09-20",
+      not any(re.search(r"~?40 ?%|80 ?%|99\.95", t) for t in (idx_nojson, llm, es, en, read("scripts/i18n/es.py"))))
+check("sin JV Market (index, llms, CV, es.py, blog)", not any("JV Market" in t or "EcommerceJVAV" in t for t in (idx, llm, es, en, read("scripts/i18n/es.py")) + tuple(read(b) for b in __import__("glob").glob("blog/*.html"))))
 check("Fidello piloto en CV ES/EN y llms", "piloto" in es.lower() and "pilot" in en.lower() and "pilot" in llm.lower())
 check("profile.txt == llms.txt", os.path.exists("backend/assistant/profile.txt") and read("backend/assistant/profile.txt") == llm)
 
