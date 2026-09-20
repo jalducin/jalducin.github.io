@@ -81,6 +81,20 @@ No romper el diseño responsive.
   nominativa para indicar experiencia. No reintroducir el CDN `cdn.jsdelivr.net`.
 - **UX**: `#spotlight` (glow que sigue el cursor, `z-index:-1`, off con `prefers-reduced-motion`/`hover:none`)
   y bloque `.now-card`. El CV lleva doble QR (portafolio + LinkedIn) en el encabezado.
+- **Páginas del blog**: comparten el mismo esqueleto (`.wrap` centrado, `.top` con enlace de regreso, `article`
+  con `.tag`/`h1`/`.meta`/`.foot`, tokens de la paleta en `:root`, CSS embebido, sin JS). Están en inglés y solo
+  en tema oscuro (no cargan el toggle de `index.html`). Toda página nueva se enlaza desde la card correspondiente
+  de `index.html` (Writing o Projects), se lista en `llms.txt` y en `sitemap.xml`.
+- **Caso de estudio SDD** (`blog/anatomia-de-un-cambio.html`): recorre proposal → specs → design → tasks →
+  apply → verify → archive con fragmentos reales de un cambio archivado (bloques `.stage`, `.flow`, `.kpis`) y
+  enlaza los artefactos en GitHub. Al citar artefactos, los nombres internos del empleador se redactan (`<redacted>`).
+- **Deep dives de proyectos** (`blog/deep-dive-<slug>.html`): estructura fija Problema → Enfoque → Arquitectura →
+  Decisiones → Resultado, con `.kpis`, bloques `.dec` (una decisión: por qué / alternativa / trade-off), CTA `.btn`
+  y un **diagrama de arquitectura SVG inline** (sin imágenes externas) dentro de `.diagram` (`overflow-x:auto`,
+  `svg{min-width:600px}` para que a 480px se desplace el diagrama y no la página). El SVG usa solo tokens de la
+  paleta (`.box`, `.box.hi`, `.grp`, `.ln`, `.t`) y lleva `<title>`/`<desc>` para accesibilidad. Repos privados:
+  sin botón de código, "demo a solicitud". Integraciones construidas pero apagadas se etiquetan "built, flag off".
+  No se hacen deep dives de sistemas internos del empleador (p. ej. Enkoth).
 
 ## 4b. Internacionalización (ES/EN) en `index.html`
 
