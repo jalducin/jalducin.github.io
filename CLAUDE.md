@@ -140,21 +140,30 @@ Para diseño/fidelidad usar el agente `design-specialist` (`ai-specs/agents/`).
 
 ## Asistente IA ("Ask my portfolio")
 
-Widget de chat vanilla en `index.html` (`#ai-fab` / `#ai-panel` / `#ai-form`) que responde preguntas sobre
-el perfil de Juan, respaldado por un backend serverless. La credencial del LLM vive **solo en el backend**
-(IAM/Bedrock), nunca en el front ni en el repo.
+Widget de chat vanilla en `index.html` (`#ai-fab` / `#ai-panel` / `#ai-form`) que responde preguntas sobre el
+perfil de Juan. Desde el 2026-10-01 **no hay backend ni LLM**: es un bot de recuperación que corre en el
+navegador contra una base de conocimiento curada (costo $0, sin API key, sin CORS, funciona offline).
 
-- **Backend:** `backend/assistant/app.py` — AWS Lambda (`jalducin-assistant`) detrás de API Gateway HTTP
-  API, invoca **Amazon Bedrock (Claude Haiku)** por rol de ejecución IAM. Grounding sin RAG: el system
-  prompt embebe `profile.txt` (copia de `llms.txt` generada en el deploy). Caché de respuestas + rate
-  limiting (por IP y tope global diario) en DynamoDB on-demand con TTL.
-- **CI/CD:** `.github/workflows/deploy-assistant.yml` — push a `main` que toque `backend/assistant/**` o
-  `llms.txt` empaqueta y hace `aws lambda update-function-code` vía OIDC (mismo principio git → AWS del
-  resto del sitio).
-- **Costo/abuso:** modelo económico + `max_tokens` bajo + caché + límites por IP/día/global; AWS Budgets
-  de la cuenta avisan por correo ante consumo. Detalle y variables de entorno: `backend/assistant/README.md`.
-- Editar el prompt/grounding **solo vía `llms.txt`** (fuente de verdad del perfil); nunca hardcodear datos
-  del propietario dentro de `app.py`.
+- **Fuente editable:** `assistant/knowledge.md` — una entrada por tema (`## <id>`, `tags:` con palabras clave
+  ES+EN, `en:` y `es:` con la respuesta). Debe derivarse de `llms.txt` (fuente de verdad del perfil) y respetar
+  la regla de privacidad del empleador.
+- **Build:** `python scripts/assistant/build_kb.py` compila la base a
+  `<script type="application/json" id="assistant-kb">` dentro de `index.html` (idempotente; falla si una
+  entrada no tiene ambos idiomas). Mismo patrón que el diccionario i18n.
+- **Runtime:** normaliza la pregunta, puntúa cada entrada por `tags` + tokens compartidos y responde la mejor
+  por encima del umbral, en el idioma activo; si no hay match **lo dice** y ofrece temas + contacto. Nunca
+  inventa. Expone `window.__askPortfolio(q)` para pruebas.
+- **Verificación:** `python scripts/assistant/probe_kb.py` (18 probes: 12 preguntas ES/EN, fuera de alcance,
+  cero `fetch`, KB inválida) y los checks de `scripts/i18n/audit_i18n.py`.
+- **Historia:** el backend anterior (Lambda `jalducin-assistant` + API Gateway + DynamoDB + Bedrock) fue
+  borrado el 2026-10-01 en una limpieza de la cuenta AWS; el cambio OpenSpec `migrar-backend-portafolio`
+  documenta la migración.
+
+## Formulario de contacto
+
+`POST` a una Edge Function de Supabase que guarda el mensaje en `contact_messages` (RLS, solo `service_role`)
+y lo envía por Resend. El front conserva su **fallback `mailto`**, así que el formulario nunca queda inservible.
+Secretos solo como Edge Function secrets / secretos del repositorio, nunca en `index.html`.
 
 ---
 

@@ -110,6 +110,15 @@ No romper el diseño responsive.
 - Verificación: `audit_i18n.py` (claves huérfanas / sin traducción) y `probe_i18n.py` (headless) en
   `scripts/i18n/` (ver su README).
 
+## 4c. Base de conocimiento del asistente
+
+- El chat del sitio **no llama a ningún servicio**: resuelve contra `<script type="application/json"
+  id="assistant-kb">`, compilado desde `assistant/knowledge.md` con `scripts/assistant/build_kb.py`.
+- Al agregar o cambiar contenido del perfil (`llms.txt`, experiencia, proyectos), **actualizar también la
+  entrada correspondiente de `assistant/knowledge.md`** y recompilar; `audit_i18n.py` verifica que la base
+  siga siendo coherente con `llms.txt` y no contenga nombres internos del empleador.
+- Cada entrada necesita respuesta en inglés **y** español; el build falla si falta una.
+
 ## 5. Datos del propietario (fuente de verdad)
 
 ```
