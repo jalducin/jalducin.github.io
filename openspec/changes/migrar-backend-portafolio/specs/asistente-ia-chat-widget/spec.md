@@ -1,10 +1,6 @@
-# Capability: asistente-ia-chat-widget
+# Capability: asistente-ia-chat-widget (delta)
 
-## Purpose
-
-Widget de chat "Ask my portfolio" en JavaScript vanilla dentro de `index.html`, accesible y responsive, que consume el backend del asistente y degrada con gracia ante límites o fallos.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Widget de chat "Ask my portfolio" en el sitio
 
@@ -30,20 +26,3 @@ MUST respetar la paleta, ser responsive (992/768/480px) y accesible.
 #### Scenario: Sin credenciales ni endpoints en el front
 - **WHEN** se inspecciona el JS del widget
 - **THEN** no contiene API keys, secretos ni URL de backend del asistente (la resolución es local)
-
-### Requirement: Preguntas sugeridas
-
-El widget SHALL ofrecer preguntas sugeridas (chips) para guiar al visitante y aumentar los aciertos de caché.
-
-#### Scenario: Chips de preguntas frecuentes
-- **WHEN** el visitante abre el widget
-- **THEN** ve 3-4 chips (p. ej. "¿Experiencia en AWS?", "Cuéntame de Fidello", "¿Stack de backend?")
-- **AND** al pulsar uno, se envía esa pregunta como si la hubiera escrito
-
-### Requirement: Tope de turnos por sesión
-
-El widget SHALL acotar la longitud de la conversación para limitar costo y abuso.
-
-#### Scenario: Límite de turnos
-- **WHEN** la conversación alcanza el tope de turnos por sesión (p. ej. ~8)
-- **THEN** el widget invita a contactar directamente (email/LinkedIn) en lugar de seguir consultando al LLM

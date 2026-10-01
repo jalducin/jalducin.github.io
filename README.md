@@ -50,16 +50,15 @@ El sitio se hospeda en **AWS (tier 0)**: **S3 privado + CloudFront** (HTTPS), co
 
 ## Asistente IA ("Ask my portfolio")
 
-Widget de chat en `index.html` (burbuja `#ai-fab`) que responde preguntas sobre el perfil de Juan.
+Widget de chat en `index.html` (burbuja `#ai-fab`) que responde preguntas sobre el perfil de Juan
+**sin backend y sin LLM**: recuperación en el navegador sobre una base de conocimiento curada.
 
-- **Backend:** `backend/assistant/` — AWS Lambda (`jalducin-assistant`, Python 3.12) detrás de API Gateway
-  HTTP API, que invoca **Amazon Bedrock (Claude Haiku)** por IAM (sin API key). Grounding con `llms.txt`
-  (sin RAG), caché de respuestas y rate limiting por IP + tope global diario en DynamoDB (on-demand + TTL).
-- **CI/CD:** push a `main` con cambios en `backend/assistant/**` o `llms.txt` →
-  `.github/workflows/deploy-assistant.yml` (OIDC) actualiza el código del Lambda.
-- **Costo/abuso:** modelo económico + `max_tokens` bajo + caché + límites por IP/día/global; AWS Budgets
-  avisan por correo. Detalle: `backend/assistant/README.md` y
-  `openspec/changes/asistente-ia-portafolio/`.
+- **Base:** `assistant/knowledge.md` (entradas bilingües con `tags`), compilada por
+  `python scripts/assistant/build_kb.py` a `<script type="application/json" id="assistant-kb">` en `index.html`.
+- **Costo y privacidad:** $0, sin API key, sin peticiones de red ni rastreo; funciona offline.
+- **Pruebas:** `python scripts/assistant/probe_kb.py` (18 probes) + checks en `scripts/i18n/audit_i18n.py`.
+- El backend anterior en AWS (Lambda + API Gateway + DynamoDB + Bedrock) se retiró el 2026-10-01; ver el
+  cambio `openspec/changes/.../migrar-backend-portafolio/`.
 
 ## 🔄 Cómo contribuir (SDD / OpenSpec)
 

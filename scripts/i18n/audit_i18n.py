@@ -96,7 +96,20 @@ check("sin cifras 40%/80%/99.95 (index, llms, CV ES/EN, es.py) — decisión 202
       not any(re.search(r"~?40 ?%|80 ?%|99\.95", t) for t in (idx_nojson, llm, es, en, read("scripts/i18n/es.py"))))
 check("sin JV Market (index, llms, CV, es.py, blog)", not any("JV Market" in t or "EcommerceJVAV" in t for t in (idx, llm, es, en, read("scripts/i18n/es.py")) + tuple(read(b) for b in __import__("glob").glob("blog/*.html"))))
 check("Fidello piloto en CV ES/EN y llms", "piloto" in es.lower() and "pilot" in en.lower() and "pilot" in llm.lower())
-check("profile.txt == llms.txt", os.path.exists("backend/assistant/profile.txt") and read("backend/assistant/profile.txt") == llm)
+# ---------- asistente local (migrar-backend-portafolio) ----------
+m_kb = re.search(r'<script type="application/json" id="assistant-kb">(.*?)</script>', idx, re.S)
+try:
+    KB = json.loads(m_kb.group(1)); check("base de conocimiento embebida parsea", True)
+except Exception as e:
+    KB = []; check("base de conocimiento embebida parsea", False, str(e))
+check("KB con >= 18 entradas y ambos idiomas", len(KB) >= 18 and all(e.get("en") and e.get("es") and e.get("t") for e in KB), len(KB))
+check("KB sin nombres internos del empleador", not [p_ for p_ in FORBIDDEN for e in KB if re.search(p_, e.get("en", "") + e.get("es", ""))])
+check("KB coherente con llms.txt (rol actual y proyectos)",
+      all(k in json.dumps(KB, ensure_ascii=False) for k in ("Service Support Tech Lead", "Fidello", "Pyzzeria", "VoltGrid")))
+check("sin backend del asistente en el front (ni ASSISTANT_URL ni la API borrada)",
+      "ASSISTANT_URL" not in idx and "vd4c00" + "py15" not in idx)
+check("widget resuelve local (window.__askPortfolio)", "window.__askPortfolio" in idx)
+check("backend/assistant retirado del repo", not os.path.exists("backend/assistant"))
 
 # (e) PDFs: 1 página y fuentes Segoe UI (TrueType)
 try:
