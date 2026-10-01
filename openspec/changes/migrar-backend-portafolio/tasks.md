@@ -46,7 +46,7 @@ Orden por D4: **Fase 1** (sin dependencias externas) → **Fase 2** (requiere cr
 - [x] 5.3 Sincronizar specs (2 nuevas, 1 MODIFIED, 2 REMOVED) y `openspec validate --specs` verde
 
 ## 6. Cierre Fase 1
-- [ ] 6.1 Commit + merge `--no-ff` a `main` + push; workflows en success; verificación en vivo (chat responde)
+- [x] 6.1 Commit + merge `--no-ff` a `main` + push; workflows en success; verificación en vivo (chat responde)
 
 ## 7. Fase 2 — Contacto en Supabase (BLOQUEADA por el dueño)
 - [ ] 7.1 **Dueño**: crear organización nueva + proyecto `portfolio` y entregar el `project ref`; crear API key
@@ -57,7 +57,9 @@ Orden por D4: **Fase 1** (sin dependencias externas) → **Fase 2** (requiere cr
 - [ ] 7.4 Secretos: `RESEND_API_KEY`, `TO_EMAIL`, `IP_SALT` como Edge Function secrets; `SUPABASE_ACCESS_TOKEN`
       y `SUPABASE_PROJECT_REF` como secretos del repositorio
 - [ ] 7.5 `.github/workflows/deploy-contact.yml` (CLI de Supabase) y borrar `deploy-contact-api.yml` y `contact-api/`
-- [ ] 7.6 `index.html`: `CONTACT_ENDPOINT` a la nueva URL (fallback `mailto` intacto)
+- [~] 7.6 `index.html`: `CONTACT_ENDPOINT=''` desde el 2026-10-01 (el endpoint de AWS ya no existe, así que el
+      formulario va directo al fallback `mailto` sin esperar un fetch fallido); se repuebla con la URL de la Edge
+      Function al terminar la Fase 2
 - [ ] 7.7 Verificación (EL AGENTE EJECUTA): envío válido → 200 y correo recibido + fila `sent=true`; honeypot →
       4xx sin fila; email inválido → 4xx; 6 envíos seguidos → 429; `anon` no puede leer `contact_messages`;
       reporte `reports/AAAA-MM-DD-fase2-contacto.md`
