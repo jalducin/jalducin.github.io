@@ -1,10 +1,6 @@
-# Capability: qr-apunta-al-sitio-aws
+# Capability: qr-apunta-al-sitio-aws (delta)
 
-## Purpose
-
-El QR del CV y del portafolio apunta al sitio publicado en AWS (CloudFront) como destino único, coherente con la migración desde GitHub Pages.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: El QR apunta al sitio en AWS conservando el estilo
 
@@ -37,18 +33,3 @@ futuro hay dominio propio, el QR se regenera para apuntar a ese dominio. MUST co
 - **AND** ambas URLs sirven el mismo `index.html` (mismo commit de `main`); si más adelante se adopta dominio
   propio, QR y canónica convergen en ese dominio y el QR se regenera
 
-### Requirement: El QR DEBE ser escaneable de forma fiable (verificado)
-
-El QR SHALL ser legible por lectores reales de celular. El ícono central NO debe romper la decodificación.
-Es un requisito duro: un QR bonito que no escanea es un defecto.
-
-#### Scenario: Parámetros que garantizan lectura
-- **WHEN** se genera el QR con logo central
-- **THEN** usa **corrección de errores nivel H** (~30%) para tolerar el logo
-- **AND** el ícono central ocupa como máximo ~20-25% del área (sin cubrir patrones de posición/timing)
-- **AND** mantiene **zona de silencio** (quiet zone ≥ 4 módulos) y **alto contraste** (módulos oscuros sobre fondo claro)
-
-#### Scenario: Verificación con lector real (OBLIGATORIO)
-- **WHEN** se termina el QR
-- **THEN** se **decodifica/escanea** (lector de celular y/o decodificador de software) y abre la URL del sitio AWS
-- **AND** no se da por terminado hasta confirmar que al menos un lector real lo lee correctamente

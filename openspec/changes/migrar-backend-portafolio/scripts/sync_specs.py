@@ -30,6 +30,8 @@ for delta_path in sorted(glob.glob(os.path.join(CHANGE, "*", "spec.md"))):
     secs = split_sections(delta)
     main_path = os.path.join(MAIN, cap, "spec.md")
     if not os.path.exists(main_path):
+        if not secs["ADDED"]:
+            print("OMITIDO  ", cap, "(solo REMOVED y la capability ya no existe)"); continue
         os.makedirs(os.path.dirname(main_path), exist_ok=True)
         body = "# Capability: %s\n\n## Requirements\n\n" % cap + "\n".join(b for _, b in secs["ADDED"])
         io.open(main_path, "w", encoding="utf-8", newline="").write(body)

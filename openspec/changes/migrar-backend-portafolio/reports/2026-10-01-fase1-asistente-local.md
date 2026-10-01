@@ -39,3 +39,27 @@
 ## Resultado
 - Fase 1: **PASS**. Bloqueos: ninguno.
 - Pendiente externo para la Fase 2: organización + proyecto de Supabase (`project ref`) y API key de Resend.
+
+## Addendum — alcance real de la limpieza de AWS (descubierto al desplegar)
+
+Al hacer push de la Fase 1, el workflow `Deploy to AWS (S3 + CloudFront)` falló con
+`Not authorized to perform sts:AssumeRoleWithWebIdentity`. Verificación con la CLI (solo lectura):
+
+| Recurso | Comando | Resultado |
+|---|---|---|
+| Rol OIDC `gh-actions-portfolio-deploy` | `aws iam get-role` | `NoSuchEntity` |
+| Bucket `jalducin-portfolio-957266312835` | `aws s3 ls` | `NoSuchBucket` |
+| Distribución `EG4961CAMR9Z8` | `aws cloudfront get-distribution` | `NoSuchDistribution` |
+| `https://d3r3bnavnwzqaw.cloudfront.net` | `curl` | no resuelve (000) |
+| `https://jalducin.github.io` | `curl` | **200 y ya sirve la Fase 1** (KB + `__askPortfolio`) |
+
+Es decir, la limpieza no solo borró el backend: también el **hosting** del sitio en AWS. La nota de traspaso
+solo documentaba el backend. Acciones tomadas en consecuencia (mismo cambio):
+
+- Eliminados `.github/workflows/deploy.yml`, `deploy-contact-api.yml`, `scripts/deploy-aws.ps1` y `contact-api/`.
+- **QR del CV regenerado**: apuntaba a la distribución borrada; ahora codifica `https://jalducin.github.io`,
+  con corrección de errores **H** y el logo "JVAV" central preservado (verificado con `cv2.QRCodeDetector`).
+  PDFs ES/EN regenerados (1 página cada uno).
+- `README.md` §Despliegue reescrito (GitHub Pages como único hosting), `assistant/knowledge.md` y `cv/README.md`
+  actualizados.
+- Specs: `hosting-aws-tier0` retirada (REMOVED, 2 requirements) y `qr-apunta-al-sitio-aws` modificada.
