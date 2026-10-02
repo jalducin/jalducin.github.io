@@ -37,3 +37,15 @@ son la fuente de verdad y el despliegue se hace desde ellos. La spec `contacto-b
   confirmación, así que se dejan para que el dueño las elimine desde el dashboard si quiere.
 
 ## Resultado: PASS · Bloqueos: ninguno
+
+## Fase 3 — Limpieza en AWS (verificada el 2026-10-02)
+No quedó nada del portafolio por borrar: la limpieza del dueño del 2026-10-01 ya se llevó todo.
+
+| Recurso que el traspaso daba por vivo | Verificación | Estado |
+|---|---|---|
+| Rol `jalducin-assistant-lambda-role` | `aws iam get-role` | `NoSuchEntity` (ya no existe) |
+| Roles `jalducin*` / `gh-actions*` | `aws iam list-roles` | lista vacía |
+| Log group `/aws/lambda/jalducin-assistant` | `aws logs describe-log-groups` (us-east-2) | no aparece; los únicos log groups son de **Fidello QAS** (otro proyecto, **no se tocan**) |
+| Proveedor OIDC `token.actions.githubusercontent.com` | `aws iam list-open-id-connect-providers` | **se conserva**: es a nivel de cuenta, no cuesta nada y puede usarlo otro proyecto |
+
+Resultado: Fase 3 cerrada sin ejecutar borrados. El portafolio ya no depende de AWS en ningún punto.

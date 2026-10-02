@@ -156,7 +156,7 @@ navegador contra una base de conocimiento curada (costo $0, sin API key, sin COR
 - **Verificación:** `python scripts/assistant/probe_kb.py` (18 probes: 12 preguntas ES/EN, fuera de alcance,
   cero `fetch`, KB inválida) y los checks de `scripts/i18n/audit_i18n.py`.
 - **Historia:** el backend anterior (Lambda `jalducin-assistant` + API Gateway + DynamoDB + Bedrock) fue
-  borrado el 2026-10-01 en una limpieza de la cuenta AWS; el cambio OpenSpec `migrar-backend-portafolio`
+  borrado el 2026-10-01 en una limpieza de la cuenta AWS; el cambio OpenSpec archivado `2026-10-02-migrar-backend-portafolio`
   documenta la migración.
 
 ## Formulario de contacto

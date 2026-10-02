@@ -45,7 +45,7 @@ El sitio se publica en **GitHub Pages** desde la rama `main` (estático, sin bui
 - **Historia:** entre junio y septiembre de 2026 el sitio también se sirvió desde AWS (S3 privado + CloudFront
   con OAC, desplegado por OIDC). El 2026-10-01 esos recursos se eliminaron en una limpieza de la cuenta AWS
   —junto con el backend del asistente y del formulario— y el hosting volvió a ser solo GitHub Pages, que
-  siempre fue la URL canónica. Ver el cambio OpenSpec `migrar-backend-portafolio`.
+  siempre fue la URL canónica. Ver el cambio OpenSpec archivado `2026-10-02-migrar-backend-portafolio`.
 
 ## Asistente IA ("Ask my portfolio")
 

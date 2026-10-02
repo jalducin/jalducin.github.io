@@ -66,7 +66,8 @@ Orden por D4: **Fase 1** (sin dependencias externas) → **Fase 2** (requiere cr
       reporte `reports/AAAA-MM-DD-fase2-contacto.md`
 
 ## 8. Fase 3 — Limpieza y cierre
-- [ ] 8.1 Con aprobación del dueño: borrar en AWS el rol `jalducin-assistant-lambda-role` y el log group
-      `/aws/lambda/jalducin-assistant`; revisar si `gh-actions-portfolio-deploy` sigue en uso (sí: despliega el sitio)
-- [ ] 8.2 Borrar `MIGRACION-BACKEND-SUPABASE.md`
-- [ ] 8.3 `/opsx:verify` y archivar el cambio
+- [x] 8.1 Verificado el 2026-10-02: no quedó nada del portafolio en AWS (rol `NoSuchEntity`, sin roles
+      `jalducin*`/`gh-actions*`, sin log groups del asistente). No hubo borrados que ejecutar. El proveedor OIDC
+      de la cuenta se conserva (gratis y potencialmente usado por otro proyecto)
+- [x] 8.2 Borrado `MIGRACION-BACKEND-SUPABASE.md` (nota de traspaso; su contenido vive en proposal/design/reportes)
+- [x] 8.3 Verificado y archivado el 2026-10-02
