@@ -57,7 +57,7 @@ Widget de chat en `index.html` (burbuja `#ai-fab`) que responde preguntas sobre 
 - **Costo y privacidad:** $0, sin API key, sin peticiones de red ni rastreo; funciona offline.
 - **Pruebas:** `python scripts/assistant/probe_kb.py` (18 probes) + checks en `scripts/i18n/audit_i18n.py`.
 - El backend anterior en AWS (Lambda + API Gateway + DynamoDB + Bedrock) se retiró el 2026-10-01; ver el
-  cambio `openspec/changes/.../migrar-backend-portafolio/`.
+  cambio `openspec/changes/archive/2026-10-02-migrar-backend-portafolio/`.
 
 ## 🔄 Cómo contribuir (SDD / OpenSpec)
 
