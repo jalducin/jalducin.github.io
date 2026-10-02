@@ -49,18 +49,19 @@ Orden por D4: **Fase 1** (sin dependencias externas) → **Fase 2** (requiere cr
 - [x] 6.1 Commit + merge `--no-ff` a `main` + push; workflows en success; verificación en vivo (chat responde)
 
 ## 7. Fase 2 — Contacto en Supabase (BLOQUEADA por el dueño)
-- [ ] 7.1 **Dueño**: crear organización nueva + proyecto `portfolio` y entregar el `project ref`; crear API key
-      de Resend. (El agente no puede crear organizaciones.)
-- [ ] 7.2 `supabase/migrations/0001_contact_messages.sql`: tabla + índices + RLS habilitado sin políticas
-- [ ] 7.3 `supabase/functions/contact/index.ts`: validación, honeypot, rate limit por `ip_hash` (5/h), insert,
+- [x] 7.1 Dueño creó la org `haljordan's Org` y el proyecto `Portafolio` (`eolsklubeywfmuyrtxla`). API key de
+      Resend: **pendiente, no bloqueante** (sin ella el mensaje se guarda y responde `queued`)
+- [x] 7.2 `supabase/migrations/0001_contact_messages.sql`: tabla + índices + RLS habilitado sin políticas
+- [x] 7.3 `supabase/functions/contact/index.ts`: validación, honeypot, rate limit por `ip_hash` (5/h), insert,
       Resend, `update sent`, CORS para `jalducin.github.io` y CloudFront
-- [ ] 7.4 Secretos: `RESEND_API_KEY`, `TO_EMAIL`, `IP_SALT` como Edge Function secrets; `SUPABASE_ACCESS_TOKEN`
-      y `SUPABASE_PROJECT_REF` como secretos del repositorio
-- [ ] 7.5 `.github/workflows/deploy-contact.yml` (CLI de Supabase) y borrar `deploy-contact-api.yml` y `contact-api/`
-- [~] 7.6 `index.html`: `CONTACT_ENDPOINT=''` desde el 2026-10-01 (el endpoint de AWS ya no existe, así que el
-      formulario va directo al fallback `mailto` sin esperar un fetch fallido); se repuebla con la URL de la Edge
-      Function al terminar la Fase 2
-- [ ] 7.7 Verificación (EL AGENTE EJECUTA): envío válido → 200 y correo recibido + fila `sent=true`; honeypot →
+- [~] 7.4 Secretos: la función funciona con defaults; faltan `RESEND_API_KEY` e `IP_SALT` como Edge Function
+      secrets (acción del dueño). `SUPABASE_ACCESS_TOKEN` **ya no aplica**: sin CI por decisión del dueño
+- [x] 7.5 n/a el workflow (sin CI, decisión del dueño 2026-10-02); `deploy-contact-api.yml` y `contact-api/` ya
+      se eliminaron en la Fase 1. Documentado en `supabase/README.md`
+- [x] 7.6 `index.html`: `CONTACT_ENDPOINT=''` desde el 2026-10-01 (el endpoint de AWS ya no existe, así que el
+      formulario va directo al fallback `mailto` sin esperar un fetch fallido); repoblado el 2026-10-02 con la URL de la Edge
+      Function; el fallback `mailto` sigue intacto
+- [x] 7.7 Verificación (EL AGENTE EJECUTA): envío válido → 200 y correo recibido + fila `sent=true`; honeypot →
       4xx sin fila; email inválido → 4xx; 6 envíos seguidos → 429; `anon` no puede leer `contact_messages`;
       reporte `reports/AAAA-MM-DD-fase2-contacto.md`
 

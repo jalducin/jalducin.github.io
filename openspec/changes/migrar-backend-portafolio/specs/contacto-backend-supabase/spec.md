@@ -53,8 +53,11 @@ correo del dueño.
 El despliegue de la función y las migraciones SHALL ser reproducible desde el repositorio (`supabase/`), sin
 pasos manuales en la consola más allá de crear el proyecto y cargar los secretos.
 
-#### Scenario: CI de despliegue
-- **WHEN** se hace push a `main` tocando `supabase/**`
-- **THEN** un workflow despliega la Edge Function con el CLI de Supabase usando `SUPABASE_ACCESS_TOKEN` y el
-  `project ref` como secretos del repositorio
-- **AND** los workflows de AWS (`deploy-assistant.yml`, `deploy-contact-api.yml`) ya no existen
+#### Scenario: Artefactos versionados y despliegue desde el repo
+- **WHEN** se necesita recrear o actualizar el backend del formulario
+- **THEN** la migración (`supabase/migrations/*.sql`) y la función (`supabase/functions/contact/index.ts`) viven
+  en el repositorio y son la fuente de verdad; el dashboard de Supabase nunca lo es
+- **AND** el despliegue se hace desde esos artefactos (conector de Supabase o `supabase functions deploy`), sin
+  workflow de CI: la función cambia pocas veces al año y el proyecto evita infraestructura innecesaria
+  (decisión del dueño, 2026-10-02)
+- **AND** los workflows de AWS (`deploy.yml`, `deploy-assistant.yml`, `deploy-contact-api.yml`) ya no existen

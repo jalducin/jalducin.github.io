@@ -797,9 +797,9 @@
       if(window.__showTab){window.__showTab('contact');}else{location.hash='#contact';}
       const n=document.getElementById('cf-name'); if(n)setTimeout(()=>n.focus(),140);
     });}
-    /* Endpoint del contacto. Vacío = el formulario usa directamente el fallback copiar+mailto.
-       Se repuebla en la Fase 2 del cambio migrar-backend-portafolio con la Edge Function de Supabase. */
-    const CONTACT_ENDPOINT='';
+    /* Edge Function de contacto (Supabase). Guarda el mensaje y lo envía por correo.
+       Si falla, el formulario cae al fallback copiar+mailto. Ver supabase/functions/contact/. */
+    const CONTACT_ENDPOINT='https://eolsklubeywfmuyrtxla.supabase.co/functions/v1/contact';
     const form=document.getElementById('contactForm');
     if(form){
       form.addEventListener('submit',async(e)=>{
