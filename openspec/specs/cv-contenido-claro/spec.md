@@ -47,8 +47,9 @@ tecnologías en *Learning* y las soft skills NO SHALL aparecer.
 
 ### Requirement: Tres proyectos destacados con evidencia verificable
 La sección Proyectos SHALL mostrar **3 proyectos destacados**, en este orden: **platform-STALD**, **Fidello** y
-**Monitoreo-Cloud**. Cada uno lleva una descripción de ≤ 2 líneas, al menos una cifra verificable (pruebas,
-PRs, cambios OpenSpec, fuentes) y su enlace (repo o deep dive) como texto. Una línea final "Otros" SHALL
+**Monitoreo-Cloud**. Cada uno lleva una descripción de ≤ 2 líneas y su enlace (repo o deep dive) como texto;
+Fidello y Monitoreo-Cloud llevan al menos una cifra verificable. platform-STALD se presenta como **proyecto
+personal hecho como pasatiempo**, sin cifras ni alarde, pero con su detalle técnico (decisión del 2026-11-03). Una línea final "Otros" SHALL
 nombrar VoltGrid, Trackion y dataMasterGK con su enlace de GitHub. Pyzzeria NO SHALL aparecer.
 
 #### Scenario: Proyectos y orden
@@ -59,7 +60,7 @@ nombrar VoltGrid, Trackion y dataMasterGK con su enlace de GitHub. Pyzzeria NO S
 
 #### Scenario: Cada proyecto tiene enlace y cifra
 - **WHEN** se revisa cada proyecto destacado
-- **THEN** incluye un enlace como texto y al menos un número verificable en su repositorio
+- **THEN** incluye un enlace como texto (y Fidello/Monitoreo-Cloud, al menos un número verificable)
 
 ### Requirement: Solo afirmaciones vigentes
 El CV y `llms.txt` SHALL describir el estado de cada proyecto sin afirmar actividad que ya no es vigente. En

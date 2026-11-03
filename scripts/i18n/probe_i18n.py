@@ -61,7 +61,7 @@ r = run(probe_js="""
  document.title='PROBE '+JSON.stringify(r);""", url_suffix="?lang=en")
 check("EN restaurado byte a byte tras es/en/es/en", r.get("same") is True, r)
 # portafolio-claridad: el primer proyecto destacado ahora es platform-STALD (antes Fidello)
-check("muestra ES aplicada (platform-STALD)", r.get("esSample") == "platform-STALD — Plataforma educativa construida con agentes de IA", r.get("esSample"))
+check("muestra ES aplicada (platform-STALD)", r.get("esSample") == "platform-STALD — Proyecto personal", r.get("esSample"))
 check("tab activa conservada (#featured-projects)", r.get("active") == "#featured-projects", r.get("active"))
 check("handlers intactos (__showTab, __downloadCV, 4 a[data-cv], terminal, form, palette)",
       r.get("showTab") == "function" and r.get("dl") == "function" and r.get("cv") == 4 and r.get("term") and r.get("form") and r.get("cmdk"), r)
