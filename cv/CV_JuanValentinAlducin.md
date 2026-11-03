@@ -21,18 +21,18 @@
 
 ## Resumen
 
-Senior Backend Engineer y Tech Lead con +10 años en Python, SQL y AWS. Hago la operación confiable y
-automatizada (post-mortems, runbooks, n8n) y construyo software con Spec-Driven Development y agentes de IA.
+Senior Backend Engineer y Tech Lead con +10 años en Python, SQL y AWS. Trabajo en la confiabilidad y
+automatización de la operación (post-mortems, runbooks, n8n) y construyo software con Spec-Driven Development y agentes de IA.
 
 ## Experiencia
 
 ### Service Support Tech Lead & AI Specialist — Podemos Progresar
 07/2026 - Presente · CDMX
 
-- Lidero Service Support: bugs, incidentes críticos y deuda técnica end-to-end con SDD y Claude.
-- Creé el sistema de post-mortems (P0–P3, blameless, tablero en vivo) y la metodología de uptime/downtime por impacto real.
-- Automatizo la operación con n8n (Freshdesk → Notion → Slack) y una Skill de IA que enruta tickets con revisión humana.
-- Trenes de liberación semanales y operación AWS (Lambda, Step Functions, CloudWatch, RDS); SLA <10 min, crítica <2 h.
+- Coordino Service Support (bugs, incidentes críticos y deuda técnica) y apliqué SDD con Claude API al flujo diagnóstico → implementación.
+- Participo en la transformación de post-mortems (P0–P3, 5 Whys, blameless) y llevo el control mensual de uptime/downtime.
+- Automatizo parte de la operación con n8n (Freshdesk → Notion → Slack) y desarrollo un Skill de IA para rutear tickets.
+- Valido despliegues en los trenes de liberación semanales; opero AWS (CloudWatch, RDS) y Sentry; SLA <10 min, crítica <2 h.
 
 ### Backend Support Specialist — Podemos Progresar
 09/2025 - 06/2026 · CDMX

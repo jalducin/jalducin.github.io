@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Deep dive — Pyzzeria: live order tracking on AWS serverless for $0 idle — Juan Valentin Alducin</title>
-<meta name="description" content="Pyzzeria deep dive: problem, approach, architecture (API Gateway HTTP + WebSocket, Lambda/FastAPI, DynamoDB, Step Functions Express, S3/CloudFront), key decisions and results. Live demo on CloudFront." />
+<meta name="description" content="Pyzzeria deep dive: problem, approach, architecture (API Gateway HTTP + WebSocket, Lambda/FastAPI, DynamoDB, Step Functions Express, S3/CloudFront), key decisions and results. The live demo was retired; the code and this write-up remain." />
 <link rel="canonical" href="https://jalducin.github.io/blog/deep-dive-pyzzeria.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Deep dive — Pyzzeria: live order tracking on AWS serverless for $0 idle" />
-<meta property="og:description" content="Problem → approach → architecture → decisions → result. FastAPI + Mangum on Lambda, DynamoDB, Step Functions Express driving a WebSocket feed, all in AWS SAM. Live demo." />
+<meta property="og:description" content="Problem → approach → architecture → decisions → result. FastAPI + Mangum on Lambda, DynamoDB, Step Functions Express driving a WebSocket feed, all in AWS SAM. Code on GitHub." />
 <meta property="og:image" content="https://jalducin.github.io/assets/img/og-image.png" />
 <meta property="og:url" content="https://jalducin.github.io/blog/deep-dive-pyzzeria.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -35,6 +35,7 @@
   /* Deep-dive additions (palette tokens only) */
   .status{display:flex;flex-wrap:wrap;gap:.5rem;margin:.6rem 0 1.2rem;}
   .status span{background:var(--badge-bg);border:1px solid var(--border);border-radius:6px;padding:.25rem .6rem;font-family:'Courier New',monospace;font-size:.78rem;color:var(--accent2);}
+  .note{border-left:3px solid var(--primary);background:var(--card-bg);padding:.6rem .9rem;border-radius:6px;margin:0 0 1.4rem;color:var(--accent2);font-size:.92rem;}
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin:1rem 0;}
   .kpi{background:var(--badge-bg);border:1px solid var(--border);border-radius:8px;padding:.7rem .6rem;text-align:center;}
   .kpi b{display:block;font-size:1.35rem;color:var(--primary);font-family:'Courier New',monospace;line-height:1.2;}
@@ -72,8 +73,9 @@
       <h1>Pyzzeria: live order tracking on AWS serverless for $0 idle</h1>
       <div class="meta">2026-09-20 · 7 min read · Problem → Approach → Architecture → Decisions → Result</div>
       <div class="status">
-        <span>🍕 Live on AWS</span><span>★ 100% SDD/OpenSpec</span><span>Public repository · live demo</span>
+        <span>🍕 Demo retired</span><span>★ 100% SDD/OpenSpec</span><span>Public repository</span>
       </div>
+      <p class="note"><em>Note: the live demo was retired (Nov 2026); the code and this write-up remain.</em></p>
 
       <h2>Problem</h2>
       <p>I wanted a portfolio demo that a recruiter can <em>use</em> in under two minutes — not a README — and that exercises the parts of AWS I operate every day: API Gateway, Lambda, DynamoDB and Step Functions. The constraints were strict on purpose:</p>
@@ -203,13 +205,12 @@
 
       <h2>Result</h2>
       <ul>
-        <li><strong>Live on AWS</strong>: build a pizza, place the order and watch it reach <code>entregado</code> in about 70 seconds over WebSocket — try it below.</li>
+        <li><strong>Ran live on AWS</strong>: build a pizza, place the order and watch it reach <code>entregado</code> in about 70 seconds over WebSocket (the public demo was retired in Nov 2026; <code>sam deploy</code> from the repo brings it back).</li>
         <li><strong>$0 idle</strong>: no EC2, no RDS, no NAT; all resources are pay-per-request inside the Free Tier.</li>
         <li><strong>Documented and reproducible</strong>: OpenAPI/Swagger from the code, one SAM template, SDD artifacts in the repo.</li>
         <li><strong>Reusable pattern</strong>: the same "workflow drives a WebSocket feed" shape applies to any long-running job that a user wants to watch.</li>
       </ul>
       <div class="cta">
-        <a class="btn" href="https://d3ni8wwgux3wy8.cloudfront.net/" target="_blank" rel="noopener">Live demo ↗</a>
         <a class="btn" href="https://github.com/jalducin/pyzzeria" target="_blank" rel="noopener">View code ↗</a>
         <a class="btn" href="deep-dive-fidello.html">Previous: Fidello deep dive ›</a>
       </div>

@@ -59,7 +59,7 @@ for lang, cases in (("en", CASES_EN), ("es", CASES_ES)):
     r = run(js % (json.dumps(cases, ensure_ascii=False), lang))
     for item in r.get("res", []):
         check("%s | %s" % (lang.upper(), item["q"]), item["ok"], item.get("got"))
-    check("%s | KB cargada (21 entradas)" % lang.upper(), r.get("kb") == 21, r.get("kb"))
+    check("%s | KB cargada (23 entradas)" % lang.upper(), r.get("kb") == 23, r.get("kb"))  # portafolio-claridad: +perfil, +proyectos, +platform-stald, -pyzzeria
 
 # fuera de alcance
 r = run("""var out=['cual es tu color favorito','what is the weather tomorrow','dame la receta de tacos'].map(function(q){return window.__askPortfolio(q)===null;});

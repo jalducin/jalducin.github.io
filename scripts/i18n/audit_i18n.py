@@ -90,13 +90,35 @@ check("4 principios en llms.txt", all(k in llm for k in ("Automate", "Reliabilit
 check("leyenda de niveles en index.html", all(k in idx for k in ("level-grid", "Own", "Build", "Operate", "Learning")))
 check("Kubernetes solo en VoltGrid", idx.count("Kubernetes") >= 1 and "kubernetes-plain.svg" not in idx and
       all("VoltGrid" in idx[max(0, m.start() - 1500):m.start()] for m in re.finditer("Kubernetes", idx)))
-check("badges Fidello con cifras", all(k in idx for k in ("793", "91 migrations", "Pilot")))
+# portafolio-claridad: Fidello conserva sus cifras pero ya no lleva badge "Pilot" (antes se exigía "Pilot")
+check("badges Fidello con cifras y sin Pilot", all(k in idx for k in ("793", "91 migrations")) and "Pilot" not in idx)
 idx_nojson = re.sub(r'<script type="application/json" id="i18n-es">.*?</script>', "", idx, flags=re.S)
 check("sin cifras 40%/80%/99.95 (index, llms, CV ES/EN, es.py) — decisión 2026-09-20",
       not any(re.search(r"~?40 ?%|80 ?%|99\.95", t) for t in (idx_nojson, llm, es, en, read("scripts/i18n/es.py"))))
 check("sin JV Market (index, llms, CV, es.py, blog)", not any("JV Market" in t or "EcommerceJVAV" in t for t in (idx, llm, es, en, read("scripts/i18n/es.py")) + tuple(read(b) for b in __import__("glob").glob("blog/*.html"))))
 check("Fidello sin piloto activo en CV ES/EN y llms (cv-claridad)",
       not any(w in t for t in (es, en, llm) for w in ("beta", "cafeterías reales", "real coffee shops")))
+# portafolio-claridad: mismas reglas en el sitio (index.html sin el bloque assistant-kb, que mantiene otro flujo) y es.py
+idx_site = re.sub(r'<script type="application/json" id="assistant-kb">.*?</script>', "", idx, flags=re.S)
+es_py = read("scripts/i18n/es.py")
+check("Fidello sin piloto/beta/cafeterías reales en index.html y es.py (portafolio-claridad)",
+      not any(re.search(w, t) for t in (idx_site, es_py) for w in (r"\bPilot", r"\bPiloto", r"\bbeta\b", r"cafeterías reales", r"real coffee shops")))
+# portafolio-claridad: Pyzzeria retirado del sitio (su demo CloudFront ya no existe)
+check("sin Pyzzeria ni cloudfront.net en index.html (fuera de assistant-kb) y es.py (portafolio-claridad)",
+      not any(re.search(r"(?i)pyzzeria|cloudfront\.net", t) for t in (idx_site, es_py)))
+# portafolio-claridad: platform-STALD es el primer proyecto destacado, con link y traducción ES
+fp = re.search(r'<section id="featured-projects".*?</section>', idx, re.S)
+fp_h3 = re.findall(r"<h3[^>]*>(.*?)</h3>", fp.group(0)) if fp else []
+check("platform-STALD primer proyecto destacado (orden STALD, Fidello, Monitoreo-Cloud)",
+      len(fp_h3) >= 3 and fp_h3[0].startswith("platform-STALD") and fp_h3[1].startswith("Fidello")
+      and fp_h3[2].startswith("Monitoreo-Cloud") and "https://github.com/jalducin/platform-STALD" in fp.group(0), str(fp_h3[:3]))
+# portafolio-claridad: certificaciones y skills alineados con el CV
+check("certificaciones del CV en index.html (Anthropic Academy, Vanderbilt, AWS Bedrock)",
+      all(k in idx for k in ("Anthropic Academy", "Claude Code: Software Engineering with Generative AI Agents",
+                             "Generative AI Applications with Amazon Bedrock")))
+lb = re.search(r'<div class="level level-build">.*?</ul>', idx, re.S)
+check("Build incluye Deno Deploy y Claude Code (subagents, skills, hooks, MCP)",
+      bool(lb) and "Deno Deploy" in lb.group(0) and "Claude Code (subagents, skills, hooks, MCP)" in lb.group(0))
 # ---------- asistente local (migrar-backend-portafolio) ----------
 m_kb = re.search(r'<script type="application/json" id="assistant-kb">(.*?)</script>', idx, re.S)
 try:
@@ -106,7 +128,8 @@ except Exception as e:
 check("KB con >= 18 entradas y ambos idiomas", len(KB) >= 18 and all(e.get("en") and e.get("es") and e.get("t") for e in KB), len(KB))
 check("KB sin nombres internos del empleador", not [p_ for p_ in FORBIDDEN for e in KB if re.search(p_, e.get("en", "") + e.get("es", ""))])
 check("KB coherente con llms.txt (rol actual y proyectos)",
-      all(k in json.dumps(KB, ensure_ascii=False) for k in ("Service Support Tech Lead", "Fidello", "Pyzzeria", "VoltGrid")))
+      # portafolio-claridad: ya no se exige "Pyzzeria" (retirado del portafolio); la KB la mantiene assistant/
+      all(k in json.dumps(KB, ensure_ascii=False) for k in ("Service Support Tech Lead", "Fidello", "VoltGrid")))
 check("sin backend del asistente en el front (ni ASSISTANT_URL ni la API borrada)",
       "ASSISTANT_URL" not in idx and "vd4c00" + "py15" not in idx)
 check("widget resuelve local (window.__askPortfolio)", "window.__askPortfolio" in idx)
