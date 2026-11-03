@@ -5,13 +5,12 @@
 Garantiza que el CV en PDF (`cv/cv.html`, `cv/cv-en.html`) sea legible al imprimir, quepa en 1 página Oficio,
 sea parseable por sistemas ATS y se genere con un build determinista y sin dependencias de red, para
 reclutadores humanos y sistemas de selección automatizada.
-
 ## Requirements
-
 ### Requirement: Tipografía legible al imprimir (mínimo 8.5pt) en 1 página
 El CV (`cv/cv.html`, `cv/cv-en.html`) SHALL usar una tipografía legible al imprimir: **ningún texto por debajo
-de 8.5pt** (≈11.3px), cuerpo a ~8.5–9pt, encabezados/títulos prominentes, y MUST mantenerse en **1 página
-Oficio**. El interlineado de listas de bullets (`ul.b li`) MAY reducirse hasta 1.22 para conservar la página.
+de 8.5pt** (≈11.3px), cuerpo a ~8.5–9pt, encabezados/títulos prominentes, y MUST mantenerse en **1 página A4
+(210×297 mm)**. El interlineado de listas de bullets (`ul.b li`) MAY reducirse hasta 1.22 para conservar la
+página.
 
 #### Scenario: Tamaños mínimos
 - **WHEN** se revisa el CSS del CV
@@ -20,13 +19,16 @@ Oficio**. El interlineado de listas de bullets (`ul.b li`) MAY reducirse hasta 1
 - **AND** `ul.b li` tiene `line-height` ≥ 1.22
 - **AND** el CV se mantiene en **1 página** (verificado por conteo real del árbol de páginas del PDF)
 
+#### Scenario: Tamaño de página A4
+- **WHEN** se revisa la regla `@page` de `cv.html` y `cv-en.html` y el `/MediaBox` de ambos PDFs
+- **THEN** `@page` declara `size: 210mm 297mm` (o `A4`)
+- **AND** el `/MediaBox` de cada PDF mide ≈ 595×842 pt
+
 #### Scenario: Estrategia de espacio para 1 página
-- **WHEN** se necesita más espacio para el contenido nuevo (dos roles en Podemos, cifras de Fidello)
-- **THEN** se compactan bullets a ≤ ~125 caracteres (2 líneas), se acortan descripciones de proyectos a
-  1–2 líneas, la sección Idiomas se coloca en la columna con más holgura (hoy la izquierda, bajo Educación),
-  el QR de Portafolio va en el header, el interlineado del cuerpo puede bajar hasta 1.25 y se podan bullets
-  de menor impacto — sin reducir la letra bajo 8.5pt ni quitar datos de contacto, roles o fechas
-- **AND** la regla de cabida verificada es: altura del `.sheet` ≤ 340 mm (medida en Chrome headless); el
+- **WHEN** el contenido no cabe en la página
+- **THEN** se recorta contenido según `cv-contenido-claro` (límites de bullets, 5 categorías, 3 proyectos)
+  antes de tocar la tipografía, sin reducir la letra bajo 8.5pt ni quitar datos de contacto, roles o fechas
+- **AND** la regla de cabida verificada es: altura del `.sheet` ≤ 297 mm (medida en Chrome headless); el
   conteo real de páginas del PDF es la comprobación final
 
 ### Requirement: Header con QR y etiqueta alineados
@@ -73,3 +75,4 @@ ES) para revisión humana y LinkedIn; NO es la fuente del PDF.
 - **WHEN** se compara `cv/CV_JuanValentinAlducin.md` con `cv/cv.html` tras un cambio de contenido
 - **THEN** títulos de rol, fechas, bullets, educación, cursos, skills y proyectos coinciden en texto
 - **AND** el archivo lleva un comentario inicial que indica que la fuente canónica es `cv/cv.html`
+
