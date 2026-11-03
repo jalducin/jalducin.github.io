@@ -71,10 +71,8 @@ automatización de la operación (post-mortems, runbooks, n8n) y construyo softw
 
 ## Proyectos
 
-### platform-STALD — Plataforma educativa
-Portal, actividades en línea y juegos multijugador en tiempo real, hecho 100 % con SDD y Claude Code: subagentes
-revisor y verificador, 14 skills y un hook que bloquea secretos y push a main. +250 PRs · +85 cambios OpenSpec ·
-pruebas en CI + E2E.
+### platform-STALD — Proyecto personal
+Plataforma educativa que hice como pasatiempo y uso para practicar tecnologías e IA: Spec-Driven Development con Claude Code (subagentes, skills y hooks), juegos multijugador en tiempo real y pruebas en CI.
 Deno · TypeScript · Supabase (Postgres RLS, Auth, Realtime) · github.com/jalducin/platform-STALD
 
 ### Fidello — Loyalty Card System

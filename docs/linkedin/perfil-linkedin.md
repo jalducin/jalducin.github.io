@@ -29,7 +29,7 @@ Senior Backend Engineer y Tech Lead con +10 años en Python, SQL y AWS.
 
 Hoy coordino Service Support en una fintech: trabajo en la confiabilidad y automatización de la operación con post-mortems, control de uptime, runbooks y flujos de n8n.
 
-Construyo software con Spec-Driven Development (OpenSpec) y agentes de IA. En la práctica: la spec es el contrato, y los agentes (Claude Code con subagentes, skills y hooks) implementan, prueban y revisan con controles que yo defino. Mi mejor ejemplo es platform-STALD, una plataforma educativa con más de 250 PRs, construida de punta a punta así.
+Construyo software con Spec-Driven Development (OpenSpec) y agentes de IA. En la práctica: la spec es el contrato, y los agentes (Claude Code con subagentes, skills y hooks) implementan, prueban y revisan con controles que yo defino. Como pasatiempo hice platform-STALD, una plataforma educativa con la que practico este flujo.
 
 Stack: Python (FastAPI, Django), PostgreSQL, AWS serverless, Supabase, n8n, Grafana, Claude Code / Claude API.
 
@@ -43,7 +43,7 @@ Senior Backend Engineer and Tech Lead with 10+ years in Python, SQL and AWS.
 
 I coordinate Service Support at a fintech, working on operational reliability and automation: post-mortems, uptime tracking, runbooks and n8n workflows.
 
-I build software with Spec-Driven Development (OpenSpec) and AI agents: the spec is the contract, and agents (Claude Code with subagents, skills and hooks) implement, test and review under guardrails I define. My best example is platform-STALD, an educational platform with 250+ PRs built end-to-end this way.
+I build software with Spec-Driven Development (OpenSpec) and AI agents: the spec is the contract, and agents (Claude Code with subagents, skills and hooks) implement, test and review under guardrails I define. As a hobby I built platform-STALD, an educational platform where I practice this workflow.
 
 Stack: Python (FastAPI, Django), PostgreSQL, AWS serverless, Supabase, n8n, Grafana, Claude Code / Claude API.
 
@@ -89,13 +89,11 @@ Aptitudes (4): Python · PostgreSQL · Django · FastAPI
 
 ## 4. Proyectos (sección *Proyectos* del perfil)
 
-**platform-STALD: plataforma educativa construida con agentes de IA**, asociado a "Proyecto personal" · 2026 – actualidad
+**platform-STALD: proyecto personal**, asociado a "Proyecto personal" · 2026 – actualidad
 
 ```
-Portal, actividades en línea y juegos multijugador en tiempo real, construido 100 % con Spec-Driven Development (OpenSpec) y Claude Code.
-Tooling de agentes: subagentes revisor (solo lectura) y verificador de pruebas, 14 skills (incluye flujos de dominio) y un hook PreToolUse que bloquea commits con secretos y el push directo a main.
-+250 PRs · +85 cambios OpenSpec · pruebas unitarias en CI + E2E.
-Stack: Deno Deploy · TypeScript · Supabase (Postgres con RLS, Auth, Realtime) · JavaScript.
+Plataforma educativa que hice como pasatiempo y uso para practicar tecnologías e IA: Spec-Driven Development con Claude Code (subagentes, skills y hooks), juegos multijugador en tiempo real y pruebas en CI.
+Stack: Deno · TypeScript · Supabase (Postgres RLS, Auth, Realtime) · GitHub Actions.
 github.com/jalducin/platform-STALD
 ```
 
