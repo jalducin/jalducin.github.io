@@ -82,16 +82,16 @@ enlaces al repositorio privado de datos.
   (commits/PRs, cambios OpenSpec, pruebas), y no contiene datos de personas ni el repo `platform-STALD-data`
 
 ### Requirement: Certificaciones visibles, una por línea
-La sección de certificaciones SHALL listar **cada curso en su propia línea** con su nombre oficial y emisor
-(≤ 7 líneas): los 5 de Anthropic (Claude Code in Action, Claude Code 101, Introduction to Model Context Protocol,
-Introduction to Agent Skills, Introduction to Subagents), Vanderbilt (Claude Code: Software Engineering with
-Generative AI Agents) y AWS (Generative AI Applications with Amazon Bedrock). Decisión del propietario
-(2026-11-03): agrupados en una línea "no se veían". El portafolio lista todos los cursos, incluidos los que no
-caben en el CV.
+La sección de certificaciones del CV SHALL listar **cada curso en su propia línea** con su nombre oficial y emisor
+(≤ 8 líneas): 4 de Anthropic (Claude Code in Action, Introduction to Model Context Protocol, Introduction to Agent
+Skills, Introduction to Subagents), Vanderbilt (Claude Code: Software Engineering with Generative AI Agents), AWS
+(Generative AI Applications with Amazon Bedrock) y 2 de base técnica no-IA (Developing Applications in Python on
+AWS — Coursera; GitHub Actions Bootcamp — Código Facilito). Claude Code 101 queda solo en el portafolio (lo cubre
+*in Action*). El portafolio lista todos los cursos. Decisiones del propietario del 2026-11-03.
 
 #### Scenario: Cursos visibles
 - **WHEN** se cuentan los bloques `.course`
-- **THEN** son ≤ 7, uno por curso, y el CV sigue en 1 página A4
+- **THEN** son ≤ 8, uno por curso, incluyen Python on AWS y GitHub Actions, y el CV sigue en 1 página A4
 
 ### Requirement: llms.txt como fuente del mensaje
 `llms.txt` SHALL actualizarse **antes** que el CV y reflejar el mismo titular, rol, proyectos (STALD agregado,
