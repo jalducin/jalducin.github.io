@@ -19,7 +19,7 @@ FORBIDDEN = [r"\bSCI\b", r"\bSpore\b", r"\bHipatia\b", r"Mambu", r"\bLUCI\b", r"
 STALE = [r"Kendra", r"\bKiro\b", r"Master'?s in DevOps", r"Maestr[ií]a en DevOps", r"\bIEU\b", r"Agentic AI Systems"]
 ROLES = [  # (fecha ES, fecha EN, fecha sitio, título ES, título EN/sitio)
     ("07/2026 - Presente", "07/2026 - Present", "Jul 2026 – Present",
-     "Service Support Tech Lead &amp; IA Specialist", "Service Support Tech Lead &amp; AI Specialist"),
+     "Service Support Tech Lead &amp; AI Specialist", "Service Support Tech Lead &amp; AI Specialist"),  # cv-claridad: AI en ambos idiomas
     ("09/2025 - 06/2026", "09/2025 - 06/2026", "Sept 2025 – Jun 2026", "Backend Support Specialist", "Backend Support Specialist"),
     ("01/2022 - 09/2025", "01/2022 - 09/2025", "Jan 2022 – Sept 2025", "Software Engineer > Tech Lead", "Software Engineer → Tech Lead"),
     ("03/2017 - 01/2022", "03/2017 - 01/2022", "Mar 2017 – Jan 2022", "Software Engineer", "Software Engineer"),
@@ -95,7 +95,8 @@ idx_nojson = re.sub(r'<script type="application/json" id="i18n-es">.*?</script>'
 check("sin cifras 40%/80%/99.95 (index, llms, CV ES/EN, es.py) — decisión 2026-09-20",
       not any(re.search(r"~?40 ?%|80 ?%|99\.95", t) for t in (idx_nojson, llm, es, en, read("scripts/i18n/es.py"))))
 check("sin JV Market (index, llms, CV, es.py, blog)", not any("JV Market" in t or "EcommerceJVAV" in t for t in (idx, llm, es, en, read("scripts/i18n/es.py")) + tuple(read(b) for b in __import__("glob").glob("blog/*.html"))))
-check("Fidello piloto en CV ES/EN y llms", "piloto" in es.lower() and "pilot" in en.lower() and "pilot" in llm.lower())
+check("Fidello sin piloto activo en CV ES/EN y llms (cv-claridad)",
+      not any(w in t for t in (es, en, llm) for w in ("beta", "cafeterías reales", "real coffee shops")))
 # ---------- asistente local (migrar-backend-portafolio) ----------
 m_kb = re.search(r'<script type="application/json" id="assistant-kb">(.*?)</script>', idx, re.S)
 try:

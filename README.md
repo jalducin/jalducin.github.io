@@ -24,12 +24,14 @@ Portafolio profesional de **Juan Valentin Alducin Vázquez** — Senior Software
 ```
 jalducin.github.io/
 ├── index.html                         ← Portafolio principal (single page)
-├── cv/                                ← CV: fuente (cv.html) + PDF generado
+├── cv/                                ← CV: fuente (cv.html) + PDF generado (A4)
 ├── blog/                              ← Posts, caso de estudio SDD y deep dives de proyectos (HTML estático)
 ├── assets/img/                        ← imágenes (QR.png, og-image)
 ├── assets/                            ← Recursos estáticos
 ├── CLAUDE.md / AGENTS.md / GEMINI.md  ← Contexto por asistente de IA
 ├── docs/                              ← Estándares (base, frontend, documentación)
+│   └── linkedin/perfil-linkedin.md     ← Textos de LinkedIn derivados del CV (pegar a mano)
+├── scripts/                           ← Auditorías: i18n/, assistant/, cv/check_cv.py
 ├── openspec/                          ← Flujo SDD: project.md, specs/, changes/, schemas
 ├── ai-specs/                          ← Fuente canónica de agentes y skills
 ├── .claude/  /  .gemini/              ← Comandos /opsx:*, skills, agentes, reglas
