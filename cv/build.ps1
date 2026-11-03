@@ -1,4 +1,4 @@
-# Regenera el CV en PDF (tamaño Oficio) desde las fuentes HTML con Chrome headless.
+# Regenera el CV en PDF (tamaño A4) desde las fuentes HTML con Chrome headless.
 # Uso:  powershell -ExecutionPolicy Bypass -File cv\build.ps1
 # Salidas:
 #   cv/CV_JuanValentinAlducin.pdf     (ES, desde cv.html)

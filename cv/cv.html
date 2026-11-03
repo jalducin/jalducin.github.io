@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <title>CV — Juan Valentin Alducin Vázquez</title>
 <style>
-  /* Tamaño OFICIO (México) — 216 x 340 mm */
-  @page { size: 216mm 340mm; margin: 0; }
+  /* Tamaño A4 — 210 x 297 mm */
+  @page { size: 210mm 297mm; margin: 0; }
   *{ margin:0; padding:0; box-sizing:border-box; }
   :root{ --navy:#2b3947; --gold:#3f6488; --text:#586069; --muted:#8a9099; --rule:#2b3947; --dot:#d7dbdf; }
   html,body{ font-family:"Segoe UI",Arial,sans-serif; color:#586069; font-size:11.3px; line-height:1.25; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   body{ background:#ffffff url("hex-bg.svg") repeat; }
-  .sheet{ width:216mm; min-height:332mm; padding:10mm 11mm; }
+  .sheet{ width:210mm; min-height:289mm; padding:10mm 11mm; }
 
   header{ display:flex; align-items:flex-start; gap:6mm; }
   .head-main{ flex:1; }
@@ -27,11 +27,11 @@
   .col-left{ width:55%; }
   .col-right{ width:45%; }
 
-  section{ margin-bottom:3px; }
+  section{ margin-bottom:9px; }
   h2{ font-size:14px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:.5px; padding-bottom:2px; border-bottom:2px solid var(--rule); margin-bottom:3px; }
   .summary{ color:#586069; }
 
-  .entry{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .entry{ padding-bottom:3px; margin-bottom:3px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .entry:last-child{ border-bottom:none; }
   .role{ font-size:13px; font-weight:700; color:var(--navy); }
   .org{ font-size:12px; font-weight:700; color:var(--gold); margin:1px 0 2px; }
@@ -43,7 +43,7 @@
   ul.b li::marker{ color:var(--navy); }
   .stack{ font-size:11.3px; color:#6b727a; margin-top:2px; }
 
-  .skill{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); }
+  .skill{ padding-bottom:2px; margin-bottom:2px; border-bottom:1px dotted var(--dot); }
   .skill:last-child{ border-bottom:none; }
   .skill .cat{ font-size:12px; font-weight:700; color:var(--gold); margin-bottom:1px; }
   .skill .val{ font-size:11.3px; color:#586069; }
@@ -53,12 +53,14 @@
   .course b{ font-size:12px; color:var(--navy); display:block; }
   .course span{ font-size:11.3px; color:var(--muted); }
 
-  .proj{ padding-bottom:1px; margin-bottom:1px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
+  .proj{ padding-bottom:3px; margin-bottom:3px; border-bottom:1px dotted var(--dot); break-inside:avoid; }
   .proj:last-child{ border-bottom:none; }
   .proj .ptitle{ font-size:12.5px; font-weight:700; color:var(--navy); }
   .proj .pdesc{ font-size:11.3px; color:#586069; margin:1.5px 0; }
   .proj .pstack{ font-size:11.3px; color:#586069; }
   .proj .pstack b{ color:var(--navy); }
+  .pother{ font-size:11.3px; color:#586069; margin-top:2px; }
+  .pother b{ color:var(--navy); }
 
   .lang{ display:flex; align-items:center; justify-content:space-between; margin-bottom:3px; }
   .lang .lname b{ font-size:12px; color:var(--navy); display:block; }
@@ -98,59 +100,48 @@
     <div class="col-left">
       <section>
         <h2>Resumen</h2>
-        <p class="summary">Senior Backend Engineer y Tech Lead (+10 años; Python, SQL, AWS). Confiabilidad y automatización como producto: post-mortems, metodología de uptime, runbooks y pipelines n8n/spec-driven. IA generativa (Claude, Gemini, OpenAI, Bedrock) como copiloto del SDLC con Spec-Driven Development (SDD).</p>
+        <p class="summary">Senior Backend Engineer y Tech Lead con +10 años en Python, SQL y AWS. Hago la operación confiable y automatizada (post-mortems, runbooks, n8n) y construyo software con Spec-Driven Development y agentes de IA.</p>
       </section>
 
       <section>
         <h2>Experiencia</h2>
 
         <div class="entry">
-          <div class="role">Service Support Tech Lead &amp; IA Specialist</div>
+          <div class="role">Service Support Tech Lead &amp; AI Specialist</div>
           <div class="org">Podemos Progresar</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>07/2026 - Presente</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Lidero Service Support: bugs, incidentes críticos y deuda técnica end-to-end con SDD + Claude API, acortando el ciclo de revisión.</li>
-            <li>Sistema de post-mortems (P0–P3, blameless, tablero en vivo) y metodología de uptime/downtime mensual por impacto real.</li>
-            <li>Automatización con n8n (SDK): Freshdesk → Notion → Slack, alertas de atrasos y picos; pipelines spec-driven.</li>
-            <li>Flujos de IA (Claude, OpenAI, Gemini, Bedrock) en el SDLC; Skill de routing de tickets con revisión humana.</li>
-            <li>Trenes de liberación semanales: validación y despliegue entre core banking, originación y app de campo.</li>
-            <li>AWS (Step Functions, Lambda, CloudWatch, RDS) y tooling serverless interno (Enkoth); SLA: respuesta &lt;10 min, crítica &lt;2 h.</li>
+            <li>Lidero Service Support: bugs, incidentes críticos y deuda técnica end-to-end con SDD y Claude.</li>
+            <li>Creé el sistema de post-mortems (P0–P3, blameless, tablero en vivo) y la metodología de uptime/downtime por impacto real.</li>
+            <li>Automatizo la operación con n8n (Freshdesk → Notion → Slack) y una Skill de IA que enruta tickets con revisión humana.</li>
+            <li>Trenes de liberación semanales y operación AWS (Lambda, Step Functions, CloudWatch, RDS); SLA &lt;10 min, crítica &lt;2 h.</li>
           </ul>
-          <div class="stack">Stack: Python · SQL · PostgreSQL · Django · FastAPI · AWS (Lambda, Step Functions, CloudWatch, RDS) · n8n · Grafana · Sentry · Claude API · Docker</div>
         </div>
-
         <div class="entry">
           <div class="role">Backend Support Specialist</div>
           <div class="org">Podemos Progresar</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>09/2025 - 06/2026</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Lideré incidentes N2 con RCAs y post-mortems asistidos por IA; habilité la autoresolución en N1 vía transferencia de conocimiento.</li>
+            <li>Incidentes N2 con RCAs y post-mortems asistidos por IA; transferencia de conocimiento para resolver en N1.</li>
             <li>ETL semanal idempotente en PostgreSQL (respaldo → limpieza → actualización → bitácora) y deduplicación de identidades.</li>
-            <li>Enlace técnico central del área (Python, Django, FastAPI, PostgreSQL).</li>
           </ul>
         </div>
-
         <div class="entry">
           <div class="role">Software Engineer > Tech Lead</div>
           <div class="org">Redsis</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>01/2022 - 09/2025</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Desarrollé APIs REST (Python, Java, PHP) integrando GK POS con ERPs/CRMs vía XML/SFTP en 3 países LATAM.</li>
-            <li>Lideré el Go-Live cloud de GK POS (Perú, Colombia, Bolivia): cronogramas, stakeholders negocio/TI, preventa y capacitación local.</li>
-            <li>Dirigí el equipo funcional-técnico: estrategia de pruebas (unitarias, regresión, integración) y calidad por release.</li>
+            <li>APIs REST (Python, Java, PHP) que integran GK POS con ERPs/CRMs vía XML/SFTP en 3 países de LATAM.</li>
+            <li>Lideré el Go-Live cloud de GK POS (Perú, Colombia, Bolivia) y al equipo funcional-técnico: pruebas y calidad por release.</li>
           </ul>
-          <div class="stack">Stack: Python · Java · PHP · GK POS · GK OmniPOS · XML · SFTP · Docker · ETL</div>
         </div>
-
         <div class="entry">
           <div class="role">Software Engineer</div>
           <div class="org">Softtek</div>
           <div class="meta"><span><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 00-2 2v13a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2h-2V2h-2v2H9V2H7zM5 9h14v10H5V9z"/></svg>03/2017 - 01/2022</span><span><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>CDMX</span></div>
           <ul class="b">
-            <li>Implementé facturación, portales cliente y ETLs con SAP ERP/HANA y dashboards ejecutivos en SAP BO.</li>
-            <li>Soporte AMS a Retail GK (correctivo/evolutivo) bajo Scrum, con SLA al 98%.</li>
+            <li>Facturación, portales y ETLs con SAP ERP/HANA, dashboards en SAP BO y soporte AMS con SLA al 98 %.</li>
           </ul>
-          <div class="stack">Stack: Python · PHP · .NET · SAP ERP/HANA · SAP BO · ETL · Web Services · Scrum</div>
         </div>
       </section>
 
@@ -173,67 +164,45 @@
           <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
         </div>
       </section>
-
-      <section>
-        <h2>Capacitación / Cursos</h2>
-        <div class="course"><b>Claude Code: SE with Gen AI Agents</b><span>Vanderbilt / Anthropic · 2026</span></div>
-        <div class="course"><b>Generative AI with Amazon Bedrock</b><span>Coursera · 2026</span></div>
-        <div class="course"><b>Developing Applications in Python on AWS</b><span>Coursera · 2025</span></div>
-        <div class="course"><b>GitHub Actions Bootcamp</b><span>Código Facilito · 2025</span></div>
-      </section>
     </div>
 
     <!-- RIGHT -->
     <div class="col-right">
       <section>
         <h2>Habilidades</h2>
-        <div class="skill"><div class="cat">Lenguajes</div><div class="val">Python, SQL, PHP, JavaScript, TypeScript, Java</div></div>
-        <div class="skill"><div class="cat">Frameworks &amp; APIs</div><div class="val">Django, FastAPI, Flask, React, Next.js 14, Node.js, REST APIs, SSO/OIDC, Microservices, Event-Driven Architecture</div></div>
-        <div class="skill"><div class="cat">Cloud &amp; Serverless</div><div class="val">AWS (Lambda, Step Functions, EventBridge, CloudWatch, RDS, S3, EC2), Serverless Framework, CI/CD (GitHub Actions), Docker, Supabase</div></div>
-        <div class="skill"><div class="cat">SRE &amp; Observabilidad</div><div class="val">Post-mortems (P0–P3, blameless), uptime/downtime, runbooks, SLAs, Grafana, Sentry, CloudWatch Logs Insights</div></div>
-        <div class="skill"><div class="cat">Automatización</div><div class="val">n8n (workflow SDK), APIs Freshdesk/Notion/Asana/Slack, webhooks serverless, pipelines spec-driven</div></div>
-        <div class="skill"><div class="cat">Bases de datos</div><div class="val">PostgreSQL, MySQL, SQL Server, MongoDB, SAP HANA, DynamoDB, Liquibase</div></div>
-        <div class="skill"><div class="cat">Datos &amp; ETL</div><div class="val">Pipelines ETL, AWS Glue, SFTP/XML, Pandas/openpyxl, SAP ETL</div></div>
-        <div class="skill"><div class="cat">IA &amp; Generative AI</div><div class="val">Claude API / Claude Code, OpenAI, Gemini, Amazon Bedrock, Prompt Engineering, LLM Integration, RAG, AI Agents/Skills, Agentic Workflows, SDD/OpenSpec</div></div>
-        <div class="skill"><div class="cat">Calidad &amp; Gestión</div><div class="val">pytest (mocks), Vitest, SonarQube, Merge Requests/CI, Scrum, Jira, Asana, Notion</div></div>
-        <div class="skill"><div class="cat">Soft Skills</div><div class="val">Liderazgo Técnico, Mentoring, Comunicación Ejecutiva, Gestión de Stakeholders, Ownership, Resolución de Problemas</div></div>
+        <div class="skill"><div class="cat">Backend</div><div class="val">Python (FastAPI, Django, Flask), SQL, TypeScript, REST/WebSocket</div></div>
+        <div class="skill"><div class="cat">Cloud &amp; Serverless</div><div class="val">AWS (Lambda, Step Functions, EventBridge, CloudWatch, RDS, S3), Supabase, Deno Deploy, Docker, GitHub Actions</div></div>
+        <div class="skill"><div class="cat">Datos</div><div class="val">PostgreSQL (RLS, PL/pgSQL), ETL idempotente, Liquibase, DynamoDB</div></div>
+        <div class="skill"><div class="cat">SRE &amp; Automatización</div><div class="val">Post-mortems, runbooks, SLAs, Grafana, Sentry, n8n</div></div>
+        <div class="skill"><div class="cat">IA aplicada</div><div class="val">Claude Code (subagentes, skills, hooks, MCP), Claude API, Amazon Bedrock, SDD/OpenSpec</div></div>
       </section>
-
 
       <section>
         <h2>Proyectos</h2>
         <div class="proj">
+          <div class="ptitle">platform-STALD — Plataforma educativa</div>
+          <p class="pdesc">Portal, actividades en línea y juegos multijugador en tiempo real, hecho 100 % con SDD y Claude Code: subagentes revisor y verificador, 14 skills y un hook que bloquea secretos y push a main. +250 PRs · +85 cambios OpenSpec · pruebas en CI + E2E.</p>
+          <div class="pstack">Deno · TypeScript · Supabase (Postgres RLS, Auth, Realtime) · github.com/jalducin/platform-STALD</div>
+        </div>
+        <div class="proj">
           <div class="ptitle">Fidello — Loyalty Card System</div>
-          <p class="pdesc"><b>Piloto en beta cloud</b> (cafeterías reales). Fidelidad digital multi-negocio (QR mobile-first): RLS multi-tenant, RPC PL/pgSQL, QR anti-replay, feature flags. 793 pruebas · 91 migraciones · 100% SDD.</p>
-          <div class="pstack"><b>Stack:</b> React 18 · TypeScript · Vite · Tailwind · Supabase · PL/pgSQL · Edge Functions (Deno) · Vitest</div>
+          <p class="pdesc">Fidelidad digital multi-negocio (QR mobile-first) con la lógica en PostgreSQL: RLS multi-tenant, RPC PL/pgSQL, QR anti-replay y feature flags. 793 pruebas · 91 migraciones · 100 % SDD.</p>
+          <div class="pstack">React · TypeScript · Supabase · PL/pgSQL · jalducin.github.io/blog/deep-dive-fidello.html</div>
         </div>
         <div class="proj">
           <div class="ptitle">Monitoreo-Cloud — Observabilidad</div>
-          <p class="pdesc">Observabilidad self-hosted (Grafana + Docker) sobre 3 fuentes: AWS serverless (CloudWatch), Docker local y tickets/SLA de Trackion. SDD.</p>
-          <div class="pstack"><b>Stack:</b> Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3</div>
+          <p class="pdesc">Observabilidad self-hosted (Grafana + Docker) sobre 3 fuentes: CloudWatch, contenedores Docker y tickets/SLA; recolección con n8n.</p>
+          <div class="pstack">Grafana · Docker · n8n · PostgreSQL · CloudWatch · github.com/jalducin/monitoreo-cloud</div>
         </div>
-        <div class="proj">
-          <div class="ptitle">VoltGrid — EV Charging Platform</div>
-          <p class="pdesc">SaaS multi-tenant white-label de carga EV: tiempo real (WebSocket), RLS, RBAC + SSO (OIDC), analytics y PWA. 100% SDD.</p>
-          <div class="pstack"><b>Stack:</b> FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · WebSockets · Docker · Kubernetes</div>
-        </div>
-        <div class="proj">
-          <div class="ptitle">Trackion — Serverless Help Desk</div>
-          <p class="pdesc">Mesa de ayuda serverless white-label: ticketing end-to-end, catálogos y módulo de integración de APIs abierto; dashboards Grafana. SDD.</p>
-          <div class="pstack"><b>Stack:</b> Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana</div>
-        </div>
-        <div class="proj">
-          <div class="ptitle">Pyzzeria — Pedidos serverless (Live Demo)</div>
-          <p class="pdesc">Demo serverless de pedidos de pizza con tracking en vivo: WebSocket + Step Functions Express (~70s), DynamoDB y OpenAPI/Swagger; desplegado en CloudFront. 100% SDD.</p>
-          <div class="pstack"><b>Stack:</b> Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP+WS) · DynamoDB · Step Functions · SAM · CloudFront</div>
-        </div>
-        <div class="proj">
-          <div class="ptitle">dataMasterGK — Middleware ETL (GK Retail)</div>
-          <p class="pdesc">Middleware ETL retail para GK: Excel > XML de GK (4 interfaces) vía SFTP/FTP, panel Flask y auditoría SQLite. Rediseñado con SDD (idempotente, seguridad).</p>
-          <div class="pstack"><b>Stack:</b> Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP)</div>
-        </div>
+        <p class="pother"><b>Otros:</b> VoltGrid (SaaS multi-tenant de carga EV, FastAPI + Next.js) · Trackion (help desk serverless) · dataMasterGK (ETL retail) — github.com/jalducin</p>
       </section>
 
+      <section>
+        <h2>Certificaciones</h2>
+        <div class="course"><b>Claude Code in Action · Intro to MCP · Agent Skills · Subagents</b><span>Anthropic Academy · 2026</span></div>
+        <div class="course"><b>Claude Code: Software Engineering with Generative AI Agents</b><span>Vanderbilt University · 2026</span></div>
+        <div class="course"><b>Generative AI Applications with Amazon Bedrock</b><span>AWS · 2026</span></div>
+      </section>
     </div>
   </div>
 

@@ -87,17 +87,17 @@ Inglés:      B1 (Intermedio)
 
 | Proyecto | Stack | Repo |
 |---|---|---|
-| Fidello | **Piloto en beta cloud** (cafeterías reales). React 18 · TypeScript · Vite 5 · Tailwind 3 · PWA · Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron) · RLS · PL/pgSQL SECURITY DEFINER · Feature Flags · Vitest + pg harness · Vercel (QAS/PROD). Cifras (2026-09-17): 793 pruebas (337 DB + 456 UI), 91 migraciones, 22 tablas, 7 Edge Functions, 5 cron, 97 cambios OpenSpec, 28 journeys + runbooks. Google Wallet / Google OAuth / Resend / WhatsApp: construidos pero **apagados** (no presentarlos como activos). Deep dive: `blog/deep-dive-fidello.html` | privado/seed |
+| platform-STALD | **Proyecto principal (desde 2026-11-02).** Plataforma educativa (portal, actividades en línea, juegos multijugador en tiempo real) hecha 100 % con SDD + Claude Code: subagentes revisor/verificador, 14 skills, hook `proteger-git`. Deno Deploy · TypeScript · Supabase (Postgres RLS, Auth, Realtime) · JS vanilla · GitHub Pages. Cifras (2026-11-02): +250 PRs, +85 cambios OpenSpec archivados, 132 archivos de pruebas Deno en CI + E2E locales. **Usuarios menores de edad:** nunca nombres, datos ni capturas de alumnos | jalducin/platform-STALD |
+| Fidello | Piloto pausado: **no** presentarlo como activo (sin "beta" ni "cafeterías reales"); se describe por lo construido. React 18 · TypeScript · Vite 5 · Tailwind 3 · PWA · Supabase (PostgreSQL 15, Auth, PostgREST, Realtime, Edge Functions/Deno, pg_cron) · RLS · PL/pgSQL SECURITY DEFINER · Feature Flags · Vitest + pg harness · Vercel (QAS/PROD). Cifras (2026-09-17): 793 pruebas (337 DB + 456 UI), 91 migraciones, 22 tablas, 7 Edge Functions, 5 cron, 97 cambios OpenSpec, 28 journeys + runbooks. Google Wallet / Google OAuth / Resend / WhatsApp: construidos pero **apagados** (no presentarlos como activos). Deep dive: `blog/deep-dive-fidello.html` | privado/seed |
 | VoltGrid | FastAPI · SQLAlchemy 2.0 async · PostgreSQL 16 (RLS) · Next.js 14 · TypeScript · Tailwind · WebSockets · Docker · Kubernetes (Kustomize) — SaaS multi-tenant EV charging | jalducin/voltgrid |
 | Trackion | Python 3.12 · AWS Lambda · API Gateway · Serverless Framework · PostgreSQL · JWT · SSM · Grafana — helpdesk serverless white-label (local Docker; sin demo en vivo) | jalducin/Trackion |
-| Pyzzeria | Python 3.12 · FastAPI · Mangum · AWS Lambda · API Gateway (HTTP + WebSocket) · DynamoDB · Step Functions (Express) · AWS SAM · S3/CloudFront — demo serverless de pedidos de pizza con tracking en vivo (~70s), OpenAPI/Swagger, **Live Demo** en CloudFront (es la demo destacada del portafolio). Deep dive: `blog/deep-dive-pyzzeria.html` | jalducin/pyzzeria |
 | Monitoreo-Cloud | Grafana · Docker · n8n · PostgreSQL · AWS CloudWatch · Lambda · S3 — stack de observabilidad multi-fuente (AWS serverless + Docker local + tickets/SLA de Trackion), self-hosted | jalducin/monitoreo-cloud |
 | dataMasterGK | Python 3.12 · Flask · Pandas · openpyxl · SQLite · Paramiko (SFTP) · Jinja2 — middleware ETL retail (Excel→GK XML, 4 interfaces, SFTP/FTP), rediseñado con SDD (pipeline idempotente, seguridad) | jalducin/dataMasterGK |
 
 > Enkoth (tooling serverless interno en Podemos: Lambda · Step Functions · EventBridge) se menciona de forma
 > ligera dentro de la experiencia actual, no como proyecto destacado independiente ni con deep dive (sistema
-> interno del empleador: no se detalla). Inventarios, socket-chat y JV Market (e-commerce) se retiraron del
-> portafolio (los dos primeros por obsoletos; JV Market el 2026-09-20 por decisión del propietario). Las métricas
+> interno del empleador: no se detalla). Inventarios, socket-chat, JV Market (e-commerce) y Pyzzeria se retiraron del
+> portafolio (Pyzzeria el 2026-11-02: su demo en CloudFront se borró con la cuenta AWS) (los dos primeros por obsoletos; JV Market el 2026-09-20 por decisión del propietario). Las métricas
 > numéricas (~40 % revisión, 80 % autoresolución N1, 99.95 % uptime) también se retiraron del CV y del sitio el
 > 2026-09-20: solo quedan los SLAs (<10 min / <2 h).
 >
@@ -127,7 +127,7 @@ Inglés:      B1 (Intermedio)
 ## PDF del CV (self-hosted, sin enhancv)
 
 El CV se genera **dentro del repo** desde fuentes HTML editables (bilingüe ES/EN), sin depender de enhancv ni suscripciones:
-- `cv/cv.html` (ES) y `cv/cv-en.html` (EN) — fuentes editables (formato estilo enhancv "hexagon", **tamaño Oficio 216×340 mm**, 1 página, ATS-friendly). Idiomas va en la columna izquierda, bajo Educación (desde 2026-09-19; antes en la derecha — se mueve a la columna con más holgura para conservar 1 página).
+- `cv/cv.html` (ES) y `cv/cv-en.html` (EN) — fuentes editables (formato estilo enhancv "hexagon", **tamaño A4 210×297 mm**, 1 página, ATS-friendly; verificación: `python scripts/cv/check_cv.py`). Idiomas va en la columna izquierda, bajo Educación (desde 2026-09-19; antes en la derecha — se mueve a la columna con más holgura para conservar 1 página).
 - `cv/hex-bg.svg` — fondo de hexágonos. `cv/build.ps1` — regenera **ambos** PDFs con Chrome/Edge headless (`--user-data-dir` único por PDF).
 - `cv/CV_JuanValentinAlducin.pdf` (ES) y `cv/CV_JuanValentinAlducin_EN.pdf` (EN) — artefactos; los que descarga `index.html`. Versionados en el repo.
 - Descarga con **sufijo mes-año dinámico** (JS vanilla): el archivo se entrega como `CV_JuanValentinAlducin_AAAA-MM.pdf` / `..._EN_AAAA-MM.pdf`. El botón EN aparece en Contact, command palette y terminal (`cat cv en`).
