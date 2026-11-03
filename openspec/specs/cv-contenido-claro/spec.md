@@ -18,13 +18,14 @@ resumen de **≤ 300 caracteres** (≈ 2 líneas). El titular SHALL ser el mismo
 - **THEN** tiene ≤ 300 caracteres
 
 ### Requirement: Experiencia acotada
-La sección de experiencia SHALL limitar los bullets a: **≤ 4** en el rol actual, **≤ 2** en cada rol previo
-(Podemos 2025–2026 y Redsis) y **1** en Softtek. Las líneas `Stack:` por rol SHALL eliminarse (la sección
-Habilidades ya lista las tecnologías). Fechas, títulos de rol y empresas SHALL conservarse.
+La sección de experiencia SHALL limitar los bullets a: **≤ 4** en el rol actual, **≤ 2** en Podemos 2025–2026,
+**≤ 3** en Redsis, **≤ 2** en Softtek y **1** en una entrada final "Experiencia previa" (2013–2017: Intellego, UGM
+Norte, Asesores Integrales). Las líneas `Stack:` por rol SHALL eliminarse. Fechas, títulos de rol y empresas SHALL
+conservarse. (Ajuste del 2026-11-03: Redsis y Softtek "quedaron cortos"; se agrega la experiencia previa.)
 
 #### Scenario: Conteo de bullets por rol
 - **WHEN** se cuentan los `<li>` de cada entrada de experiencia
-- **THEN** el rol actual tiene ≤ 4, Podemos 2025–2026 ≤ 2, Redsis ≤ 2 y Softtek 1
+- **THEN** hay 5 entradas con ≤ 4, ≤ 2, ≤ 3, ≤ 2 y ≤ 1 bullets respectivamente
 - **AND** no hay elementos `.stack` dentro de la experiencia
 
 #### Scenario: Nombre del rol unificado

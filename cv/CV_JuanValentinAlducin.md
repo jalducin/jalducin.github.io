@@ -43,13 +43,20 @@ automatización de la operación (post-mortems, runbooks, n8n) y construyo softw
 ### Software Engineer > Tech Lead — Redsis
 01/2022 - 09/2025 · CDMX
 
-- APIs REST (Python, Java, PHP) que integran GK POS con ERPs/CRMs vía XML/SFTP en 3 países de LATAM.
-- Lideré el Go-Live cloud de GK POS (Perú, Colombia, Bolivia) y al equipo funcional-técnico: pruebas y calidad por release.
+- Desarrollé APIs REST (Python, Java, PHP) que integran GK POS con ERPs/CRMs vía XML/SFTP en 3 países de LATAM.
+- Lideré el Go-Live cloud de GK POS (Perú, Colombia, Bolivia): cronogramas, stakeholders de negocio/TI, preventa y capacitación local.
+- Dirigí al equipo funcional-técnico: estrategia de pruebas (unitarias, regresión, integración) y calidad por release.
 
 ### Software Engineer — Softtek
 03/2017 - 01/2022 · CDMX
 
-- Facturación, portales y ETLs con SAP ERP/HANA, dashboards en SAP BO y soporte AMS con SLA al 98 %.
+- Implementé facturación, portales cliente y ETLs con SAP ERP/HANA, y dashboards ejecutivos en SAP BO para liderazgo de negocio.
+- Soporte AMS a soluciones Retail GK (mesa de ayuda, mantenimiento correctivo y evolutivo de aplicativos y ETLs) bajo Scrum, con SLA al 98 %.
+
+### Experiencia previa — Intellego · UGM Norte · Asesores Integrales
+2013 - 2017 · CDMX / Orizaba
+
+- Consultoría de datos y reportes en SAP SuccessFactors y SQL Server; sistemas en PHP/MySQL (órdenes de trabajo, pólizas y conciliaciones).
 
 ## Educación
 

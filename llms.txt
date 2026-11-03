@@ -39,6 +39,7 @@ This file summarizes the profile for AI agents and LLMs. Source of truth: the CV
 - Podemos Progresar (Sep 2025 – Jun 2026) — Backend Support Specialist. N2 incident management with RCAs and AI-assisted post-mortems; autonomous N1 resolution enabled via knowledge transfer; owner of the weekly idempotent PostgreSQL cleanup ETL (backup → delete → update → audit log, pre-validated) and identity deduplication in production; Liquibase-versioned schema changes; central technical liaison across Python, Django, FastAPI and PostgreSQL.
 - Redsis (Jan 2022 – Sep 2025) — Software Engineer → Tech Lead. GK POS multi-country Go-Live (Peru, Colombia, Bolivia), REST APIs, ETL, team leadership.
 - Softtek (Mar 2017 – Jan 2022) — Software Engineer. SAP ERP/HANA, ETL, SAP BO dashboards, AMS support, Scrum (98% SLA).
+- Earlier (2013 – 2017) — Software Consultant at Intellego (SAP SuccessFactors reporting, SQL Server data consulting) and Middle Programmer at UGM Norte and Asesores Integrales (PHP/MySQL: work-order system, accounting entries and reconciliations).
 
 ## Featured projects
 - platform-STALD — personal project: an educational platform he built as a hobby and uses to practice technologies and AI: Spec-Driven Development with Claude Code (subagents, skills and hooks), real-time multiplayer games and CI tests. Stack: Deno Deploy, TypeScript, Supabase (PostgreSQL with RLS, Auth, Realtime), vanilla JS, GitHub Actions. Code: https://github.com/jalducin/platform-STALD

@@ -50,9 +50,9 @@ for idioma, (src, pdf) in FUENTES.items():
 
     exp = re.search(r"<h2>(?:Experiencia|Experience)</h2>(.*?)</section>", doc, re.S).group(1)
     entradas = re.findall(r'<div class="entry">(.*?)</ul>', exp, re.S)
-    limites = [4, 2, 2, 1]
+    limites = [4, 2, 3, 2, 1]  # actual, Podemos 2025-26, Redsis, Softtek, experiencia previa
     conteos = [e.count("<li>") for e in entradas]
-    check(len(entradas) == 4 and all(c <= l for c, l in zip(conteos, limites)) and conteos[-1] == 1,
+    check(len(entradas) == 5 and all(c <= l for c, l in zip(conteos, limites)),
           f"{t} bullets por rol {conteos} dentro de {limites}")
     check('class="stack"' not in exp, f"{t} sin líneas Stack: en experiencia")
     check("Service Support Tech Lead &amp; AI Specialist" in doc, f"{t} rol 'AI Specialist'")
