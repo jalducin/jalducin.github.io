@@ -67,8 +67,8 @@ es: Sus proyectos destacados, en orden: platform-STALD (plataforma educativa con
 
 ## platform-stald
 tags: stald, platform-stald, plataforma educativa, educational platform, agentes, agents, subagentes, subagents, skills, hooks, claude code, deno, proyecto personal, pasatiempo, hobby, agentic engineering, ingenieria agentica
-en: platform-STALD is a personal project: an educational platform Juan built as a hobby and uses to practice technologies and AI: Spec-Driven Development with Claude Code (subagents, skills and hooks), real-time multiplayer games and CI tests. Stack: Deno Deploy, TypeScript, Supabase (PostgreSQL with RLS, Auth, Realtime) and vanilla JS. No student data is published. Code: https://github.com/jalducin/platform-STALD
-es: platform-STALD es un proyecto personal: una plataforma educativa que Juan hizo como pasatiempo y usa para practicar tecnologías e IA: Spec-Driven Development con Claude Code (subagentes, skills y hooks), juegos multijugador en tiempo real y pruebas en CI. Stack: Deno Deploy, TypeScript, Supabase (PostgreSQL con RLS, Auth, Realtime) y JS vanilla. No se publican datos de alumnos. Código: https://github.com/jalducin/platform-STALD
+en: platform-STALD is a personal project: an educational platform Juan built as a hobby and uses to practice technologies and AI: Spec-Driven Development with Claude Code (subagents, skills and hooks), real-time multiplayer games and CI tests. Stack: Deno Deploy, TypeScript, Supabase (PostgreSQL with RLS, Auth, Realtime) and vanilla JS. Code: https://github.com/jalducin/platform-STALD
+es: platform-STALD es un proyecto personal: una plataforma educativa que Juan hizo como pasatiempo y usa para practicar tecnologías e IA: Spec-Driven Development con Claude Code (subagentes, skills y hooks), juegos multijugador en tiempo real y pruebas en CI. Stack: Deno Deploy, TypeScript, Supabase (PostgreSQL con RLS, Auth, Realtime) y JS vanilla. Código: https://github.com/jalducin/platform-STALD
 
 ## proyecto-fidello
 tags: fidello, loyalty, lealtad, fidelidad, tarjeta de lealtad, loyalty card, supabase, rls, qr, sellos, stamps, cafeterias, coffee
