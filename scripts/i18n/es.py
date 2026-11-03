@@ -83,7 +83,7 @@ ES = {
     # platform-STALD (portafolio-claridad): primer proyecto destacado
     "proj.div9": "Proyecto personal · pasatiempo",
     "proj.h38": "platform-STALD — Proyecto personal",
-    "proj.p9": "Plataforma educativa que hice como pasatiempo y uso para practicar tecnologías e IA: <strong>Spec-Driven Development</strong> con <strong>Claude Code</strong> (subagentes, skills y hooks), <strong>juegos multijugador en tiempo real</strong>, Supabase Auth y Postgres con RLS, y pruebas en CI. No se publican datos de alumnos.",
+    "proj.p9": "Plataforma educativa que hice como pasatiempo y uso para practicar tecnologías e IA: <strong>Spec-Driven Development</strong> con <strong>Claude Code</strong> (subagentes, skills y hooks), <strong>juegos multijugador en tiempo real</strong>, Supabase Auth y Postgres con RLS, y pruebas en CI.",
     "proj.a10": "Ver código ↗",
     "proj.div1": "★ AI-native · 100% SDD",
     "proj.h31": "Fidello — Sistema de tarjetas de lealtad",
