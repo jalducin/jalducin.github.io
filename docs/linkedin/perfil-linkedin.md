@@ -56,7 +56,7 @@ Portfolio: jalducin.github.io · GitHub: github.com/jalducin
 
 ```
 • Coordino el equipo de Service Support (bugs, incidentes críticos y deuda técnica) y apliqué Spec-Driven Development con Claude API al flujo diagnóstico → implementación para agilizar las revisiones.
-• Participo en la transformación del proceso de post-mortems (P0–P3, 5 Whys, blameless) con un tablero de seguimiento de atrasos, escalaciones y avance contra la meta.
+• Participo en la construcción del proceso de post-mortems (P0–P3, 5 Whys, blameless) con un tablero de seguimiento de atrasos, escalaciones y avance contra la meta.
 • Calculo y llevo el control mensual de uptime/downtime (downtime = impacto real al usuario) con la metodología definida por el liderazgo, y estandarizo runbooks y accesos de mínimo privilegio.
 • Automatizo parte de la operación con n8n (Freshdesk → Notion → Slack, vigilancia de atrasos y alertas por picos de tickets) y desarrollo un Skill de IA para clasificar y rutear tickets con revisión humana.
 • Participo en los trenes de liberación semanales coordinados por Ingeniería, validando despliegues desde Service Support; diagnostico y opero AWS (CloudWatch Logs Insights, RDS) y Sentry. Meta de SLA: primera respuesta <10 min, crítica <2 h.
