@@ -30,7 +30,7 @@ automatización de la operación (post-mortems, runbooks, n8n) y construyo softw
 07/2026 - Presente · CDMX
 
 - Coordino Service Support (bugs, incidentes críticos y deuda técnica) y apliqué SDD con Claude API al flujo diagnóstico → implementación.
-- Participo en la transformación de post-mortems (P0–P3, 5 Whys, blameless) y llevo el control mensual de uptime/downtime.
+- Participo en la construcción del proceso de post-mortems (P0–P3, 5 Whys, blameless) y llevo el control mensual de uptime/downtime.
 - Automatizo parte de la operación con n8n (Freshdesk → Notion → Slack) y desarrollo un Skill de IA para rutear tickets.
 - Valido despliegues en los trenes de liberación semanales; opero AWS (CloudWatch, RDS) y Sentry; SLA <10 min, crítica <2 h.
 
