@@ -92,6 +92,10 @@ dataMasterGK (ETL retail) — github.com/jalducin
 
 ## Certificaciones
 
-- Claude Code in Action · Intro to MCP · Agent Skills · Subagents — Anthropic Academy · 2026
+- Claude Code in Action — Anthropic · 2026
+- Claude Code 101 — Anthropic · 2026
+- Introduction to Model Context Protocol — Anthropic · 2026
+- Introduction to Agent Skills — Anthropic · 2026
+- Introduction to Subagents — Anthropic · 2026
 - Claude Code: Software Engineering with Generative AI Agents — Vanderbilt University · 2026
 - Generative AI Applications with Amazon Bedrock — AWS · 2026
