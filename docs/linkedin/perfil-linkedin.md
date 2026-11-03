@@ -27,7 +27,7 @@ Senior Backend Engineer | Tech Lead · SRE & Automation | Agentic AI · Python �
 ```
 Senior Backend Engineer y Tech Lead con +10 años en Python, SQL y AWS.
 
-Hoy lidero Service Support en una fintech: hago que la operación sea confiable y automatizada con post-mortems, una metodología de uptime basada en impacto real, runbooks y flujos de n8n.
+Hoy coordino Service Support en una fintech: trabajo en la confiabilidad y automatización de la operación con post-mortems, control de uptime, runbooks y flujos de n8n.
 
 Construyo software con Spec-Driven Development (OpenSpec) y agentes de IA. En la práctica: la spec es el contrato, y los agentes (Claude Code con subagentes, skills y hooks) implementan, prueban y revisan con controles que yo defino. Mi mejor ejemplo es platform-STALD, una plataforma educativa con más de 250 PRs, construida de punta a punta así.
 
@@ -41,7 +41,7 @@ Portafolio: jalducin.github.io · GitHub: github.com/jalducin
 ```
 Senior Backend Engineer and Tech Lead with 10+ years in Python, SQL and AWS.
 
-I lead Service Support at a fintech, making operations reliable and automated: post-mortems, an uptime methodology based on real user impact, runbooks and n8n workflows.
+I coordinate Service Support at a fintech, working on operational reliability and automation: post-mortems, uptime tracking, runbooks and n8n workflows.
 
 I build software with Spec-Driven Development (OpenSpec) and AI agents: the spec is the contract, and agents (Claude Code with subagents, skills and hooks) implement, test and review under guardrails I define. My best example is platform-STALD, an educational platform with 250+ PRs built end-to-end this way.
 
@@ -55,10 +55,11 @@ Portfolio: jalducin.github.io · GitHub: github.com/jalducin
 ### Service Support Tech Lead & AI Specialist · Podemos Progresar · jul 2026 – actualidad
 
 ```
-• Lidero el equipo de Service Support en la resolución end-to-end de bugs, incidentes críticos y deuda técnica con Spec-Driven Development y Claude.
-• Construí el sistema de post-mortems (P0–P3, 5 Whys, blameless) con un tablero en Asana para dar visibilidad a dirección, y definí la metodología mensual de uptime/downtime basada en impacto real al usuario.
-• Automatizo la operación con n8n (Freshdesk → Notion → Slack, vigilante de atrasos y alertas por picos de tickets) y una Skill de IA que enruta tickets con revisión humana.
-• Participo en los trenes de liberación semanales entre core banking, originación y app de campo; diagnostico y opero AWS (Lambda, Step Functions, CloudWatch, RDS) con SLA de respuesta <10 min y crítica <2 h.
+• Coordino el equipo de Service Support (bugs, incidentes críticos y deuda técnica) y apliqué Spec-Driven Development con Claude API al flujo diagnóstico → implementación para agilizar las revisiones.
+• Participo en la transformación del proceso de post-mortems (P0–P3, 5 Whys, blameless) con un tablero de seguimiento de atrasos, escalaciones y avance contra la meta.
+• Calculo y llevo el control mensual de uptime/downtime (downtime = impacto real al usuario) con la metodología definida por el liderazgo, y estandarizo runbooks y accesos de mínimo privilegio.
+• Automatizo parte de la operación con n8n (Freshdesk → Notion → Slack, vigilancia de atrasos y alertas por picos de tickets) y desarrollo un Skill de IA para clasificar y rutear tickets con revisión humana.
+• Participo en los trenes de liberación semanales coordinados por Ingeniería, validando despliegues desde Service Support; diagnostico y opero AWS (CloudWatch Logs Insights, RDS) y Sentry. Meta de SLA: primera respuesta <10 min, crítica <2 h.
 ```
 Aptitudes (5): Spec-Driven Development · Anthropic Claude · n8n · Amazon Web Services (AWS) · Site Reliability Engineering
 

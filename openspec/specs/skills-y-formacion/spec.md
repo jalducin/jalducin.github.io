@@ -4,9 +4,7 @@
 
 Garantiza que las secciones de skills, educación y certificaciones del portafolio reflejen, con evidencia
 real, la misma información que el CV vigente, sin listar tecnologías o títulos sin respaldo.
-
 ## Requirements
-
 ### Requirement: Taxonomía de skills alineada al CV
 
 La sección de skills SHALL reflejar las habilidades con evidencia de uso, organizadas por nivel de
@@ -53,8 +51,9 @@ La lista de certificaciones SHALL coincidir con la del CV, manteniendo coherenci
 
 #### Scenario: Certificaciones del CV presentes
 - **WHEN** un visitante lee certificaciones y cursos
-- **THEN** aparecen: Generative AI with Amazon Bedrock (Coursera), Claude Code: SE with Gen AI Agents
-  (Vanderbilt / Anthropic), Developing Applications in Python on AWS (Coursera) y GitHub Actions
-  Bootcamp (Código Facilito)
+- **THEN** aparecen: Anthropic Academy (Claude Code in Action · Intro to MCP · Agent Skills · Subagents, 2026),
+  Claude Code: Software Engineering with Generative AI Agents (Vanderbilt University, 2026) y Generative AI
+  Applications with Amazon Bedrock (AWS, 2026)
 - **AND** cualquier certificación adicional mostrada en el sitio que no esté en el CV se conserva solo si
   es verídica; no se inventan certificaciones
+

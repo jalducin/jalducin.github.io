@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Deep dive — Fidello: a multi-tenant loyalty platform where the database is the backend — Juan Valentin Alducin</title>
-<meta name="description" content="Fidello deep dive: problem, approach, architecture (Supabase + multi-tenant RLS + PL/pgSQL RPC), key decisions and results of a cloud-beta pilot built 100% with Spec-Driven Development." />
+<meta name="description" content="Fidello deep dive: problem, approach, architecture (Supabase + multi-tenant RLS + PL/pgSQL RPC), key decisions and results of a platform built 100% with Spec-Driven Development." />
 <link rel="canonical" href="https://jalducin.github.io/blog/deep-dive-fidello.html" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Deep dive — Fidello: a multi-tenant loyalty platform where the database is the backend" />
@@ -72,7 +72,7 @@
       <h1>Fidello: a multi-tenant loyalty platform where the database <em>is</em> the backend</h1>
       <div class="meta">2026-09-20 · 8 min read · Problem → Approach → Architecture → Decisions → Result</div>
       <div class="status">
-        <span>🧪 Pilot · cloud beta</span><span>★ 100% SDD/OpenSpec</span><span>Private repository · demo on request</span>
+        <span>☁ QAS/PROD on Vercel + Supabase</span><span>★ 100% SDD/OpenSpec</span><span>Private repository · demo on request</span>
       </div>
 
       <h2>Problem</h2>
@@ -86,7 +86,7 @@
 
       <h2>Approach</h2>
       <p>Two deliberate bets. First, <strong>Spec-Driven Development end to end</strong>: every one of the 97 OpenSpec changes started as a proposal, a set of verifiable scenarios and a design before any code — with five specialised AI agents (backend, frontend, security-reviewer, solution-architect, product-strategy) working against those artifacts. Second, <strong>no application server</strong>: business rules live in PostgreSQL (RPC in PL/pgSQL) behind Supabase, and the React PWA is a thin client. That removed a whole tier to secure, deploy and test, and made the security model something a reviewer can read in SQL.</p>
-      <p>The pilot runs in real coffee shops: the core journeys were validated by product on site, and each of the 28 user journeys has a twin runbook that describes how to operate and troubleshoot it.</p>
+      <p>The core journeys were validated by product during an early pilot, and each of the 28 user journeys has a twin runbook that describes how to operate and troubleshoot it.</p>
 
       <div class="kpis">
         <div class="kpi"><b>793</b><small>tests (337 DB against real Postgres + 456 UI)</small></div>
@@ -175,7 +175,7 @@
 
           <!-- Built but off -->
           <rect x="20" y="440" width="600" height="24" rx="6" class="box off"/>
-          <text x="320" y="456" class="t s" text-anchor="middle">built, flag off (no credentials in the pilot): Google Wallet passes · Google OAuth · Resend e-mail · WhatsApp</text>
+          <text x="320" y="456" class="t s" text-anchor="middle">built, flag off (no credentials configured): Google Wallet passes · Google OAuth · Resend e-mail · WhatsApp</text>
         </svg>
         <p class="cap">Figure 1 — Fidello runtime and delivery pipeline. Everything below the HTTPS line is Supabase; there is no custom server to run.</p>
       </div>
@@ -188,7 +188,7 @@
       </div>
       <div class="dec">
         <h3>D2 · Multi-tenancy with Row-Level Security</h3>
-        <p><strong>Why:</strong> isolation is enforced by the database engine for every query path (REST, RPC, Realtime), not by remembering a <code>WHERE business_id = …</code>. <strong>Alternative rejected:</strong> a schema or database per tenant — operationally heavier for a pilot and it does not simplify the cross-tenant views the platform admin needs.</p>
+        <p><strong>Why:</strong> isolation is enforced by the database engine for every query path (REST, RPC, Realtime), not by remembering a <code>WHERE business_id = …</code>. <strong>Alternative rejected:</strong> a schema or database per tenant — operationally heavier for a young product and it does not simplify the cross-tenant views the platform admin needs.</p>
       </div>
       <div class="dec">
         <h3>D3 · Guest-first identity with QR tokens that expire</h3>
@@ -196,7 +196,7 @@
       </div>
       <div class="dec">
         <h3>D4 · Feature flags (global + per-business override) instead of branches</h3>
-        <p><strong>Why:</strong> the pilot needed to switch capabilities per coffee shop without a deploy. It is also how the "built but off" integrations (Wallet, OAuth, e-mail, WhatsApp) stay in the codebase without being sold as active: the flag is off and there are no credentials in the pilot.</p>
+        <p><strong>Why:</strong> the platform needs to switch capabilities per business without a deploy. It is also how the "built but off" integrations (Wallet, OAuth, e-mail, WhatsApp) stay in the codebase without being sold as active: the flag is off and no credentials are configured.</p>
       </div>
       <div class="dec">
         <h3>D5 · Immutable migrations + real-database tests as the contract</h3>
@@ -209,16 +209,16 @@
 
       <h2>Result</h2>
       <ul>
-        <li><strong>Pilot in cloud beta</strong> (Vercel QAS/PROD + Supabase Cloud), with the core journeys validated by product in real coffee shops.</li>
+        <li><strong>Deployed to QAS/PROD</strong> (Vercel + Supabase Cloud), with the core journeys validated by product during an early pilot.</li>
         <li><strong>793 tests, 100% green</strong> — 337 database tests against real Postgres and 456 UI tests — on every push, as blocking CI jobs.</li>
         <li><strong>Security that a reviewer can read:</strong> RLS policies, <code>SECURITY DEFINER</code> RPCs, expiring QR tokens, rate limiting and a PII-free audit log, all in SQL.</li>
         <li><strong>Operable:</strong> 28 journeys with runbooks, 5 scheduled jobs, feature flags per business, and a review package for external audits.</li>
       </ul>
-      <p>The repository is private (it belongs to the pilot). I am happy to walk through the code, the specs and the review package on a call.</p>
+      <p>The repository is private. I am happy to walk through the code, the specs and the review package on a call.</p>
       <div class="cta">
         <a class="btn" href="../index.html#contact">Request a demo ›</a>
         <a class="btn" href="anatomia-de-un-cambio.html">How I run SDD ›</a>
-        <a class="btn" href="deep-dive-pyzzeria.html">Next: Pyzzeria deep dive ›</a>
+        <a class="btn" href="https://github.com/jalducin/platform-STALD" target="_blank" rel="noopener">Next: platform-STALD on GitHub ↗</a>
       </div>
 
       <div class="foot">

@@ -60,7 +60,8 @@ r = run(probe_js="""
   stored:(function(){try{return localStorage.getItem('lang')}catch(e){return 'err'}})()};
  document.title='PROBE '+JSON.stringify(r);""", url_suffix="?lang=en")
 check("EN restaurado byte a byte tras es/en/es/en", r.get("same") is True, r)
-check("muestra ES aplicada (Fidello)", r.get("esSample") == "Fidello — Sistema de tarjetas de lealtad", r.get("esSample"))
+# portafolio-claridad: el primer proyecto destacado ahora es platform-STALD (antes Fidello)
+check("muestra ES aplicada (platform-STALD)", r.get("esSample") == "platform-STALD — Plataforma educativa construida con agentes de IA", r.get("esSample"))
 check("tab activa conservada (#featured-projects)", r.get("active") == "#featured-projects", r.get("active"))
 check("handlers intactos (__showTab, __downloadCV, 4 a[data-cv], terminal, form, palette)",
       r.get("showTab") == "function" and r.get("dl") == "function" and r.get("cv") == 4 and r.get("term") and r.get("form") and r.get("cmdk"), r)
