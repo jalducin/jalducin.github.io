@@ -81,14 +81,17 @@ enlaces al repositorio privado de datos.
 - **THEN** describe la arquitectura, el tooling de agentes (subagentes, skills, hooks) y cifras de ingeniería
   (commits/PRs, cambios OpenSpec, pruebas), y no contiene datos de personas ni el repo `platform-STALD-data`
 
-### Requirement: Formación agrupada
-La sección de cursos SHALL tener **≤ 3 líneas**: una para Anthropic Academy (Claude Code in Action · Intro to
-MCP · Agent Skills · Subagents, 2026), una para Vanderbilt (Claude Code: Software Engineering with Generative
-AI Agents, 2026) y una para AWS (Generative AI Applications with Amazon Bedrock, 2026).
+### Requirement: Certificaciones visibles, una por línea
+La sección de certificaciones SHALL listar **cada curso en su propia línea** con su nombre oficial y emisor
+(≤ 7 líneas): los 5 de Anthropic (Claude Code in Action, Claude Code 101, Introduction to Model Context Protocol,
+Introduction to Agent Skills, Introduction to Subagents), Vanderbilt (Claude Code: Software Engineering with
+Generative AI Agents) y AWS (Generative AI Applications with Amazon Bedrock). Decisión del propietario
+(2026-11-03): agrupados en una línea "no se veían". El portafolio lista todos los cursos, incluidos los que no
+caben en el CV.
 
-#### Scenario: Cursos compactos
+#### Scenario: Cursos visibles
 - **WHEN** se cuentan los bloques `.course`
-- **THEN** son ≤ 3 y la línea de Anthropic nombra los 4 cursos indicados
+- **THEN** son ≤ 7, uno por curso, y el CV sigue en 1 página A4
 
 ### Requirement: llms.txt como fuente del mensaje
 `llms.txt` SHALL actualizarse **antes** que el CV y reflejar el mismo titular, rol, proyectos (STALD agregado,
