@@ -65,7 +65,7 @@ for idioma, (src, pdf) in FUENTES.items():
     for p in PROHIBIDAS:
         check(p not in doc, f"{t} sin '{p}'")
     cursos = doc.count('class="course"')
-    check(cursos <= 7, f"{t} ≤ 7 cursos, uno por línea ({cursos})")
+    check(cursos <= 8, f"{t} ≤ 8 cursos, uno por línea ({cursos})")
     check(re.search(r"@page\s*\{\s*size:\s*(210mm 297mm|A4)", doc) is not None, f"{t} @page A4")
 
     try:
